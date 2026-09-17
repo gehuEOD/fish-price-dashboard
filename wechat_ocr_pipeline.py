@@ -168,6 +168,21 @@ def snapshot(data: dict, run_date: str):
     return out
 
 
+def vs_cell(vs: str) -> str:
+    """环比单元格：涨红跌绿（中式行情配色），新增蓝、持平灰。"""
+    if not vs:
+        return "<td></td>"
+    if "新增" in vs:
+        color = "#2563eb"
+    elif "持平" in vs:
+        color = "#6b7280"
+    elif "↑" in vs:
+        color = "#dc2626"
+    else:
+        color = "#12a150"
+    return f'<td style="color:{color};font-size:12px;white-space:nowrap">{vs}</td>'
+
+
 # ----------------------------------------------------------------------------
 # 生成看板板块 HTML
 # ----------------------------------------------------------------------------
@@ -176,6 +191,8 @@ def build_sci_section(rows):
     art = rows[0].get("article_date") or rows[0].get("price_date") or ""
     price_date = rows[0].get("price_date") or art
     species_list = "、".join(sorted({r["species"] for r in rows}))
+    has_vs = any(r.get("vs") for r in rows)
+    vs_head = rows[0].get("vs_header") or "环比"
     # 按品种分组
     groups = {}
     for r in rows:
@@ -185,12 +202,14 @@ def build_sci_section(rows):
         trs = "".join(
             f'<tr><td>{r["market"]}</td>'
             f'<td><span class="spec spec-s">{r.get("spec","")}</span></td>'
-            f'<td class="price">{fmt_price(r.get("price"))}</td></tr>'
+            f'<td class="price">{fmt_price(r.get("price"))}</td>'
+            f'{vs_cell(r.get("vs","")) if has_vs else ""}</tr>'
             for r in items)
+        vs_th = f"<th>{vs_head}</th>" if has_vs else ""
         grids.append(
             f'<div><h3 style="font-size:14px;margin:6px 0 8px">'
             f'<span class="tag {species_tag(sp)}">{sp}</span> 批发价（元/千克）</h3>'
-            f'<table><thead><tr><th>市场</th><th>规格</th><th>价格</th></tr></thead>'
+            f'<table><thead><tr><th>市场</th><th>规格</th><th>价格</th>{vs_th}</tr></thead>'
             f'<tbody>{trs}</tbody></table></div>')
     return (
         '  <section>\n'
@@ -217,6 +236,8 @@ def build_a_section(rows):
     art = rows[0].get("article_date") or rows[0].get("price_date") or ""
     price_date = rows[0].get("price_date") or art
     species_list = "、".join(sorted({r["species"] for r in rows}))
+    has_vs = any(r.get("vs") for r in rows)
+    vs_head = rows[0].get("vs_header") or "环比"
     groups = {}
     for r in rows:
         groups.setdefault(r["species"], []).append(r)
@@ -225,12 +246,14 @@ def build_a_section(rows):
         trs = "".join(
             f'<tr><td>{r["market"]}</td>'
             f'<td><span class="spec spec-s">{r.get("spec","")}</span></td>'
-            f'<td class="price">{fmt_price(r.get("price"))}</td></tr>'
+            f'<td class="price">{fmt_price(r.get("price"))}</td>'
+            f'{vs_cell(r.get("vs","")) if has_vs else ""}</tr>'
             for r in items)
+        vs_th = f"<th>{vs_head}</th>" if has_vs else ""
         grids.append(
             f'<div><h3 style="font-size:14px;margin:6px 0 8px">'
             f'<span class="tag {species_tag(sp)}">{sp}</span> 报价（元/斤）</h3>'
-            f'<table><thead><tr><th>地区</th><th>规格</th><th>塘口价</th></tr></thead>'
+            f'<table><thead><tr><th>地区</th><th>规格</th><th>塘口价</th>{vs_th}</tr></thead>'
             f'<tbody>{trs}</tbody></table></div>')
     return (
         '  <section>\n'

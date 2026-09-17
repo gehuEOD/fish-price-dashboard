@@ -9,6 +9,7 @@ on:
     branches: [main]
     paths:
       - "鳜鱼鲈鱼价格看板.html"
+      - "CNAME"
   schedule:
     - cron: "0 2 * * *"
   workflow_dispatch: {}
@@ -41,6 +42,13 @@ jobs:
           cp "鳜鱼鲈鱼价格看板.html" _site/index.html
           # 让 Pages 不要跑 Jekyll（HTML 里含 {{ }} 模板语法时会被误处理）
           touch _site/.nojekyll
+          # 自定义域名：Actions 部署模式下 CNAME 必须位于发布根目录 _site/
+          if [ -f CNAME ]; then
+            cp CNAME _site/CNAME
+            echo "[OK] 自定义域名已写入：$(cat CNAME)"
+          else
+            echo "[INFO] 仓库无 CNAME 文件，沿用默认 *.github.io 域名"
+          fi
           ls -la _site
           echo "---- 校验 ----"
           test -s _site/index.html || { echo "index.html 为空，终止"; exit 1; }

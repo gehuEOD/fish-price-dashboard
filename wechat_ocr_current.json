@@ -316,112 +316,113 @@
   "a渔业行情": [
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "鳜鱼",
       "market": "广东地区",
       "spec": "小鳜（0.8斤以下）",
-      "price": 24.0,
+      "price": 23.0,
       "unit": "元/斤",
-      "vs": "34→24",
+      "vs": "24→23 ↓1",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14",
+      "extra_note": "同文另含生鱼 9.15 报价（广东佛山/中山发车价，大鱼 7.0~8.7 元/斤）及鲫鱼（广州白云/盐城大丰/益阳沅江/乐山井研/湖北荆州/洪湖）、湖北荆州与洪湖小规格报价（品种表头未截全），超出本项目品种范围，未录入。"
     },
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "鳜鱼",
       "market": "广东地区",
       "spec": "标鳜（0.8-1.5斤）",
-      "price": 34.0,
+      "price": 33.5,
       "unit": "元/斤",
-      "vs": "40.5→34",
+      "vs": "34→33.5 ↓0.5",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14"
     },
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "鳜鱼",
       "market": "广东地区",
       "spec": "中鳜（1.5斤以上）",
-      "price": 38.0,
+      "price": 37.0,
       "unit": "元/斤",
-      "vs": "40.5→38",
+      "vs": "38→37 ↓1",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14"
     },
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "鳜鱼",
       "market": "湖北地区",
       "spec": "标鳜",
-      "price": 33.5,
+      "price": 32.5,
       "unit": "元/斤",
-      "vs": "40→33.5",
+      "vs": "33.5→32.5 ↓1",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14"
     },
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "鳜鱼",
       "market": "安徽地区",
       "spec": "标鳜",
       "price": 34.0,
       "unit": "元/斤",
-      "vs": "38.5→34",
+      "vs": "持平",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14"
     },
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "鳜鱼",
       "market": "江西地区",
       "spec": "标鳜",
       "price": 34.5,
       "unit": "元/斤",
-      "vs": "37.5→34.5",
+      "vs": "持平",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14"
     },
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "鳜鱼",
       "market": "湖南地区",
       "spec": "标鳜",
-      "price": 33.0,
+      "price": 31.5,
       "unit": "元/斤",
-      "vs": "38→33",
+      "vs": "33→31.5 ↓1.5",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14"
     },
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "鳜鱼",
       "market": "江苏地区",
       "spec": "标鳜",
       "price": 33.5,
       "unit": "元/斤",
-      "vs": "38.5→33.5",
+      "vs": "持平",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14"
     },
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "加州鲈",
       "market": "浙江",
       "spec": "8成统货",
@@ -429,51 +430,51 @@
       "unit": "元/斤",
       "vs": "持平",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14"
     },
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "加州鲈",
       "market": "江苏",
       "spec": "9两上",
       "price": "9.5-10",
       "unit": "元/斤",
-      "vs": "10-10.5→9.5-10",
+      "vs": "持平",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14"
     },
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "加州鲈",
       "market": "四川",
       "spec": "9两上",
       "price": 12.0,
       "unit": "元/斤",
-      "vs": "13→12",
+      "vs": "持平",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14"
     },
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "加州鲈",
       "market": "四川",
       "spec": "1斤上",
       "price": 12.5,
       "unit": "元/斤",
-      "vs": "14→12.5",
+      "vs": "持平",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14"
     },
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "加州鲈",
       "market": "湖南",
       "spec": "9两上",
@@ -481,12 +482,12 @@
       "unit": "元/斤",
       "vs": "持平",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14"
     },
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "加州鲈",
       "market": "湖北",
       "spec": "8.5两上",
@@ -494,20 +495,20 @@
       "unit": "元/斤",
       "vs": "持平",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14"
     },
     {
       "source": "a渔业行情",
-      "article_date": "2026-09-16",
-      "price_date": "2026-09-14",
+      "article_date": "2026-09-17",
+      "price_date": "2026-09-15",
       "species": "加州鲈",
       "market": "河南",
       "spec": "1斤起",
       "price": 10.5,
       "unit": "元/斤",
-      "vs": "10.5-11→10.5",
+      "vs": "持平",
       "note": "",
-      "vs_header": "vs 08-19"
+      "vs_header": "vs 9.14"
     }
   ]
 }

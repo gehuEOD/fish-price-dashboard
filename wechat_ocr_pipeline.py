@@ -235,6 +235,9 @@ def build_a_section(rows):
     """a渔业行情：塘口价，元/斤。"""
     art = rows[0].get("article_date") or rows[0].get("price_date") or ""
     price_date = rows[0].get("price_date") or art
+    art_note = f"（文章发布 {art}）" if art and art != price_date else ""
+    extra_note = rows[0].get("extra_note") or ""
+    extra_html = f"<br><b>未录入说明：</b>{extra_note}" if extra_note else ""
     species_list = "、".join(sorted({r["species"] for r in rows}))
     has_vs = any(r.get("vs") for r in rows)
     vs_head = rows[0].get("vs_header") or "环比"
@@ -264,12 +267,12 @@ def build_a_section(rows):
         '    </div>\n'
         '    <div class="card">\n'
         '      <h3>🎣 a渔业行情公众号 分产区塘口价</h3>\n'
-        f'      <div class="csub">来源：公众号文章截图，由 OCR 提取。报价日期 <b>{price_date}</b>；'
+        f'      <div class="csub">来源：公众号文章截图，由 OCR 提取。报价日期 <b>{price_date}</b>{art_note}；'
         f'<b>单位元/斤</b>，属塘口（出塘）价，与批发价不可直接比较。含 <b>{species_list}</b>。</div>\n'
         '      <div class="grid2">' + "".join(grids) + '</div>\n'
         '      <div class="callout" style="margin-top:14px"><b>数据说明：</b>'
         '「a渔业行情」文章以<b>图片表格</b>发布，搜狗微信未索引且需登录/反爬，纯文本爬虫取不到；'
-        '由截图 + OCR 提取。<b>单位为元/斤</b>（塘口价），与水产前沿周报口径一致，可与批发价交叉验证。</div>\n'
+        f'由截图 + OCR 提取。<b>单位为元/斤</b>（塘口价），与水产前沿周报口径一致，可与批发价交叉验证。{extra_html}</div>\n'
         '    </div>\n'
         '  </section>')
 

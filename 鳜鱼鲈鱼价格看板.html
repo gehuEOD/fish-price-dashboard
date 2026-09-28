@@ -3,10 +3,10 @@
 <head data-page-node-id="BWPqHflDNNA98uUwgMDG2y">
 <meta charset="UTF-8" data-page-node-id="brMbjGoytqtDzaGQGs0ywx">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="mXilABDyOtLC6ajMyuuT3T">
-<title>江浙沪皖 鳜鱼·鲈鱼 出塘价与批发价数据看板（2026-09-28 更新 · v1.4.4）</title>
-<meta name="dashboard-version" content="v1.4.4">
+<title>江浙沪皖 鳜鱼·鲈鱼 出塘价与批发价数据看板（2026-09-28 更新 · v1.4.5）</title>
+<meta name="dashboard-version" content="v1.4.5">
 <meta name="dashboard-version-date" content="2026-09-28">
-<!-- Dashboard v1.4.4 · 2026-09-28 · 变更摘要见 VERSION.md -->
+<!-- Dashboard v1.4.5 · 2026-09-28 · 变更摘要见 VERSION.md -->
 <script>
 /**
  * Skipped minification because the original files appears to be already minified.
@@ -240,7 +240,7 @@ function wgs84togcj02(lng, lat){
       <span class="chip" data-page-node-id="sTnENG1kszfxF6zJ1kDy3a">📅 统计周期：2026-07-13 ~ 2026-09-24</span>
       <span class="chip" data-page-node-id="uDtjiFY1wd6cLO8XIkyQEd">📍 区域：江苏 · 安徽 · 浙江 · 上海</span>
       <span class="chip" data-page-node-id="sz9lakUAtmcvai5DeZy3jC">💹 涨=红 / 跌=绿（国内习惯）</span>
-      <span class="chip chip-version" data-page-node-id="VER01CHIP0001" title="看板版本号 · 完整历史见 VERSION.md">🏷️ 版本 v1.4.4 · 2026-09-28</span>
+      <span class="chip chip-version" data-page-node-id="VER01CHIP0001" title="看板版本号 · 完整历史见 VERSION.md">🏷️ 版本 v1.4.5 · 2026-09-28</span>
       <span class="chip" data-page-node-id="4HGb9s5gzmgXv3QvdK82PP">🤖 批发价：农业农村部接口爬虫 + 公开价源爬虫 + 科学养鱼OCR（09-24）+ a渔业行情OCR（9.15报价）</span>
     </div>
 
@@ -1370,9 +1370,10 @@ function wgs84togcj02(lng, lat){
   <section class="version-history" data-page-node-id="VER01HIST0001" style="margin-top:28px;padding:18px 22px;background:linear-gradient(135deg,rgba(255,179,71,.08),rgba(255,126,95,.05));border:1px solid rgba(255,179,71,.25);border-radius:14px;font-size:13px;line-height:1.7">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
       <span style="font-size:18px">🏷️</span>
-      <strong style="font-size:15px;letter-spacing:.5px">本次更新 · v1.4.4（2026-09-28）</strong>
+      <strong style="font-size:15px;letter-spacing:.5px">本次更新 · v1.4.5（2026-09-28）</strong>
     </div>
     <ul style="margin:0;padding-left:22px;color:var(--ink, #1a1f2e)">
+      <li><b>v1.4.5 · 2026-09-28</b> · 病害预警休药期表列对齐修复(th/td统一vertical-align+固定列宽) + 新增适用品种列(加州鲈/鳜鱼标记, 鳜鱼对敌百虫/甲苯咪唑敏感慎用警示) + 杀虫剂拆分甲苯咪唑单列 + 修复callout编号衔接</li>
       <li><b>v1.4.4 · 2026-09-28</b> · 病害预警callout补常用药物休药期速查表(恩诺沙星500度日/氟苯尼考375/多西环素750/磺胺类500/新霉素500 + 杀虫剂500度日 + 度日换算 + 大口黑鲈重点监管品种每批次检测)</li>
       <li><b>v1.4.3 · 2026-09-28</b> · 科学养鱼09-24数据(鳜鱼7+加州鲈5,环比09-17) + 病害预警新增总站《2026年10月全国水产养殖病害预测预报》(09-23发布,鲈鱼易发诺卡氏菌/蛙虹彩/烂鳃/指环虫等6病+休药期越冬提示)</li>
       <li><b>v1.4.2 · 2026-09-22</b> · 科学养鱼 09-21 批发价更新（鳜鱼12条+加州鲈12条，环比09-17）</li>
@@ -2132,19 +2133,26 @@ new Chart(document.getElementById('luChart'),{
         </tbody>
       </table>
       <div class="callout" style="margin-top:10px"><b>对本案的直接提示（总站原话）：</b>「10 月是水产品集中出塘上市期，一定要<b>严格执行休药期管理规定，坚决不使用禁停用药物</b>，从源头上确保水产品质量安全」——① 出塘前按用药记录<b>倒排休药期</b>（取所用药物中最长休药期 × 当前水温反推最后停药日；休药期内禁止起捕上市），常用药物休药期速查：
-      <table style="margin:8px 0;font-size:12px">
-        <thead><tr><th>类别</th><th>药物</th><th>休药期</th><th>25℃ 对应天数</th></tr></thead>
+      <table style="margin:8px 0;font-size:12px;table-layout:fixed">
+        <thead><tr>
+          <th style="width:60px;text-align:center;vertical-align:middle">类别</th>
+          <th style="text-align:left;vertical-align:middle">药物</th>
+          <th style="width:168px;text-align:center;vertical-align:middle">适用品种</th>
+          <th style="width:92px;text-align:center;vertical-align:middle">休药期</th>
+          <th style="width:100px;text-align:center;vertical-align:middle">25℃ 对应天数</th>
+        </tr></thead>
         <tbody>
-          <tr><td rowspan="5">抗菌药</td><td>恩诺沙星粉（水产用）★</td><td>500 度日</td><td>20 天</td></tr>
-          <tr><td>氟苯尼考粉 / 注射液</td><td>375 度日</td><td>15 天</td></tr>
-          <tr><td>盐酸多西环素粉（水产用）</td><td>750 度日</td><td>30 天</td></tr>
-          <tr><td>磺胺类（间甲氧嘧啶钠 / 复方磺胺嘧啶 / 二甲嘧啶）</td><td>各 500 度日</td><td>20 天</td></tr>
-          <tr><td>硫酸新霉素粉（水产用）</td><td>500 度日</td><td>20 天</td></tr>
-          <tr><td rowspan="2">杀虫剂</td><td>敌百虫 / 辛硫磷 / 溴氰菊酯 / 氰戊菊酯 / 高效氯氰菊酯</td><td>各 500 度日</td><td>20 天</td></tr>
-          <tr><td>甲苯咪唑溶液 / 阿苯达唑 / 吡喹酮 / 地克珠利</td><td>各 500 度日</td><td>20 天</td></tr>
+          <tr><td rowspan="5" style="text-align:center;vertical-align:middle"><b>抗菌药</b></td><td style="vertical-align:middle">恩诺沙星粉（水产用）★</td><td style="text-align:center;vertical-align:middle"><span class="tag tag-lu" style="font-size:11px">加州鲈</span> <span class="tag tag-gui" style="font-size:11px">鳜鱼</span></td><td style="text-align:center;vertical-align:middle">500 度日</td><td style="text-align:center;vertical-align:middle">20 天</td></tr>
+          <tr><td style="vertical-align:middle">氟苯尼考粉 / 注射液</td><td style="text-align:center;vertical-align:middle"><span class="tag tag-lu" style="font-size:11px">加州鲈</span> <span class="tag tag-gui" style="font-size:11px">鳜鱼</span></td><td style="text-align:center;vertical-align:middle">375 度日</td><td style="text-align:center;vertical-align:middle">15 天</td></tr>
+          <tr><td style="vertical-align:middle">盐酸多西环素粉（水产用）</td><td style="text-align:center;vertical-align:middle"><span class="tag tag-lu" style="font-size:11px">加州鲈</span> <span class="tag tag-gui" style="font-size:11px">鳜鱼</span></td><td style="text-align:center;vertical-align:middle">750 度日</td><td style="text-align:center;vertical-align:middle">30 天</td></tr>
+          <tr><td style="vertical-align:middle">磺胺类（间甲氧嘧啶钠 / 复方磺胺嘧啶 / 二甲嘧啶）</td><td style="text-align:center;vertical-align:middle"><span class="tag tag-lu" style="font-size:11px">加州鲈</span> <span class="tag tag-gui" style="font-size:11px">鳜鱼</span></td><td style="text-align:center;vertical-align:middle">各 500 度日</td><td style="text-align:center;vertical-align:middle">20 天</td></tr>
+          <tr><td style="vertical-align:middle">硫酸新霉素粉（水产用）</td><td style="text-align:center;vertical-align:middle"><span class="tag tag-lu" style="font-size:11px">加州鲈</span> <span class="tag tag-gui" style="font-size:11px">鳜鱼</span></td><td style="text-align:center;vertical-align:middle">500 度日</td><td style="text-align:center;vertical-align:middle">20 天</td></tr>
+          <tr><td rowspan="3" style="text-align:center;vertical-align:middle"><b>杀虫剂</b></td><td style="vertical-align:middle">敌百虫 / 辛硫磷 / 溴氰菊酯 / 氰戊菊酯 / 高效氯氰菊酯</td><td style="text-align:center;vertical-align:middle"><span class="tag tag-lu" style="font-size:11px">加州鲈</span> <span class="tag" style="background:#d97706;font-size:11px">鳜鱼·敏感慎用</span></td><td style="text-align:center;vertical-align:middle">各 500 度日</td><td style="text-align:center;vertical-align:middle">20 天</td></tr>
+          <tr><td style="vertical-align:middle">甲苯咪唑溶液</td><td style="text-align:center;vertical-align:middle"><span class="tag tag-lu" style="font-size:11px">加州鲈</span> <span class="tag" style="background:#d97706;font-size:11px">鳜鱼·敏感慎用</span></td><td style="text-align:center;vertical-align:middle">500 度日</td><td style="text-align:center;vertical-align:middle">20 天</td></tr>
+          <tr><td style="vertical-align:middle">阿苯达唑粉 / 吡喹酮预混剂 / 地克珠利</td><td style="text-align:center;vertical-align:middle"><span class="tag tag-lu" style="font-size:11px">加州鲈</span> <span class="tag tag-gui" style="font-size:11px">鳜鱼</span></td><td style="text-align:center;vertical-align:middle">各 500 度日</td><td style="text-align:center;vertical-align:middle">20 天</td></tr>
         </tbody>
       </table>
-      <div style="font-size:12px;margin-top:4px">「度日」= 水温（℃）× 停药天数；500 度日在水温 20℃ 需停 <b>25 天</b>、15℃ 需约 <b>33 天</b>。当前 9–10 月水温回落，实际停药期较夏季更长。<b>大口黑鲈（加州鲈）为国家重点监管品种，上市前须每批次检测合格</b>。</div>；与南京预报提示一致；② 诺卡氏菌病 9~10 月流行高峰正覆盖当前加州鲈存塘期，及时隔离结节病鱼；③ 越冬前准备：投喂优质全价饲料并添加黄芪多糖粉/维生素 C 钠粉（水产用）增强体质，并塘转塘选晴天高温时轻柔操作、减少机械损伤。</div>
+      <div style="font-size:12px;margin-top:4px">「度日」= 水温（℃）× 停药天数；500 度日在水温 20℃ 需停 <b>25 天</b>、15℃ 需约 <b>33 天</b>。当前 9–10 月水温回落，实际停药期较夏季更长。<b>大口黑鲈（加州鲈）为国家重点监管品种，上市前须每批次检测合格</b>。<b style="color:#b45309">⚠️ 鳜鱼对敌百虫等有机磷类及甲苯咪唑高度敏感</b>，确需使用时先小水体试浴并严格减量，或改用其他合规方案；实际用药以《水产养殖用药明白纸》现行版及药品标签为准。</div>② 诺卡氏菌病 9~10 月流行高峰正覆盖当前加州鲈存塘期，及时隔离结节病鱼（与南京预报提示一致）；③ 越冬前准备：投喂优质全价饲料并添加黄芪多糖粉/维生素 C 钠粉（水产用）增强体质，并塘转塘选晴天高温时轻柔操作、减少机械损伤。</div>
       <div class="legend">信源：全国水产技术推广总站、农业农村部水产养殖病害防治专家委员会（微信公众号「科学养鱼」2026-09-23 16:30 发布全文）· <a class="plink" href="https://mp.weixin.qq.com/s/ula74PZYe53muMvyg92aBQ" target="_blank" rel="noopener">📄 阅读原文（10月病害预测预报全文）</a></div>
     </div>
 

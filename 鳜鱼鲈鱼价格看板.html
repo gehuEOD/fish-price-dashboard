@@ -3,10 +3,10 @@
 <head data-page-node-id="BWPqHflDNNA98uUwgMDG2y">
 <meta charset="UTF-8" data-page-node-id="brMbjGoytqtDzaGQGs0ywx">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="mXilABDyOtLC6ajMyuuT3T">
-<title>江浙沪皖 鳜鱼·鲈鱼 出塘价与批发价数据看板（2026-09-30 更新 · v1.5.0）</title>
-<meta name="dashboard-version" content="v1.5.0">
+<title>江浙沪皖 鳜鱼·鲈鱼 出塘价与批发价数据看板（2026-09-30 更新 · v1.5.1）</title>
+<meta name="dashboard-version" content="v1.5.1">
 <meta name="dashboard-version-date" content="2026-09-30">
-<!-- Dashboard v1.5.0 · 2026-09-30 · 变更摘要见 VERSION.md -->
+<!-- Dashboard v1.5.1 · 2026-09-30 · 变更摘要见 VERSION.md -->
 <script>
 /**
  * Skipped minification because the original files appears to be already minified.
@@ -73,8 +73,8 @@
   .tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;color:#fff}
   .tag-gui{background:var(--gui)} .tag-lu{background:var(--lu)} .tag-other{background:var(--other)}
   table{width:100%;border-collapse:collapse;font-size:13px}
-  th,td{padding:10px;border-bottom:1px solid var(--line)}
-  th{font-size:12px;color:var(--sub);font-weight:600;background:#fafbfc}
+  th,td{padding:10px;border-bottom:1px solid var(--line);vertical-align:middle}
+  th{font-size:12px;color:var(--sub);font-weight:600;background:#fafbfc;text-align:left}
   td .price{font-weight:700}
   .badge{font-size:11px;font-weight:700;padding:1px 7px;border-radius:5px}
   .price-compare th,.price-compare td{text-align:center}
@@ -240,7 +240,7 @@ function wgs84togcj02(lng, lat){
       <span class="chip" data-page-node-id="sTnENG1kszfxF6zJ1kDy3a">📅 统计周期：2026-07-13 ~ 2026-09-24</span>
       <span class="chip" data-page-node-id="uDtjiFY1wd6cLO8XIkyQEd">📍 区域：江苏 · 安徽 · 浙江 · 上海</span>
       <span class="chip" data-page-node-id="sz9lakUAtmcvai5DeZy3jC">💹 涨=红 / 跌=绿（国内习惯）</span>
-      <span class="chip chip-version" data-page-node-id="VER01CHIP0001" title="看板版本号 · 完整历史见 VERSION.md">🏷️ 版本 v1.5.0 · 2026-09-30</span>
+      <span class="chip chip-version" data-page-node-id="VER01CHIP0001" title="看板版本号 · 完整历史见 VERSION.md">🏷️ 版本 v1.5.1 · 2026-09-30</span>
       <span class="chip" data-page-node-id="4HGb9s5gzmgXv3QvdK82PP">🤖 批发价：农业农村部接口爬虫 + 公开价源爬虫 + 科学养鱼OCR（09-24）+ a渔业行情OCR（9.15报价）</span>
     </div>
 
@@ -1363,9 +1363,10 @@ function wgs84togcj02(lng, lat){
   <section class="version-history" data-page-node-id="VER01HIST0001" style="margin-top:28px;padding:18px 22px;background:linear-gradient(135deg,rgba(255,179,71,.08),rgba(255,126,95,.05));border:1px solid rgba(255,179,71,.25);border-radius:14px;font-size:13px;line-height:1.7">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
       <span style="font-size:18px">🏷️</span>
-      <strong style="font-size:15px;letter-spacing:.5px">本次更新 · v1.5.0（2026-09-30）</strong>
+      <strong style="font-size:15px;letter-spacing:.5px">本次更新 · v1.5.1（2026-09-30）</strong>
     </div>
     <ul style="margin:0;padding-left:22px;color:var(--ink, #1a1f2e)">
+      <li><b>v1.5.1 · 2026-09-30</b> · 全局表格对齐修复:th统一左对齐+th/td垂直居中(覆盖41张表,根因是浏览器th默认居中td默认左)</li>
       <li><b>v1.5.0 · 2026-09-30</b> · 水产前沿特水鱼周报第35期(09-29:鳜鱼全线跌1-3元/加州鲈广东跌0.5) + 盛阳09-29批发价(鳜鱼32~38) + 全国渔业价格行情日报09-30 + 地方病害预报(下)海南贵州陕西宁夏 + 鳜鱼行情观察(22天跌16元)</li>
       <li><b>v1.4.5 · 2026-09-28</b> · 病害预警休药期表列对齐修复(th/td统一vertical-align+固定列宽) + 新增适用品种列(加州鲈/鳜鱼标记, 鳜鱼对敌百虫/甲苯咪唑敏感慎用警示) + 杀虫剂拆分甲苯咪唑单列 + 修复callout编号衔接</li>
       <li><b>v1.4.4 · 2026-09-28</b> · 病害预警callout补常用药物休药期速查表(恩诺沙星500度日/氟苯尼考375/多西环素750/磺胺类500/新霉素500 + 杀虫剂500度日 + 度日换算 + 大口黑鲈重点监管品种每批次检测)</li>

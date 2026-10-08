@@ -15,14 +15,14 @@
     "product": "鳜鱼 / 鲈鱼（蜂窝池养殖）"
   },
   "current": {
-    "time": "2026-10-08T08:45",
-    "temperature_c": 20.9,
-    "wind_speed_kmh": 5.0,
-    "wind_dir_deg": 131,
+    "time": "2026-10-08T09:00",
+    "temperature_c": 21.4,
+    "wind_speed_kmh": 5.2,
+    "wind_dir_deg": 134,
     "wind_dir_text": "东南",
-    "humidity_pct": 68,
+    "humidity_pct": 64,
     "precipitation_mm": 0.0,
-    "pressure_hpa": 1023.6,
+    "pressure_hpa": 1023.7,
     "weather_code": 0,
     "weather_icon": "☀️",
     "weather_text": "晴",
@@ -134,7 +134,7 @@
     "city": "宜兴市",
     "adcode": "320282",
     "source": "高德天气 API（中国气象局数据，经 MCP amap-maps maps_weather 获取）",
-    "fetched_at_cst": "2026-10-08 08:53:30",
+    "fetched_at_cst": "2026-10-08 09:05:06",
     "forecasts": [
       {
         "date": "2026-10-08",
@@ -250,7 +250,7 @@
   ],
   "alerts": [],
   "meta": {
-    "fetched_at_cst": "2026-10-08 08:55:08",
+    "fetched_at_cst": "2026-10-08 09:05:17",
     "source": "Open-Meteo API (https://api.open-meteo.com)",
     "license": "Open-Meteo CC BY 4.0; data from national weather services",
     "secondary_source": "高德天气 API（中国气象局）"

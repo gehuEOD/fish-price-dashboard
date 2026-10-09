@@ -93,41 +93,53 @@ def delta_text(prev: str, cur: str) -> str:
 # ---------------------------------------------------------------------------
 # 各快照卡片
 # ---------------------------------------------------------------------------
-def card_huinong(snap_today, snap_prev) -> str:
-    """互联惠农小洁 逐日对比表"""
-    prev_map = {r["species"]: r for r in snap_prev["rows"]}
+def card_huinong(snaps) -> str:
+    """互联惠农小洁 逐日对比表（动态多日，snaps 按日期升序）"""
+    date_cn = lambda d: f"{int(d[5:7])}月{int(d[8:10])}日"
+    days = [s["price_date"] for s in snaps]
+    span = f"{date_cn(days[0])}–{date_cn(days[-1])}" if len(days) > 1 else date_cn(days[0])
+    latest, prev = snaps[-1], snaps[-2] if len(snaps) > 1 else None
+    prev_map = {r["species"]: r for r in prev["rows"]} if prev else {}
+    date_cols = "".join(f"<th>{date_cn(d)}</th>" for d in days)
     trs = []
-    for r in snap_today["rows"]:
+    for r in latest["rows"]:
         p = prev_map.get(r["species"], {})
-        delta = delta_text(p.get("price", ""), r["price"])
+        delta = delta_text(p.get("price", ""), r["price"]) if prev else "—"
         arrow = {"up": "↗", "down": "↘", "flat": "→"}.get(r.get("trend", ""), "")
         dcolor = vs_color(delta)
+        cells = "".join(
+            f'<td class="price"><b>{esc(r["price"])}</b></td>' if s2["price_date"] == latest["price_date"]
+            else f'<td class="price">{esc(next((x["price"] for x in s2["rows"] if x["species"] == r["species"]), "—"))}</td>'
+            for s2 in snaps)
         trs.append(
             f'<tr><td><span class="tag {tag_for(r["species"])}">{esc(r["species"])}</span></td>'
             f'<td><span class="spec {spec_cls(r["spec"])}">{esc(r["spec"])}</span></td>'
-            f'<td class="price">{esc(p.get("price", "—"))}</td>'
-            f'<td class="price"><b>{esc(r["price"])}</b></td>'
+            f'{cells}'
             f'<td style="color:{dcolor};font-size:12px;white-space:nowrap">{esc(delta)}</td>'
             f'<td style="color:{dcolor};font-size:12px;white-space:nowrap">{esc(arrow)}</td></tr>')
+    gui = next((r for r in latest["rows"] if "鳜" in r["species"]), None)
+    lu = next((r for r in latest["rows"] if "鲈" in r["species"]), None)
+    gui_txt = f'鳜鱼（{esc(gui["spec"])}）{esc(gui["price"])} 元/斤' if gui else ""
+    lu_txt = f'鲈鱼（{esc(lu["spec"])}）{esc(lu["price"])} 元/斤' if lu else ""
+    legends = "、".join(
+        f'{s["price_date"]}《{esc(s.get("title", ""))}》' for s in snaps)
     return (
         f'    <div class="card" style="margin-top:14px">\n'
-        f'      <h3>🎬 10月7–8日 · 视频号「互联惠农小洁」全国参考塘口价（元/斤）</h3>\n'
-        f'      <div class="csub">同一账号连续两日播报，口径一致，可做逐日对比。<b>鲈鱼（0.8-1.2斤）'
-        f'13.8~15.2 元/斤，鳜鱼（0.8-1.2斤）29.5~31.2 元/斤</b>——'
-        f'<b style="color:{RED}">鳜鱼站上 29 元区间</b>，鲈鱼小幅回落 0.1~0.2 元。'
+        f'      <h3>🎬 {span} · 视频号「互联惠农小洁」全国参考塘口价（元/斤）</h3>\n'
+        f'      <div class="csub">同一账号连续 {len(days)} 日播报，口径一致，可做逐日对比。'
+        f'最新（{date_cn(latest["price_date"])}）：<b>{lu_txt}，{gui_txt}</b>——'
+        f'以区间中值计算的最新日变化见表内「日变化」列。'
         f'视频原始涨跌标注（↗/↘）单列末列，与本表按区间中值计算的日变化可互相印证。</div>\n'
         f'      <table>\n'
-        f'        <thead><tr><th>品种</th><th>规格</th><th>10月7日</th><th>10月8日</th>'
+        f'        <thead><tr><th>品种</th><th>规格</th>{date_cols}'
         f'<th>日变化(中值)</th><th>原始标注</th></tr></thead>\n'
         f'        <tbody>{"".join(trs)}</tbody>\n'
         f'      </table>\n'
         f'      <div class="callout" style="margin-top:10px"><b>口径提示：</b>'
-        f'鳜鱼原始标注为 ↗（涨），但区间数值由 29.8~31.5 下移至 29.5~31.2（中值 −0.3），'
-        f'属该账号区间报价的正常波动，两种口径并存，此处如实记录不作上调。'
-        f'其余品种方向与原始标注一致：草鱼/鲤鱼/黄骨鱼/黑鱼 ↗，鲫鱼/鲈鱼/青鱼 ↘。</div>\n'
-        f'      <div class="legend">来源：微信视频号「互联惠农小洁」2026-10-07《10月7日最新鱼价行情已更新！'
-        f'节后是涨是跌？卖鱼千万别踩坑！》、2026-10-08《10月8日全国最新参考塘口价》（截图核校录入）· '
-        f'注：箭头为原视频标注的较昨日涨跌趋势，各地塘口价有差异，仅供参考</div>\n'
+        f'原始标注为视频箭头趋势（较昨日），「日变化」列按报价区间中值计算，'
+        f'两种口径偶有方向差异（区间报价正常波动），并存如实记录不作调整。</div>\n'
+        f'      <div class="legend">来源：微信视频号「互联惠农小洁」{legends}'
+        f'（截图核校录入）· 注：箭头为原视频标注的较昨日涨跌趋势，各地塘口价有差异，仅供参考</div>\n'
         f'    </div>\n')
 
 
@@ -229,12 +241,12 @@ def card_article(art) -> str:
 
 def build_block(data) -> str:
     snaps = {s["source_account"] + "|" + s["price_date"]: s for s in data["snapshots"]}
-    huinong_today = snaps["互联惠农小洁|2026-10-08"]
-    huinong_prev = snaps["互联惠农小洁|2026-10-07"]
+    hn = sorted((s for s in data["snapshots"] if s["source_account"] == "互联惠农小洁"),
+                key=lambda s: s["price_date"])
     youyang = snaps["悠扬水产|2026-10-08"]
     laoshi = snaps["水产养殖服务于老师|2026-10-07"]
 
-    cards = [card_huinong(huinong_today, huinong_prev),
+    cards = [card_huinong(hn),
              card_youyang(youyang),
              card_laoshi(laoshi)]
     for art in data.get("articles", []):
@@ -243,47 +255,53 @@ def build_block(data) -> str:
     # 小结卡片
     summary = (
         f'    <div class="card" style="margin-top:14px;border-left:4px solid #7c3aed;background:#faf5ff">\n'
-        f'      <h3>🧭 10月7–8日 四源交叉小结：鳜鱼磨底、鲈鱼低位僵持</h3>\n'
-        f'      <div class="csub">本期共 <b>5 个独立来源</b>（3 条视频号播报 + 1 篇公众号周报 + 1 条同源对比），'
-        f'覆盖 10-05 ~ 10-08。</div>\n'
+        f'      <h3>🧭 10月7–9日 四源交叉小结：鳜鱼磨底、鲈鱼低位僵持</h3>\n'
+        f'      <div class="csub">本期共 <b>4 个独立来源</b>（3 条视频号播报 + 1 篇公众号周报，'
+        f'其中「互联惠农小洁」含 10-07/08/09 连续三日），覆盖 10-05 ~ 10-09。</div>\n'
         f'      <table>\n'
         f'        <thead><tr><th>品种</th><th>来源（日期 · 规格）</th><th>报价（元/斤）</th>'
         f'<th>信号</th></tr></thead>\n'
         f'        <tbody>\n'
-        f'          <tr><td rowspan="4"><span class="tag tag-gui">鳜鱼</span></td>'
+        f'          <tr><td rowspan="5"><span class="tag tag-gui">鳜鱼</span></td>'
         f'<td>水产养殖网（10-05 · 广东鱼仔鳜）</td><td class="price">24~25</td>'
         f'<td style="color:{GREEN};font-size:12px">↓ 周跌 3 元，探底</td></tr>\n'
         f'          <tr><td>水产养殖服务于老师（10-07 · 1.2斤上）</td><td class="price">22~25</td>'
         f'<td style="color:{GREEN};font-size:12px">↓ 小幅震荡</td></tr>\n'
         f'          <tr><td>悠扬水产（10-08 · 1.2斤起）</td><td class="price"><b>26.5~28.0</b></td>'
         f'<td style="color:{RED};font-size:12px">↑ 走强（较 22~25 回升）</td></tr>\n'
-        f'          <tr><td>互联惠农小洁（10-08 · 0.8-1.2斤）</td><td class="price"><b>29.5~31.2</b></td>'
+        f'          <tr><td>互联惠农小洁（10-08 · 0.8-1.2斤）</td><td class="price">29.5~31.2</td>'
         f'<td style="color:{RED};font-size:12px">↗ 标注上涨（区间微降 0.3）</td></tr>\n'
-        f'          <tr><td rowspan="3"><span class="tag tag-lu">鲈鱼<br>（加州鲈）</span></td>'
+        f'          <tr><td>互联惠农小洁（10-09 · 0.8-1.2斤）</td><td class="price"><b>30.0~31.5</b></td>'
+        f'<td style="color:{RED};font-size:12px">↗ 连续两日标注上涨（中值 +0.15）</td></tr>\n'
+        f'          <tr><td rowspan="4"><span class="tag tag-lu">鲈鱼<br>（加州鲈）</span></td>'
         f'<td>水产养殖网（10-05 · 广东佛山 1斤以上）</td><td class="price">9</td>'
         f'<td style="color:{GRAY};font-size:12px">→ 弱势僵持</td></tr>\n'
         f'          <tr><td>水产养殖服务于老师（10-07 · 1斤上）</td><td class="price">8.0~11</td>'
         f'<td style="color:{GREEN};font-size:12px">↓ 持续震荡</td></tr>\n'
         f'          <tr><td>悠扬水产（10-08 · 1斤起）</td><td class="price">11.2~12.0</td>'
         f'<td style="color:{GRAY};font-size:12px">→ 震荡</td></tr>\n'
+        f'          <tr><td>互联惠农小洁（10-09 · 0.8-1.2斤）</td><td class="price"><b>13.5~15.0</b></td>'
+        f'<td style="color:{GREEN};font-size:12px">↘ 连续两日标注回落</td></tr>\n'
         f'        </tbody>\n'
         f'      </table>\n'
         f'      <div class="callout" style="margin-top:12px"><b>结论：</b>\n'
         f'<ul style="margin:6px 0 0;padding-left:20px;line-height:1.85">\n'
         f'<li><b>鳜鱼：</b>8 月中旬 42 元的高位已回落到 22~31 元区间，'
         f'10-05 周报定性「跌势暂未见底、冷库未大规模收鱼」；10-07 的 22~25 为当前可见最低档，'
-        f'10-08 悠扬报 1.2 斤起 26.5~28.0 走强——<b>底部区域出现规格间分化与局部企稳迹象，但尚不构成反转</b>。'
+        f'10-08 悠扬报 1.2 斤起 26.5~28.0 走强、10-09 小洁 30.0~31.5 连续标注 ↗——'
+        f'<b>底部区域出现规格间分化与局部企稳迹象，但尚不构成反转</b>。'
         f'与本看板「水产前沿第 35 期（09-29）江苏标鳜 31」相比，标鱼口径已进一步下探至 25~26（10-05）。</li>\n'
         f'<li><b>鲈鱼（加州鲈）：</b>四源一致指向<b>低位僵持</b>——广东 8~9、江苏 10.5、四川 12，'
-        f'产区价差明显；广东受天气影响病鱼增多、挑鱼压价突出。存塘偏高、消费疲软，短期无上行驱动。</li>\n'
+        f'产区价差明显；广东受天气影响病鱼增多、挑鱼压价突出。小洁口径 0.8-1.2 斤 13.5~15.0 连续回落，'
+        f'存塘偏高、消费疲软，短期无上行驱动。</li>\n'
         f'<li><b>共性驱动：</b>节日红利消退 + 供给充裕 + 消费疲软；鳜鱼另有「三年增产 20 万吨」的结构性压力，'
         f'加州鲈则受新鱼上市与病鱼压价双重压制。</li>\n'
         f'<li><b>给塘口（江苏/宜兴）的提示：</b>规格够的顺势分批出、避免节后扎堆踩踏；'
         f'关注 ISKNV 等病害防控与水温应激（近期昼夜温差 7~8℃）；价格口径以<b>塘口议价</b>为准，'
         f'视频号/公众号报价仅作趋势参考。</li>\n'
         f'</ul></div>\n'
-        f'      <div class="legend">本小结由上述 5 个来源交叉比对生成，'
-        f'各源规格/产区口径不同，绝对值不可直接横向比较 · 数据录入时间 2026-10-08</div>\n'
+        f'      <div class="legend">本小结由上述 4 个来源交叉比对生成，'
+        f'各源规格/产区口径不同，绝对值不可直接横向比较 · 数据录入时间 2026-10-09</div>\n'
         f'    </div>\n')
 
     cards.append(summary)
@@ -325,13 +343,12 @@ def main():
 
     # 板块标题 + note 同步日期
     html = html.replace(
-        "补充 · 塘口价快照（2026-09-10/11/13/14/29/30 · 公众号/视频号 OCR）",
-        "补充 · 塘口价快照（2026-09-10/11/13/14/29/30 · 10-05/07/08 · 公众号/视频号 OCR）")
+        "补充 · 塘口价快照（2026-09-10/11/13/14/29/30 · 10-05/07/08 · 公众号/视频号 OCR）",
+        "补充 · 塘口价快照（2026-09-10/11/13/14/29/30 · 10-05/07/08/09 · 公众号/视频号 OCR）")
+    html = html.replace("无锡盛阳食品城（9.29）", "无锡盛阳食品城（10.9）")
     html = html.replace(
-        " · 全国渔业价格（9.30日报） · 科学养鱼 · 单位：元/斤（另注明者除外）",
-        " · 全国渔业价格（9.30日报） · 科学养鱼 · 水产养殖网（10.5） · "
-        "视频号「互联惠农小洁」「悠扬水产」「水产养殖服务于老师」（10.7/10.8） · "
-        "单位：元/斤（另注明者除外）")
+        "视频号「互联惠农小洁」「悠扬水产」「水产养殖服务于老师」（10.7/10.8）",
+        "视频号「互联惠农小洁」「悠扬水产」「水产养殖服务于老师」（10.7/10.8/10.9）")
 
     open(DASHBOARD, "w", encoding="utf-8").write(html)
     print(f"[OK] 已注入 {len(data['snapshots'])} 条视频号快照 + "

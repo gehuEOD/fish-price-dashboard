@@ -7,9 +7,10 @@
       "auto": false,
       "date": "2026-09-15",
       "badge": "🔴",
-      "label": "已过期·待补",
+      "label": "疑似停更·待确认",
       "age": 25,
-      "note": "需用户提供截图 + OCR"
+      "note": "需用户提供截图 + OCR",
+      "status": "stale"
     },
     {
       "key": "qianyan",
@@ -19,7 +20,8 @@
       "badge": "🟡",
       "label": "偏旧·待补",
       "age": 11,
-      "note": "期号监控 + 手动 --apply"
+      "note": "期号监控 + 手动 --apply",
+      "status": "active"
     },
     {
       "key": "tengshi",
@@ -29,7 +31,8 @@
       "badge": "🟢",
       "label": "正常",
       "age": 2,
-      "note": "需手动录入"
+      "note": "需手动录入",
+      "status": "active"
     },
     {
       "key": "public",
@@ -39,7 +42,8 @@
       "badge": "🟢",
       "label": "自动正常",
       "age": 1,
-      "note": "新发地每日行情API(T-1)"
+      "note": "新发地每日行情API(T-1)",
+      "status": "active"
     },
     {
       "key": "kexue",
@@ -49,7 +53,8 @@
       "badge": "🟢",
       "label": "正常",
       "age": 1,
-      "note": "需用户提供截图 + OCR"
+      "note": "需用户提供截图 + OCR",
+      "status": "active"
     },
     {
       "key": "video",
@@ -59,7 +64,8 @@
       "badge": "🟢",
       "label": "正常",
       "age": 1,
-      "note": "需截图核校录入"
+      "note": "需截图核校录入",
+      "status": "active"
     },
     {
       "key": "moa",
@@ -69,7 +75,8 @@
       "badge": "🟢",
       "label": "自动正常",
       "age": 0,
-      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)"
+      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
+      "status": "active"
     },
     {
       "key": "weather",
@@ -79,7 +86,8 @@
       "badge": "🟢",
       "label": "自动正常",
       "age": 0,
-      "note": "双源校验 + 每日09:00 cron"
+      "note": "双源校验 + 每日09:00 cron",
+      "status": "active"
     },
     {
       "key": "douyin",
@@ -89,7 +97,8 @@
       "badge": "🟢",
       "label": "正常",
       "age": 0,
-      "note": "付费API, 手动抓取"
+      "note": "付费API, 手动抓取",
+      "status": "active"
     },
     {
       "key": "hot",
@@ -99,7 +108,8 @@
       "badge": "🟢",
       "label": "正常",
       "age": 0,
-      "note": "联网检索, 手动刷新"
+      "note": "联网检索, 手动刷新",
+      "status": "active"
     }
   ]
 }

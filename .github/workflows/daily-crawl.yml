@@ -69,7 +69,7 @@ jobs:
       - name: 回写数据新鲜度与价源日期
         run: python refresh_freshness.py
 
-      # ⑦ 提交并推送
+      # ⑦ 提交并推送（先 pull --rebase 避免与本地手动提交 non-fast-forward 冲突导致当日更新丢失）
       - name: 提交变化
         run: |
           git config user.name "github-actions[bot]"
@@ -79,5 +79,6 @@ jobs:
             echo "无变化，跳过提交"
           else
             git commit -m "chore: 每日价格看板更新 $(date +'%Y-%m-%d')"
+            git pull --rebase --autostash origin main || true
             git push
           fi

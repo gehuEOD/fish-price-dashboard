@@ -100,15 +100,20 @@ def get_qianyan():
         return None, None
 
 def get_douyin():
-    """从 TikHub 快照文件名 douyin_live_YYYYMMDD.json 反推抓取日期（最新一个）。"""
+    """从 TikHub 快照文件名 douyin_live_YYYYMMDD.json 反推抓取日期 + 条数（最新一个）。"""
     cands = sorted(ROOT.glob("douyin_live_*.json"))
     if not cands:
-        return None
+        return None, 0
     m = re.search(r"(\d{8})", cands[-1].name)
     if m:
         s = m.group(1)
-        return f"{s[:4]}-{s[4:6]}-{s[6:8]}"
-    return None
+        d = f"{s[:4]}-{s[4:6]}-{s[6:8]}"
+        try:
+            n = len(json.loads(cands[-1].read_text(encoding="utf-8")))
+        except Exception:
+            n = 0
+        return d, n
+    return None, 0
 
 def get_weather(html: str):
     m = re.search(r'data-updated-at="([^"]+)"', html)
@@ -194,12 +199,13 @@ def main():
     ayu_d = get_ocr("a渔业行情")
     qy_d, qy_issue = get_qianyan()
     weather_d = get_weather(html)
+    douyin_date, douyin_count = get_douyin()
 
     eff = {
         "moa": moa_d, "public": public_d, "weather": weather_d.isoformat() if weather_d else None,
         "qianyan": qy_d, "kexue": kexue_d, "ayu": ayu_d,
         "tengshi": manual.get("tengshi"), "video": manual.get("video"),
-        "douyin": get_douyin() or manual.get("douyin"), "hot": manual.get("hot"),
+        "douyin": douyin_date or manual.get("douyin"), "hot": manual.get("hot"),
     }
 
     # B. 新鲜度 + 面板行（红在前）
@@ -210,8 +216,11 @@ def main():
         badge, label, age = status_of(d, today, s["auto"], s["cadence"])
         rows.append({"key": k, "name": s["name"], "auto": s["auto"],
                      "date": eff.get(k), "badge": badge, "label": label, "age": age,
-                     "note": s["note"]})
+                     "note": s["note"], "status": s.get("status", "active")})
     rows.sort(key=lambda r: (-r["age"] if r["age"] is not None else 999))
+    for r in rows:
+        if r["badge"] == "🔴" and r.get("status") == "stale":
+            r["label"] = "疑似停更·待确认"
 
     panel = render_panel(rows)
 
@@ -236,7 +245,7 @@ def main():
         # 顶部简介：TikHub 抖音抓取日期（从 douyin_live_*.json 反推，修复写死 08-31）
         (re.compile(r'于 \d{4}-\d{2}-\d{2} 实时抓取'), f'于 {douyin} 实时抓取'),
         # 来源行：新发地日期（idempotent）
-        (re.compile(r'公开价源爬虫（北京新发地 \d{4}-\d{2}-\d{2}）'), f'公开价源爬虫（北京新发地 {pub_mm}）'),
+        (re.compile(r'公开价源爬虫（北京新发地 \d{2}-\d{2}）'), f'公开价源爬虫（北京新发地 {pub_mm}）'),
         # a渔业行情区块「截至」行（修复 08-11 → 真实日期不一致）
         (re.compile(r'按规格分组，截至 \d{4}-\d{2}-\d{2}'), f'按规格分组，截至 {ayu_full}'),
         # 第五节 水产前沿
@@ -258,11 +267,13 @@ def main():
         (re.compile(r'2026-07-22~[\d-]+ 各市场真实报价'), f'2026-07-22~{moa_mm} 各市场真实报价'),
         # 修正误导性「已编排自动更新」文案（一次性，已应用则静默跳过）
         ('已纳入 RPA 截图 + OCR 流水线', '需用户截图后经 OCR 流水线'),
+        # P0-2 兜底：任何残留的「GitHub Actions 已编排」自动纠正（防第1469行回归）
+        ('GitHub Actions 已编排', '未接入定时任务'),
         ('（wechat_rpa.py 搜狗微信搜号→整页截图；wechat_ocr_pipeline.py 视觉 OCR→结构化→自动并入本看板），可定时自动更新；但纯文本爬虫仍无法直接抓文章正文（搜狗微信反爬）。',
          '（wechat_rpa.py 搜狗微信自动截图已就绪但<b>未接入定时任务</b>；wechat_ocr_pipeline.py 视觉 OCR→结构化→并入本看板）；纯文本爬虫仍无法直接抓文章正文（搜狗微信反爬），目前<b>仍为人工触发</b>，非全自动。'),
         # 抖音快照文案（兼容旧写法，幂等）
-        (re.compile(r'当前下方帖子为 [\d-]+ 历史快照|抖音实时快照已于 [\d-]+ 刷新（14条）'),
-         f'抖音实时快照已于 {douyin} 刷新（14条）'),
+        (re.compile(r'当前下方帖子为 [\d-]+ 历史快照|抖音实时快照已于 [\d-]+ 刷新（\d+条）'),
+         f'抖音实时快照已于 {douyin} 刷新（{douyin_count}条）'),
     ]
 
     for old, new in subs:

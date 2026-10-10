@@ -126,16 +126,18 @@ def status_of(d: date, today: date, auto: bool, cadence: int):
     if d is None:
         return "🔴", "缺数据", 999
     age = (today - d).days
+    # 周末宽限：周六(5)/周日(6) 阈值 cadence+1，避免周末无新数据误报红
+    eff_cad = cadence + (1 if today.weekday() >= 5 else 0)
     if auto:
-        if age <= cadence:
+        if age <= eff_cad:
             return "🟢", "自动正常", age
-        if age <= cadence * 3:
+        if age <= eff_cad * 3:
             return "🟡", "自动偏旧", age
         return "🔴", "⚠️自动任务异常", age
     else:
-        if age <= cadence:
+        if age <= eff_cad:
             return "🟢", "正常", age
-        if age <= cadence * 2:
+        if age <= eff_cad * 2:
             return "🟡", "偏旧·待补", age
         return "🔴", "已过期·待补", age
 
@@ -172,6 +174,7 @@ def render_panel(rows):
     <div class="sec-head" data-page-node-id="FRESHHEAD001">
       <h2 data-page-node-id="FRESHTITLE01">🟢 数据新鲜度总览</h2>
       <span class="sub" data-page-node-id="FRESHSUB001">每日 09:30 自动任务回写 · 🔴 = 已超过刷新周期，请补数据（手动源需发截图/录入）</span>
+      <div class="sla" data-page-node-id="FRESHSLA001" style="margin:6px 0 2px;font-size:12px;opacity:.85">📊 数据可信度：自动源（MOA/新发地/气象）T-0~T-1 实时同步 · 手动源 T-1~T-N（需发截图/录入）· 预测段为季节模型估算，<b>非实际成交价</b></div>
     </div>
     <h3 data-page-node-id="FRESHAUTOH" style="margin:12px 0 8px;font-size:15px">🤖 自动更新源 <span style="font-weight:400;font-size:12px;opacity:.8">（每日 09:30 cron 自我刷新，无需人工干预{f'；🔴 {auto_bad} 项异常，请检查 Actions 日志' if auto_bad else '，当前全部正常'}）</span></h3>
     {_table(auto_rows)}

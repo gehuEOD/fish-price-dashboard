@@ -99,6 +99,17 @@ def get_qianyan():
     except Exception:
         return None, None
 
+def get_douyin():
+    """从 TikHub 快照文件名 douyin_live_YYYYMMDD.json 反推抓取日期（最新一个）。"""
+    cands = sorted(ROOT.glob("douyin_live_*.json"))
+    if not cands:
+        return None
+    m = re.search(r"(\d{8})", cands[-1].name)
+    if m:
+        s = m.group(1)
+        return f"{s[:4]}-{s[4:6]}-{s[6:8]}"
+    return None
+
 def get_weather(html: str):
     m = re.search(r'data-updated-at="([^"]+)"', html)
     if m:
@@ -124,37 +135,43 @@ def status_of(d: date, today: date, auto: bool, cadence: int):
         return "🔴", "已过期·待补", age
 
 # ───────────────────────────── 面板渲染 ─────────────────────────────
+def _table(rows):
+    body = ''.join(
+        f'<tr><td style="text-align:left">{r["name"]}</td>'
+        f'<td>{r["date"] or "—"}</td>'
+        f'<td>{r["age"]}天</td>'
+        f'<td>{r["badge"]} {r["label"]}</td></tr>'
+        for r in rows
+    )
+    return f'''<table class="ftab" style="width:100%;border-collapse:collapse;font-size:13px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden;margin-bottom:10px">
+      <thead>
+        <tr style="background:rgba(255,255,255,.12);color:#fff">
+          <th style="padding:8px 10px;text-align:left">数据源</th>
+          <th style="padding:8px 10px">最新日期</th>
+          <th style="padding:8px 10px">距今天数</th>
+          <th style="padding:8px 10px">状态</th>
+        </tr>
+      </thead>
+      <tbody>{body}</tbody>
+    </table>'''
+
 def render_panel(rows):
-    body = []
-    for r in rows:
-        auto_tag = "自动" if r["auto"] else "手动"
-        body.append(
-            f'<tr><td style="text-align:left">{r["name"]}</td>'
-            f'<td>{r["date"] or "—"}</td>'
-            f'<td>{auto_tag}</td>'
-            f'<td>{r["age"]}天</td>'
-            f'<td>{r["badge"]} {r["label"]}</td></tr>'
-        )
+    auto_rows = sorted([r for r in rows if r["auto"]],
+                       key=lambda r: -(r["age"] if r["age"] is not None else 999))
+    manual_rows = sorted([r for r in rows if not r["auto"]],
+                         key=lambda r: -(r["age"] if r["age"] is not None else 999))
+    auto_bad = sum(1 for r in auto_rows if r["badge"] == "🔴")
+    man_bad = sum(1 for r in manual_rows if r["badge"] == "🔴")
     return f'''<!-- FRESHNESS_LIVE_START -->
   <section class="sec-fresh" data-page-node-id="FRESHLIVE0001" style="margin:18px 0 6px">
     <div class="sec-head" data-page-node-id="FRESHHEAD001">
       <h2 data-page-node-id="FRESHTITLE01">🟢 数据新鲜度总览</h2>
       <span class="sub" data-page-node-id="FRESHSUB001">每日 09:30 自动任务回写 · 🔴 = 已超过刷新周期，请补数据（手动源需发截图/录入）</span>
     </div>
-    <table class="ftab" data-page-node-id="FRESHTAB001" style="width:100%;border-collapse:collapse;font-size:13px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden">
-      <thead>
-        <tr style="background:rgba(255,255,255,.12);color:#fff">
-          <th style="padding:8px 10px;text-align:left">数据源</th>
-          <th style="padding:8px 10px">最新日期</th>
-          <th style="padding:8px 10px">方式</th>
-          <th style="padding:8px 10px">距今天数</th>
-          <th style="padding:8px 10px">状态</th>
-        </tr>
-      </thead>
-      <tbody>
-        {''.join(body)}
-      </tbody>
-    </table>
+    <h3 data-page-node-id="FRESHAUTOH" style="margin:12px 0 8px;font-size:15px">🤖 自动更新源 <span style="font-weight:400;font-size:12px;opacity:.8">（每日 09:30 cron 自我刷新，无需人工干预{f'；🔴 {auto_bad} 项异常，请检查 Actions 日志' if auto_bad else '，当前全部正常'}）</span></h3>
+    {_table(auto_rows)}
+    <h3 data-page-node-id="FRESHMANH" style="margin:14px 0 8px;font-size:15px">✋ 手动源 <span style="font-weight:400;font-size:12px;opacity:.8">（无公开接口，需发截图/手动触发{f'；🔴 {man_bad} 项已过期，请补数据' if man_bad else ''}）</span></h3>
+    {_table(manual_rows)}
   </section>
   <!-- FRESHNESS_LIVE_END -->'''
 
@@ -182,7 +199,7 @@ def main():
         "moa": moa_d, "public": public_d, "weather": weather_d.isoformat() if weather_d else None,
         "qianyan": qy_d, "kexue": kexue_d, "ayu": ayu_d,
         "tengshi": manual.get("tengshi"), "video": manual.get("video"),
-        "douyin": manual.get("douyin"), "hot": manual.get("hot"),
+        "douyin": get_douyin() or manual.get("douyin"), "hot": manual.get("hot"),
     }
 
     # B. 新鲜度 + 面板行（红在前）
@@ -216,45 +233,54 @@ def main():
         # 顶部 chip 行（批发价汇总）
         (r'(<span class="chip" data-page-node-id="4HGb9s5gzmgXv3QvdK82PP">)[^<]*(</span>)',
          lambda m: m.group(1) + f"🤖 批发价：农业农村部接口爬虫（{moa_mm}）+ 公开价源爬虫（新发地 {pub_mm}）+ 科学养鱼OCR（{kexue_mm}）+ a渔业行情OCR（{ayu_mm}）" + m.group(2)),
-        # a渔业行情区块「截至」行（修复 08-11 → 真实 09-15 不一致）
-        ('按规格分组，截至 2026-08-11', f'按规格分组，截至 {ayu_full}'),
+        # 顶部简介：TikHub 抖音抓取日期（从 douyin_live_*.json 反推，修复写死 08-31）
+        (re.compile(r'于 \d{4}-\d{2}-\d{2} 实时抓取'), f'于 {douyin} 实时抓取'),
+        # 来源行：新发地日期（idempotent）
+        (re.compile(r'公开价源爬虫（北京新发地 \d{4}-\d{2}-\d{2}）'), f'公开价源爬虫（北京新发地 {pub_mm}）'),
+        # a渔业行情区块「截至」行（修复 08-11 → 真实日期不一致）
+        (re.compile(r'按规格分组，截至 \d{4}-\d{2}-\d{2}'), f'按规格分组，截至 {ayu_full}'),
         # 第五节 水产前沿
-        ('2026-06-22 ~ 09-29 · 分产区分规格塘头价（鳜鱼/加州鲈），核心数据来源；第35期（9/29）为最新',
+        (re.compile(r'2026-06-22 ~ [\d-]+ · 分产区分规格塘头价（鳜鱼/加州鲈），核心数据来源；第\d+期（[\d-]+）为最新'),
          f'2026-06-22 ~ {qy_mm} · 分产区分规格塘头价（鳜鱼/加州鲈），核心数据来源；第{qy_issue}期（{qy_mm}）为最新'),
         # 第五节 MOA（含明细/交易日数）
-        (r'逐日累积至 <b>2026-10-09</b>（350 条明细 / 35 个交易日）',
+        (re.compile(r'逐日累积至 <b>\d{4}-\d{2}-\d{2}</b>（\d+ 条明细 / \d+ 个交易日）'),
          f'逐日累积至 <b>{moa_d}</b>（{moa_n} 条明细 / {moa_days} 个交易日）'),
         # 第五节 公开价源
-        ('（T-1，至 10-09）', f'（T-1，至 {pub_mm}）'),
+        (re.compile(r'（T-1，至 [\d-]+）'), f'（T-1，至 {pub_mm}）'),
         # 第五节 腾氏
-        ('2026-07-17 ~ 10-08 · 最新第㊵期（10-08 发布',
+        (re.compile(r'2026-07-17 ~ [\d-]+ · 最新第㊵期（[\d-]+ 发布'),
          f'2026-07-17 ~ {tengshi} · 最新第㊵期（{tengshi} 发布'),
-        # 第五节 科学养鱼
-        ('<b>2026-10-09（最新一期）</b>', f'<b>{kexue_d}（最新一期）</b>'),
-        # 第五节 a渔业
-        ('<b>2026-09-15（最新一期）</b>', f'<b>{ayu_full}（最新一期）</b>'),
+        # 第五节 科学养鱼（以「· 全国水产品批发价」为上下文区分 a渔业）
+        (r'(<b>)\d{4}-\d{2}-\d{2}(（最新一期）</b>· 全国水产品批发价)', lambda m: m.group(1) + (kexue_d or m.group(0)) + m.group(2)),
+        # 第五节 a渔业（以「全国水产塘口价」为上下文区分）
+        (r'(<b>)\d{4}-\d{2}-\d{2}(（最新一期）</b>全国水产塘口价)', lambda m: m.group(1) + ayu_full + m.group(2)),
         # 局限说明里的 MOA 区间
-        ('2026-07-22~10-09 各市场真实报价', f'2026-07-22~{moa_mm} 各市场真实报价'),
-        # 修正误导性「已编排自动更新」文案（原文被 <b> 标签截断，分两段替换）
-        ('已纳入 RPA 截图 + OCR 流水线',
-         '需用户截图后经 OCR 流水线'),
+        (re.compile(r'2026-07-22~[\d-]+ 各市场真实报价'), f'2026-07-22~{moa_mm} 各市场真实报价'),
+        # 修正误导性「已编排自动更新」文案（一次性，已应用则静默跳过）
+        ('已纳入 RPA 截图 + OCR 流水线', '需用户截图后经 OCR 流水线'),
         ('（wechat_rpa.py 搜狗微信搜号→整页截图；wechat_ocr_pipeline.py 视觉 OCR→结构化→自动并入本看板），可定时自动更新；但纯文本爬虫仍无法直接抓文章正文（搜狗微信反爬）。',
          '（wechat_rpa.py 搜狗微信自动截图已就绪但<b>未接入定时任务</b>；wechat_ocr_pipeline.py 视觉 OCR→结构化→并入本看板）；纯文本爬虫仍无法直接抓文章正文（搜狗微信反爬），目前<b>仍为人工触发</b>，非全自动。'),
-        # 修正抖音「08-18 历史快照」旧文案
-        ('当前下方帖子为 08-18 历史快照', f'抖音实时快照已于 {douyin} 刷新（14条）'),
+        # 抖音快照文案（兼容旧写法，幂等）
+        (re.compile(r'当前下方帖子为 [\d-]+ 历史快照|抖音实时快照已于 [\d-]+ 刷新（14条）'),
+         f'抖音实时快照已于 {douyin} 刷新（14条）'),
     ]
 
     for old, new in subs:
         if callable(new):
             html, n = re.subn(old, new, html)
+        elif isinstance(old, re.Pattern):
+            html, n = old.subn(new, html)
         else:
+            # 一次性文案：未命中但新文案已在 → 视为已应用，静默
             if old in html:
                 html = html.replace(old, new)
                 n = 1
+            elif new in html:
+                n = 1
             else:
                 n = 0
-        if n == 0 and not callable(new):
-            print(f"  [warn] 未命中替换: {old[:40]}...")
+        if n == 0:
+            print(f"  [warn] 未命中替换: {str(old)[:40]}...")
 
     if dry:
         print("== DRY RUN == 不写文件")

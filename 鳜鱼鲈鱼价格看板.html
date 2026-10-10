@@ -3,10 +3,10 @@
 <head data-page-node-id="BWPqHflDNNA98uUwgMDG2y">
 <meta charset="UTF-8" data-page-node-id="brMbjGoytqtDzaGQGs0ywx">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="mXilABDyOtLC6ajMyuuT3T">
-<title>江浙沪皖 鳜鱼·鲈鱼 出塘价与批发价数据看板（2026-10-10 更新 · v1.11.3）</title>
-<meta name="dashboard-version" content="v1.11.3">
+<title>江浙沪皖 鳜鱼·鲈鱼 出塘价与批发价数据看板（2026-10-10 更新 · v1.11.4）</title>
+<meta name="dashboard-version" content="v1.11.4">
 <meta name="dashboard-version-date" content="2026-10-10">
-<!-- Dashboard v1.11.3 · 2026-10-10 · 变更摘要见 VERSION.md -->
+<!-- Dashboard v1.11.4 · 2026-10-10 · 变更摘要见 VERSION.md -->
 <script>
 /**
  * Skipped minification because the original files appears to be already minified.
@@ -53,9 +53,10 @@
   .chip-version{background:linear-gradient(135deg,#ffb347,#ff7e5f);border:1px solid rgba(255,255,255,.45);color:#1a1f2e;font-weight:700;letter-spacing:.3px;box-shadow:0 4px 14px -4px rgba(255,126,95,.65)}
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px}
   .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
-  .kpi .lbl{font-size:12.5px;color:var(--sub);display:flex;align-items:center;gap:6px}
-  .kpi .dot{width:8px;height:8px;border-radius:50%}
-  .kpi .val{font-size:26px;font-weight:800;margin-top:6px;letter-spacing:.5px}
+  .kpi .lbl{font-size:17px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:8px;letter-spacing:.3px}
+  .kpi .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+  .kpi .sub{font-size:12px;color:var(--sub);margin-top:4px;padding-left:17px}
+  .kpi .val{font-size:28px;font-weight:800;margin-top:10px;letter-spacing:.5px}
   .kpi .val small{font-size:13px;font-weight:600;color:var(--sub)}
   .kpi .trend{margin-top:6px;font-size:12.5px;font-weight:600;display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:6px}
   .t-up{color:var(--up);background:var(--up-bg)}
@@ -241,7 +242,7 @@ function wgs84togcj02(lng, lat){
       <span class="chip" data-page-node-id="sTnENG1kszfxF6zJ1kDy3a">📅 统计周期：2026-07-13 ~ 2026-10-09</span>
       <span class="chip" data-page-node-id="uDtjiFY1wd6cLO8XIkyQEd">📍 区域：江苏 · 安徽 · 浙江 · 上海</span>
       <span class="chip" data-page-node-id="sz9lakUAtmcvai5DeZy3jC">💹 涨=红 / 跌=绿（国内习惯）</span>
-      <span class="chip chip-version" data-page-node-id="VER01CHIP0001" title="看板版本号 · 完整历史见 VERSION.md">🏷️ 版本 v1.11.3 · 2026-10-10</span>
+      <span class="chip chip-version" data-page-node-id="VER01CHIP0001" title="看板版本号 · 完整历史见 VERSION.md">🏷️ 版本 v1.11.4 · 2026-10-10</span>
       <span class="chip" data-page-node-id="4HGb9s5gzmgXv3QvdK82PP">🤖 批发价：农业农村部接口爬虫（10-10）+ 公开价源爬虫（新发地 10-09）+ 科学养鱼OCR（10-09）+ a渔业行情OCR（09-15）</span>
       <span class="chip" data-page-node-id="VCSRCCHIP0001">📹 塘口价新增：视频号（10-07/08 · 3 源）+ 水产养殖网（10-05 周报）+ 加州鲈周报第39期（9-30）</span>
     </div>
@@ -318,22 +319,26 @@ function wgs84togcj02(lng, lat){
   <!-- KPI -->
   <div class="kpis" data-page-node-id="8Nl8DRUGx9SWSYLIxrWdBw">
     <div class="kpi" data-page-node-id="Zpng4xegDqZYw9I0szIOhI" style="border-top:3px solid var(--gui)">
-      <div class="lbl" data-page-node-id="65b7fZVihju0pGkhkAg2XP"><span class="dot" style="background:var(--gui)" data-page-node-id="c2HuD1AIiEqTiIzzIgEsop"></span>鳜鱼 · 塘口价（标鳜 · 10-05 水产养殖网）</div>
+      <div class="lbl" data-page-node-id="65b7fZVihju0pGkhkAg2XP"><span class="dot" style="background:var(--gui)" data-page-node-id="c2HuD1AIiEqTiIzzIgEsop"></span>鳜鱼 · 塘口价</div>
+      <div class="sub" data-page-node-id="65b7fZVihju0pGkhkAg2XPs">标鳜 · 10-05 · 水产养殖网</div>
       <div class="val" data-page-node-id="h6Oavy5MoQgpSnSTILKX6r">25–28 <small data-page-node-id="cs1EaDsg0j1v2TKVm9TBFL">元/斤</small></div>
       <div class="trend t-down" data-page-node-id="E3AKMrOidBfeXgTjKeCwDF">▼ 8月中旬42元高位一路回落，累计跌16~17 · 江苏 25–26 / 安徽 28 / 湖南·湖北标鱼26更低</div>
     </div>
     <div class="kpi" data-page-node-id="i96EBHqcIA7oRO4Y9RnoMS" style="border-top:3px solid var(--gui)">
-      <div class="lbl" data-page-node-id="kPuPdIqNT11zI2s03ViZaC"><span class="dot" style="background:var(--gui)" data-page-node-id="dZ078T67CyzUT1ACH0KNRm"></span>鳜鱼 · 批发价（江西九江 · 爬虫 10-08）</div>
+      <div class="lbl" data-page-node-id="kPuPdIqNT11zI2s03ViZaC"><span class="dot" style="background:var(--gui)" data-page-node-id="dZ078T67CyzUT1ACH0KNRm"></span>鳜鱼 · 批发价</div>
+      <div class="sub" data-page-node-id="kPuPdIqNT11zI2s03ViZaCs">江西九江 · 爬虫 10-08</div>
       <div class="val" data-page-node-id="SREcF0PI3syyiMMknBvCyN">30 <small data-page-node-id="bH4tlbl2P2L6uEPIIlZkzP">元/斤</small> <span style="font-size:11px;opacity:.7">批发·60元/kg</span></div>
       <div class="trend t-down" data-page-node-id="yZBJJjD5hZCOkcKaxaEjDB">▼ 较 09-21 的 62 跌 2 · 新发地标鳜 10-07 报 90（较 08-28 的 127 大跌 37）</div>
     </div>
     <div class="kpi" data-page-node-id="IT364tF6f5rJWisIrbWbaz" style="border-top:3px solid var(--lu)">
-      <div class="lbl" data-page-node-id="wllgsawCjzdYKR5p4zBAY2"><span class="dot" style="background:var(--lu)" data-page-node-id="82S2pVwAkwtFBWkSv1CD25"></span>鲈鱼 · 塘口价（江苏 加州鲈 · 10-05 · 1斤起）</div>
+      <div class="lbl" data-page-node-id="wllgsawCjzdYKR5p4zBAY2"><span class="dot" style="background:var(--lu)" data-page-node-id="82S2pVwAkwtFBWkSv1CD25"></span>鲈鱼 · 塘口价</div>
+      <div class="sub" data-page-node-id="wllgsawCjzdYKR5p4zBAY2s">江苏 加州鲈 · 10-05 · 1斤起</div>
       <div class="val" data-page-node-id="DF2DZFqm4GZE4O8YDM8lg4">10.5 <small data-page-node-id="aw1rHVPTiUts4j9oB4trLz">元/斤</small></div>
       <div class="trend t-down" data-page-node-id="uyUGRa8iC1GvFl0wsXnr6C">■ 节后弱势僵持 · 广东佛山1斤以上仅8~9，病鱼压价突出</div>
     </div>
     <div class="kpi" data-page-node-id="d2084F67NUZ27tRmz4IOUr" style="border-top:3px solid var(--lu)">
-      <div class="lbl" data-page-node-id="nDNr137Xf8pedK9ngpdbQ5"><span class="dot" style="background:var(--lu)" data-page-node-id="I7OtBXuPpM4Gm4WuX3zdwL"></span>鲈鱼 · 批发价（全国统货均价 · MOA 10-10）</div>
+      <div class="lbl" data-page-node-id="nDNr137Xf8pedK9ngpdbQ5"><span class="dot" style="background:var(--lu)" data-page-node-id="I7OtBXuPpM4Gm4WuX3zdwL"></span>鲈鱼 · 批发价</div>
+      <div class="sub" data-page-node-id="nDNr137Xf8pedK9ngpdbQ5s">全国统货均价 · MOA 10-10</div>
       <div class="val" data-page-node-id="RGZDW7VFkOEyqZeAgc8D4v">14 <small data-page-node-id="GdYlHOdYclIQacjQovMojr">元/斤</small> <span style="font-size:11px;opacity:.7">批发·28元/kg</span></div>
       <div class="trend t-down" data-page-node-id="pkLCLgV0f8DJMSfpvKPMpU">■ 三市场均值：马鞍山22 / 长治紫坊29 / 云南华潮33（元/kg）· 对比塘口 10.5 元/斤含流通加价</div>
     </div>
@@ -1510,9 +1515,10 @@ function wgs84togcj02(lng, lat){
   <section class="version-history" data-page-node-id="VER01HIST0001" style="margin-top:28px;padding:18px 22px;background:linear-gradient(135deg,rgba(255,179,71,.08),rgba(255,126,95,.05));border:1px solid rgba(255,179,71,.25);border-radius:14px;font-size:13px;line-height:1.7">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
       <span style="font-size:18px">🏷️</span>
-      <strong style="font-size:15px;letter-spacing:.5px">本次更新 · v1.11.3（2026-10-10）</strong>
+      <strong style="font-size:15px;letter-spacing:.5px">本次更新 · v1.11.4（2026-10-10）</strong>
     </div>
     <ul style="margin:0;padding-left:22px;color:var(--ink, #1a1f2e)">
+      <li><b>v1.11.4 · 2026-10-10</b> · KPI卡片重排：标题大号醒目、来源说明独立第二行</li>
       <li><b>v1.11.3 · 2026-10-10</b> · 排版优化: SLA小字独占一行+品种表关键列不换行+KPI四卡按品种/渠道重排(鳜鱼同色顶框+新增鲈鱼批发卡)+去除AI水印字样</li>
       <li><b>v1.11.2 · 2026-10-10</b> · 排版优化: SLA小字独占一行+品种表关键列不换行+KPI四卡按品种/渠道重排(鳜鱼同色顶框+新增鲈鱼批发卡)+去除AI水印字样</li>
       <li><b>v1.11.1 · 2026-10-10</b> · 表格排版优化: 品种徽标(鳜鱼/鲈鱼)与表头(养殖周期等)禁止换行,窄屏恢复换行防溢出</li>

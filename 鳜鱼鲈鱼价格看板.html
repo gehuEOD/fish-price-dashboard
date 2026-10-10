@@ -3,10 +3,10 @@
 <head data-page-node-id="BWPqHflDNNA98uUwgMDG2y">
 <meta charset="UTF-8" data-page-node-id="brMbjGoytqtDzaGQGs0ywx">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="mXilABDyOtLC6ajMyuuT3T">
-<title>江浙沪皖 鳜鱼·鲈鱼 出塘价与批发价数据看板（2026-10-10 更新 · v1.11.1）</title>
-<meta name="dashboard-version" content="v1.11.1">
+<title>江浙沪皖 鳜鱼·鲈鱼 出塘价与批发价数据看板（2026-10-10 更新 · v1.11.2）</title>
+<meta name="dashboard-version" content="v1.11.2">
 <meta name="dashboard-version-date" content="2026-10-10">
-<!-- Dashboard v1.11.1 · 2026-10-10 · 变更摘要见 VERSION.md -->
+<!-- Dashboard v1.11.2 · 2026-10-10 · 变更摘要见 VERSION.md -->
 <script>
 /**
  * Skipped minification because the original files appears to be already minified.
@@ -107,7 +107,8 @@
   .callout b{color:#b45309}
   .pill{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;background:#eef2f7;color:#475569;margin-left:6px}
   footer{margin-top:40px;text-align:center;font-size:12px;color:var(--sub);line-height:1.8}
-  @media(max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.posts{grid-template-columns:1fr}.src-list{grid-template-columns:1fr}.ftab{font-size:11.5px}.ftab th,.ftab td{padding:6px 5px}.sec-fresh{overflow-x:auto}th{white-space:normal}}
+  @media(max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.posts{grid-template-columns:1fr}.src-list{grid-template-columns:1fr}.ftab{font-size:11.5px}.ftab th,.ftab td{padding:6px 5px}.sec-fresh{overflow-x:auto}th{white-space:normal}.spec-tbl td:nth-child(1),.spec-tbl td:nth-child(2),.spec-tbl td:nth-child(3),.spec-tbl td:nth-child(5){white-space:normal}}
+  .spec-tbl td:nth-child(1),.spec-tbl td:nth-child(2),.spec-tbl td:nth-child(3),.spec-tbl td:nth-child(5){white-space:nowrap}
 
   /* 八、位置 + 实时气象 */
   .location-card{border-left:4px solid #0ea5e9}
@@ -240,7 +241,7 @@ function wgs84togcj02(lng, lat){
       <span class="chip" data-page-node-id="sTnENG1kszfxF6zJ1kDy3a">📅 统计周期：2026-07-13 ~ 2026-10-09</span>
       <span class="chip" data-page-node-id="uDtjiFY1wd6cLO8XIkyQEd">📍 区域：江苏 · 安徽 · 浙江 · 上海</span>
       <span class="chip" data-page-node-id="sz9lakUAtmcvai5DeZy3jC">💹 涨=红 / 跌=绿（国内习惯）</span>
-      <span class="chip chip-version" data-page-node-id="VER01CHIP0001" title="看板版本号 · 完整历史见 VERSION.md">🏷️ 版本 v1.11.1 · 2026-10-10</span>
+      <span class="chip chip-version" data-page-node-id="VER01CHIP0001" title="看板版本号 · 完整历史见 VERSION.md">🏷️ 版本 v1.11.2 · 2026-10-10</span>
       <span class="chip" data-page-node-id="4HGb9s5gzmgXv3QvdK82PP">🤖 批发价：农业农村部接口爬虫（10-10）+ 公开价源爬虫（新发地 10-09）+ 科学养鱼OCR（10-09）+ a渔业行情OCR（09-15）</span>
       <span class="chip" data-page-node-id="VCSRCCHIP0001">📹 塘口价新增：视频号（10-07/08 · 3 源）+ 水产养殖网（10-05 周报）+ 加州鲈周报第39期（9-30）</span>
     </div>
@@ -282,10 +283,10 @@ function wgs84togcj02(lng, lat){
 
   <!-- FRESHNESS_LIVE_START -->
   <section class="sec-fresh" data-page-node-id="FRESHLIVE0001" style="margin:18px 0 6px">
-    <div class="sec-head" data-page-node-id="FRESHHEAD001">
+    <div class="sec-head" data-page-node-id="FRESHHEAD001" style="flex-wrap:wrap">
       <h2 data-page-node-id="FRESHTITLE01">🟢 数据新鲜度总览</h2>
       <span class="sub" data-page-node-id="FRESHSUB001">每日 09:30 自动任务回写 · 🔴 = 已超过刷新周期，请补数据（手动源需发截图/录入）</span>
-      <div class="sla" data-page-node-id="FRESHSLA001" style="margin:6px 0 2px;font-size:12px;opacity:.85">📊 数据可信度：自动源（MOA/新发地/气象）T-0~T-1 实时同步 · 手动源 T-1~T-N（需发截图/录入）· 预测段为季节模型估算，<b>非实际成交价</b></div>
+      <div class="sla" data-page-node-id="FRESHSLA001" style="flex:1 1 100%;margin:6px 0 2px;font-size:12px;opacity:.85">📊 数据可信度：自动源（MOA/新发地/气象）T-0~T-1 实时同步 · 手动源 T-1~T-N（需发截图/录入）· 预测段为季节模型估算，<b>非实际成交价</b></div>
     </div>
     <h3 data-page-node-id="FRESHAUTOH" style="margin:12px 0 8px;font-size:15px">🤖 自动更新源 <span style="font-weight:400;font-size:12px;opacity:.8">（每日 09:30 cron 自我刷新，无需人工干预，当前全部正常）</span></h3>
     <table class="ftab" style="width:100%;border-collapse:collapse;font-size:13px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden;margin-bottom:10px">
@@ -316,25 +317,25 @@ function wgs84togcj02(lng, lat){
 
   <!-- KPI -->
   <div class="kpis" data-page-node-id="8Nl8DRUGx9SWSYLIxrWdBw">
-    <div class="kpi" data-page-node-id="Zpng4xegDqZYw9I0szIOhI">
-      <div class="lbl" data-page-node-id="65b7fZVihju0pGkhkAg2XP"><span class="dot" style="background:var(--gui)" data-page-node-id="c2HuD1AIiEqTiIzzIgEsop"></span>江苏 标鳜 塘口价（10-05 水产养殖网）</div>
-      <div class="val" data-page-node-id="h6Oavy5MoQgpSnSTILKX6r">25–26 <small data-page-node-id="cs1EaDsg0j1v2TKVm9TBFL">元/斤</small></div>
-      <div class="trend t-down" data-page-node-id="E3AKMrOidBfeXgTjKeCwDF">▼ 8月中旬42元高位一路回落，累计跌16~17（较9.11的36.5跌10~11）</div>
+    <div class="kpi" data-page-node-id="Zpng4xegDqZYw9I0szIOhI" style="border-top:3px solid var(--gui)">
+      <div class="lbl" data-page-node-id="65b7fZVihju0pGkhkAg2XP"><span class="dot" style="background:var(--gui)" data-page-node-id="c2HuD1AIiEqTiIzzIgEsop"></span>鳜鱼 · 塘口价（标鳜 · 10-05 水产养殖网）</div>
+      <div class="val" data-page-node-id="h6Oavy5MoQgpSnSTILKX6r">25–28 <small data-page-node-id="cs1EaDsg0j1v2TKVm9TBFL">元/斤</small></div>
+      <div class="trend t-down" data-page-node-id="E3AKMrOidBfeXgTjKeCwDF">▼ 8月中旬42元高位一路回落，累计跌16~17 · 江苏 25–26 / 安徽 28 / 湖南·湖北标鱼26更低</div>
     </div>
-    <div class="kpi" data-page-node-id="d2084F67NUZ27tRmz4IOUr">
-      <div class="lbl" data-page-node-id="nDNr137Xf8pedK9ngpdbQ5"><span class="dot" style="background:var(--gui)" data-page-node-id="I7OtBXuPpM4Gm4WuX3zdwL"></span>安徽 标鳜 塘口价（10-05 水产养殖网）</div>
-      <div class="val" data-page-node-id="RGZDW7VFkOEyqZeAgc8D4v">28 <small data-page-node-id="GdYlHOdYclIQacjQovMojr">元/斤</small></div>
-      <div class="trend t-down" data-page-node-id="pkLCLgV0f8DJMSfpvKPMpU">▼ 较9.11的35跌7 · 湖南/湖北标鱼26更低</div>
+    <div class="kpi" data-page-node-id="i96EBHqcIA7oRO4Y9RnoMS" style="border-top:3px solid var(--gui)">
+      <div class="lbl" data-page-node-id="kPuPdIqNT11zI2s03ViZaC"><span class="dot" style="background:var(--gui)" data-page-node-id="dZ078T67CyzUT1ACH0KNRm"></span>鳜鱼 · 批发价（江西九江 · 爬虫 10-08）</div>
+      <div class="val" data-page-node-id="SREcF0PI3syyiMMknBvCyN">30 <small data-page-node-id="bH4tlbl2P2L6uEPIIlZkzP">元/斤</small> <span style="font-size:11px;opacity:.7">批发·60元/kg</span></div>
+      <div class="trend t-down" data-page-node-id="yZBJJjD5hZCOkcKaxaEjDB">▼ 较 09-21 的 62 跌 2 · 新发地标鳜 10-07 报 90（较 08-28 的 127 大跌 37）</div>
     </div>
-    <div class="kpi" data-page-node-id="IT364tF6f5rJWisIrbWbaz">
-      <div class="lbl" data-page-node-id="wllgsawCjzdYKR5p4zBAY2"><span class="dot" style="background:var(--lu)" data-page-node-id="82S2pVwAkwtFBWkSv1CD25"></span>江苏 加州鲈 塘口价（10-05 · 1斤起）</div>
+    <div class="kpi" data-page-node-id="IT364tF6f5rJWisIrbWbaz" style="border-top:3px solid var(--lu)">
+      <div class="lbl" data-page-node-id="wllgsawCjzdYKR5p4zBAY2"><span class="dot" style="background:var(--lu)" data-page-node-id="82S2pVwAkwtFBWkSv1CD25"></span>鲈鱼 · 塘口价（江苏 加州鲈 · 10-05 · 1斤起）</div>
       <div class="val" data-page-node-id="DF2DZFqm4GZE4O8YDM8lg4">10.5 <small data-page-node-id="aw1rHVPTiUts4j9oB4trLz">元/斤</small></div>
       <div class="trend t-down" data-page-node-id="uyUGRa8iC1GvFl0wsXnr6C">■ 节后弱势僵持 · 广东佛山1斤以上仅8~9，病鱼压价突出</div>
     </div>
-    <div class="kpi" data-page-node-id="i96EBHqcIA7oRO4Y9RnoMS">
-      <div class="lbl" data-page-node-id="kPuPdIqNT11zI2s03ViZaC"><span class="dot" style="background:var(--gui)" data-page-node-id="dZ078T67CyzUT1ACH0KNRm"></span>江西九江 鳜鱼 批发价（爬虫 10-08）</div>
-      <div class="val" data-page-node-id="SREcF0PI3syyiMMknBvCyN">30 <small data-page-node-id="bH4tlbl2P2L6uEPIIlZkzP">元/斤</small> <span style="font-size:11px;opacity:.7">批发·60元/kg</span></div>
-      <div class="trend t-down" data-page-node-id="yZBJJjD5hZCOkcKaxaEjDB">▼ 较 09-21 的 62 跌 2 · 新发地标鳜 10-07 报 90（较 08-28 的 127 大跌 37）</div>
+    <div class="kpi" data-page-node-id="d2084F67NUZ27tRmz4IOUr" style="border-top:3px solid var(--lu)">
+      <div class="lbl" data-page-node-id="nDNr137Xf8pedK9ngpdbQ5"><span class="dot" style="background:var(--lu)" data-page-node-id="I7OtBXuPpM4Gm4WuX3zdwL"></span>鲈鱼 · 批发价（全国统货均价 · MOA 10-10）</div>
+      <div class="val" data-page-node-id="RGZDW7VFkOEyqZeAgc8D4v">14 <small data-page-node-id="GdYlHOdYclIQacjQovMojr">元/斤</small> <span style="font-size:11px;opacity:.7">批发·28元/kg</span></div>
+      <div class="trend t-down" data-page-node-id="pkLCLgV0f8DJMSfpvKPMpU">■ 三市场均值：马鞍山22 / 长治紫坊29 / 云南华潮33（元/kg）· 对比塘口 10.5 元/斤含流通加价</div>
     </div>
   </div>
 
@@ -1509,9 +1510,10 @@ function wgs84togcj02(lng, lat){
   <section class="version-history" data-page-node-id="VER01HIST0001" style="margin-top:28px;padding:18px 22px;background:linear-gradient(135deg,rgba(255,179,71,.08),rgba(255,126,95,.05));border:1px solid rgba(255,179,71,.25);border-radius:14px;font-size:13px;line-height:1.7">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
       <span style="font-size:18px">🏷️</span>
-      <strong style="font-size:15px;letter-spacing:.5px">本次更新 · v1.11.1（2026-10-10）</strong>
+      <strong style="font-size:15px;letter-spacing:.5px">本次更新 · v1.11.2（2026-10-10）</strong>
     </div>
     <ul style="margin:0;padding-left:22px;color:var(--ink, #1a1f2e)">
+      <li><b>v1.11.2 · 2026-10-10</b> · 排版优化: SLA小字独占一行+品种表关键列不换行+KPI四卡按品种/渠道重排(鳜鱼同色顶框+新增鲈鱼批发卡)+去除AI水印字样</li>
       <li><b>v1.11.1 · 2026-10-10</b> · 表格排版优化: 品种徽标(鳜鱼/鲈鱼)与表头(养殖周期等)禁止换行,窄屏恢复换行防溢出</li>
       <li><b>v1.11.0 · 2026-10-10</b> · P2优化: 单位统一元/公斤+规格命名统一标鳜+新鲜度面板窄屏适配+SLA可信度声明+status_of周末宽限+手动源卡片折叠</li>
       <li><b>v1.10.0 · 2026-10-10</b> · P0+P1复核修复: KPI单位统一元/斤消除读数陷阱+RPA误导文案回归修复+海水鲈/加州鲈物种拆分+cron pull rebase防丢更新+抖音条数动态化+新鲜度面板源状态(疑似停更)维度</li>
@@ -2198,7 +2200,7 @@ new Chart(document.getElementById('luChart'),{
     <div class="sec-head" style="flex-wrap:wrap">
       <span class="bar" style="background:#dc2626"></span>
       <h2>十、病害预警 — 江苏产区受高温病害持续扰动，塘口鱼体稳定性差</h2>
-      <span class="note" style="flex:1 1 100%;margin-left:0;margin-top:2px">鳜鱼/加州鲈 高发期 · 2026-09-28 更新（新增总站 10 月预测预报） · 昼夜温差进一步增大，应激与病害风险上升 · 示意图已去除 AI 水印</span>
+      <span class="note" style="flex:1 1 100%;margin-left:0;margin-top:2px">鳜鱼/加州鲈 高发期 · 2026-09-28 更新（新增总站 10 月预测预报） · 昼夜温差进一步增大，应激与病害风险上升</span>
     </div>
 
     <div class="card">
@@ -2380,7 +2382,7 @@ new Chart(document.getElementById('luChart'),{
       <table><thead><tr><th>功能清单条目</th><th>验收要求</th><th>看板实现位置</th><th>状态</th></tr></thead><tbody><tr><td><b>行情数据看板</b></td><td>显示不同品种鱼在各市场的价格行情</td><td style="font-size:12px">区块一~三（鳜鱼/鲈鱼按规格拆分 + 可视化对比）及科学养鱼/a渔业行情/塘口价/盛阳补充区块</td><td>✅ 已覆盖</td></tr><tr><td><b>品种管理</b></td><td>管理品种、单位、上架状态</td><td style="font-size:12px">本区块 · 品种管理表（品种编码/计价单位/上架状态）</td><td>✅ 已覆盖</td></tr><tr><td><b>市场管理</b></td><td>管理附近的市场，爬取市场数据</td><td style="font-size:12px">本区块 · 市场管理表（江苏周边置顶 + 爬取状态）</td><td>✅ 已覆盖</td></tr><tr><td><b>数据管理</b></td><td>明细数据管理：每日的品种价格</td><td style="font-size:12px">本区块 · 每日明细数据表（fish_prices_history.csv 全量，支持过滤）</td><td>✅ 已覆盖</td></tr><tr><td><b>数据爬取</b></td><td>采用相关技术方式在指定网站获取价格行情数据</td><td style="font-size:12px">本区块 · 爬虫清单表（7 条链路，含脚本/技术方式/频率）</td><td>✅ 已覆盖</td></tr></tbody></table>
       <div style="margin-top:18px">
         <h3>🏷️ 品种管理 <span style="font-weight:400;font-size:12px;color:#64748b">管理品种、单位、上架状态</span></h3>
-        <table><thead><tr><th>品种</th><th>品种编码</th><th>计价单位</th><th>数据来源</th><th>上架状态</th><th>备注</th></tr></thead><tbody><tr><td><b>活鳜鱼（桂花鱼）</b></td><td><code>AM01013003</code></td><td>元/公斤</td><td style="font-size:12px">农业农村部批发价接口（统货）+ 科学养鱼 OCR（分规格，元/公斤）+ a渔业行情 OCR（塘口，元/斤）</td><td><span class="tag tag-gui">上架</span></td><td style="font-size:12px">官方接口近期 data=null（无报价），以凌家塘及公众号 OCR 源补充</td></tr><tr><td><b>淡水鲈鱼（加州鲈）</b></td><td><code>AM01009</code></td><td>元/公斤</td><td style="font-size:12px">农业农村部批发价接口（统货）+ 科学养鱼 OCR（分规格）+ a渔业行情 OCR（塘口，元/斤）</td><td><span class="tag tag-lu">上架</span></td><td style="font-size:12px">每日爬取正常</td></tr><tr><td><b>鲈鱼（海水）</b></td><td><code>AM02005</code></td><td>元/公斤</td><td style="font-size:12px">农业农村部批发价接口（统货，作跨品种参考）</td><td><span class="tag tag-lu">上架 · 参考</span></td><td style="font-size:12px">非本项目主养品种，仅作行情参照</td></tr></tbody></table>
+        <table class="spec-tbl"><thead><tr><th>品种</th><th>品种编码</th><th>计价单位</th><th>数据来源</th><th>上架状态</th><th>备注</th></tr></thead><tbody><tr><td><b>活鳜鱼（桂花鱼）</b></td><td><code>AM01013003</code></td><td>元/公斤</td><td style="font-size:12px">农业农村部批发价接口（统货）+ 科学养鱼 OCR（分规格，元/公斤）+ a渔业行情 OCR（塘口，元/斤）</td><td><span class="tag tag-gui">上架</span></td><td style="font-size:12px">官方接口近期 data=null（无报价），以凌家塘及公众号 OCR 源补充</td></tr><tr><td><b>淡水鲈鱼（加州鲈）</b></td><td><code>AM01009</code></td><td>元/公斤</td><td style="font-size:12px">农业农村部批发价接口（统货）+ 科学养鱼 OCR（分规格）+ a渔业行情 OCR（塘口，元/斤）</td><td><span class="tag tag-lu">上架</span></td><td style="font-size:12px">每日爬取正常</td></tr><tr><td><b>鲈鱼（海水）</b></td><td><code>AM02005</code></td><td>元/公斤</td><td style="font-size:12px">农业农村部批发价接口（统货，作跨品种参考）</td><td><span class="tag tag-lu">上架 · 参考</span></td><td style="font-size:12px">非本项目主养品种，仅作行情参照</td></tr></tbody></table>
       </div>
       <div style="margin-top:18px">
         <h3>🏬 市场管理 <span style="font-weight:400;font-size:12px;color:#64748b">管理附近的市场，爬取市场数据</span></h3>

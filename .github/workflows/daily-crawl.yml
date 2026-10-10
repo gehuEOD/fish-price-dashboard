@@ -63,7 +63,13 @@ jobs:
       - name: 重新内联资产
         run: python inline_assets.py || true
 
-      # ⑥ 提交并推送
+      # ⑥ 数据新鲜度回写：从真实数据文件反推各源最新日期，
+      #    渲染「数据新鲜度总览」面板并幂等回写看板内所有散落日期标签
+      #    （此前 cron 只更新数据文件、不回写看板，导致自动源日期也滞后）
+      - name: 回写数据新鲜度与价源日期
+        run: python refresh_freshness.py
+
+      # ⑦ 提交并推送
       - name: 提交变化
         run: |
           git config user.name "github-actions[bot]"

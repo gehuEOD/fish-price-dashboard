@@ -1,0 +1,21 @@
+{
+  "_doc": "看板全部数据来源的单一真源。自动源(moa/public/weather)的日期由 refresh_freshness.py 从真实数据文件反推；手动源(tengshi/video/douyin/hot)的日期在此人工维护，每次用户提供截图/录入后更新对应键并运行 refresh_freshness.py。qianyan/kexue/ayu 的日期由脚本从 qianyan_state.json / wechat_ocr_current.json 读取。",
+  "manual_dates": {
+    "tengshi": "2026-10-08",
+    "video": "2026-10-09",
+    "douyin": "2026-10-10",
+    "hot": "2026-10-10"
+  },
+  "sources": [
+    {"key": "moa",     "name": "农业农村部接口爬虫", "auto": true,  "cadence": 1,  "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)"},
+    {"key": "public",  "name": "公开价源爬虫(北京新发地)", "auto": true, "cadence": 1, "note": "新发地每日行情API(T-1)"},
+    {"key": "weather", "name": "气象监控", "auto": true, "cadence": 1, "note": "双源校验 + 每日09:00 cron"},
+    {"key": "qianyan", "name": "水产前沿《特水鱼周报》", "auto": false, "cadence": 7, "note": "期号监控 + 手动 --apply"},
+    {"key": "kexue",   "name": "科学养鱼公众号 OCR", "auto": false, "cadence": 3, "note": "需用户提供截图 + OCR"},
+    {"key": "ayu",     "name": "a渔业行情公众号 OCR", "auto": false, "cadence": 3, "note": "需用户提供截图 + OCR"},
+    {"key": "tengshi", "name": "腾氏水产商务网联合播报", "auto": false, "cadence": 2, "note": "需手动录入"},
+    {"key": "video",   "name": "视频号塘口价(小洁等)", "auto": false, "cadence": 1, "note": "需截图核校录入"},
+    {"key": "douyin",  "name": "TikHub 抖音搜索", "auto": false, "cadence": 14, "note": "付费API, 手动抓取"},
+    {"key": "hot",     "name": "行业热点综述", "auto": false, "cadence": 7, "note": "联网检索, 手动刷新"}
+  ]
+}

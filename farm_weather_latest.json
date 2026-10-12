@@ -17,9 +17,9 @@
   "current": {
     "time": "2026-10-12T09:00",
     "temperature_c": 20.6,
-    "wind_speed_kmh": 7.0,
-    "wind_dir_deg": 32,
-    "wind_dir_text": "北东北",
+    "wind_speed_kmh": 7.8,
+    "wind_dir_deg": 40,
+    "wind_dir_text": "东北",
     "humidity_pct": 78,
     "precipitation_mm": 0.0,
     "pressure_hpa": 1020.0,
@@ -40,8 +40,8 @@
       "temp_min_c": 17.1,
       "precip_mm": 0.0,
       "precip_prob_pct": 0,
-      "wind_max_kmh": 7.5,
-      "wind_dir_deg": 23,
+      "wind_max_kmh": 7.8,
+      "wind_dir_deg": 31,
       "wind_dir_text": "北东北",
       "solar_mjm2": 17.91
     },
@@ -54,9 +54,9 @@
       "temp_min_c": 17.3,
       "precip_mm": 0.1,
       "precip_prob_pct": 0,
-      "wind_max_kmh": 15.6,
-      "wind_dir_deg": 337,
-      "wind_dir_text": "北西北",
+      "wind_max_kmh": 15.4,
+      "wind_dir_deg": 321,
+      "wind_dir_text": "西北",
       "solar_mjm2": 16.92
     },
     {
@@ -68,8 +68,8 @@
       "temp_min_c": 16.7,
       "precip_mm": 0.0,
       "precip_prob_pct": 0,
-      "wind_max_kmh": 13.8,
-      "wind_dir_deg": 51,
+      "wind_max_kmh": 15.5,
+      "wind_dir_deg": 44,
       "wind_dir_text": "东北",
       "solar_mjm2": 18.76
     },
@@ -82,8 +82,8 @@
       "temp_min_c": 17.7,
       "precip_mm": 0.3,
       "precip_prob_pct": 39,
-      "wind_max_kmh": 19.0,
-      "wind_dir_deg": 116,
+      "wind_max_kmh": 18.8,
+      "wind_dir_deg": 118,
       "wind_dir_text": "东南东",
       "solar_mjm2": 9.51
     },
@@ -96,8 +96,8 @@
       "temp_min_c": 19.2,
       "precip_mm": 0.0,
       "precip_prob_pct": 61,
-      "wind_max_kmh": 21.6,
-      "wind_dir_deg": 121,
+      "wind_max_kmh": 20.8,
+      "wind_dir_deg": 123,
       "wind_dir_text": "东南东",
       "solar_mjm2": 12.81
     },
@@ -110,8 +110,8 @@
       "temp_min_c": 21.1,
       "precip_mm": 0.0,
       "precip_prob_pct": 35,
-      "wind_max_kmh": 20.3,
-      "wind_dir_deg": 126,
+      "wind_max_kmh": 21.5,
+      "wind_dir_deg": 129,
       "wind_dir_text": "东南",
       "solar_mjm2": 15.63
     },
@@ -124,8 +124,8 @@
       "temp_min_c": 21.8,
       "precip_mm": 5.7,
       "precip_prob_pct": 55,
-      "wind_max_kmh": 19.8,
-      "wind_dir_deg": 176,
+      "wind_max_kmh": 19.0,
+      "wind_dir_deg": 180,
       "wind_dir_text": "南",
       "solar_mjm2": 15.88
     }
@@ -134,7 +134,7 @@
     "city": "宜兴市",
     "adcode": "320282",
     "source": "高德天气 API（中国气象局数据，经 MCP amap-maps maps_weather 获取）",
-    "fetched_at_cst": "2026-10-12 09:04:49",
+    "fetched_at_cst": "2026-10-12 09:11:12",
     "forecasts": [
       {
         "date": "2026-10-12",
@@ -250,7 +250,7 @@
   ],
   "alerts": [],
   "meta": {
-    "fetched_at_cst": "2026-10-12 09:05:17",
+    "fetched_at_cst": "2026-10-12 09:11:51",
     "source": "Open-Meteo API (https://api.open-meteo.com)",
     "license": "Open-Meteo CC BY 4.0; data from national weather services",
     "secondary_source": "高德天气 API（中国气象局）"

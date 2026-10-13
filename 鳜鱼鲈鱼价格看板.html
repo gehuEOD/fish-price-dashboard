@@ -3,10 +3,10 @@
 <head data-page-node-id="BWPqHflDNNA98uUwgMDG2y">
 <meta charset="UTF-8" data-page-node-id="brMbjGoytqtDzaGQGs0ywx">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="mXilABDyOtLC6ajMyuuT3T">
-<title>江浙沪皖 鳜鱼·鲈鱼 出塘价与批发价数据看板（2026-10-10 更新 · v1.12.0）</title>
-<meta name="dashboard-version" content="v1.12.0">
-<meta name="dashboard-version-date" content="2026-10-10">
-<!-- Dashboard v1.12.0 · 2026-10-10 · 变更摘要见 VERSION.md -->
+<title>江浙沪皖 鳜鱼·鲈鱼 出塘价与批发价数据看板（2026-10-13 更新 · v1.13.0）</title>
+<meta name="dashboard-version" content="v1.13.0">
+<meta name="dashboard-version-date" content="2026-10-13">
+<!-- Dashboard v1.13.0 · 2026-10-13 · 变更摘要见 VERSION.md -->
 <script>
 /**
  * Skipped minification because the original files appears to be already minified.
@@ -242,8 +242,8 @@ function wgs84togcj02(lng, lat){
       <span class="chip" data-page-node-id="sTnENG1kszfxF6zJ1kDy3a">📅 统计周期：2026-07-13 ~ 2026-10-10</span>
       <span class="chip" data-page-node-id="uDtjiFY1wd6cLO8XIkyQEd">📍 区域：江苏 · 安徽 · 浙江 · 上海</span>
       <span class="chip" data-page-node-id="sz9lakUAtmcvai5DeZy3jC">💹 涨=红 / 跌=绿（国内习惯）</span>
-      <span class="chip chip-version" data-page-node-id="VER01CHIP0001" title="看板版本号 · 完整历史见 VERSION.md">🏷️ 版本 v1.12.0 · 2026-10-10</span>
-      <span class="chip" data-page-node-id="4HGb9s5gzmgXv3QvdK82PP">🤖 批发价：农业农村部接口爬虫（10-11）+ 公开价源爬虫（新发地 10-09）+ 科学养鱼OCR（10-09）+ a渔业行情OCR（09-15）</span>
+      <span class="chip chip-version" data-page-node-id="VER01CHIP0001" title="看板版本号 · 完整历史见 VERSION.md">🏷️ 版本 v1.13.0 · 2026-10-13</span>
+      <span class="chip" data-page-node-id="4HGb9s5gzmgXv3QvdK82PP">🤖 批发价：农业农村部接口爬虫（10-11）+ 公开价源爬虫（新发地 10-09）+ 科学养鱼OCR（10-13）+ a渔业行情OCR（09-15）</span>
       <span class="chip" data-page-node-id="VCSRCCHIP0001">📹 塘口价新增：视频号（10-07/08 · 3 源）+ 水产养殖网（10-05 周报）+ 加州鲈周报第39期（9-30）</span>
     </div>
 
@@ -296,7 +296,7 @@ function wgs84togcj02(lng, lat){
       <span class="sub" data-page-node-id="FRESHSUB001">每日 09:30 自动任务回写 · 🔴 = 已超过刷新周期，请补数据（手动源需发截图/录入）</span>
       <div class="sla" data-page-node-id="FRESHSLA001" style="flex:1 1 100%;margin:6px 0 2px;font-size:12px;opacity:.85">📊 数据可信度：自动源（MOA/新发地/气象）T-0~T-1 实时同步 · 手动源 T-1~T-N（需发截图/录入）· 预测段为季节模型估算，<b>非实际成交价</b></div>
     </div>
-    <h3 data-page-node-id="FRESHAUTOH" style="margin:12px 0 8px;font-size:15px">🤖 自动更新源 <span style="font-weight:400;font-size:12px;opacity:.8">（每日 09:30 cron 自我刷新，无需人工干预，当前全部正常）</span></h3>
+    <h3 data-page-node-id="FRESHAUTOH" style="margin:12px 0 8px;font-size:15px">🤖 自动更新源 <span style="font-weight:400;font-size:12px;opacity:.8">（每日 09:30 cron 自我刷新，无需人工干预；🔴 1 项异常，请检查 Actions 日志）</span></h3>
     <table class="ftab" style="width:100%;border-collapse:collapse;font-size:13px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden;margin-bottom:10px">
       <thead>
         <tr style="background:rgba(255,255,255,.12);color:#fff">
@@ -306,9 +306,9 @@ function wgs84togcj02(lng, lat){
           <th style="padding:8px 10px">状态</th>
         </tr>
       </thead>
-      <tbody><tr><td style="text-align:left">公开价源爬虫(北京新发地)</td><td>2026-10-09</td><td>2天</td><td>🟢 自动正常</td></tr><tr><td style="text-align:left">农业农村部接口爬虫</td><td>2026-10-11</td><td>0天</td><td>🟢 自动正常</td></tr><tr><td style="text-align:left">气象监控</td><td>2026-10-11</td><td>0天</td><td>🟢 自动正常</td></tr></tbody>
+      <tbody><tr><td style="text-align:left">公开价源爬虫(北京新发地)</td><td>2026-10-09</td><td>4天</td><td>🔴 ⚠️自动任务异常</td></tr><tr><td style="text-align:left">农业农村部接口爬虫</td><td>2026-10-11</td><td>2天</td><td>🟡 自动偏旧</td></tr><tr><td style="text-align:left">气象监控</td><td>2026-10-13</td><td>0天</td><td>🟢 自动正常</td></tr></tbody>
     </table>
-    <h3 data-page-node-id="FRESHMANH" style="margin:14px 0 8px;font-size:15px">✋ 手动源 <span style="font-weight:400;font-size:12px;opacity:.8">（无公开接口，需发截图/手动触发；🔴 1 项已过期，请补数据）</span></h3>
+    <h3 data-page-node-id="FRESHMANH" style="margin:14px 0 8px;font-size:15px">✋ 手动源 <span style="font-weight:400;font-size:12px;opacity:.8">（无公开接口，需发截图/手动触发；🔴 3 项已过期，请补数据）</span></h3>
     <table class="ftab" style="width:100%;border-collapse:collapse;font-size:13px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden;margin-bottom:10px">
       <thead>
         <tr style="background:rgba(255,255,255,.12);color:#fff">
@@ -318,7 +318,7 @@ function wgs84togcj02(lng, lat){
           <th style="padding:8px 10px">状态</th>
         </tr>
       </thead>
-      <tbody><tr><td style="text-align:left">a渔业行情公众号 OCR</td><td>2026-09-15</td><td>26天</td><td>🔴 疑似停更·待确认</td></tr><tr><td style="text-align:left">水产前沿《特水鱼周报》</td><td>2026-09-29</td><td>12天</td><td>🟡 偏旧·待补</td></tr><tr><td style="text-align:left">腾氏水产商务网联合播报</td><td>2026-10-08</td><td>3天</td><td>🟢 正常</td></tr><tr><td style="text-align:left">科学养鱼公众号 OCR</td><td>2026-10-09</td><td>2天</td><td>🟢 正常</td></tr><tr><td style="text-align:left">视频号塘口价(小洁等)</td><td>2026-10-09</td><td>2天</td><td>🟢 正常</td></tr><tr><td style="text-align:left">TikHub 抖音搜索</td><td>2026-10-10</td><td>1天</td><td>🟢 正常</td></tr><tr><td style="text-align:left">行业热点综述</td><td>2026-10-10</td><td>1天</td><td>🟢 正常</td></tr></tbody>
+      <tbody><tr><td style="text-align:left">a渔业行情公众号 OCR</td><td>2026-09-15</td><td>28天</td><td>🔴 疑似停更·待确认</td></tr><tr><td style="text-align:left">水产前沿《特水鱼周报》</td><td>2026-09-29</td><td>14天</td><td>🟡 偏旧·待补</td></tr><tr><td style="text-align:left">腾氏水产商务网联合播报</td><td>2026-10-08</td><td>5天</td><td>🔴 已过期·待补</td></tr><tr><td style="text-align:left">视频号塘口价(小洁等)</td><td>2026-10-09</td><td>4天</td><td>🔴 已过期·待补</td></tr><tr><td style="text-align:left">TikHub 抖音搜索</td><td>2026-10-10</td><td>3天</td><td>🟢 正常</td></tr><tr><td style="text-align:left">行业热点综述</td><td>2026-10-10</td><td>3天</td><td>🟢 正常</td></tr><tr><td style="text-align:left">科学养鱼公众号 OCR</td><td>2026-10-13</td><td>0天</td><td>🟢 正常</td></tr></tbody>
     </table>
   </section>
   <!-- FRESHNESS_LIVE_END -->
@@ -327,9 +327,9 @@ function wgs84togcj02(lng, lat){
   <div class="kpis" data-page-node-id="8Nl8DRUGx9SWSYLIxrWdBw">
     <div class="kpi" data-page-node-id="Zpng4xegDqZYw9I0szIOhI" style="border-top:3px solid var(--gui)">
       <div class="lbl" data-page-node-id="65b7fZVihju0pGkhkAg2XP"><span class="dot" style="background:var(--gui)" data-page-node-id="c2HuD1AIiEqTiIzzIgEsop"></span>鳜鱼 · 塘口价</div>
-      <div class="sub" data-page-node-id="65b7fZVihju0pGkhkAg2XPs">标鳜 · 10-05 · 水产养殖网</div>
-      <div class="val" data-page-node-id="h6Oavy5MoQgpSnSTILKX6r">25–28 <small data-page-node-id="cs1EaDsg0j1v2TKVm9TBFL">元/斤</small></div>
-      <div class="trend t-down" data-page-node-id="E3AKMrOidBfeXgTjKeCwDF">▼ 8月中旬42元高位一路回落，累计跌16~17 · 江苏 25–26 / 安徽 28 / 湖南·湖北标鱼26更低</div>
+      <div class="sub" data-page-node-id="65b7fZVihju0pGkhkAg2XPs">标鳜 · 10-12 · 渔有福水产</div>
+      <div class="val" data-page-node-id="h6Oavy5MoQgpSnSTILKX6r">25–27.5 <small data-page-node-id="cs1EaDsg0j1v2TKVm9TBFL">元/斤</small></div>
+      <div class="trend t-up" data-page-node-id="E3AKMrOidBfeXgTjKeCwDF">▲ 行情反转：广东标鳜 25.5（+0.5）/ 中鳜 27（+1）· 湖北 +0.5 · 江苏 27.5 · 连跌后首度回升</div>
     </div>
     <div class="kpi" data-page-node-id="i96EBHqcIA7oRO4Y9RnoMS" style="border-top:3px solid var(--gui)">
       <div class="lbl" data-page-node-id="kPuPdIqNT11zI2s03ViZaC"><span class="dot" style="background:var(--gui)" data-page-node-id="dZ078T67CyzUT1ACH0KNRm"></span>鳜鱼 · 批发价</div>
@@ -339,9 +339,9 @@ function wgs84togcj02(lng, lat){
     </div>
     <div class="kpi" data-page-node-id="IT364tF6f5rJWisIrbWbaz" style="border-top:3px solid var(--lu)">
       <div class="lbl" data-page-node-id="wllgsawCjzdYKR5p4zBAY2"><span class="dot" style="background:var(--lu)" data-page-node-id="82S2pVwAkwtFBWkSv1CD25"></span>鲈鱼 · 塘口价</div>
-      <div class="sub" data-page-node-id="wllgsawCjzdYKR5p4zBAY2s">江苏 加州鲈 · 10-05 · 1斤起</div>
+      <div class="sub" data-page-node-id="wllgsawCjzdYKR5p4zBAY2s">江苏高邮 · 10-13 · 1斤起</div>
       <div class="val" data-page-node-id="DF2DZFqm4GZE4O8YDM8lg4">10.5 <small data-page-node-id="aw1rHVPTiUts4j9oB4trLz">元/斤</small></div>
-      <div class="trend t-down" data-page-node-id="uyUGRa8iC1GvFl0wsXnr6C">■ 节后弱势僵持 · 广东佛山1斤以上仅8~9，病鱼压价突出</div>
+      <div class="trend t-flat" data-page-node-id="uyUGRa8iC1GvFl0wsXnr6C">■ 高邮 10.5 持平 · 佛山 1斤上 8.8~9 / 川渝 9两起 11.5 · 区域价差超 3 元</div>
     </div>
     <div class="kpi" data-page-node-id="d2084F67NUZ27tRmz4IOUr" style="border-top:3px solid var(--lu)">
       <div class="lbl" data-page-node-id="nDNr137Xf8pedK9ngpdbQ5"><span class="dot" style="background:var(--lu)" data-page-node-id="I7OtBXuPpM4Gm4WuX3zdwL"></span>鲈鱼 · 批发价</div>
@@ -468,12 +468,12 @@ function wgs84togcj02(lng, lat){
     <div class="sec-head">
       <span class="bar" style="background:#7c3aed"></span>
       <h2>补充 · 「科学养鱼」公众号批发价（OCR 提取）</h2>
-      <span class="note">2026-10-09 · 元/千克 · 已按图片数字录入</span>
+      <span class="note">2026-10-13 · 元/千克 · 已按图片数字录入</span>
     </div>
     <div class="card">
       <h3>🌟 科学养鱼公众号 全国水产品批发价</h3>
-      <div class="csub">来源：公众号价格截图，单位<b>元/千克</b>；由 OCR 提取，报价日期 2026-10-09。本次含 <b>加州鲈鱼、鳜鱼（桂花鱼）</b> 条目。</div>
-      <div class="grid2"><div><h3 style="font-size:14px;margin:6px 0 8px"><span class="tag tag-gui">鳜鱼（桂花鱼）</span> 批发价（元/千克）</h3><table><thead><tr><th>市场</th><th>规格</th><th>价格</th><th>vs 09-24</th></tr></thead><tbody><tr><td>江西南昌市水产品综合交易批发市场</td><td><span class="spec spec-s">500≤条重<750g</span></td><td class="price">56.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>乌鲁木齐北园春果业经营管理有限责任公司</td><td><span class="spec spec-s">500≤条重<750g</span></td><td class="price">120.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>南京市众彩批发市场有限公司</td><td><span class="spec spec-s">500≤条重<750g</span></td><td class="price">56.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>江苏凌家塘市场发展有限公司</td><td><span class="spec spec-s">500≤条重<750g</span></td><td class="price">71.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>长沙马王堆农产品股份有限公司海鲜水产批发市场</td><td><span class="spec spec-s">500≤条重<750g</span></td><td class="price">56.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>云南华潮水产品批发市场</td><td><span class="spec spec-s">条重≥750g</span></td><td class="price">100.00</td><td style="color:#12a150;font-size:12px;white-space:nowrap">110→100 ↓10</td></tr><tr><td>广州黄沙水产交易市场有限公司</td><td><span class="spec spec-s">条重≥750g</span></td><td class="price">68.00</td><td style="color:#12a150;font-size:12px;white-space:nowrap">70→68 ↓2</td></tr><tr><td>福建省莆田市闽中水产品批发市场</td><td><span class="spec spec-s">250≤条重<500g</span></td><td class="price">76.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>湖北宜昌三峡物流园有限公司水产市场</td><td><span class="spec spec-s">250≤条重<500g</span></td><td class="price">50.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>湖北宜昌三峡物流园有限公司水产市场</td><td><span class="spec spec-s">500≤条重<750g</span></td><td class="price">64.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>江苏省苏州市南环桥农副产品批发市场</td><td><span class="spec spec-s">250≤条重<500g</span></td><td class="price">52.00</td><td style="color:#12a150;font-size:12px;white-space:nowrap">59.5→52 ↓7.5</td></tr></tbody></table></div><div><h3 style="font-size:14px;margin:6px 0 8px"><span class="tag tag-lu">加州鲈鱼</span> 批发价（元/千克）</h3><table><thead><tr><th>市场</th><th>规格</th><th>价格</th><th>vs 09-24</th></tr></thead><tbody><tr><td>江西南昌市水产品综合交易批发市场</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">24.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>南京市众彩批发市场有限公司</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">24.75</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>湖州菱湖乌板桥水产品批发市场</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">25.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>湖州菱湖乌板桥水产品批发市场</td><td><span class="spec spec-s">条重<500g</span></td><td class="price">21.80</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>两湖绿谷淡水鱼市场</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">24.00</td><td style="color:#dc2626;font-size:12px;white-space:nowrap">23.8→24 ↑0.2</td></tr><tr><td>中国供销上饶农产品交易城</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">25.50</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>江西省萍乡市城南水产批发市场</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">32.00</td><td style="color:#12a150;font-size:12px;white-space:nowrap">33→32 ↓1</td></tr><tr><td>北京京丰岳各庄农副产品批发市场中心</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">27.60</td><td style="color:#12a150;font-size:12px;white-space:nowrap">29→27.6 ↓1.4</td></tr><tr><td>上海江杨水产品批发市场经营管理有限公司</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">30.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>湖北中和农产品大市场有限责任公司</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">26.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr></tbody></table></div></div>
+      <div class="csub">来源：公众号价格截图，单位<b>元/千克</b>；由 OCR 提取，报价日期 2026-10-13。本次含 <b>加州鲈鱼、鳜鱼（桂花鱼）</b> 条目。</div>
+      <div class="grid2"><div><h3 style="font-size:14px;margin:6px 0 8px"><span class="tag tag-gui">鳜鱼（桂花鱼）</span> 批发价（元/千克）</h3><table><thead><tr><th>市场</th><th>规格</th><th>价格</th><th>vs 10-09</th></tr></thead><tbody><tr><td>安徽省合肥市周谷堆水产品批发市场</td><td><span class="spec spec-s">250≤条重<500g</span></td><td class="price">73.50</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>山东省临沂市华东淡水鱼批发市场</td><td><span class="spec spec-s">条重≥750g</span></td><td class="price">88.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>上海江阳水产品批发交易市场经营管理有限公司</td><td><span class="spec spec-s">500≤条重<750g</span></td><td class="price">67.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>云南华潮水产品批发市场</td><td><span class="spec spec-s">条重≥750g</span></td><td class="price">120.00</td><td style="color:#dc2626;font-size:12px;white-space:nowrap">100→120 ↑20</td></tr><tr><td>北京大红门京深海鲜批发市场有限公司</td><td><span class="spec spec-s">条重≥750g</span></td><td class="price">72.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>攀枝花攀达水产品批发市场有限公司</td><td><span class="spec spec-s">500≤条重<750g</span></td><td class="price">40.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>上海江杨水产品批发市场经营管理有限公司</td><td><span class="spec spec-s">500≤条重<750g</span></td><td class="price">100.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>江苏省苏州市南环桥农副产品批发市场</td><td><span class="spec spec-s">250≤条重<500g</span></td><td class="price">52.00</td><td style="color:#6b7280;font-size:12px;white-space:nowrap">52→52 持平</td></tr><tr><td>江苏省苏州市南环桥农副产品批发市场</td><td><span class="spec spec-s">500≤条重<750g</span></td><td class="price">56.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>中国供销上饶农产品交易城</td><td><span class="spec spec-s">500≤条重<750g</span></td><td class="price">63.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>江西省萍乡市城南水产批发市场</td><td><span class="spec spec-s">250≤条重<500g</span></td><td class="price">87.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr></tbody></table></div><div><h3 style="font-size:14px;margin:6px 0 8px"><span class="tag tag-lu">加州鲈鱼</span> 批发价（元/千克）</h3><table><thead><tr><th>市场</th><th>规格</th><th>价格</th><th>vs 10-09</th></tr></thead><tbody><tr><td>上海江阳水产品批发交易市场经营管理有限公司</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">22.50</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr><tr><td>上海江杨水产品批发市场经营管理有限公司</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">30.00</td><td style="color:#6b7280;font-size:12px;white-space:nowrap">30→30 持平</td></tr><tr><td>江西省萍乡市城南水产批发市场</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">29.00</td><td style="color:#12a150;font-size:12px;white-space:nowrap">32→29 ↓3</td></tr><tr><td>两湖绿谷淡水鱼市场</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">24.30</td><td style="color:#dc2626;font-size:12px;white-space:nowrap">24→24.3 ↑0.3</td></tr><tr><td>北京京丰岳各庄农副产品批发市场中心</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">29.00</td><td style="color:#dc2626;font-size:12px;white-space:nowrap">27.6→29 ↑1.4</td></tr><tr><td>南京市众彩批发市场有限公司</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">24.50</td><td style="color:#12a150;font-size:12px;white-space:nowrap">24.75→24.5 ↓0.25</td></tr><tr><td>重庆市涪陵区新大兴国际农产品批发市场</td><td><span class="spec spec-s">条重≥500g</span></td><td class="price">28.00</td><td style="color:#2563eb;font-size:12px;white-space:nowrap">新增</td></tr></tbody></table></div></div>
       <div class="callout" style="margin-top:14px"><b>数据说明：</b>该公众号价格以<b>图片</b>形式发布，纯文本爬虫取不到数字；由截图 + OCR 提取录入。① 单位已确认为<b>元/千克</b>；② 属批发价，可与农业农村部统货口径互补；③ 历史截图数据保留于 <code>wechat_ocr_prices_*.json</code> 历史快照。</div>
     </div>
   </section>
@@ -486,7 +486,7 @@ function wgs84togcj02(lng, lat){
     <div class="sec-head" style="flex-wrap:wrap">
       <span class="bar" style="background:#0ea5e9"></span>
       <h2>补充 · 塘口价快照（2026-09-10/11/13/14/29/30 · 10-05/07/08/09 · 公众号/视频号 OCR）</h2>
-      <span class="note" style="flex:1 1 100%;margin-left:0;margin-top:2px">腾氏水产商务网 · 兴渔派-鳜鱼通（9.10/9.13） · 腾氏·海南卓越联合播报㊵（10.1/10.8） · 视频号「互联惠农小洁」「水产预报老段」「水产养殖老陈9396」 · 无锡盛阳食品城（10.9） · 全国渔业价格（9.30日报） · 科学养鱼 · 水产养殖网（10.5） · 视频号「互联惠农小洁」「悠扬水产」「水产养殖服务于老师」（10.7/10.8/10.9） · 单位：元/斤（另注明者除外）</span>
+      <span class="note" style="flex:1 1 100%;margin-left:0;margin-top:2px">腾氏水产商务网 · 兴渔派-鳜鱼通（9.10/9.13） · 腾氏·海南卓越联合播报㊵（10.1/10.8） · 视频号「互联惠农小洁」「水产预报老段」「水产养殖老陈9396」 · 无锡盛阳食品城（10.12） · 全国渔业价格（9.30日报） · 渔有福水产（10.12塘口） · 水产养殖技术院（10.13塘口） · 科学养鱼 · 水产养殖网（10.5） · 视频号「互联惠农小洁」「悠扬水产」「水产养殖服务于老师」（10.7/10.8/10.9） · 单位：元/斤（另注明者除外）</span>
     </div>
     <div class="card">
       <h3>🐟 各地区鳜鱼塘口价：9.1 vs 9.10（腾氏水产商务网，元/斤）</h3>
@@ -576,10 +576,48 @@ function wgs84togcj02(lng, lat){
     </div>
 
     <div class="card" style="margin-top:14px">
-      <h3>🛒 10月9日 · 无锡盛阳食品城水产批发价（元/斤）</h3>
-      <div class="csub">本地渠道当日均价，离看板项目最近的一手批发参考。<b>鳜鱼（桂鱼）25~30 元/斤、鲈鱼 10~14.5 元/斤</b>。较 10.8 数据：<b style="color:#6b7280">鳜鱼 25~30 连续两日持平，本轮调整低位暂企稳</b>；鲈鱼 10~14.5 连续四期持平。大宗淡水鱼涨跌互现：草鱼上限 8.5→9.5（+1）；青鱼上限 10.5→9.5（-1）、花鲢上限 8.5→8（-0.5）；鲫鱼 8~14、白鲢 3~4、鳊鱼 8.5~9 及白鱼、鲤鱼、非洲鲫鱼持平。</div>
-      <div class="grid2"><div><table><thead><tr><th>编号</th><th>品名</th><th>价格（元/斤）</th></tr></thead><tbody><tr><td>1</td><td>白鱼</td><td class="price">10~16</td></tr><tr><td>2</td><td><b>鳜鱼（桂鱼）</b></td><td class="price"><b>25~30</b></td></tr><tr><td>3</td><td><b>鲈鱼</b></td><td class="price"><b>10~14.5</b></td></tr><tr><td>4</td><td>鲤鱼</td><td class="price">5</td></tr><tr><td>5</td><td>非洲鲫鱼</td><td class="price">8.5~9</td></tr><tr><td>6</td><td>红鱼</td><td class="price">—</td></tr><tr><td>7</td><td>鳡鱼</td><td class="price">—</td></tr></tbody></table></div><div><table><thead><tr><th>编号</th><th>品名</th><th>价格（元/斤）</th></tr></thead><tbody><tr><td>1</td><td>鲫鱼</td><td class="price">8~14</td></tr><tr><td>2</td><td>白鲢</td><td class="price">3~4</td></tr><tr><td>3</td><td>草鱼</td><td class="price"><b style="color:#dc2626">7.5~9.5</b></td></tr><tr><td>4</td><td>花鲢</td><td class="price">7.5~8</td></tr><tr><td>5</td><td>鳊鱼</td><td class="price">8.5~9</td></tr><tr><td>6</td><td>青鱼</td><td class="price">8.5~9.5</td></tr><tr><td>7</td><td>鳙鱼</td><td class="price">—</td></tr></tbody></table></div></div>
-      <div class="legend">来源：微信公众号「无锡盛阳食品城有限公司」2026-10-09《盛阳食品城水产类批发价（当日均价、仅供参考）》（截图 OCR）· 同文杂货类（黄鳝(养殖) 35~54、甲鱼(养殖) 20~58、牛蛙(养殖) 7.8~8.7、泥鳅(养殖) 10~12、黑鱼 8.5~12、清江鱼 12.5、银鱼 27~31、河鳗(养殖) 26~35、螺蛳(养殖) 3~6、鲶鱼 6、昂刺鱼 10~15）、虾类（河虾 100头 123 / 130头 97 / 150头 75 / 160头 60 / 180头 47、基围虾大中小 22/20/17、白虾大中小 50/33、罗氏虾大中小 40/35/22）与螃蟹（公蟹 2两 20~25 至 5两 75~85；母蟹 1.5两 30~35 至 3两 60~70）报价可见，超出本项目核心品种范围未录入；海银鱼、鳙鱼、梭子蟹、斑节虾、黑虎虾等列名未报价</div>
+      <h3>🐟 10月12日 · 鳜鱼塘口价一览（行情反转上涨）</h3>
+      <div class="csub">前期持续走低后<b style="color:#dc2626">止跌回升</b>：广东产区领涨，<b>标鳜 25.5（↑0.5）、中鳜 27（↑1）</b>，湖北标鳜 25（↑0.5）同步上扬；大规格中鳜货源偏少、涨幅更突出。安徽 26.5 / 江西 27 / 湖南 27 / <b>江苏 27.5</b>。</div>
+      <table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr><th>产区</th><th>规格</th><th>塘口价（元/斤）</th><th>环比</th></tr></thead><tbody>
+        <tr><td>广东</td><td><span class="spec spec-s">小鳜（0.8斤以下）</span></td><td class="price">≈19</td><td style="color:#6b7280;font-size:12px">—</td></tr>
+        <tr><td>广东</td><td><span class="spec spec-s">标鳜（0.8~1.5斤）</span></td><td class="price"><b>25.5</b></td><td style="color:#dc2626;font-size:12px">↑0.5</td></tr>
+        <tr><td>广东</td><td><span class="spec spec-s">中鳜（1.5~2斤）</span></td><td class="price"><b>27</b></td><td style="color:#dc2626;font-size:12px">↑1</td></tr>
+        <tr><td>湖北</td><td><span class="spec spec-s">标鳜</span></td><td class="price">25</td><td style="color:#dc2626;font-size:12px">↑0.5</td></tr>
+        <tr><td>安徽</td><td><span class="spec spec-s">标鳜</span></td><td class="price">26.5</td><td style="color:#6b7280;font-size:12px">—</td></tr>
+        <tr><td>江西</td><td><span class="spec spec-s">标鳜</span></td><td class="price">27</td><td style="color:#6b7280;font-size:12px">—</td></tr>
+        <tr><td>湖南</td><td><span class="spec spec-s">标鳜</span></td><td class="price">27</td><td style="color:#6b7280;font-size:12px">—</td></tr>
+        <tr><td>江苏</td><td><span class="spec spec-s">标鳜</span></td><td class="price"><b>27.5</b></td><td style="color:#6b7280;font-size:12px">—</td></tr>
+      </tbody></table>
+      <div class="callout" style="margin-top:10px"><b>行情解读：</b>本轮止跌反弹主因前期集中出塘高峰缓解、流通拿货积极性回升；各地报价出现分化。<b>提醒：</b>行情刚回暖，塘口报价随品相、健康度、出鱼量浮动，各地收购商出价存在差异——不要盲目惜售或集中抛售，密切关注存塘规格与鱼体健康，合理安排出鱼节奏。</div>
+      <div class="legend">来源：微信公众号「渔有福水产」2026-10-13 16:11《鳜鱼行情反转！连续下跌后迎来上涨，10月12日主产区塘口报价一览》· <a class="plink" href="https://mp.weixin.qq.com/s/gEd2Q52FZuVi0W0BUD5LxQ" target="_blank" rel="noopener">📄 阅读原文（鳜鱼塘口 10-12）</a> · 元/斤 · 塘口报价随行就市</div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3>🐟 10月13日 · 加州鲈塘口价（全国 11 产区）</h3>
+      <div class="csub"><b>江苏高邮 1斤起 10.5 元/斤</b>，与 10-05 持平；<b>川渝 9两起 11.5 最高</b>、广东珠海 1斤上 8.3 最低，区域价差 3.2 元。广东佛山 8两上 8.8 / 1斤上 9，大鱼仍偏紧。</div>
+      <table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr><th>地区</th><th>规格</th><th>塘口价（元/斤）</th></tr></thead><tbody>
+        <tr><td>广东佛山</td><td><span class="spec spec-s">8两上</span></td><td class="price">8.8</td></tr>
+        <tr><td>广东佛山</td><td><span class="spec spec-s">1斤上</span></td><td class="price"><b>9</b></td></tr>
+        <tr><td>广东珠海</td><td><span class="spec spec-s">1斤上</span></td><td class="price">8.3</td></tr>
+        <tr><td>广东珠海</td><td><span class="spec spec-s">1.3斤上</span></td><td class="price">8.9</td></tr>
+        <tr><td>福建漳州</td><td><span class="spec spec-s">0.8~1.5斤</span></td><td class="price">10</td></tr>
+        <tr><td>福建龙岩</td><td><span class="spec spec-s">9两上</span></td><td class="price">11</td></tr>
+        <tr><td>湖南岳阳</td><td><span class="spec spec-s">8两起</span></td><td class="price">10</td></tr>
+        <tr><td>湖北武汉</td><td><span class="spec spec-s">9两起</span></td><td class="price">10</td></tr>
+        <tr><td>河南郑州</td><td><span class="spec spec-s">1斤起</span></td><td class="price">10</td></tr>
+        <tr><td>四川成都</td><td><span class="spec spec-s">9两起</span></td><td class="price"><b>11.5</b></td></tr>
+        <tr><td>四川眉山</td><td><span class="spec spec-s">9两起</span></td><td class="price"><b>11.5</b></td></tr>
+        <tr><td>江苏高邮</td><td><span class="spec spec-s">1斤起</span></td><td class="price"><b>10.5</b></td></tr>
+        <tr><td>浙江湖州</td><td><span class="spec spec-s">8两起</span></td><td class="price">10.5</td></tr>
+      </tbody></table>
+      <div class="legend">来源：「水产养殖技术院」2026-10-13 加州鲈/鲫鱼塘口价截图（OCR）· 元/斤 · 同图鲫鱼塘口价（四川乐山 1.5斤 8.2 / 盐城大丰 2~3斤 8.6、3斤上 8.2 / 福建漳州 2斤 8.6 / 河南郑州 1.8斤起 8.2 / 安徽滁州 1.8斤起 8）超出核心品种范围未列表 · 价格随行就市</div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3>🛒 10月12日 · 无锡盛阳食品城水产批发价（元/斤）</h3>
+      <div class="csub">本地渠道当日均价，离看板项目最近的一手批发参考。<b>鳜鱼（桂鱼）25~28 元/斤、鲈鱼 10~15 元/斤</b>。较 10.9 数据：<b style="color:#12a150">鳜鱼上限 30→28（-2，再探本轮低位）</b>；<b style="color:#dc2626">鲈鱼 10~14.5 → 10~15（上限 +0.5，连续四期持平后首次变动）</b>。大宗淡水鱼涨跌互现：鲤鱼 5→5~6（+1）、鲫鱼上限 14→14.5（+0.5）；草鱼上限 9.5→8.5（-1）、鳊鱼下限 8.5→8（-0.5）、青鱼下限 8.5→8（-0.5）；白鱼、白鲢、花鲢、非洲鲫鱼持平。</div>
+      <div class="grid2"><div><table><thead><tr><th>编号</th><th>品名</th><th>价格（元/斤）</th></tr></thead><tbody><tr><td>1</td><td>白鱼</td><td class="price">10~16</td></tr><tr><td>2</td><td><b>鳜鱼（桂鱼）</b></td><td class="price"><b>25~28</b></td></tr><tr><td>3</td><td><b>鲈鱼</b></td><td class="price"><b>10~15</b></td></tr><tr><td>4</td><td>鲤鱼</td><td class="price">5~6</td></tr><tr><td>5</td><td>非洲鲫鱼</td><td class="price">8.5~9</td></tr><tr><td>6</td><td>红鱼</td><td class="price">—</td></tr><tr><td>7</td><td>鳡鱼</td><td class="price">—</td></tr></tbody></table></div><div><table><thead><tr><th>编号</th><th>品名</th><th>价格（元/斤）</th></tr></thead><tbody><tr><td>1</td><td>鲫鱼</td><td class="price">8~14.5</td></tr><tr><td>2</td><td>白鲢</td><td class="price">3~4</td></tr><tr><td>3</td><td>草鱼</td><td class="price">7.5~8.5</td></tr><tr><td>4</td><td>花鲢</td><td class="price">7.5~8</td></tr><tr><td>5</td><td>鳊鱼</td><td class="price">8~9</td></tr><tr><td>6</td><td>青鱼</td><td class="price">8~9.5</td></tr><tr><td>7</td><td>鳙鱼</td><td class="price">—</td></tr></tbody></table></div></div>
+      <div class="legend">来源：微信公众号「无锡盛阳食品城有限公司」2026-10-12《盛阳食品城水产类批发价（当日均价、仅供参考）》（截图 OCR）· 同文杂货类（黄鳝(养殖) 35~54、甲鱼(养殖) 20~58、牛蛙(养殖) 8.7~9.4、泥鳅(养殖) 10~12、黑鱼 8.5~12.5、清江鱼 12.5、银鱼 27~31、河鳗(养殖) 26~35、螺蛳(养殖) 3~6、鲶鱼 6、昂刺鱼 10~15、梭子蟹(大中小) 27~36）、虾类（河虾 100头 108 / 130头 89 / 150头 73 / 160头 65 / 180头 52、基围虾大中小 22/20/17、白虾大中小 50/37/30、罗氏虾大中小 39/33/21）与螃蟹（公蟹 2两 20~25 至 5两 75~85；母蟹 1.5两 30~35 至 3.5~3.9两 80~100）报价可见，超出本项目核心品种范围未录入；红鱼、鳡鱼、鲴鱼、海银鱼、鳙鱼、斑节虾、黑虎虾等列名未报价</div>
     </div>
 
     <div class="card" style="margin-top:14px">
@@ -1429,7 +1467,7 @@ function wgs84togcj02(lng, lat){
       </div>
       <div class="src" data-page-node-id="cRmPqyWSnUYUXCRLbUzdJu">
         <div class="st" data-page-node-id="RZVtKC9GxbcRKM5H58377I">🐟「科学养鱼」公众号（用户提供截图 + OCR）</div>
-        <div class="sd" data-page-node-id="oePAwDsZtzJdYc2Xkj7ePK"><b>2026-10-09（最新一期）</b>· 全国水产品批发价（元/公斤）：鳜鱼（桂花鱼）+ 加州鲈鱼分市场分规格，已结构化补入「补充」板块；08-27 / 09-17 / 09-24 历史快照保留</div>
+        <div class="sd" data-page-node-id="oePAwDsZtzJdYc2Xkj7ePK"><b>2026-10-13（最新一期）</b>· 全国水产品批发价（元/公斤）：鳜鱼（桂花鱼）+ 加州鲈鱼分市场分规格，已结构化补入「补充」板块；08-27 / 09-17 / 09-24 历史快照保留</div>
       </div>
       <div class="src" data-page-node-id="efoJ6DGyZWuZ4LV9n6cfKu">
         <div class="st" data-page-node-id="6aHsEnrzzz3aCM5SAl7XDX">🎣「a渔业行情」公众号（用户提供截图 + OCR）</div>
@@ -1524,9 +1562,10 @@ function wgs84togcj02(lng, lat){
   <section class="version-history" data-page-node-id="VER01HIST0001" style="margin-top:28px;padding:18px 22px;background:linear-gradient(135deg,rgba(255,179,71,.08),rgba(255,126,95,.05));border:1px solid rgba(255,179,71,.25);border-radius:14px;font-size:13px;line-height:1.7">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
       <span style="font-size:18px">🏷️</span>
-      <strong style="font-size:15px;letter-spacing:.5px">本次更新 · v1.12.0（2026-10-10）</strong>
+      <strong style="font-size:15px;letter-spacing:.5px">本次更新 · v1.13.0（2026-10-13）</strong>
     </div>
     <ul style="margin:0;padding-left:22px;color:var(--ink, #1a1f2e)">
+      <li><b>v1.13.0 · 2026-10-13</b> · 10-13数据日：科学养鱼OCR(鳜鱼11+加州鲈7,vs10-09)+渔有福鳜鱼塘口10-12行情反转+水产养殖技术院加州鲈塘口10-13+盛阳食品城10-12(鳜鱼25~28/鲈鱼10~15)+KPI塘口价更新</li>
       <li><b>v1.12.0 · 2026-10-10</b> · P1修坐标脚本SyntaxError+算法(l→lng)；P2统计周期脱钩+HERO口径+KPI鳜鱼批发市场标注+UPDATED_AT动态+趋势图例+新鲜度措辞</li>
       <li><b>v1.11.4 · 2026-10-10</b> · KPI卡片重排：标题大号醒目、来源说明独立第二行</li>
       <li><b>v1.11.3 · 2026-10-10</b> · 排版优化: SLA小字独占一行+品种表关键列不换行+KPI四卡按品种/渠道重排(鳜鱼同色顶框+新增鲈鱼批发卡)+去除AI水印字样</li>
@@ -2009,7 +2048,7 @@ function wgs84togcj02(lng, lat){
 
 <footer data-page-node-id="cov1XMPvWRKh49TOhEnbjC">
     数据整理：WorkBuddy · 塘头价源自水产前沿/腾氏水产周报 + a渔业行情公众号 OCR；批发价 = moa_fish_crawler.py（农业农村部官方接口 AES 解密）+ public_price_crawler.py（武汉白沙洲/九江/云南华潮分规格）+ 科学养鱼公众号 OCR（用户截图）<br data-page-node-id="jmeOC7Ubh9La6ZZnGj5RPG">
-    看板更新 2026年10月10日 15:20 · 统计周期 2026-07-13 ~ 2026-10-10 · <b>农业农村部爬虫抓取 2026-10-10</b>（活鳜鱼仅 1 条：江西九江琵琶湖 60 元/公斤；鲈鱼 8 条，含江苏周边马鞍山安民 22 元/公斤）· <b>公开价源爬虫本次刷新：北京新发地 2026-10-07</b>（鳜鱼标鳜 90 元/公斤，较 08-28 的 127 跌 37；淡水鲈活 32、海鲈鲜 33；武汉白沙洲 07-03 / 九江 07-24 / 云南华潮 07-16 三家源页未更新）、<b>无锡盛阳食品城 2026-10-08 批发价</b>（鳜鱼 25~30 元/斤创本轮新低、鲈鱼 10~14.5 持平）· 塘头价快照（水产前沿第 35 期周报 09-29 + 水产养殖网 10-05 周报 + 视频号「互联惠农小洁」10-07/08「悠扬水产」10-08「水产养殖服务于老师」10-07 + 全国渔业价格日报 09-30）· 科学养鱼 OCR ??（鳜鱼 7 条 + 加州鲈 5 条）· a渔业行情 OCR 9.15 报价（鳜鱼 8 条 + 加州鲈 7 条）· 病害预警 09-28（第十部分，含总站 9 月/10 月预测预报 + 南京 10 月预报 · 鳜鱼红彩病毒 · 示意图已去水印）· 抖音 TikHub 09-14 抓取 14 条 · 验收对照区块 09-17（行情监测功能清单 5 项全覆盖：看板/品种管理/市场管理/数据管理/数据爬取，明细自动取自 fish_prices_history.csv）· 养殖场实时气象+7天预报 每日 09:00 自动刷新（Open-Meteo × 高德双源校验 · 宜兴官林镇 119.723966,31.557387）· 价格随行就市，仅供参考
+    看板更新 2026年10月10日 15:20 · 统计周期 2026-07-13 ~ 2026-10-10 · <b>农业农村部爬虫抓取 2026-10-10</b>（活鳜鱼仅 1 条：江西九江琵琶湖 60 元/公斤；鲈鱼 8 条，含江苏周边马鞍山安民 22 元/公斤）· <b>公开价源爬虫本次刷新：北京新发地 2026-10-07</b>（鳜鱼标鳜 90 元/公斤，较 08-28 的 127 跌 37；淡水鲈活 32、海鲈鲜 33；武汉白沙洲 07-03 / 九江 07-24 / 云南华潮 07-16 三家源页未更新）、<b>无锡盛阳食品城 2026-10-12 批发价</b>（鳜鱼 25~28 元/斤上限再探本轮低位、鲈鱼 10~15 上限 +0.5）· 塘头价快照（渔有福水产 10-12 鳜鱼塘口行情反转上涨 + 水产养殖技术院 10-13 加州鲈塘口 + 水产前沿第 35 期周报 09-29 + 水产养殖网 10-05 周报 + 视频号「互联惠农小洁」10-07/08「悠扬水产」10-08「水产养殖服务于老师」10-07 + 全国渔业价格日报 09-30）· 科学养鱼 OCR 10-13（鳜鱼 11 条 + 加州鲈 7 条）· a渔业行情 OCR 9.15 报价（鳜鱼 8 条 + 加州鲈 7 条）· 病害预警 09-28（第十部分，含总站 9 月/10 月预测预报 + 南京 10 月预报 · 鳜鱼红彩病毒 · 示意图已去水印）· 抖音 TikHub 09-14 抓取 14 条 · 验收对照区块 09-17（行情监测功能清单 5 项全覆盖：看板/品种管理/市场管理/数据管理/数据爬取，明细自动取自 fish_prices_history.csv）· 养殖场实时气象+7天预报 每日 09:00 自动刷新（Open-Meteo × 高德双源校验 · 宜兴官林镇 119.723966,31.557387）· 价格随行就市，仅供参考
   </footer>
 
 <!-- .wrap 容器闭合已下移至第十一区块之后，保证全页宽度一致 -->

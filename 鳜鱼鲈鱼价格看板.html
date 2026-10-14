@@ -3,10 +3,10 @@
 <head data-page-node-id="BWPqHflDNNA98uUwgMDG2y">
 <meta charset="UTF-8" data-page-node-id="brMbjGoytqtDzaGQGs0ywx">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="mXilABDyOtLC6ajMyuuT3T">
-<title>江浙沪皖 鳜鱼·鲈鱼 出塘价与批发价数据看板（2026-10-13 更新 · v1.13.2）</title>
-<meta name="dashboard-version" content="v1.13.2">
-<meta name="dashboard-version-date" content="2026-10-13">
-<!-- Dashboard v1.13.2 · 2026-10-13 · 变更摘要见 VERSION.md -->
+<title>江浙沪皖 鳜鱼·鲈鱼 出塘价与批发价数据看板（2026-10-14 更新 · v1.14.0）</title>
+<meta name="dashboard-version" content="v1.14.0">
+<meta name="dashboard-version-date" content="2026-10-14">
+<!-- Dashboard v1.14.0 · 2026-10-14 · 变更摘要见 VERSION.md -->
 <script>
 /**
  * Skipped minification because the original files appears to be already minified.
@@ -55,7 +55,7 @@
   .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
   .kpi .lbl{font-size:17px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:8px;letter-spacing:.3px}
   .kpi .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-  .kpi .sub{font-size:12px;color:var(--sub);margin-top:4px;padding-left:17px}
+  .kpi .sub{font-size:12px;color:var(--sub);margin-top:4px;padding-left:17px;min-height:36px;line-height:1.5}
   .kpi .val{font-size:28px;font-weight:800;margin-top:10px;letter-spacing:.5px}
   .kpi .val small{font-size:13px;font-weight:600;color:var(--sub)}
   .kpi .trend{margin-top:6px;font-size:12.5px;font-weight:600;display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:6px}
@@ -68,6 +68,12 @@
   .sec-head .bar{width:4px;height:20px;border-radius:3px;background:var(--brand)}
   .sec-head h2{font-size:19px;font-weight:800}
   .sec-head .note{font-size:12.5px;color:var(--sub);margin-left:auto}
+  /* 可折叠板块（补充 · 公开价源/科学养鱼/a渔业行情 + 本次更新） */
+  .coll-head{cursor:pointer;user-select:none}
+  .coll-head .chev{display:inline-block;margin-left:8px;font-size:13px;color:var(--sub);transition:transform .25s;flex-shrink:0}
+  .coll-head:hover h2{opacity:.75}
+  section.collapsed > .sec-body{display:none}
+  section.collapsed .coll-head .chev{transform:rotate(-90deg)}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
   .card h3{font-size:15px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px}
@@ -242,7 +248,7 @@ function wgs84togcj02(lng, lat){
       <span class="chip" data-page-node-id="sTnENG1kszfxF6zJ1kDy3a">📅 统计周期：2026-07-13 ~ 2026-10-10</span>
       <span class="chip" data-page-node-id="uDtjiFY1wd6cLO8XIkyQEd">📍 区域：江苏 · 安徽 · 浙江 · 上海</span>
       <span class="chip" data-page-node-id="sz9lakUAtmcvai5DeZy3jC">💹 涨=红 / 跌=绿（国内习惯）</span>
-      <span class="chip chip-version" data-page-node-id="VER01CHIP0001" title="看板版本号 · 完整历史见 VERSION.md">🏷️ 版本 v1.13.2 · 2026-10-13</span>
+      <span class="chip chip-version" data-page-node-id="VER01CHIP0001" title="看板版本号 · 完整历史见 VERSION.md">🏷️ 版本 v1.14.0 · 2026-10-14</span>
       <span class="chip" data-page-node-id="4HGb9s5gzmgXv3QvdK82PP">🤖 批发价：农业农村部接口爬虫（10-14）+ 公开价源爬虫（新发地 10-14）+ 科学养鱼OCR（10-13）+ a渔业行情OCR（09-15）</span>
       <span class="chip" data-page-node-id="VCSRCCHIP0001">📹 塘口价新增：视频号（10-07/08 · 3 源）+ 水产养殖网（10-05 周报）+ 加州鲈周报第39期（9-30）</span>
     </div>
@@ -430,7 +436,7 @@ function wgs84togcj02(lng, lat){
   </section>
 
   <!-- 补充：其他公开来源批发价（分规格） -->
-  <section data-page-node-id="tzhUTkTaoyqx8QTIZg2CvW">
+  <section class="collapsible" data-page-node-id="tzhUTkTaoyqx8QTIZg2CvW">
     <div class="sec-head" data-page-node-id="Y6wkAYOfDUinP3wCEEzVVl">
       <span class="bar" style="background:#0ea5a4" data-page-node-id="oh8cv1SpEvy3vYrBycmpo7"></span>
       <h2 data-page-node-id="51IAUjr1655KkMZimB1GGC">补充 · 公开价源爬虫（分规格批发价）</h2>
@@ -464,7 +470,7 @@ function wgs84togcj02(lng, lat){
   </section>
 
   <!-- 科学养鱼公众号 OCR 数据 -->
-  <section>
+  <section class="collapsible">
     <div class="sec-head">
       <span class="bar" style="background:#7c3aed"></span>
       <h2>补充 · 「科学养鱼」公众号批发价（OCR 提取）</h2>
@@ -751,7 +757,7 @@ function wgs84togcj02(lng, lat){
   </section>
   </details>
   <!-- /塘口价快照 2026-09-11 --><!-- a渔业行情公众号 OCR 数据 -->
-  <section>
+  <section class="collapsible">
     <div class="sec-head">
       <span class="bar" style="background:#059669"></span>
       <h2>补充 · 「a渔业行情」公众号塘口价（OCR 提取）</h2>
@@ -1559,12 +1565,13 @@ function wgs84togcj02(lng, lat){
   
 
   <!-- VERSION_HISTORY_START -->
-  <section class="version-history" data-page-node-id="VER01HIST0001" style="margin-top:28px;padding:18px 22px;background:linear-gradient(135deg,rgba(255,179,71,.08),rgba(255,126,95,.05));border:1px solid rgba(255,179,71,.25);border-radius:14px;font-size:13px;line-height:1.7">
+  <section class="version-history collapsible" data-page-node-id="VER01HIST0001" style="margin-top:28px;padding:18px 22px;background:linear-gradient(135deg,rgba(255,179,71,.08),rgba(255,126,95,.05));border:1px solid rgba(255,179,71,.25);border-radius:14px;font-size:13px;line-height:1.7">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
       <span style="font-size:18px">🏷️</span>
-      <strong style="font-size:15px;letter-spacing:.5px">本次更新 · v1.13.2（2026-10-13）</strong>
+      <strong style="font-size:15px;letter-spacing:.5px">本次更新 · v1.14.0（2026-10-14）</strong>
     </div>
     <ul style="margin:0;padding-left:22px;color:var(--ink, #1a1f2e)">
+      <li><b>v1.14.0 · 2026-10-14</b> · 补充·公开价源/科学养鱼/a渔业行情与本次更新板块改为可折叠(标题栏+箭头)+KPI四卡标题/价格/涨幅三行跨卡对齐(sub最小高度)</li>
       <li><b>v1.13.2 · 2026-10-13</b> · 页脚看板更新时间与统计周期同步至10-13</li>
       <li><b>v1.13.1 · 2026-10-13</b> · 页脚看板更新时间与统计周期同步至10-13</li>
       <li><b>v1.13.0 · 2026-10-13</b> · 10-13数据日：科学养鱼OCR(鳜鱼11+加州鲈7,vs10-09)+渔有福鳜鱼塘口10-12行情反转+水产养殖技术院加州鲈塘口10-13+盛阳食品城10-12(鳜鱼25~28/鲈鱼10~15)+KPI塘口价更新</li>
@@ -2497,5 +2504,28 @@ new Chart(document.getElementById('luChart'),{
   <!-- 十一、验收对照 end -->
 <!-- ACCEPTANCE_END -->
 </div>
+<script>
+/* 可折叠板块：补充·公开价源爬虫 / 科学养鱼 / a渔业行情 + 本次更新（点标题栏收起/展开） */
+(function(){
+  document.querySelectorAll('section.collapsible').forEach(function(sec){
+    var head = sec.querySelector(':scope > .sec-head') || sec.querySelector(':scope > div');
+    if(!head || head.dataset.collInit) return;
+    head.dataset.collInit = '1';
+    head.classList.add('coll-head');
+    var body = sec.querySelector(':scope > .sec-body');
+    if(!body){
+      body = document.createElement('div');
+      body.className = 'sec-body';
+      var n = head.nextSibling;
+      while(n){ var nx = n.nextSibling; body.appendChild(n); n = nx; }
+      sec.appendChild(body);
+    }
+    var chev = document.createElement('span');
+    chev.className = 'chev'; chev.textContent = '▾'; chev.title = '点击收起/展开';
+    head.appendChild(chev);
+    head.addEventListener('click', function(){ sec.classList.toggle('collapsed'); });
+  });
+})();
+</script>
 </body>
 </html>

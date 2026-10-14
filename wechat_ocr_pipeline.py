@@ -212,7 +212,7 @@ def build_sci_section(rows):
             f'<table><thead><tr><th>市场</th><th>规格</th><th>价格</th>{vs_th}</tr></thead>'
             f'<tbody>{trs}</tbody></table></div>')
     return (
-        '  <section>\n'
+        '  <section class="collapsible">\n'
         '    <div class="sec-head">\n'
         '      <span class="bar" style="background:#7c3aed"></span>\n'
         '      <h2>补充 · 「科学养鱼」公众号批发价（OCR 提取）</h2>\n'
@@ -259,7 +259,7 @@ def build_a_section(rows):
             f'<table><thead><tr><th>地区</th><th>规格</th><th>塘口价</th>{vs_th}</tr></thead>'
             f'<tbody>{trs}</tbody></table></div>')
     return (
-        '  <section>\n'
+        '  <section class="collapsible">\n'
         '    <div class="sec-head">\n'
         '      <span class="bar" style="background:#059669"></span>\n'
         '      <h2>补充 · 「a渔业行情」公众号塘口价（OCR 提取）</h2>\n'

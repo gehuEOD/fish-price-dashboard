@@ -7,7 +7,7 @@
 输出：farm_weather_latest.json（含 current + 7d daily + hourly shortwave_radiation
       + amap 官方预报 + 异常告警列表）
 """
-import json, urllib.request, urllib.parse, os, sys
+import json, urllib.request, urllib.parse, os, sys, time
 from datetime import datetime, timezone, timedelta
 
 WS = os.path.dirname(os.path.abspath(__file__))
@@ -164,8 +164,22 @@ def fetch():
     }
     url = "https://api.open-meteo.com/v1/forecast?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 WorkBuddy"})
-    with urllib.request.urlopen(req, timeout=15) as resp:
-        data = json.loads(resp.read().decode("utf-8"))
+    # Open-Meteo 免费版偶发 503 "service is overloaded"，重试即可成功（2026-10-15 首次遇到）
+    data = None
+    last_err = None
+    for attempt in range(1, 6):
+        try:
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            break
+        except Exception as e:  # HTTPError / URLError / timeout 均重试
+            last_err = e
+            print(f"[warn] Open-Meteo 第 {attempt} 次请求失败：{e}", file=sys.stderr)
+            if attempt < 5:
+                time.sleep(5 * attempt)
+    if data is None:
+        print(f"[error] Open-Meteo 连续 5 次请求失败，放弃：{last_err}", file=sys.stderr)
+        return False
 
     cur = data["current"]
     cur_iso = cur["time"]

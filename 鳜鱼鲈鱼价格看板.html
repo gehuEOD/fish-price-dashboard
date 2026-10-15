@@ -3,10 +3,10 @@
 <head data-page-node-id="BWPqHflDNNA98uUwgMDG2y">
 <meta charset="UTF-8" data-page-node-id="brMbjGoytqtDzaGQGs0ywx">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="mXilABDyOtLC6ajMyuuT3T">
-<title>江浙沪皖 鳜鱼·鲈鱼 出塘价与批发价数据看板（2026-10-14 更新 · v1.14.0）</title>
-<meta name="dashboard-version" content="v1.14.0">
-<meta name="dashboard-version-date" content="2026-10-14">
-<!-- Dashboard v1.14.0 · 2026-10-14 · 变更摘要见 VERSION.md -->
+<title>江浙沪皖 鳜鱼·鲈鱼 出塘价与批发价数据看板（2026-10-15 更新 · v1.14.1）</title>
+<meta name="dashboard-version" content="v1.14.1">
+<meta name="dashboard-version-date" content="2026-10-15">
+<!-- Dashboard v1.14.1 · 2026-10-15 · 变更摘要见 VERSION.md -->
 <script>
 /**
  * Skipped minification because the original files appears to be already minified.
@@ -184,7 +184,8 @@
   .xcheck-table tr.row-warn td:first-child{border-left:3px solid #8b5cf6}
   @media(max-width:860px){.mets-grid{grid-template-columns:repeat(2,1fr)}.weather-forecast{font-size:11.5px}.weather-forecast th,.weather-forecast td{padding:6px 4px}}
 </style>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.min.css" onerror="this.onerror=null;var l=document.createElement('link');l.rel='stylesheet';l.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';document.head.appendChild(l)">
+<!-- v1.14.1 地图修复：Leaflet CSS/JS 改用国内 BootCDN 主源 + unpkg 兜底（unpkg 国内不稳定导致 CSS 加载失败时瓦片失去绝对定位、散排错位） -->
   
   <!-- LEAFLET_CSS_HERE -->
   <!-- 高德矢量 tile 保持原生配色（v1.0.2 起不再做 CSS 反相），下面的 cn-tile-filter 已废弃保留锚点占位 -->
@@ -204,7 +205,8 @@
   <!-- LEAFLET_CSS_HERE -->
 </head>
 <body data-page-node-id="L4x5866LjJ8vTeUcF1SwiR">
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script>window.L || document.write('<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"><\/script>');</script>
   
 <script>
 // WGS84 (Leaflet/OSM) <-> GCJ-02 (高德/腾讯) 转换
@@ -248,13 +250,13 @@ function wgs84togcj02(lng, lat){
       <span class="chip" data-page-node-id="sTnENG1kszfxF6zJ1kDy3a">📅 统计周期：2026-07-13 ~ 2026-10-10</span>
       <span class="chip" data-page-node-id="uDtjiFY1wd6cLO8XIkyQEd">📍 区域：江苏 · 安徽 · 浙江 · 上海</span>
       <span class="chip" data-page-node-id="sz9lakUAtmcvai5DeZy3jC">💹 涨=红 / 跌=绿（国内习惯）</span>
-      <span class="chip chip-version" data-page-node-id="VER01CHIP0001" title="看板版本号 · 完整历史见 VERSION.md">🏷️ 版本 v1.14.0 · 2026-10-14</span>
+      <span class="chip chip-version" data-page-node-id="VER01CHIP0001" title="看板版本号 · 完整历史见 VERSION.md">🏷️ 版本 v1.14.1 · 2026-10-15</span>
       <span class="chip" data-page-node-id="4HGb9s5gzmgXv3QvdK82PP">🤖 批发价：农业农村部接口爬虫（10-15）+ 公开价源爬虫（新发地 10-15）+ 科学养鱼OCR（10-13）+ a渔业行情OCR（09-15）</span>
       <span class="chip" data-page-node-id="VCSRCCHIP0001">📹 塘口价新增：视频号（10-07/08 · 3 源）+ 水产养殖网（10-05 周报）+ 加州鲈周报第39期（9-30）</span>
     </div>
 
     <!-- UPDATED_AT_START -->
-    <div id="updatedAtBar" data-updated-at="2026-10-15T09:13:47+08:00" style="margin-top:12px;padding:9px 14px;border-radius:12px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.34);backdrop-filter:blur(4px);font-size:13px;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 2px 10px -4px rgba(0,0,0,.35)">
+    <div id="updatedAtBar" data-updated-at="2026-10-15T15:18:00+08:00" style="margin-top:12px;padding:9px 14px;border-radius:12px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.34);backdrop-filter:blur(4px);font-size:13px;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 2px 10px -4px rgba(0,0,0,.35)">
       <span style="font-size:15px">🕒</span>
       <b id="updatedAtAbs" style="font-size:13.5px;letter-spacing:.3px">看板更新：—</b>
       <span id="updatedAtRel" style="color:#e0f2fe">（刚刚更新）</span>
@@ -370,12 +372,12 @@ function wgs84togcj02(lng, lat){
       <!-- 水产前沿塘头价-鳜鱼 start -->
       <div class="card">
         <h3><span class="tag tag-gui">鳜鱼</span> 出塘价（塘头价）分规格</h3>
-        <div class="csub">来源：水产前沿《特水鱼周报 2026 第35期》· 2026-09-29（环比）</div>
+        <div class="csub">来源：水产前沿《特水鱼周报 2026 第36期》· 2026-10-12（环比 9-29）</div>
         <table>
-          <thead><tr><th>产区</th><th>规格</th><th>塘头价</th><th>较上周</th></tr></thead>
-          <tbody><tr><td>广东 佛山</td><td><span class="spec spec-s">3成中鳜</span></td><td class="price">30</td><td><span class="badge b-down">▼ 跌 2</span></td></tr><tr><td>广东 佛山</td><td><span class="spec spec-s">2成中鳜</span></td><td class="price">29</td><td><span class="badge b-down">▼ 跌 2</span></td></tr><tr><td>广东 佛山</td><td><span class="spec spec-s">1成中鳜+1成小鳜</span></td><td class="price">28</td><td><span class="badge b-down">▼ 跌 2</span></td></tr><tr><td>广东 佛山</td><td><span class="spec spec-s">2成小鳜</span></td><td class="price">24</td><td><span class="badge b-down">▼ 跌 1</span></td></tr><tr><td>广东 佛山</td><td><span class="spec spec-s">3成小鳜</span></td><td class="price">20</td><td><span class="badge b-down">▼ 跌 1</span></td></tr><tr><td>江苏</td><td><span class="spec spec-s">标鳜 / 500g+</span></td><td class="price">31</td><td><span class="badge b-down">▼ 跌 1</span></td></tr><tr><td>湖南</td><td><span class="spec spec-s">标鳜 / 500g+</span></td><td class="price">27</td><td><span class="badge b-down">▼ 跌 2</span></td></tr><tr><td>湖北</td><td><span class="spec spec-s">标鳜 / 500g+</span></td><td class="price">26–27</td><td><span class="badge b-down">▼ 跌 2–3</span></td></tr><tr><td>江西</td><td><span class="spec spec-s">标鳜 / 500g+</span></td><td class="price">32–33</td><td><span class="badge b-down">▼ 跌 1</span></td></tr><tr><td>广西</td><td><span class="spec spec-s">标鳜 / 500g+</span></td><td class="price">32</td><td><span class="badge b-down">▼ 跌 1</span></td></tr><tr><td>安徽</td><td><span class="spec spec-s">标鳜 / 500g+</span></td><td class="price">30</td><td><span class="badge b-down">▼ 跌 2–3</span></td></tr></tbody>
+          <thead><tr><th>产区</th><th>规格</th><th>塘头价</th><th>较9-29</th></tr></thead>
+          <tbody><tr><td>广东 佛山</td><td><span class="spec spec-s">3成中鳜</span></td><td class="price">25</td><td><span class="badge b-down">▼ 跌 5</span></td></tr><tr><td>广东 佛山</td><td><span class="spec spec-s">2成中鳜</span></td><td class="price">24</td><td><span class="badge b-down">▼ 跌 5</span></td></tr><tr><td>广东 佛山</td><td><span class="spec spec-s">1成中鳜+1成小鳜</span></td><td class="price">25</td><td><span class="badge b-down">▼ 跌 3</span></td></tr><tr><td>广东 佛山</td><td><span class="spec spec-s">2成小鳜</span></td><td class="price">23</td><td><span class="badge b-down">▼ 跌 1</span></td></tr><tr><td>广东 佛山</td><td><span class="spec spec-s">3成小鳜</span></td><td class="price">20</td><td><span class="badge b-flat">■ 持平</span></td></tr><tr><td>江苏</td><td><span class="spec spec-s">标鳜 / 500g+</span></td><td class="price">28–29</td><td><span class="badge b-down">▼ 跌 2–3</span></td></tr><tr><td>湖南</td><td><span class="spec spec-s">标鳜 / 500g+</span></td><td class="price">24</td><td><span class="badge b-down">▼ 跌 2</span></td></tr><tr><td>湖北</td><td><span class="spec spec-s">标鳜 / 500g+</span></td><td class="price">24</td><td><span class="badge b-down">▼ 跌 2–3</span></td></tr><tr><td>江西</td><td><span class="spec spec-s">标鳜 / 500g+</span></td><td class="price">27–28</td><td><span class="badge b-down">▼ 跌 5</span></td></tr><tr><td>广西</td><td><span class="spec spec-s">标鳜 / 500g+</span></td><td class="price">28</td><td><span class="badge b-down">▼ 跌 4</span></td></tr><tr><td>安徽</td><td><span class="spec spec-s">标鳜 / 500g+</span></td><td class="price">28</td><td><span class="badge b-down">▼ 跌 2</span></td></tr></tbody>
         </table>
-        <div class="csub" style="margin-top:12px">※ 据水产前沿《特水鱼周报 2026 第35期》（9/29，环比 9.21→9.29）：旺季不旺，节日也难拉动——中秋前后各地鳜鱼集中出塘、叠加病害高发（ISKNV）带病鱼冲击市场，全线下跌。广东佛山各规格跌 1–2 元（3成中鳜 30、2成中鳜 29、1成中鳜/1成小鳜 28、2成小鳜 24、3成小鳜 20）；外省普跌 1–3 元：江苏标鳜 31（跌 1）、湖南 27（跌 2）、湖北 26–27（跌 2–3）、安徽 30（跌 2–3）、江西 32–33（跌 1）、广西 32（跌 1）。饲料鳜与鱼仔鳜价格基本持平，市场不再按养殖模式区分，主要按规格、条形品相定价，大规格好条形优质鱼成交价相对更高。</div>
+        <div class="csub" style="margin-top:12px">※ 据水产前沿《特水鱼周报 2026 第36期》（10/12，环比 9.29→10.12）：节后出鱼高峰延续，鳜鱼继续全线探底。广东佛山各规格再跌 1–5 元（3成中鳜 25、2成中鳜 24、1成中鳜/1成小鳜 25、2成小鳜 23；仅 3成小鳜 20 持平）；外省普跌 2–5 元：江苏标鳜 28–29（跌 2–3）、湖南 24（跌 2）、湖北 24（跌 2–3）、安徽 28（跌 2）、江西 27–28（跌 5）、广西 28（跌 4）。较 9 月底再下台阶，全国主产区仍无止跌信号；大规格好条形优质鱼成交价相对更高。</div>
       </div>
 <!-- 水产前沿塘头价-鳜鱼 end -->
       <div class="card" data-page-node-id="njuC0tqs3fnCCYMZMaAZGL">
@@ -406,12 +408,12 @@ function wgs84togcj02(lng, lat){
       <!-- 水产前沿塘头价-鲈鱼 start -->
       <div class="card">
         <h3><span class="tag tag-lu">鲈鱼</span> 出塘价（塘头价）分规格</h3>
-        <div class="csub">来源：水产前沿《特水鱼周报 2026 第35期》· 2026-09-29（环比）</div>
+        <div class="csub">来源：水产前沿《特水鱼周报 2026 第36期》· 2026-10-12（环比 9-29）</div>
         <table>
-          <thead><tr><th>产区</th><th>规格</th><th>塘头价</th><th>较上周</th></tr></thead>
-          <tbody><tr><td>广东 佛山</td><td><span class="spec spec-s">9两上</span></td><td class="price">8–8.3</td><td><span class="badge b-down">▼ 跌 0.5</span></td></tr><tr><td>广东 佛山</td><td><span class="spec spec-s">1斤上</span></td><td class="price">9–9.5</td><td><span class="badge b-down">▼ 跌 0.5</span></td></tr><tr><td>浙江</td><td><span class="spec spec-s">8成统货</span></td><td class="price">11–11.5</td><td><span class="badge b-flat">■ 持平</span></td></tr><tr><td>江苏</td><td><span class="spec spec-s">9两上</span></td><td class="price">11</td><td><span class="badge b-flat">■ 持平</span></td></tr><tr><td>四川</td><td><span class="spec spec-s">9两上</span></td><td class="price">12</td><td><span class="badge b-flat">■ 持平</span></td></tr><tr><td>四川</td><td><span class="spec spec-s">1斤上</span></td><td class="price">12.5</td><td><span class="badge b-flat">■ 持平</span></td></tr><tr><td>湖南</td><td><span class="spec spec-s">9两上</span></td><td class="price">10.5</td><td><span class="badge b-flat">■ 持平</span></td></tr><tr><td>湖北</td><td><span class="spec spec-s">8.5两上</span></td><td class="price">10–10.5</td><td><span class="badge b-flat">■ 持平</span></td></tr><tr><td>河南</td><td><span class="spec spec-s">1斤上</span></td><td class="price">10.5</td><td><span class="badge b-flat">■ 持平</span></td></tr></tbody>
+          <thead><tr><th>产区</th><th>规格</th><th>塘头价</th><th>较9-29</th></tr></thead>
+          <tbody><tr><td>广东 佛山</td><td><span class="spec spec-s">9两上</span></td><td class="price">8–8.3</td><td><span class="badge b-flat">■ 持平</span></td></tr><tr><td>广东 佛山</td><td><span class="spec spec-s">1斤上</span></td><td class="price">9–9.5</td><td><span class="badge b-flat">■ 持平</span></td></tr><tr><td>浙江</td><td><span class="spec spec-s">8成统货</span></td><td class="price">11–11.5</td><td><span class="badge b-flat">■ 持平</span></td></tr><tr><td>江苏</td><td><span class="spec spec-s">9两上</span></td><td class="price">10–11</td><td><span class="badge b-down">▼ 跌 1</span></td></tr><tr><td>四川</td><td><span class="spec spec-s">9两上</span></td><td class="price">11.5</td><td><span class="badge b-down">▼ 跌 0.5</span></td></tr><tr><td>四川</td><td><span class="spec spec-s">1斤上</span></td><td class="price">12</td><td><span class="badge b-down">▼ 跌 0.5</span></td></tr><tr><td>湖南</td><td><span class="spec spec-s">9两上</span></td><td class="price">10</td><td><span class="badge b-down">▼ 跌 0.5</span></td></tr><tr><td>湖北</td><td><span class="spec spec-s">8.5两上</span></td><td class="price">10</td><td><span class="badge b-down">▼ 跌 0.5</span></td></tr><tr><td>河南</td><td><span class="spec spec-s">1斤上</span></td><td class="price">10</td><td><span class="badge b-down">▼ 跌 0.5</span></td></tr></tbody>
         </table>
-        <div class="csub" style="margin-top:12px">※ 据水产前沿《特水鱼周报 2026 第35期》（9/29，环比 9.21→9.29）：加州鲈扎堆出鱼，广东佛山 9两上 8–8.3、1斤上 9–9.5 各跌 0.5 元/斤；外省产区基本持稳——浙江 8成统货 11–11.5、江苏 9两上 11、四川 9两上 12 / 1斤上 12.5（价格高地）、湖南 9两上 10.5、湖北 8.5两上 10–10.5、河南 1斤上 10.5。中秋走量虽增，但需求不及预期。</div>
+        <div class="csub" style="margin-top:12px">※ 据水产前沿《特水鱼周报 2026 第36期》（10/12，环比 9.29→10.12）：加州鲈广东佛山企稳（9两上 8–8.3、1斤上 9–9.5 持平），浙江 8成统货 11–11.5 持平；外省普遍小幅回落 0.5–1 元：江苏 9两上 10–11（跌 1）、四川 9两上 11.5 / 1斤上 12（各跌 0.5）、湖南 9两上 10（跌 0.5）、湖北 8.5两上 10（跌 0.5）、河南 1斤上 10（跌 0.5）。新鱼陆续上市、出鱼节奏加快，价格重心缓下移。</div>
       </div>
 <!-- 水产前沿塘头价-鲈鱼 end -->
       <div class="card" data-page-node-id="p6TAHAfeqj0WoAPcJUhWTE">
@@ -1568,9 +1570,10 @@ function wgs84togcj02(lng, lat){
   <section class="version-history collapsible" data-page-node-id="VER01HIST0001" style="margin-top:28px;padding:18px 22px;background:linear-gradient(135deg,rgba(255,179,71,.08),rgba(255,126,95,.05));border:1px solid rgba(255,179,71,.25);border-radius:14px;font-size:13px;line-height:1.7">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
       <span style="font-size:18px">🏷️</span>
-      <strong style="font-size:15px;letter-spacing:.5px">本次更新 · v1.14.0（2026-10-14）</strong>
+      <strong style="font-size:15px;letter-spacing:.5px">本次更新 · v1.14.1（2026-10-15）</strong>
     </div>
     <ul style="margin:0;padding-left:22px;color:var(--ink, #1a1f2e)">
+      <li><b>v1.14.1 · 2026-10-15</b> · 水产前沿特水鱼周报35→36(10-12 vs 9-29鳜鱼全线再跌1~5/鲈鱼广东稳外省回落0.5~1) + Leaflet CDN国内化修复地图瓦片散排(BootCDN主源+unpkg兜底) + 页脚/时间戳同步10-15</li>
       <li><b>v1.14.0 · 2026-10-14</b> · 补充·公开价源/科学养鱼/a渔业行情与本次更新板块改为可折叠(标题栏+箭头)+KPI四卡标题/价格/涨幅三行跨卡对齐(sub最小高度)</li>
       <li><b>v1.13.2 · 2026-10-13</b> · 页脚看板更新时间与统计周期同步至10-13</li>
       <li><b>v1.13.1 · 2026-10-13</b> · 页脚看板更新时间与统计周期同步至10-13</li>
@@ -2062,7 +2065,7 @@ function wgs84togcj02(lng, lat){
 
 <footer data-page-node-id="cov1XMPvWRKh49TOhEnbjC">
     数据整理：WorkBuddy · 塘头价源自水产前沿/腾氏水产周报 + a渔业行情公众号 OCR；批发价 = moa_fish_crawler.py（农业农村部官方接口 AES 解密）+ public_price_crawler.py（武汉白沙洲/九江/云南华潮分规格）+ 科学养鱼公众号 OCR（用户截图）<br data-page-node-id="jmeOC7Ubh9La6ZZnGj5RPG">
-    看板更新 2026年10月13日 16:55 · 统计周期 2026-07-13 ~ 2026-10-13 · <b>农业农村部爬虫抓取 2026-10-10</b>（活鳜鱼仅 1 条：江西九江琵琶湖 60 元/公斤；鲈鱼 8 条，含江苏周边马鞍山安民 22 元/公斤）· <b>公开价源爬虫本次刷新：北京新发地 2026-10-07</b>（鳜鱼标鳜 90 元/公斤，较 08-28 的 127 跌 37；淡水鲈活 32、海鲈鲜 33；武汉白沙洲 07-03 / 九江 07-24 / 云南华潮 07-16 三家源页未更新）、<b>无锡盛阳食品城 2026-10-12 批发价</b>（鳜鱼 25~28 元/斤上限再探本轮低位、鲈鱼 10~15 上限 +0.5）· 塘头价快照（渔有福水产 10-12 鳜鱼塘口行情反转上涨 + 水产养殖技术院 10-13 加州鲈塘口 + 水产前沿第 35 期周报 09-29 + 水产养殖网 10-05 周报 + 视频号「互联惠农小洁」10-07/08「悠扬水产」10-08「水产养殖服务于老师」10-07 + 全国渔业价格日报 09-30）· 科学养鱼 OCR 10-13（鳜鱼 11 条 + 加州鲈 7 条）· a渔业行情 OCR 9.15 报价（鳜鱼 8 条 + 加州鲈 7 条）· 病害预警 09-28（第十部分，含总站 9 月/10 月预测预报 + 南京 10 月预报 · 鳜鱼红彩病毒 · 示意图已去水印）· 抖音 TikHub 09-14 抓取 14 条 · 验收对照区块 09-17（行情监测功能清单 5 项全覆盖：看板/品种管理/市场管理/数据管理/数据爬取，明细自动取自 fish_prices_history.csv）· 养殖场实时气象+7天预报 每日 09:00 自动刷新（Open-Meteo × 高德双源校验 · 宜兴官林镇 119.723966,31.557387）· 价格随行就市，仅供参考
+    看板更新 2026年10月15日 15:18 · 统计周期 2026-07-13 ~ 2026-10-15 · <b>农业农村部爬虫抓取 2026-10-10</b>（活鳜鱼仅 1 条：江西九江琵琶湖 60 元/公斤；鲈鱼 8 条，含江苏周边马鞍山安民 22 元/公斤）· <b>公开价源爬虫本次刷新：北京新发地 2026-10-07</b>（鳜鱼标鳜 90 元/公斤，较 08-28 的 127 跌 37；淡水鲈活 32、海鲈鲜 33；武汉白沙洲 07-03 / 九江 07-24 / 云南华潮 07-16 三家源页未更新）、<b>无锡盛阳食品城 2026-10-12 批发价</b>（鳜鱼 25~28 元/斤上限再探本轮低位、鲈鱼 10~15 上限 +0.5）· 塘头价快照（渔有福水产 10-12 鳜鱼塘口行情反转上涨 + 水产养殖技术院 10-13 加州鲈塘口 + 水产前沿第 36 期周报 10-12 + 水产养殖网 10-05 周报 + 视频号「互联惠农小洁」10-07/08「悠扬水产」10-08「水产养殖服务于老师」10-07 + 全国渔业价格日报 09-30）· 科学养鱼 OCR 10-13（鳜鱼 11 条 + 加州鲈 7 条）· a渔业行情 OCR 9.15 报价（鳜鱼 8 条 + 加州鲈 7 条）· 病害预警 09-28（第十部分，含总站 9 月/10 月预测预报 + 南京 10 月预报 · 鳜鱼红彩病毒 · 示意图已去水印）· 抖音 TikHub 09-14 抓取 14 条 · 验收对照区块 09-17（行情监测功能清单 5 项全覆盖：看板/品种管理/市场管理/数据管理/数据爬取，明细自动取自 fish_prices_history.csv）· 养殖场实时气象+7天预报 每日 09:00 自动刷新（Open-Meteo × 高德双源校验 · 宜兴官林镇 119.723966,31.557387）· 价格随行就市，仅供参考
   </footer>
 
 <!-- .wrap 容器闭合已下移至第十一区块之后，保证全页宽度一致 -->

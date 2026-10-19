@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "platform": "B站",
+    "source": "八爪鱼云采集 templateId=2886",
+    "crawled_at": "2026-10-19 14:00",
+    "keywords": [
+      "鳜鱼价格",
+      "鲈鱼价格"
+    ],
+    "raw_rows": 119,
+    "selected_rows": 5,
+    "filter": "剔除路亚/钓鱼/装备/龙鱼/科普/游戏/槟榔/城市/纪录片/搞笑等无关话题；保留含具体报价(元/块/斤)或行情/批发/塘口/卖鱼/产值/出鱼语义的视频"
+  },
+  "videos": [
+    {
+      "platform": "B站",
+      "keyword": "鲈鱼价格",
+      "title": "鲈鱼涨价了，但养殖户却高兴不起来，不是不看好行情，而是担心养不出鱼来！",
+      "author": "大渔和他的鱼塘",
+      "play": 1006,
+      "like": 25,
+      "comment": 6,
+      "fav": 3,
+      "date": "2026-10-13",
+      "bvid": "BV1b1pq62Eoz",
+      "url": "https://www.bilibili.com/video/BV1b1pq62Eoz",
+      "tags": "生活记录,三农,养殖"
+    },
+    {
+      "platform": "B站",
+      "keyword": "鲈鱼价格",
+      "title": "广东鲈鱼价跌破10元/斤！花身鱼价更低",
+      "author": "大渔和他的鱼塘",
+      "play": 5547,
+      "like": 111,
+      "comment": 21,
+      "fav": 22,
+      "date": "2026-07-28",
+      "bvid": "BV1JY3q6vEKt",
+      "url": "https://www.bilibili.com/video/BV1JY3q6vEKt",
+      "tags": "分享,广东,健康"
+    },
+    {
+      "platform": "B站",
+      "keyword": "鳜鱼价格",
+      "title": "一塘鳜鱼100W+产值，我们基地今年最后一塘尾批鳜鱼出鱼",
+      "author": "大渔和他的鱼塘",
+      "play": 6819,
+      "like": 150,
+      "comment": 9,
+      "fav": 26,
+      "date": "2026-07-24",
+      "bvid": "BV1YVgv62EUh",
+      "url": "https://www.bilibili.com/video/BV1YVgv62EUh",
+      "tags": "生活记录,老板,捕鱼"
+    },
+    {
+      "platform": "B站",
+      "keyword": "鳜鱼价格",
+      "title": "2026年野生斑鳜鱼苗价格表",
+      "author": "广西原生鱼123出品",
+      "play": 868,
+      "like": 9,
+      "comment": 1,
+      "fav": 4,
+      "date": "2026-02-04",
+      "bvid": "BV19xfXBHEsC",
+      "url": "https://www.bilibili.com/video/BV19xfXBHEsC",
+      "tags": "生活记录,新手养鱼知识,必剪创作,价格表,鳜鱼,记录,原创"
+    },
+    {
+      "platform": "B站",
+      "keyword": "鳜鱼价格",
+      "title": "养殖7个月的鳜鱼能赚多少钱？今天卖一塘统货价35元/斤！",
+      "author": "大渔和他的鱼塘",
+      "play": 11501,
+      "like": 239,
+      "comment": 27,
+      "fav": 15,
+      "date": "2025-05-19",
+      "bvid": "BV1f7E9zLE2C",
+      "url": "https://www.bilibili.com/video/BV1f7E9zLE2C",
+      "tags": "乡村,农村生活,三农"
+    }
+  ]
+}

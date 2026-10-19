@@ -209,6 +209,9 @@ def main():
         "qianyan": qy_d, "kexue": kexue_d, "ayu": ayu_d,
         "tengshi": manual.get("tengshi"), "video": manual.get("video"),
         "douyin": douyin_date or manual.get("douyin"), "hot": manual.get("hot"),
+        # v1.14.10 新增三个微信日报手动源（日期在 data_sources_manifest.json manual_dates 维护）
+        "minjian": manual.get("minjian"), "yufeiyu": manual.get("yufeiyu"),
+        "fengxiang": manual.get("fengxiang"),
     }
 
     # B. 新鲜度 + 面板行（红在前）
@@ -259,7 +262,10 @@ def main():
          f'逐日累积至 <b>{moa_d}</b>（{moa_n} 条明细 / {moa_days} 个交易日）'),
         # 第五节 公开价源
         (re.compile(r'（T-1，至 [\d-]+）'), f'（T-1，至 {pub_mm}）'),
-        # 第五节 腾氏
+        # 第五节 腾氏（2026-10-19 起为「一周鱼价播报」新句式）
+        (re.compile(r'2026-07-17 ~ [\d-]+ · 最新一周鱼价播报（[\d-]+，'),
+         f'2026-07-17 ~ {tengshi} · 最新一周鱼价播报（{to_mmdd(tengshi)}，'),
+        # 旧句式兜底（历史稿回退时仍可命中）
         (re.compile(r'2026-07-17 ~ [\d-]+ · 最新第㊵期（[\d-]+ 发布'),
          f'2026-07-17 ~ {tengshi} · 最新第㊵期（{tengshi} 发布'),
         # 第五节 科学养鱼（以「· 全国水产品批发价」为上下文区分 a渔业）

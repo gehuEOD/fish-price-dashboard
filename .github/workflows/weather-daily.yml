@@ -1,0 +1,56 @@
+name: 官林养殖场气象每日刷新（双源校验）
+
+on:
+  schedule:
+    - cron: "0 1 * * *"        # UTC 01:00 = 北京时间 09:00（GitHub 调度偶发延迟，但不再依赖任何电脑）
+  workflow_dispatch: {}        # 支持手动 Run workflow 测试 / 补跑
+
+permissions:
+  contents: write              # 允许本 workflow 向 main 提交气象数据
+
+jobs:
+  weather:
+    runs-on: ubuntu-latest
+    env:
+      AMAP_KEY: ${{ secrets.AMAP_KEY }}   # 在仓库 Settings → Secrets → Actions 配置
+      TZ: Asia/Shanghai
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # 需要完整历史以便 pull --rebase
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 高德天气（双源校验源，失败自动降级单源）
+        run: python3 fetch_amap.py
+
+      - name: Open-Meteo 抓取 + 交叉校验 + 注入看板
+        run: |
+          python3 weather_fetcher.py
+          python3 inject_weather_block.py
+
+      - name: 提交并推送（先 rebase 避免与价格 workflow 冲突）
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "无变更，跳过提交"
+          else
+            git commit -m "daily: 气象刷新 $(TZ=Asia/Shanghai date +%Y-%m-%d)（双源校验·云端）"
+            git pull --rebase --autostash origin main || true
+            git push origin main
+          fi
+
+      - name: 验证 Pages 主链接（宽容，不阻塞）
+        if: success()
+        continue-on-error: true
+        run: |
+          sleep 90
+          curl -s -o /tmp/pages.html -w "http_code=%{http_code}\n" https://fishmarket.gehueod.cn/ || true
+          grep -oE 'data-updated-at="[^"]+"' /tmp/pages.html | head -3 || true

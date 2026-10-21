@@ -211,7 +211,7 @@ def main():
         "douyin": douyin_date or manual.get("douyin"), "hot": manual.get("hot"),
         # v1.14.10 新增三个微信日报手动源（日期在 data_sources_manifest.json manual_dates 维护）
         "minjian": manual.get("minjian"), "yufeiyu": manual.get("yufeiyu"),
-        "fengxiang": manual.get("fengxiang"),
+        "fengxiang": manual.get("fengxiang"), "nandabo": manual.get("nandabo"),
     }
 
     # B. 新鲜度 + 面板行（红在前）

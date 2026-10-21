@@ -6,8 +6,9 @@
     "douyin": "2026-10-19",
     "hot": "2026-10-19",
     "minjian": "2026-10-18",
-    "yufeiyu": "2026-10-19",
-    "fengxiang": "2026-10-16"
+    "yufeiyu": "2026-10-21",
+    "fengxiang": "2026-10-16",
+    "nandabo": "2026-10-21"
   },
   "sources": [
     {
@@ -94,6 +95,13 @@
       "auto": false,
       "cadence": 1,
       "note": "微信文章手动录入"
+    },
+    {
+      "key": "nandabo",
+      "name": "南大堡全国农批市场交易数据日分析报告",
+      "auto": false,
+      "cadence": 1,
+      "note": "微信文章手动录入(JS渲染图片表格，WebFetch不可提取，仅挂原文链接)"
     },
     {
       "key": "fengxiang",

@@ -24,17 +24,6 @@
       "status": "active"
     },
     {
-      "key": "kexue",
-      "name": "科学养鱼公众号 OCR",
-      "auto": false,
-      "date": "2026-10-16",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 5,
-      "note": "需用户提供截图 + OCR",
-      "status": "active"
-    },
-    {
       "key": "fengxiang",
       "name": "水产市场风向标·批发指数",
       "auto": false,
@@ -109,6 +98,28 @@
       "label": "自动正常",
       "age": 0,
       "note": "新发地每日行情API(T-1)",
+      "status": "active"
+    },
+    {
+      "key": "kexue",
+      "name": "科学养鱼公众号 OCR",
+      "auto": false,
+      "date": "2026-10-20",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 1,
+      "note": "需用户提供截图 + OCR",
+      "status": "active"
+    },
+    {
+      "key": "shengyang",
+      "name": "盛阳食品城批发价",
+      "auto": false,
+      "date": "2026-10-20",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 1,
+      "note": "微信公众号截图人工录入(约2~3天一更)",
       "status": "active"
     },
     {

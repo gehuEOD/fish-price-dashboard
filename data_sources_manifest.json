@@ -8,7 +8,8 @@
     "minjian": "2026-10-18",
     "yufeiyu": "2026-10-21",
     "fengxiang": "2026-10-16",
-    "nandabo": "2026-10-21"
+    "nandabo": "2026-10-21",
+    "shengyang": "2026-10-20"
   },
   "sources": [
     {
@@ -109,6 +110,13 @@
       "auto": false,
       "cadence": 3,
       "note": "微信文章手动录入(农业农村部指数)"
+    },
+    {
+      "key": "shengyang",
+      "name": "盛阳食品城批发价",
+      "auto": false,
+      "cadence": 3,
+      "note": "微信公众号截图人工录入(约2~3天一更)"
     }
   ]
 }

@@ -26,7 +26,7 @@
   # 环境变量（vision 适配器）
   OCR_API_BASE  默认 https://api.siliconflow.cn/v1
   OCR_API_KEY   必填（SiliconFlow / OpenAI 兼容密钥）
-  OCR_MODEL     默认 Qwen/Qwen2.5-VL-72B-Instruct
+  OCR_MODEL     默认 Qwen/Qwen3-VL-32B-Instruct（旧 Qwen2.5-VL-72B-Instruct 已在 SiliconFlow 下线，改用 Qwen3-VL 系列）
 
 依赖：pip install requests pillow   （tesseract 兜底需系统装 tesseract + pip install pytesseract）
 """
@@ -328,8 +328,8 @@ def main():
             print("[ERR] --images 需配合 --source", file=sys.stderr)
             sys.exit(1)
         api_base = os.environ.get("OCR_API_BASE") or "https://api.siliconflow.cn/v1"
-        api_key = os.environ.get("OCR_API_KEY")
-        model = os.environ.get("OCR_MODEL", "Qwen/Qwen2.5-VL-72B-Instruct")
+        api_key = os.environ.get("OCR_API_KEY") or os.environ.get("SILICONFLOW_API_KEY")
+        model = os.environ.get("OCR_MODEL", "Qwen/Qwen3-VL-32B-Instruct")
         if api_key:
             print(f"[OCR] vision 适配器：{model}")
             rows = ocr_vision(args.images, args.source, api_base, api_key, model)

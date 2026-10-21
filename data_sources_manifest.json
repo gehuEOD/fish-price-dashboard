@@ -2,7 +2,7 @@
   "_doc": "看板全部数据来源的单一真源。自动源(moa/public/weather)的日期由 refresh_freshness.py 从真实数据文件反推；手动源(tengshi/video/douyin/hot)的日期在此人工维护，每次用户提供截图/录入后更新对应键并运行 refresh_freshness.py。qianyan/kexue/ayu 的日期由脚本从 qianyan_state.json / wechat_ocr_current.json 读取。",
   "manual_dates": {
     "tengshi": "2026-10-18",
-    "video": "2026-10-17",
+    "video": "2026-10-21",
     "douyin": "2026-10-19",
     "hot": "2026-10-19",
     "minjian": "2026-10-18",

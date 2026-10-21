@@ -46,17 +46,6 @@
       "status": "active"
     },
     {
-      "key": "video",
-      "name": "视频号塘口价(小洁等)",
-      "auto": false,
-      "date": "2026-10-17",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 4,
-      "note": "需截图核校录入(约2天一更)",
-      "status": "active"
-    },
-    {
       "key": "tengshi",
       "name": "腾氏水产商务网联合播报",
       "auto": false,
@@ -131,6 +120,17 @@
       "label": "自动正常",
       "age": 0,
       "note": "双源校验 + 每日09:00 cron",
+      "status": "active"
+    },
+    {
+      "key": "video",
+      "name": "视频号塘口价(小洁等)",
+      "auto": false,
+      "date": "2026-10-21",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "需截图核校录入(约2天一更)",
       "status": "active"
     },
     {

@@ -9,7 +9,8 @@
     "yufeiyu": "2026-10-21",
     "fengxiang": "2026-10-16",
     "nandabo": "2026-10-21",
-    "shengyang": "2026-10-20"
+    "shengyang": "2026-10-20",
+    "hangqingzhushou": "2026-10-21"
   },
   "sources": [
     {
@@ -117,6 +118,13 @@
       "auto": false,
       "cadence": 3,
       "note": "微信公众号截图人工录入(约2~3天一更)"
+    },
+    {
+      "key": "hangqingzhushou",
+      "name": "水产行情助手·行情资讯",
+      "auto": false,
+      "cadence": 3,
+      "note": "微信文章手动录入(行情资讯/技术向，价格口径需核验)"
     }
   ]
 }

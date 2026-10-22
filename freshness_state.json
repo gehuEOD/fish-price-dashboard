@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21",
+  "generated_at": "2026-10-22",
   "rows": [
     {
       "key": "ayu",
@@ -8,7 +8,7 @@
       "date": "2026-09-15",
       "badge": "🔴",
       "label": "疑似停更·待确认",
-      "age": 36,
+      "age": 37,
       "note": "需用户提供截图 + OCR",
       "status": "stale"
     },
@@ -19,7 +19,7 @@
       "date": "2026-10-12",
       "badge": "🟡",
       "label": "偏旧·待补",
-      "age": 9,
+      "age": 10,
       "note": "期号监控 + 手动 --apply",
       "status": "active"
     },
@@ -30,7 +30,7 @@
       "date": "2026-10-16",
       "badge": "🟡",
       "label": "偏旧·待补",
-      "age": 5,
+      "age": 6,
       "note": "微信文章手动录入(农业农村部指数)",
       "status": "active"
     },
@@ -41,7 +41,7 @@
       "date": "2026-10-18",
       "badge": "🟡",
       "label": "偏旧·待补",
-      "age": 3,
+      "age": 4,
       "note": "需手动录入",
       "status": "active"
     },
@@ -52,7 +52,7 @@
       "date": "2026-10-18",
       "badge": "🔴",
       "label": "已过期·待补",
-      "age": 3,
+      "age": 4,
       "note": "微信文章手动录入",
       "status": "active"
     },
@@ -63,7 +63,7 @@
       "date": "2026-10-19",
       "badge": "🟢",
       "label": "正常",
-      "age": 2,
+      "age": 3,
       "note": "付费API, 手动抓取",
       "status": "active"
     },
@@ -74,30 +74,8 @@
       "date": "2026-10-19",
       "badge": "🟢",
       "label": "正常",
-      "age": 2,
+      "age": 3,
       "note": "联网检索, 手动刷新",
-      "status": "active"
-    },
-    {
-      "key": "moa",
-      "name": "农业农村部接口爬虫",
-      "auto": true,
-      "date": "2026-10-21",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 0,
-      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
-      "status": "active"
-    },
-    {
-      "key": "public",
-      "name": "公开价源爬虫(北京新发地)",
-      "auto": true,
-      "date": "2026-10-21",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 0,
-      "note": "新发地每日行情API(T-1)",
       "status": "active"
     },
     {
@@ -107,7 +85,7 @@
       "date": "2026-10-20",
       "badge": "🟢",
       "label": "正常",
-      "age": 1,
+      "age": 2,
       "note": "需用户提供截图 + OCR",
       "status": "active"
     },
@@ -118,8 +96,30 @@
       "date": "2026-10-20",
       "badge": "🟢",
       "label": "正常",
-      "age": 1,
+      "age": 2,
       "note": "微信公众号截图人工录入(约2~3天一更)",
+      "status": "active"
+    },
+    {
+      "key": "moa",
+      "name": "农业农村部接口爬虫",
+      "auto": true,
+      "date": "2026-10-21",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 1,
+      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
+      "status": "active"
+    },
+    {
+      "key": "public",
+      "name": "公开价源爬虫(北京新发地)",
+      "auto": true,
+      "date": "2026-10-21",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 1,
+      "note": "新发地每日行情API(T-1)",
       "status": "active"
     },
     {
@@ -129,7 +129,7 @@
       "date": "2026-10-21",
       "badge": "🟢",
       "label": "自动正常",
-      "age": 0,
+      "age": 1,
       "note": "双源校验 + 每日09:00 cron",
       "status": "active"
     },
@@ -140,7 +140,7 @@
       "date": "2026-10-21",
       "badge": "🟢",
       "label": "正常",
-      "age": 0,
+      "age": 1,
       "note": "需截图核校录入(约2天一更)",
       "status": "active"
     },
@@ -151,7 +151,7 @@
       "date": "2026-10-21",
       "badge": "🟢",
       "label": "正常",
-      "age": 0,
+      "age": 1,
       "note": "微信文章手动录入",
       "status": "active"
     },
@@ -162,8 +162,19 @@
       "date": "2026-10-21",
       "badge": "🟢",
       "label": "正常",
-      "age": 0,
+      "age": 1,
       "note": "微信文章手动录入(JS渲染图片表格，WebFetch不可提取，仅挂原文链接)",
+      "status": "active"
+    },
+    {
+      "key": "hangqingzhushou",
+      "name": "水产行情助手·行情资讯",
+      "auto": false,
+      "date": "2026-10-21",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 1,
+      "note": "微信文章手动录入(行情资讯/技术向，价格口径需核验)",
       "status": "active"
     }
   ]

@@ -68,17 +68,6 @@
       "status": "active"
     },
     {
-      "key": "shengyang",
-      "name": "盛阳食品城批发价",
-      "auto": false,
-      "date": "2026-10-20",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 2,
-      "note": "微信公众号截图人工录入(约2~3天一更)",
-      "status": "active"
-    },
-    {
       "key": "moa",
       "name": "农业农村部接口爬虫",
       "auto": true,
@@ -123,28 +112,6 @@
       "status": "active"
     },
     {
-      "key": "yufeiyu",
-      "name": "渔飞鱼水产行情日报",
-      "auto": false,
-      "date": "2026-10-21",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "微信文章手动录入",
-      "status": "active"
-    },
-    {
-      "key": "nandabo",
-      "name": "南大堡全国农批市场交易数据日分析报告",
-      "auto": false,
-      "date": "2026-10-21",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "微信文章手动录入(JS渲染图片表格，WebFetch不可提取，仅挂原文链接)",
-      "status": "active"
-    },
-    {
       "key": "hangqingzhushou",
       "name": "水产行情助手·行情资讯",
       "auto": false,
@@ -175,6 +142,39 @@
       "label": "正常",
       "age": 0,
       "note": "微信文章手动录入",
+      "status": "active"
+    },
+    {
+      "key": "yufeiyu",
+      "name": "渔飞鱼水产行情日报",
+      "auto": false,
+      "date": "2026-10-22",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信文章手动录入",
+      "status": "active"
+    },
+    {
+      "key": "nandabo",
+      "name": "南大堡全国农批市场交易数据日分析报告",
+      "auto": false,
+      "date": "2026-10-22",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信文章手动录入(JS渲染图片表格，WebFetch不可提取，仅挂原文链接)",
+      "status": "active"
+    },
+    {
+      "key": "shengyang",
+      "name": "盛阳食品城批发价",
+      "auto": false,
+      "date": "2026-10-22",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信公众号截图人工录入(约2~3天一更)",
       "status": "active"
     }
   ]

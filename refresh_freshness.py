@@ -212,7 +212,7 @@ def main():
         # v1.14.10 新增三个微信日报手动源（日期在 data_sources_manifest.json manual_dates 维护）
         "minjian": manual.get("minjian"), "yufeiyu": manual.get("yufeiyu"),
         "fengxiang": manual.get("fengxiang"), "nandabo": manual.get("nandabo"),
-        "shengyang": manual.get("shengyang"), "hangqingzhushou": manual.get("hangqingzhushou"),
+        "shengyang": manual.get("shengyang"), "hangqingzhushou": manual.get("hangqingzhushou"), "danshui": manual.get("danshui"),
     }
 
     # B. 新鲜度 + 面板行（红在前）

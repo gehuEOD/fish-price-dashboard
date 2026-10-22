@@ -10,7 +10,8 @@
     "fengxiang": "2026-10-16",
     "nandabo": "2026-10-22",
     "shengyang": "2026-10-22",
-    "hangqingzhushou": "2026-10-21"
+    "hangqingzhushou": "2026-10-21",
+    "danshui": "2026-10-21"
   },
   "sources": [
     {
@@ -125,6 +126,13 @@
       "auto": false,
       "cadence": 3,
       "note": "微信文章手动录入(行情资讯/技术向，价格口径需核验)"
+    },
+    {
+      "key": "danshui",
+      "name": "淡水渔业公众号批发价",
+      "auto": false,
+      "cadence": 3,
+      "note": "微信文章 WebFetch 直接提取(全国多地市场分规格批发价,元/公斤)"
     }
   ]
 }

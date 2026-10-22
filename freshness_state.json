@@ -123,6 +123,17 @@
       "status": "active"
     },
     {
+      "key": "danshui",
+      "name": "淡水渔业公众号批发价",
+      "auto": false,
+      "date": "2026-10-21",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 1,
+      "note": "微信文章 WebFetch 直接提取(全国多地市场分规格批发价,元/公斤)",
+      "status": "active"
+    },
+    {
       "key": "weather",
       "name": "气象监控",
       "auto": true,

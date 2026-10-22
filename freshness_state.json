@@ -68,28 +68,6 @@
       "status": "active"
     },
     {
-      "key": "moa",
-      "name": "农业农村部接口爬虫",
-      "auto": true,
-      "date": "2026-10-21",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
-      "status": "active"
-    },
-    {
-      "key": "public",
-      "name": "公开价源爬虫(北京新发地)",
-      "auto": true,
-      "date": "2026-10-21",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "新发地每日行情API(T-1)",
-      "status": "active"
-    },
-    {
       "key": "qianyan",
       "name": "水产前沿（特水鱼/鳜鲈/加州鲈周报）",
       "auto": false,
@@ -120,6 +98,28 @@
       "label": "正常",
       "age": 1,
       "note": "微信文章手动录入(行情资讯/技术向，价格口径需核验)",
+      "status": "active"
+    },
+    {
+      "key": "moa",
+      "name": "农业农村部接口爬虫",
+      "auto": true,
+      "date": "2026-10-22",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
+      "status": "active"
+    },
+    {
+      "key": "public",
+      "name": "公开价源爬虫(北京新发地)",
+      "auto": true,
+      "date": "2026-10-22",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "新发地每日行情API(T-1)",
       "status": "active"
     },
     {

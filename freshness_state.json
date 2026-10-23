@@ -112,39 +112,6 @@
       "status": "active"
     },
     {
-      "key": "moa",
-      "name": "农业农村部接口爬虫",
-      "auto": true,
-      "date": "2026-10-22",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
-      "status": "active"
-    },
-    {
-      "key": "public",
-      "name": "公开价源爬虫(北京新发地)",
-      "auto": true,
-      "date": "2026-10-22",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "新发地每日行情API(T-1)",
-      "status": "active"
-    },
-    {
-      "key": "weather",
-      "name": "气象监控",
-      "auto": true,
-      "date": "2026-10-22",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "双源校验 + 每日09:00 cron",
-      "status": "active"
-    },
-    {
       "key": "minjian",
       "name": "全国渔业价格日报",
       "auto": false,
@@ -186,6 +153,39 @@
       "label": "正常",
       "age": 1,
       "note": "微信公众号截图人工录入(约2~3天一更)",
+      "status": "active"
+    },
+    {
+      "key": "moa",
+      "name": "农业农村部接口爬虫",
+      "auto": true,
+      "date": "2026-10-23",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
+      "status": "active"
+    },
+    {
+      "key": "public",
+      "name": "公开价源爬虫(北京新发地)",
+      "auto": true,
+      "date": "2026-10-23",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "新发地每日行情API(T-1)",
+      "status": "active"
+    },
+    {
+      "key": "weather",
+      "name": "气象监控",
+      "auto": true,
+      "date": "2026-10-23",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "双源校验 + 每日09:00 cron",
       "status": "active"
     }
   ]

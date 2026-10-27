@@ -213,6 +213,7 @@ def main():
         "minjian": manual.get("minjian"), "yufeiyu": manual.get("yufeiyu"),
         "fengxiang": manual.get("fengxiang"), "nandabo": manual.get("nandabo"),
         "shengyang": manual.get("shengyang"), "hangqingzhushou": manual.get("hangqingzhushou"), "danshui": manual.get("danshui"),
+        "tongwei": manual.get("tongwei"),
     }
 
     # B. 新鲜度 + 面板行（红在前）

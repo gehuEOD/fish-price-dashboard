@@ -11,7 +11,8 @@
     "nandabo": "2026-10-26",
     "shengyang": "2026-10-27",
     "hangqingzhushou": "2026-10-21",
-    "danshui": "2026-10-27"
+    "danshui": "2026-10-27",
+    "tongwei": "2026-10-27"
   },
   "sources": [
     {
@@ -133,6 +134,13 @@
       "auto": false,
       "cadence": 3,
       "note": "微信文章 WebFetch 直接提取(全国多地市场分规格批发价,元/公斤)"
+    },
+    {
+      "key": "tongwei",
+      "name": "通威农牧批发价",
+      "auto": false,
+      "cadence": 1,
+      "note": "微信文章正文为图片表格，需用户截图人工录入(分规格均价,元/斤,可与淡水渔业元/公斤互证)"
     }
   ]
 }

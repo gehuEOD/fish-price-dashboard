@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宜兴官林数字生态养殖 · 鳜鱼鲈鱼决策看板 v2 | v2.0.14</title>
+<meta name="dashboard-version" content="v2.0.14">
+<meta name="dashboard-version-date" content="2026-10-27">
+<meta name="data-updated-at" content="2026-10-27T20:51:50.587421+08:00">
+<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f0f4f8;color:#1f2937;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:24px}
+.header{background:linear-gradient(135deg,#2d6a4f 0%,#40916c 100%);color:white;padding:32px;border-radius:16px;margin-bottom:24px;box-shadow:0 4px 20px rgba(45,106,79,.15)}
+.header h1{font-size:28px;font-weight:700;margin-bottom:8px}
+.header .subtitle{opacity:.9;font-size:15px}
+.header .update-time{margin-top:12px;font-size:13px;opacity:.8}
+.header .ver-chip{display:inline-block;margin-left:10px;padding:2px 10px;border:1px solid rgba(255,255,255,.45);border-radius:999px;font-size:12px}
+.dual-note{margin-top:10px;font-size:12.5px;background:rgba(255,255,255,.14);padding:8px 12px;border-radius:8px;line-height:1.7}
+
+.role-tabs{display:flex;gap:8px;margin-bottom:20px;background:#fff;padding:8px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.role-tab{flex:1;padding:10px 16px;text-align:center;border-radius:8px;cursor:pointer;font-weight:500;color:#6b7280;transition:all .2s}
+.role-tab.active{background:#2d6a4f;color:white}
+.role-panel{display:none}
+.role-panel.active{display:block}
+
+.action-list{background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);border-left:4px solid #16a34a;padding:16px 20px;border-radius:12px;margin-bottom:20px;box-shadow:0 2px 8px rgba(22,163,74,.08)}
+.action-list h3{color:#166534;margin-bottom:6px;font-size:17px}
+.action-list .alist-sub{font-size:12.5px;color:#15803d;opacity:.85;margin-bottom:12px}
+.action-list ol{padding-left:20px}
+.action-list li{margin-bottom:9px;color:#14532d;font-size:14.5px;line-height:1.75}
+.action-list li strong{color:#166534}
+.action-list li .why{display:block;font-size:12.5px;color:#3f6212;opacity:.85;margin-top:2px}
+.badge{display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;font-weight:600;margin-right:6px;vertical-align:1px}
+.badge-danger{background:#dc2626;color:#fff}
+.badge-warn{background:#f59e0b;color:#fff}
+.badge-info{background:#3b82f6;color:#fff}
+.badge-ok{background:#16a34a;color:#fff}
+
+.price-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.price-card{background:white;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-top:4px solid #2d6a4f}
+.price-card .label{font-size:13px;color:#6b7280;margin-bottom:8px}
+.price-card .value{font-size:26px;font-weight:700;color:#1f2937;margin-bottom:4px}
+.price-card .sub{font-size:12px;color:#6b7280}
+.price-card .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;margin-top:6px}
+.tag-up{background:#fee2e2;color:#dc2626}
+.tag-down{background:#dcfce7;color:#16a34a}
+.tag-flat{background:#e5e7eb;color:#6b7280}
+
+.alert-section{margin-bottom:24px}
+.alert-section h2,.section-h2{font-size:20px;margin-bottom:16px;color:#1f2937}
+.alert-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.alert-card{background:white;padding:18px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.alert-card.warn{border-left:4px solid #f59e0b}
+.alert-card.danger{border-left:4px solid #ef4444}
+.alert-card.info{border-left:4px solid #3b82f6}
+.alert-card.ok{border-left:4px solid #16a34a}
+.alert-card h4{font-size:15px;margin-bottom:8px;color:#1f2937}
+.alert-card p{font-size:13.5px;color:#4b5563;line-height:1.7}
+.alert-card .tip{margin-top:8px;padding-top:8px;border-top:1px dashed #e5e7eb;font-size:12.5px;color:#6b7280}
+
+.weather-section,.map-section,.water-section,.chart-section,.calc-section,.forecast-section,.module-section,.timeline-section,.recv-section{margin-bottom:24px}
+.weather-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.weather-card{background:white;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);text-align:center}
+.weather-card .icon{font-size:32px;margin-bottom:8px}
+.weather-card .label{font-size:13px;color:#6b7280;margin-bottom:6px}
+.weather-card .value{font-size:24px;font-weight:700;color:#1f2937}
+.weather-card .sub{font-size:12px;color:#9ca3af;margin-top:4px}
+
+.forecast-table{width:100%;background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);border-collapse:collapse}
+.forecast-table th{background:#2d6a4f;color:white;padding:12px 10px;font-size:13.5px;font-weight:500;text-align:left}
+.forecast-table td{padding:11px 10px;border-bottom:1px solid #f3f4f6;font-size:13.5px}
+.forecast-table tr:hover{background:#f9fafb}
+.forecast-table .today{background:#f0fdf4;font-weight:500}
+.forecast-table tr.warn-row{background:#fffbeb}
+.forecast-table tr.danger-row{background:#fef2f2}
+
+.chart-box{background:white;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);height:400px;width:100%}
+.map-box{background:white;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);height:400px;width:100%}
+#map{height:360px;width:100%;border-radius:8px}
+
+.water-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.water-card{background:white;padding:18px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-left:4px solid #06b6d4}
+.water-card h4{font-size:15px;margin-bottom:8px;color:#0369a1}
+.water-card p{font-size:13.5px;color:#4b5563}
+
+.recv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.recv-card{background:white;padding:18px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-left:4px solid #8b5cf6}
+.recv-card h4{font-size:15px;margin-bottom:8px;color:#5b21b6}
+.recv-card p{font-size:13.5px;color:#4b5563;line-height:1.7}
+.recv-card .price-line{margin-top:8px;font-size:15px;font-weight:700;color:#7c3aed}
+
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.calc-card{background:white;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.calc-card h3{font-size:16px;margin-bottom:14px;color:#2d6a4f}
+.calc-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding-bottom:10px;border-bottom:1px dashed #e5e7eb}
+.calc-row label{font-size:13.5px;color:#4b5563}
+.calc-row input{width:120px;padding:6px 8px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;text-align:right}
+.calc-result{margin-top:14px;padding-top:14px;border-top:2px solid #2d6a4f}
+.calc-result .item{display:flex;justify-content:space-between;margin-bottom:8px}
+.calc-result .item strong{font-size:18px;color:#dc2626}
+.calc-result .item.pos strong{color:#16a34a}
+
+.module-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.module-card{background:linear-gradient(135deg,#2d6a4f 0%,#40916c 100%);color:white;padding:24px;border-radius:12px;text-align:center}
+.module-card .icon{font-size:36px;margin-bottom:10px}
+.module-card h4{font-size:16px;margin-bottom:6px}
+.module-card p{font-size:12.5px;opacity:.9}
+
+.timeline{background:white;padding:24px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:16px}
+.timeline h3{font-size:16px;margin-bottom:16px;color:#2d6a4f}
+.timeline-nodes{display:flex;justify-content:space-between;position:relative;padding:20px 0}
+.timeline-nodes::before{content:"";position:absolute;top:50%;left:0;right:0;height:3px;background:#e5e7eb;transform:translateY(-50%)}
+.timeline-node{position:relative;text-align:center;flex:1}
+.timeline-node .dot{width:16px;height:16px;border-radius:50%;background:#2d6a4f;margin:0 auto 10px;position:relative;z-index:1;border:3px solid white;box-shadow:0 0 0 2px #2d6a4f}
+.timeline-node.hot .dot{background:#dc2626;box-shadow:0 0 0 2px #dc2626}
+.timeline-node.now .dot{background:#f59e0b;box-shadow:0 0 0 2px #f59e0b}
+.timeline-node .date{font-size:12px;color:#6b7280;margin-bottom:4px}
+.timeline-node .name{font-size:13.5px;font-weight:500;color:#1f2937}
+
+.fold-block{background:#f9fafb;padding:16px;border-radius:12px;margin-bottom:16px}
+.fold-block summary{cursor:pointer;font-size:15px;font-weight:500;color:#4b5563;outline:none;list-style:none}
+.fold-block summary::before{content:"▶ ";display:inline-block;transition:transform .2s;margin-right:6px;color:#9ca3af}
+.fold-block[open] summary::before{transform:rotate(90deg)}
+.fold-content{margin-top:12px;padding-top:12px;border-top:1px solid #e5e7eb}
+.data-note-fold .fold-content{background:#fffbeb;padding:16px;border-radius:8px}
+.data-note-fold ol{padding-left:20px}
+.data-note-fold li{font-size:13px;color:#78350f;margin-bottom:6px;line-height:1.7}
+.changelog-fold .changelog-item{margin-bottom:10px;font-size:13px;color:#6b7280}
+.changelog-fold .ver{font-weight:600;color:#1f2937}
+.arch-fold .fold-content{padding:20px 16px}
+.arch-title{color:#166534;font-weight:500;margin-bottom:20px;font-size:15px}
+.arch-flow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:20px}
+.arch-step{flex:1;text-align:center;padding:18px 8px;background:#f0fdf4;border-radius:10px}
+.arch-num{width:36px;height:36px;line-height:36px;border-radius:50%;background:#2d6a4f;color:white;font-size:15px;font-weight:600;margin:0 auto 10px}
+.arch-name{font-size:14px;color:#1f2937;font-weight:500}
+.arch-arrow{color:#9ca3af;font-size:20px;flex-shrink:0}
+.arch-level{text-align:center;font-size:13px;color:#4b5563}
+.level-dot{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:middle;margin:0 4px 0 8px}
+.level-dot.green{background:#16a34a}
+.level-dot.yellow{background:#f59e0b}
+.level-dot.red{background:#dc2626}
+
+.srclist{font-size:12.5px;color:#4b5563;line-height:1.9}
+.srclist b{color:#166534}
+.footer{text-align:center;padding:20px;color:#9ca3af;font-size:12.5px}
+
+@media(max-width:768px){
+.container{padding:16px}
+.price-cards,.weather-grid,.alert-grid,.module-grid,.water-grid,.recv-grid{grid-template-columns:repeat(2,1fr)}
+.forecast-table{font-size:12px;display:block;overflow-x:auto}
+.calc-grid{grid-template-columns:1fr}
+.timeline-nodes{flex-wrap:wrap;gap:16px}
+.timeline-node{flex:0 0 48%}
+.arch-flow{flex-wrap:wrap;gap:12px}
+.arch-step{flex:0 0 30%}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>🐟 宜兴官林数字生态养殖 · 鳜鱼鲈鱼决策看板 <span class="ver-chip">v2.0.14</span></h1>
+<div class="subtitle">官林镇核心养殖区（丰义村 500 亩 + 白茫村 700 亩）| 老板决策 · 技术员管理 · 采购员收鱼 三视图</div>
+<div class="update-time">数据更新：2026-10-27 20:51 | 每日 09:15 自动更新（气象 + 价格 + 行动清单重算）</div>
+<div class="dual-note">
+📌 <b>本页为 v2 决策版</b>（三角色分视图，每视图独立生成「今日行动清单」）。<b><a href="/" style="color:#fff;text-decoration:underline">v1 数据总览版</a></b>仍在根路径保留，两版互不覆盖：v1 侧重全量行情数据与溯源，v2 侧重当日可执行动作。
+</div>
+</div>
+
+<div class="role-tabs">
+<div class="role-tab active" onclick="switchRole('boss',this)">👔 老板视图</div>
+<div class="role-tab" onclick="switchRole('tech',this)">🔬 技术员视图</div>
+<div class="role-tab" onclick="switchRole('buyer',this)">🛒 采购员视图</div>
+</div>
+
+<!-- ============ 老板视图 ============ -->
+<div id="role-boss" class="role-panel active">
+
+<!-- BOS_ACTIONS_START -->
+<div class="action-list">
+<h3>📋 老板 · 今日行动清单</h3>
+<div class="alist-sub">2026-10-27 自动生成 · 依据：15日预报 + 农业农村部批发价环比 + 塘口价快照</div>
+<ol>
+<li><span class="badge badge-warn">关注</span>出塘窗口偏短：仅今天起 <b>2 天</b> 适宜作业，建议集中在 10-27、10-28 完成当日拉网计划，勿摊排到下周。<span class="why">↳ 依据：15 日预报，第 3 天起出现降水或低温</span></li>
+<li><span class="badge badge-ok">正常</span>鳜鱼批发价环比基本持平（+0.0%，28.5 元/斤），行情进入盘整，按批次节奏正常出鱼即可。<span class="why">↳ 依据：农业农村部统货批发价日度环比</span></li>
+<li><span class="badge badge-ok">正常</span>鲈鱼批发价环比 <b>涨 4.1%</b>（15.62 元/斤）。大鱼紧缺是当前涨价主因，<b>建议优先出 1 斤以上规格</b>，小鱼择机并塘继续养。<span class="why">↳ 依据：农业农村部统货批发价 + 水产前沿周报「大鱼爽市」</span></li>
+<li><span class="badge badge-danger">必办</span>病害高发期（2026-10 下旬 ~ 11 月）：传染性脾肾坏死病毒（ISKNV）、蛙虹彩病毒 <b>无特效药、死亡率高</b>。当前策略应是<b>保成活率优先于赌价格</b>，减少一次不必要的大量换水与转塘。<span class="why">↳ 依据：公众号行情源病害提示 + 季节性流行规律</span></li>
+<li><span class="badge badge-info">提示</span>本周排产口径：鳜鱼出塘参考 <b>26 元/斤</b>、鲈鱼 <b>10~11 元/斤</b>；盈亏试算在下方计算器按本场实际成本重算后，再决定出鱼批次顺序。<span class="why">↳ 依据：塘口价快照 + 农业农村部批发价</span></li>
+</ol>
+</div>
+<!-- BOS_ACTIONS_END -->
+
+<div class="price-cards">
+<div class="price-card">
+<div class="label">鳜鱼 · 出塘价（江苏标鳜口径）</div>
+<div class="value">26<span style="font-size:16px">元/斤</span></div>
+<div class="sub">江苏标鳜 · 2026-10-27 · 渔有福水产</div>
+<span class="tag tag-flat">全线持稳 · 无涨跌（较 10-26 持平），昨日普</span>
+</div>
+<div class="price-card">
+<div class="label">鳜鱼 · 批发价（全国中位数）</div>
+<div class="value">28.5<span style="font-size:16px">元/斤</span></div>
+<div class="sub">江苏及周边 28.5 元/斤 · 数据日 2026-10-27</div>
+<span class="tag tag-flat">环比 +0.0%</span>
+</div>
+<div class="price-card">
+<div class="label">加州鲈 · 出塘价（环太湖口径）</div>
+<div class="value">10~11<span style="font-size:16px">元/斤</span></div>
+<div class="sub">环太湖 9两/1.1斤 · 2026-10-26</div>
+<span class="tag tag-up">全线涨回 10 元大关，广东领涨 1 元（大鱼爽市）</span>
+</div>
+<div class="price-card">
+<div class="label">加州鲈 · 批发价（全国中位数）</div>
+<div class="value">15.6<span style="font-size:16px">元/斤</span></div>
+<div class="sub">江苏及周边 11.4 元/斤 · 数据日 2026-10-27</div>
+<span class="tag tag-up">环比 +4.1%</span>
+</div>
+</div>
+
+<div class="alert-section">
+<h2 class="section-h2">⚠️ 今日关注（老板视角）</h2>
+<div class="alert-grid">
+<div class="alert-card ok"><h4>📉 鳜鱼批发价</h4><p>今日全国中位数 <strong>28.5 元/斤</strong>（较上一交易日 28.5 元/斤，<b>+0.0%</b>）</p><div class="tip">跌势中建议达标鱼顺势出塘，勿压塘等价</div></div><div class="alert-card ok"><h4>📈 鲈鱼批发价</h4><p>今日全国中位数 <strong>15.62 元/斤</strong>（+4.1%），大规格紧缺是当前涨价主因</p><div class="tip">优先出 1 斤以上规格</div></div><div class="alert-card warn"><h4>🪟 出塘窗口</h4><p>今日起连续适宜作业 <strong>2 天</strong>，窗口偏紧，建议集中作业</p><div class="tip">未来 7 日最低温 13℃，温度适宜</div></div><div class="alert-card danger"><h4>🦠 病害风险</h4><p>2026-10 下旬 ~ 11 月：<strong>传染性脾肾坏死病毒（ISKNV）、蛙虹彩病毒</strong> 高发</p><div class="tip">保成活率优先于赌价格</div></div>
+</div>
+</div>
+
+<div class="chart-section">
+<h2 class="section-h2">📈 塘口—批发价格走势（农业农村部日度数据，元/斤）</h2>
+<div class="chart-box" id="chart_gui"></div>
+</div>
+<div class="chart-section">
+<div class="chart-box" id="chart_lu"></div>
+</div>
+
+<div class="calc-section">
+<h2 class="section-h2">💰 出塘盈亏测算（可交互 · 按当前价实时试算）</h2>
+<div class="calc-grid">
+<div class="calc-card">
+<h3>🐟 鳜鱼盈亏测算</h3>
+<div class="calc-row"><label>苗种成本（元/尾）</label><input type="number" value="1.2" id="gui_seed"></div>
+<div class="calc-row"><label>饲料成本（元/斤）</label><input type="number" value="18" id="gui_feed"></div>
+<div class="calc-row"><label>水电药费（元/m³·年）</label><input type="number" value="80" id="gui_cost"></div>
+<div class="calc-row"><label>每立方米水体产量（斤）</label><input type="number" value="60" id="gui_yield"></div>
+<div class="calc-row"><label>成活率（%）</label><input type="number" value="75" id="gui_rate"></div>
+<div class="calc-result">
+<div class="item"><span>保本价（当前参数）</span><strong id="gui_break">-- 元/斤</strong></div>
+<div class="item"><span>出塘价 26.0 元/斤时</span><strong id="gui_profit">-- 元/斤</strong></div>
+<div class="item"><span>每立方米水体利润</span><strong id="gui_mu">-- 元/m³</strong></div>
+</div>
+</div>
+<div class="calc-card">
+<h3>🐟 加州鲈盈亏测算</h3>
+<div class="calc-row"><label>苗种成本（元/尾）</label><input type="number" value="0.4" id="lu_seed"></div>
+<div class="calc-row"><label>饲料成本（元/斤）</label><input type="number" value="7.5" id="lu_feed"></div>
+<div class="calc-row"><label>水电药费（元/m³·年）</label><input type="number" value="60" id="lu_cost"></div>
+<div class="calc-row"><label>每立方米水体产量（斤）</label><input type="number" value="80" id="lu_yield"></div>
+<div class="calc-row"><label>成活率（%）</label><input type="number" value="85" id="lu_rate"></div>
+<div class="calc-result">
+<div class="item"><span>保本价（当前参数）</span><strong id="lu_break">-- 元/斤</strong></div>
+<div class="item"><span>出塘价 10.5 元/斤时</span><strong id="lu_profit">-- 元/斤</strong></div>
+<div class="item"><span>每立方米水体利润</span><strong id="lu_mu">-- 元/m³</strong></div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- ============ 技术员视图 ============ -->
+<div id="role-tech" class="role-panel">
+
+<!-- TECH_ACTIONS_START -->
+<div class="action-list">
+<h3>📋 技术员 · 今日行动清单</h3>
+<div class="alist-sub">2026-10-27 自动生成 · 依据：实时气象 + 水温投饵模型 + 病害周期</div>
+<ol>
+<li><span class="badge badge-info">提示</span>今日投喂：气温 14~21℃（阴），<b>日投饵率降至 2% 左右，中午前后集中投喂</b>。<span class="why">↳ 依据：日均温 17.5℃ 对应投饵率区间</span></li>
+<li><span class="badge badge-info">提示</span>未来降水：10-29 有 1.0mm 降雨，<b>提前一天备好底改与增氧片</b>，雨前适当减料。<span class="why">↳ 依据：15 日预报</span></li>
+<li><span class="badge badge-info">提示</span>今日溶氧管理：阴雨/多云，光合作用弱，建议中午开机 2 小时破分层，并备好化学增氧剂。<span class="why">↳ 依据：今日天气 阴 · 湿度 71%</span></li>
+<li><span class="badge badge-info">提示</span>本周病害巡塘清单：减少大量换水与温差刺激，稳水抗应激、合理控料，减轻肝胆负担、勤巡塘：看吃料量、浮头、离群鱼。发现离群独游、吃料下滑个体立即隔离镜检。<span class="why">↳ 依据：2026-10 下旬 ~ 11 月病害防控要点</span></li>
+<li><span class="badge badge-ok">正常</span>数据边界提醒：本页水质提示为<b>气象推导值、非实测探头数据</b>。pH / 氨氮 / 亚硝酸盐务必以本场试剂盒或在线探头读数为准。<span class="why">↳ 依据：数据源口径说明</span></li>
+</ol>
+</div>
+<!-- TECH_ACTIONS_END -->
+
+<div class="weather-section">
+<h2 class="section-h2">🌤️ 实时气象监测（官林镇 31.557387°N, 119.723966°E · 高德地理编码 API（level=道路·生产路，2026-09-01 校准））</h2>
+<div class="weather-grid">
+<div class="weather-card"><div class="icon">🌡️</div><div class="label">当前气温</div><div class="value">16.1℃</div><div class="sub">体感 14.8℃ · 今日 14.3~20.6℃</div></div><div class="weather-card"><div class="icon">💨</div><div class="label">风速/风向</div><div class="value">东北2级</div><div class="sub">约 10.6 km/h</div></div><div class="weather-card"><div class="icon">👁️</div><div class="label">能见度</div><div class="value">17.1 km</div><div class="sub">运输视线良好</div></div><div class="weather-card"><div class="icon">💧</div><div class="label">相对湿度</div><div class="value">71%</div><div class="sub">湿度正常</div></div><div class="weather-card"><div class="icon">🌧️</div><div class="label">降水量</div><div class="value">0.0 mm</div><div class="sub">今日累计预报 0.0mm / 概率 10%</div></div><div class="weather-card"><div class="icon">🔵</div><div class="label">气压</div><div class="value">1027.9 hPa</div><div class="sub">气压平稳</div></div><div class="weather-card"><div class="icon">☁️</div><div class="label">今日天气</div><div class="value">阴</div><div class="sub">日落前后温差 6℃</div></div><div class="weather-card"><div class="icon">🌾</div><div class="label">24h 低温预警</div><div class="value">13℃</div><div class="sub">未来 3 日最低温，低于 10℃ 需保温</div></div>
+</div>
+</div>
+
+<div class="map-section">
+<h2 class="section-h2">📍 养殖场位置</h2>
+<div class="map-box">
+<div id="map"></div>
+</div>
+</div>
+
+<div class="water-section">
+<h2 class="section-h2">💧 水质风险提示（由气象推导，非实测传感器）</h2>
+<div class="water-grid">
+<div class="water-card"><h4>🌧️ 10-29 降水 1.0mm</h4><p><strong>风险：</strong>pH 骤降、亚硝酸盐升高、底泥有害物质释放<br><strong>应对：</strong>雨前减料 50%；雨后泼 EM 菌 + 底改；中午开增氧机搅动水层</p></div><div class="water-card"><h4>❄️ 10-28 最低 13℃</h4><p><strong>风险：</strong>水温骤降、强应激、诱发水霉病与越冬综合征<br><strong>应对：</strong>提前加深水位保温；寒潮期停喂；避免拉网操作</p></div><div class="water-card"><h4>☀️ 未来 7 日 5 天无有效降水</h4><p><strong>风险：</strong>氨氮易累积、水体分层、溶氧昼夜波动大<br><strong>应对：</strong>中午曝气 2 小时破分层；控制投喂防残饵；择晴好日出塘</p></div>
+</div>
+</div>
+
+<div class="alert-section">
+<h2 class="section-h2">🦠 病害防控（2026-10 下旬 ~ 11 月）</h2>
+<div class="alert-grid">
+<div class="alert-card danger"><h4>🦠 当前高危（重点盯防）</h4><p>• 传染性脾肾坏死病毒（ISKNV）（鳜鱼）<br>• 蛙虹彩病毒（鳜鱼）<br></p><div class="tip">防控：减少大量换水与温差刺激，稳水抗应激</div></div><div class="alert-card warn"><h4>🐟 常规流行病害</h4><p>• 诺卡氏菌病<br>• 柱状黄杆菌病（烂鳃）<br></p><div class="tip">按月流行规律：10-11 月为发病高峰</div></div><div class="alert-card info"><h4>❄️ 即将进入（提前部署）</h4><p>• 水霉病 / 越冬综合征<br></p><div class="tip">低温 + 拉网操作是主要诱因</div></div><div class="alert-card info"><h4>📋 本周执行清单</h4><p>1. 减少大量换水与温差刺激，稳水抗应激<br>2. 合理控料，减轻肝胆负担<br>3. 勤巡塘：看吃料量、浮头、离群鱼<br>4. 工具网具消毒，防止交叉感染<br></p><div class="tip">工具网具务必消毒，防交叉感染</div></div>
+</div>
+</div>
+
+<div class="forecast-section">
+<h2 class="section-h2">📅 未来 15 日天气预报与塘头操作提示</h2>
+<table class="forecast-table">
+<thead>
+<tr><th>日期</th><th>天气</th><th>气温(℃)</th><th>风</th><th>湿度(%)</th><th>降水</th><th>降水量(mm)</th><th>塘头操作提示</th></tr>
+</thead>
+<tbody>
+<tr class="today"><td>10-27 周二（今天）</td><td>☁️ 阴</td><td>14~21</td><td>19 km/h</td><td>69</td><td>10%</td><td>0</td><td>晴好：适宜拉网出塘 / 正常投喂</td></tr>
+<tr class=""><td>10-28 周三</td><td>☀️ 晴</td><td>13~20</td><td>14 km/h</td><td>66</td><td>0%</td><td>0</td><td>晴好：适宜拉网出塘 / 正常投喂</td></tr>
+<tr class="warn-row"><td>10-29 周四</td><td>🌦️ 毛毛雨(弱)</td><td>15~21</td><td>14 km/h</td><td>75</td><td>65%</td><td>1</td><td>有降雨：减料、雨后必做底改与解毒</td></tr>
+<tr class=""><td>10-30 周五</td><td>☁️ 阴</td><td>14~23</td><td>10 km/h</td><td>75</td><td>17%</td><td>0</td><td>晴好：适宜拉网出塘 / 正常投喂</td></tr>
+<tr class=""><td>10-31 周六</td><td>🌫️ 雾</td><td>14~22</td><td>27 km/h</td><td>75</td><td>0%</td><td>0</td><td>晴好：适宜拉网出塘 / 正常投喂</td></tr>
+<tr class="warn-row"><td>11-01 周日</td><td>🌦️ 毛毛雨</td><td>16~26</td><td>25 km/h</td><td>75</td><td>84%</td><td>3.3</td><td>有降雨：减料、雨后必做底改与解毒</td></tr>
+<tr class=""><td>11-02 周一</td><td>🌦️ 毛毛雨(弱)</td><td>15~20</td><td>13 km/h</td><td>70</td><td>76%</td><td>0.6</td><td>晴好：适宜拉网出塘 / 正常投喂</td></tr>
+<tr class="warn-row"><td>11-03 周二</td><td>🌦️ 毛毛雨(弱)</td><td>15~19</td><td>11 km/h</td><td>73</td><td>36%</td><td>1.5</td><td>有降雨：减料、雨后必做底改与解毒</td></tr>
+<tr class="warn-row"><td>11-04 周三</td><td>🌦️ 毛毛雨</td><td>15~17</td><td>17 km/h</td><td>82</td><td>41%</td><td>4.5</td><td>有降雨：减料、雨后必做底改与解毒</td></tr>
+<tr class=""><td>11-05 周四</td><td>🌦️ 毛毛雨(弱)</td><td>16~20</td><td>18 km/h</td><td>77</td><td>27%</td><td>0.9</td><td>晴好：适宜拉网出塘 / 正常投喂</td></tr>
+<tr class="warn-row"><td>11-06 周五</td><td>🌦️ 毛毛雨(弱)</td><td>17~22</td><td>16 km/h</td><td>85</td><td>18%</td><td>2.7</td><td>有降雨：减料、雨后必做底改与解毒</td></tr>
+<tr class="warn-row"><td>11-07 周六</td><td>🌦️ 阵雨(弱)</td><td>16~23</td><td>9 km/h</td><td>89</td><td>10%</td><td>6.3</td><td>有降雨：减料、雨后必做底改与解毒</td></tr>
+<tr class="warn-row"><td>11-08 周日</td><td>🌦️ 阵雨(弱)</td><td>12~20</td><td>27 km/h</td><td>93</td><td>21%</td><td>17.1</td><td><strong>中到大雨 17.1mm：全天减料 50%、增氧不停</strong></td></tr>
+<tr class="warn-row"><td>11-09 周一</td><td>🌦️ 毛毛雨(弱)</td><td>6~13</td><td>23 km/h</td><td>58</td><td>25%</td><td>1.2</td><td>有降雨：减料、雨后必做底改与解毒</td></tr>
+<tr class="danger-row"><td>11-10 周二</td><td>☁️ 阴</td><td>5~14</td><td>11 km/h</td><td>60</td><td>29%</td><td>0</td><td><strong>最低 5℃：防寒应激、停拉网</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+<!-- ============ 采购员视图 ============ -->
+<div id="role-buyer" class="role-panel">
+
+<!-- BUYER_ACTIONS_START -->
+<div class="action-list">
+<h3>📋 采购员 · 今日行动清单</h3>
+<div class="alist-sub">2026-10-27 自动生成 · 依据：周边批发均价倒推 + 跨区价差 + 收鱼体检红线</div>
+<ol>
+<li><span class="badge badge-info">提示</span>鳜鱼收购上限：周边市场批发均价 <b>28.5</b> 元/斤，扣除流通成本 3 元/斤后，<b>建议收购价不高于 25.5 元/斤</b>，超过则该批次无利可图。<span class="why">↳ 依据：农业农村部周边市场批发均价倒推（运输 + 损耗 + 档口毛利）</span></li>
+<li><span class="badge badge-info">提示</span>鲈鱼收购上限：周边批发均价 <b>11.4</b> 元/斤，扣除流通成本 1 元/斤后，<b>建议控制在 10.4 元/斤以内</b>；当前 1 斤以上大规格偏紧，可在上限内适度让价抢货。<span class="why">↳ 依据：农业农村部周边市场批发均价 + 大鱼紧缺行情</span></li>
+<li><span class="badge badge-info">提示</span>收鱼规格建议：优先收 <b>标鳜以上（0.8~1.5 斤）与 9 两以上加州鲈</b>。小鳜（0.8 斤以下）与 3 成中鳜当前走货慢、常在产区打死包，压库风险高。<span class="why">↳ 依据：水产前沿周报第38期「偏小规格难走」+ 塘口分规格报价</span></li>
+<li><span class="badge badge-ok">正常</span>今日天气 阴、湿度 71%，运输条件良好，可按常规时段装车；仍建议避开正午高温，选择早晚运输降低死亡率。<span class="why">↳ 依据：实时气象</span></li>
+<li><span class="badge badge-danger">必办</span>收鱼体检红线：当前 ISKNV / 蛙虹彩病毒高发。<b>拒收体色发黑、鳍基红肿、离群独游个体</b>，可疑批次要镜检并单独暂养观察 24 小时再混塘。<span class="why">↳ 依据：病害快照 + 防控要点</span></li>
+</ol>
+</div>
+<!-- BUYER_ACTIONS_END -->
+
+<div class="recv-section">
+<h2 class="section-h2">🎯 今日收鱼建议（按产区 × 规格）</h2>
+<div class="recv-grid">
+<div class="recv-card"><h4>🐟 鳜鱼（江苏标鳜）</h4><p>塘口收货价参考 26 元/斤；江苏及周边批发 28.5 元/斤，扣除流通成本后收购上限约 25.5 元/斤。当前环比 平稳/上行，可正常收货。</p><div class="price-line">26 元/斤</div></div><div class="recv-card"><h4>🐟 加州鲈（环太湖）</h4><p>9 两以上规格优先，参考 10~11 元/斤；批发端 11.4 元/斤，收购上限约 10.4 元/斤。大鱼紧缺，可在上限内适度让价抢货。</p><div class="price-line">10~11 元/斤</div></div><div class="recv-card"><h4>🚫 谨慎收货规格</h4><p>小鳜（0.8 斤以下）与产区偏小规格当前走货慢、易打死包贱卖；新鱼集中上市期也不宜大量压货。收鱼前务必体检：体色发黑、鳍基红肿、离群独游个体拒收。</p><div class="price-line">低优先级</div></div>
+</div>
+</div>
+
+<div class="forecast-section">
+<h2 class="section-h2">🏷️ 出塘价 vs 批发价（分规格）</h2>
+<table class="forecast-table">
+<thead>
+<tr><th>品种</th><th>规格</th><th>出塘价(元/斤)</th><th>批发价(元/斤)</th><th>价差/溢价</th><th>报价日期</th><th>来源</th></tr>
+</thead>
+<tbody>
+<tr><td>🐟 鳜鱼</td><td>小鳜（0.8斤以下）</td><td>18.5</td><td>—</td><td></td><td>2026-10-27</td><td>渔有福水产</td></tr>
+<tr><td>🐟 鳜鱼</td><td>标鳜（江苏·本地参考）</td><td>26</td><td>28.5</td><td>+2.5（10%）</td><td>2026-10-27</td><td>渔有福水产</td></tr>
+<tr><td>🐟 鳜鱼</td><td>广东佛山 3成中鳜（周报）</td><td>22~23</td><td>—</td><td>较上周 23~24</td><td>2026-10-26</td><td>水产前沿《特水鱼周报》第38期</td></tr>
+<tr><td>🐟 加州鲈</td><td>环太湖·江苏 · 平9两</td><td>10</td><td>11.4</td><td>+1.4（14%）</td><td>2026-10-26</td><td>腾氏水产商务网《上上报价》㊷ + 水产前沿周报第38期</td></tr>
+<tr><td>🐟 加州鲈</td><td>环太湖·江苏 · 平1.1斤</td><td>11</td><td>11.4</td><td>+0.4（3%）</td><td>2026-10-26</td><td>腾氏水产商务网《上上报价》㊷ + 水产前沿周报第38期</td></tr>
+<tr><td>🏪 本地渠道</td><td>鳜鱼（桂鱼）</td><td>—</td><td>25~28</td><td>上限较上一期回落</td><td>2026.10.27</td><td>无锡盛阳食品城（本地渠道一手批发价）</td></tr>
+<tr><td>🏪 本地渠道</td><td>鲈鱼</td><td>—</td><td>10~14</td><td>本地批发价</td><td>2026.10.27</td><td>无锡盛阳食品城（本地渠道一手批发价）</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="chart-section">
+<h2 class="section-h2">📊 主要市场批发价对比（农业农村部当日数据）</h2>
+<div class="chart-box" id="chart_market"></div>
+</div>
+
+<div class="forecast-section">
+<h2 class="section-h2">📰 最新行情线索（自动源 + 人工核校）</h2>
+<table class="forecast-table">
+<thead>
+<tr><th>线索</th><th>日期</th><th>核心价格/结论</th><th>来源</th></tr>
+</thead>
+<tbody>
+<tr><td>水产前沿《特水鱼周报》第38期</td><td>2026-10-26</td><td>鳜鱼最高再跌 2 元：新鱼集中上市 + 外省同步放量 + 终端消费疲软；偏小规格难走会打死包卖</td><td><a class="plink" href="https://mp.weixin.qq.com/s/Rxfg2vZqQmAfJTxeDpYh8A" target="_blank" rel="noopener">水产前沿周报38期</a></td></tr>
+<tr><td>渔有福水产</td><td>2026-10-27</td><td>全线持稳 · 无涨跌（较 10-26 持平），昨日普涨后进入观望消化期</td><td><a class="plink" href="https://mp.weixin.qq.com/s/LTJMMHUViu0jAYKy5Kbj_Q" target="_blank" rel="noopener">渔有福10-27</a></td></tr>
+<tr><td>腾氏水产商务网《上上报价》㊷ + 水产前沿周报第38期</td><td>2026-10-26</td><td>全线涨回 10 元大关，广东领涨 1 元（大鱼爽市）</td><td><a class="plink" href="https://mp.weixin.qq.com/s/ROaFUtymDOwP7Uga4XOOSA" target="_blank" rel="noopener">腾氏㊷</a></td></tr>
+<tr><td>病害动态</td><td>2026-10 下旬 ~ 11 月</td><td>传染性脾肾坏死病毒（ISKNV）、蛙虹彩病毒 高发</td><td>公众号行情源核校</td></tr>
+<tr><td>抖音 · 真探唐仁杰</td><td>2026-10-27</td><td>吃之前一肚子火！吃完就默默把气憋回去了</td><td>点赞 118417</td></tr>
+<tr><td>抖音 · 一吃一大碗</td><td>2026-10-27</td><td>鲈鱼生蚝豆腐煲，家常吃法惊艳味蕾！ 鱼肉弹嫩、蚝肉肥美！汤汁浓郁鲜美，鲜香不腻，</td><td>点赞 93018</td></tr>
+<tr><td>抖音 · 耶叔，一个人吃饭</td><td>2026-10-27</td><td>在清远吃河鲜 #清远美食 #河鲜 #宝藏店铺 清远河鲜很丰富，价格在江浙沪看来很</td><td>点赞 22151</td></tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+<!-- ============ 公共模块 ============ -->
+<div class="module-section">
+<h2 class="section-h2">🧩 系统功能模块</h2>
+<div class="module-grid">
+<div class="module-card"><div class="icon">📊</div><h4>行情数据看板</h4><p>多品种多市场价格</p></div>
+<div class="module-card"><div class="icon">🐟</div><h4>品种管理</h4><p>鳜鱼 / 加州鲈</p></div>
+<div class="module-card"><div class="icon">🏪</div><h4>市场管理</h4><p>全国重点批发市场</p></div>
+<div class="module-card"><div class="icon">📋</div><h4>数据管理</h4><p>每日明细价格</p></div>
+<div class="module-card"><div class="icon">🕷️</div><h4>数据爬取</h4><p>多平台自动采集</p></div>
+<div class="module-card"><div class="icon">🌤️</div><h4>气象监测</h4><p>8 指标 + 15 日预报</p></div>
+<div class="module-card"><div class="icon">🦠</div><h4>病害预警</h4><p>季节性病害防控</p></div>
+<div class="module-card"><div class="icon">🎯</div><h4>行动清单引擎</h4><p>三角色每日重算</p></div>
+</div>
+</div>
+
+<div class="timeline-section">
+<h2 class="section-h2">🗓️ 2026-2027 年养殖排产时间轴</h2>
+<div class="timeline">
+<h3>🐟 鳜鱼排产时间轴（养殖周期约 5-6 个月）</h3>
+<div class="timeline-nodes">
+<div class="timeline-node"><div class="dot"></div><div class="date">前一年7-8月</div><div class="name">秋苗投放<br>（越冬苗）</div></div>
+<div class="timeline-node"><div class="dot"></div><div class="date">12-2月</div><div class="name">越冬管理<br>大棚保温</div></div>
+<div class="timeline-node hot"><div class="dot"></div><div class="date">1-2月</div><div class="name">🔥春节行情<br>高价窗口①</div></div>
+<div class="timeline-node"><div class="dot"></div><div class="date">3-4月</div><div class="name">清明出塘<br>新一轮投苗</div></div>
+<div class="timeline-node"><div class="dot"></div><div class="date">6-8月</div><div class="name">生长旺季<br>ISKNV防控</div></div>
+<div class="timeline-node hot"><div class="dot"></div><div class="date">9-10月</div><div class="name">🔥中秋国庆<br>高价窗口②</div></div>
+</div>
+</div>
+<div class="timeline">
+<h3>🐟 加州鲈排产时间轴（养殖周期约 6-7 个月）</h3>
+<div class="timeline-nodes">
+<div class="timeline-node"><div class="dot"></div><div class="date">前一年6-7月</div><div class="name">夏花投放<br>（越冬苗）</div></div>
+<div class="timeline-node"><div class="dot"></div><div class="date">11-2月</div><div class="name">越冬管理<br>大棚保温</div></div>
+<div class="timeline-node hot"><div class="dot"></div><div class="date">1-2月</div><div class="name">🔥春节行情<br>高价窗口①</div></div>
+<div class="timeline-node"><div class="dot"></div><div class="date">4-5月</div><div class="name">春季出塘<br>早苗投放</div></div>
+<div class="timeline-node"><div class="dot"></div><div class="date">7-9月</div><div class="name">生长旺季<br>诺卡氏菌防控</div></div>
+<div class="timeline-node hot"><div class="dot"></div><div class="date">9-10月</div><div class="name">🔥中秋国庆<br>高价窗口②</div></div>
+</div>
+</div>
+</div>
+
+<details class="fold-block arch-fold">
+<summary>⚙️ 系统架构与数据链路</summary>
+<div class="fold-content">
+<p class="arch-title">每日 09:15 自动链路 · 抓取 → 清洗 → 规则引擎 → 渲染 → 部署</p>
+<div class="arch-flow">
+<div class="arch-step"><div class="arch-num">1</div><div class="arch-name">定时抓取</div></div>
+<div class="arch-arrow">→</div>
+<div class="arch-step"><div class="arch-num">2</div><div class="arch-name">双源校验</div></div>
+<div class="arch-arrow">→</div>
+<div class="arch-step"><div class="arch-num">3</div><div class="arch-name">规则引擎</div></div>
+<div class="arch-arrow">→</div>
+<div class="arch-step"><div class="arch-num">4</div><div class="arch-name">角色渲染</div></div>
+<div class="arch-arrow">→</div>
+<div class="arch-step"><div class="arch-num">5</div><div class="arch-name">Pages 部署</div></div>
+<div class="arch-arrow">→</div>
+<div class="arch-step"><div class="arch-num">6</div><div class="arch-name">分级提示</div></div>
+</div>
+<p class="arch-level">
+行动项优先级：<span class="level-dot red"></span>必办（红） / <span class="level-dot yellow"></span>关注（黄） / <span class="level-dot green"></span>正常（绿），红色项当日必须落实到人
+</p>
+</div>
+</details>
+
+<details class="fold-block data-note-fold">
+<summary>📌 数据说明与口径（务必先读）</summary>
+<div class="fold-content">
+<ol>
+<li><strong>两版并存：</strong>v1 数据总览版（根路径 /）保留全部行情明细与溯源；<strong>本页为 v2 决策版</strong>（/v2/），面向当日执行，两者数据源相同、呈现不同。</li>
+<li><strong>更新机制：</strong>每日 <strong>09:15（Asia/Shanghai）</strong>由 GitHub Actions 自动抓取气象与价格后重算本页，并重新生成三角色行动清单。</li>
+<li><strong>养殖位置：</strong>江苏环荟·宜兴官林镇数字低碳生态养殖项目，江苏省无锡市宜兴市官林镇生产路，坐标 31.557387°N / 119.723966°E（高德地理编码 API（level=道路·生产路，2026-09-01 校准））。</li>
+<li><strong>气象数据：</strong>主源 Open-Meteo（每日一次），校验源高德天气 API（中国气象局数据）；两者同日气温偏差超过阈值时以页面标注提示。</li>
+<li><strong>出塘价（塘口价）：</strong>养殖户在塘边卖给鱼中/收购商的价格，不含运输、损耗与市场加价。来源为公众号/视频号人工核校，<strong>非自动爬取</strong>。</li>
+<li><strong>批发价：</strong>农业农村部「全国水产品批发市场价格」接口（AES 解密）统货价，元/公斤 ÷ 2 折算元/斤。</li>
+<li><strong>规格划分：</strong>鳜鱼标鳜约 0.8~1.5 斤，另有小鳜/中鳜按成数论价；鲈鱼按两/斤计（9 两 = 450g，1 斤 = 500g）。<strong>不同来源规格口径不同，勿跨源相减。</strong></li>
+<li><strong>行动清单来源：</strong>「今日行动清单」由规则引擎基于当日气象、批发价环比、病害周期与塘口价快照自动生成，属决策辅助，<strong>不构成养殖与交易决策依据</strong>。</li>
+<li><strong>数据边界：</strong>水质风险为「由气象推导」的风险提示，<strong>非实测传感器数据</strong>；接入实测探头前请勿作为调水的唯一依据。</li>
+<li><strong>版本：</strong>v2.0.14 · 2026-10-27。前序版本 v2.0.13（设计参考稿）</li>
+</ol>
+</div>
+</details>
+
+<details class="fold-block changelog-fold">
+<summary>📜 更新日志</summary>
+<div class="fold-content">
+<div class="changelog-item"><span class="ver">v2.0.14 · 2026-10-27</span> · 决策版看板：三角色视图 + 每日行动清单规则引擎 + 15 日预报重算</div>
+</div>
+</details>
+
+<div class="footer">
+宜兴官林数字生态养殖 · 鳜鱼鲈鱼决策看板 v2.0.14 | 数据更新：2026-10-27 20:51 | 每日 09:15 自动更新 | 仅供参考，不构成养殖和交易决策依据<br>
+<a href="/" style="color:#2d6a4f">← 返回 v1 数据总览版</a>
+</div>
+
+</div>
+
+<script>
+let chartGui, chartLu, chartMarket, map;
+
+function switchRole(role, el){
+document.querySelectorAll('.role-panel').forEach(function(p){p.classList.remove('active');});
+document.querySelectorAll('.role-tab').forEach(function(t){t.classList.remove('active');});
+document.getElementById('role-'+role).classList.add('active');
+if(el){el.classList.add('active');}
+setTimeout(function(){
+try{
+if(role==='boss'&&chartGui&&chartLu){chartGui.resize();chartLu.resize();}
+if(role==='buyer'&&chartMarket){chartMarket.resize();}
+if(role==='tech'&&map){map.invalidateSize();}
+}catch(e){}
+},60);
+}
+
+const GUI_CUR = parseFloat("26.0") || 0;
+const LU_CUR  = parseFloat("10.5") || 0;
+
+function fmt(n){return (isFinite(n)? n.toFixed(2) : '--');}
+
+function calcOne(p, seedId, feedId, costId, yieldId, rateId, feedCoef, bId, pId, mId){
+const seed=parseFloat(document.getElementById(seedId).value);
+const feed=parseFloat(document.getElementById(feedId).value);
+const cost=parseFloat(document.getElementById(costId).value);
+const yld=parseFloat(document.getElementById(yieldId).value);
+const rate=parseFloat(document.getElementById(rateId).value)/100;
+if(!(seed>0&&feed>0&&cost>0&&yld>0&&rate>0)) return;
+const breakPrice=(seed/rate*500+feed*feedCoef+cost/yld);
+const profit=p-breakPrice;
+const el=document.getElementById(pId);
+el.textContent=fmt(profit)+' 元/斤';
+el.parentElement.className='item '+(profit>=0?'pos':'');
+el.style.color=profit>=0?'#16a34a':'#dc2626';
+document.getElementById(bId).textContent=fmt(breakPrice)+' 元/斤';
+document.getElementById(mId).textContent=fmt(profit*yld)+' 元/m³';
+}
+function calcGui(){calcOne(GUI_CUR,'gui_seed','gui_feed','gui_cost','gui_yield','gui_rate',1.2,'gui_break','gui_profit','gui_mu');}
+function calcLu(){calcOne(LU_CUR,'lu_seed','lu_feed','lu_cost','lu_yield','lu_rate',1.5,'lu_break','lu_profit','lu_mu');}
+document.querySelectorAll('.calc-card input').forEach(function(i){i.addEventListener('input',function(){calcGui();calcLu();});});
+
+window.addEventListener('load', function(){
+try{calcGui();calcLu();}catch(e){}
+
+if(typeof echarts==='undefined'){
+document.querySelectorAll('.chart-box').forEach(function(b){b.innerHTML='<div style="padding:40px;text-align:center;color:#9ca3af">图表库加载失败，请检查网络后刷新</div>';});
+return;
+}
+
+chartGui = echarts.init(document.getElementById('chart_gui'));
+chartGui.setOption({
+title:{text:'鳜鱼批发价走势（农业农村部日度监控，元/斤）',left:'center',textStyle:{fontSize:15}},
+tooltip:{trigger:'axis'},
+legend:{data:['全国均价','江苏及周边均价'],bottom:0},
+xAxis:{type:'category',data:["07-30", "08-13", "08-18", "09-12", "09-16", "09-20", "09-21", "09-24", "09-25", "09-26", "09-28", "09-30", "10-01", "10-02", "10-05", "10-08", "10-09", "10-11", "10-14", "10-15", "10-16", "10-17", "10-18", "10-20", "10-21", "10-22", "10-23", "10-24", "10-26", "10-27"]},
+yAxis:{type:'value',name:'元/斤',scale:true},
+series:[
+{name:'全国均价',type:'line',data:[48.0, 43.0, 39.0, 59.25, 29.0, 29.0, 30.0, 30.0, 30.0, 34.0, 31.0, 31.0, 38.0, 72.5, 31.0, 30.0, 35.5, 54.0, 35.5, 35.5, 35.5, 35.5, 54.0, 35.5, 35.5, 33.5, 31.5, 31.5, 28.5, 28.5],smooth:true,lineStyle:{color:'#dc2626',width:3},itemStyle:{color:'#dc2626'}},
+{name:'江苏及周边均价',type:'line',data:[48.0, 43.0, 39.0, 46.0, 29.0, 29.0, 30.0, 30.0, 30.0, 38.0, 31.0, 31.0, 38.0, 72.5, 31.0, 30.0, 35.5, 35.5, 35.5, 35.5, 35.5, 35.5, 35.5, 35.5, 35.5, 33.5, 31.5, 31.5, 28.5, 28.5],smooth:true,lineStyle:{color:'#2d6a4f',width:2},itemStyle:{color:'#2d6a4f'}}
+],
+grid:{left:55,right:30,top:45,bottom:45}
+});
+
+chartLu = echarts.init(document.getElementById('chart_lu'));
+chartLu.setOption({
+title:{text:'鲈鱼批发价走势（农业农村部日度监控，元/斤）',left:'center',textStyle:{fontSize:15}},
+tooltip:{trigger:'axis'},
+legend:{data:['全国均价','江苏及周边均价'],bottom:0},
+xAxis:{type:'category',data:["09-24", "09-25", "09-26", "09-27", "09-28", "09-29", "09-30", "10-01", "10-02", "10-03", "10-05", "10-06", "10-07", "10-08", "10-09", "10-10", "10-11", "10-14", "10-15", "10-16", "10-17", "10-18", "10-19", "10-20", "10-21", "10-22", "10-23", "10-24", "10-26", "10-27"]},
+yAxis:{type:'value',name:'元/斤',scale:true},
+series:[
+{name:'全国均价',type:'line',data:[15.5, 16.5, 15.5, 16.5, 15.12, 15.12, 15.75, 14.5, 19.0, 17.5, 16.0, 17.25, 17.5, 15.25, 14.5, 16.0, 16.0, 15.5, 15.75, 15.75, 15.0, 15.5, 16.0, 15.5, 15.5, 15.5, 15.5, 15.75, 15.0, 15.62],smooth:true,lineStyle:{color:'#2563eb',width:3},itemStyle:{color:'#2563eb'}},
+{name:'江苏及周边均价',type:'line',data:[11.38, 11.17, 11.88, 11.75, 10.88, 10.88, 10.88, 14.25, 15.0, 11.75, 13.25, 11.5, 11.5, 11.25, 12.25, 11.25, 11.81, 12.25, 12.25, 12.25, 12.25, 11.88, 11.83, 11.38, 11.38, 11.5, 11.75, 11.75, 11.62, 11.38],smooth:true,lineStyle:{color:'#2d6a4f',width:2},itemStyle:{color:'#2d6a4f'}}
+],
+grid:{left:55,right:30,top:45,bottom:45}
+});
+
+chartMarket = echarts.init(document.getElementById('chart_market'));
+chartMarket.setOption({
+title:{text:'主要市场当日批发价对比（元/斤）',left:'center',textStyle:{fontSize:15}},
+tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+legend:{data:['活鳜鱼','鲈鱼'],bottom:0},
+xAxis:{type:'category',data:["江苏凌家塘", "江苏苏州南环桥", "云南华潮", "乌鲁木齐北园春果业", "安徽合肥周谷堆农产", "江西九江琵琶湖农产", "长治市紫坊农产品综", "马鞍山市安民农副产", "宁夏四季鲜农产品综", "龙门（集团）西三街"],axisLabel:{interval:0,rotate:20,fontSize:11}},
+yAxis:{type:'value',name:'元/斤'},
+series:[
+{name:'活鳜鱼',type:'bar',data:[28.5, 0, 0, 72.5, 0, 28.0, 0, 0, 0, 0],itemStyle:{color:'#dc2626'}},
+{name:'鲈鱼',type:'bar',data:[12.0, 11.5, 15.0, 0, 11.5, 0, 14.5, 10.5, 19.0, 20.0],itemStyle:{color:'#2563eb'}}
+],
+grid:{left:55,right:30,top:45,bottom:80}
+});
+
+if(typeof L!=='undefined'){
+map = L.map('map').setView([31.557387, 119.723966], 13);
+L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}',{subdomains:['1','2','3','4'],attribution:'© 高德地图'}).addTo(map);
+L.marker([31.557387, 119.723966]).addTo(map).bindPopup('江苏环荟·宜兴官林镇数字低碳生态养殖项目<br>北纬31.557387° · 东经119.723966°').openPopup();
+}else{
+var m=document.getElementById('map');
+if(m){m.innerHTML='<div style="padding:40px;text-align:center;color:#9ca3af">地图库加载失败，请检查网络后刷新</div>';}
+}
+
+window.addEventListener('resize',function(){
+try{chartGui.resize();chartLu.resize();chartMarket.resize();if(map){map.invalidateSize();}}catch(e){}
+});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+name: 官林决策看板 v2 每日更新（09:15）
+
+# 每天 UTC 01:15 = 北京时间 09:15（GitHub cron 使用 UTC）
+# 职责：刷新当日批发价 → 重算三角色行动清单 → 重新生成 /v2/ 决策版页面
+# 与 v1（根目录气象 09:00 / 价格 09:30）互不干扰，两版并存发布
+on:
+  schedule:
+    - cron: "15 1 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dashboard-v2
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TZ: Asia/Shanghai
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: 配置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 安装依赖（MOA 爬虫需要 AES 解密）
+        run: pip install --quiet pycryptodome beautifulsoup4 lxml requests
+
+      # ① 农业农村部批发价接口 → fish_prices.json + 历史累积
+      - name: 刷新当日批发价
+        run: python moa_fish_crawler.py || echo "[warn] MOA 爬虫失败，沿用上一份 fish_prices.json"
+
+      # ② 生成 v2 决策版（内置 Open-Meteo 15 日抓取，失败自动降级到本地气象 JSON）
+      - name: 生成决策看板 v2
+        run: python build_dashboard_v2.py
+
+      # ③ 校验产物：占位符必须全部替换、行动清单必须存在
+      - name: 校验产物
+        run: |
+          set -e
+          F="dashboard-v2/index.html"
+          test -s "$F" || { echo "[ERROR] 产物为空"; exit 1; }
+          if grep -qo '{{[A-Z_]*}}' "$F"; then echo "[ERROR] 存在未替换占位符"; exit 1; fi
+          grep -q "BOS_ACTIONS_START" "$F" || { echo "[ERROR] 行动清单缺失"; exit 1; }
+          echo "[OK] 产物校验通过 $(wc -c < "$F") bytes"
+
+      # ④ 提交并推送（push 会触发 pages-deploy 发布到 /v2/）
+      - name: 提交并推送
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "无变化，跳过提交"
+          else
+            git commit -m "daily: 决策看板 v2 更新 $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M')"
+            git pull --rebase --autostash origin main || true
+            git push origin main
+          fi

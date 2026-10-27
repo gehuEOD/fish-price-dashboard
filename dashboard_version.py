@@ -31,6 +31,7 @@ from datetime import datetime
 WS = os.path.dirname(os.path.abspath(__file__))
 HTML = os.path.join(WS, "鳜鱼鲈鱼价格看板.html")
 VERSION_MD = os.path.join(WS, "VERSION.md")
+HISTORY_CSV = os.path.join(WS, "fish_prices_history.csv")
 
 # ============================================================
 # 版本号常量 —— 改这里，所有脚本同步
@@ -269,12 +270,135 @@ def bump_dashboard(
     # 2) 同步 VERSION.md
     _sync_version_md(target_version, target_date, summary_line)
 
+    # 2.5) 同步派生元信息（统计周期 / TikHub 抓取说明）——从数据文件推导，防脱钩
+    try:
+        sync_meta(HTML, verbose=False)
+    except Exception as e:
+        print(f"[warn] 派生元信息同步跳过：{e}")
+
     # 3) 更新模块常量（让调用方后续 print 用得到；下次 import 时仍以源文件为准，
     #    但 bump_dashboard 内部总是从 HTML 重新读，所以即使常量停留也安全）
     DASHBOARD_VERSION = target_version
     DASHBOARD_VERSION_DATE = target_date
 
     return target_version
+
+
+# ============================================================
+# 派生元信息自动同步（统计周期 / 抖音抓取日期）
+# ------------------------------------------------------------
+# 背景：这两处历史上手工维护，曾出现 Hero chip 停在 10-10、页脚停在 10-19、
+# 而历史数据实际已到 10-26 的「三处互不相等」脱钩事故。现改为从数据文件推导。
+# ============================================================
+def period_range():
+    """从 fish_prices_history.csv 推导批发价历史序列的真实日期范围。
+
+    返回: (start, end, rows)；读不到有效数据时返回 (None, None, 0)
+    """
+    import csv
+    if not os.path.exists(HISTORY_CSV):
+        return None, None, 0
+    dates, rows = [], 0
+    try:
+        with open(HISTORY_CSV, encoding="utf-8-sig") as f:
+            for r in csv.DictReader(f):
+                rows += 1
+                d = (r.get("日期") or "").strip()
+                if re.match(r"^\d{4}-\d{2}-\d{2}$", d):
+                    dates.append(d)
+    except Exception:
+        return None, None, 0
+    if not dates:
+        return None, None, 0
+    return min(dates), max(dates), rows
+
+
+def latest_douyin_snapshot():
+    """从 TikHub 快照 douyin_live_YYYYMMDD.json 取最新快照日期与条数。"""
+    cands = sorted(os.path.join(WS, p) for p in os.listdir(WS)
+                   if re.match(r"^douyin_live_\d{8}\.json$", p))
+    if not cands:
+        return None, 0
+    last = cands[-1]
+    m = re.search(r"(\d{8})", os.path.basename(last))
+    if not m:
+        return None, 0
+    s = m.group(1)
+    d = f"{s[:4]}-{s[4:6]}-{s[6:8]}"
+    try:
+        import json
+        n = len(json.loads(open(last, encoding="utf-8").read()))
+    except Exception:
+        n = 0
+    return d, n
+
+
+def sync_period(html_path: str = HTML, verbose: bool = True):
+    """把「统计周期」同步为历史批发价序列的真实起止日期（Hero chip + 页脚两处）。
+
+    幂等：只做正则替换，匹配不到就原样返回并给警告，不破坏文件。
+    """
+    start, end, rows = period_range()
+    if not (start and end):
+        if verbose:
+            print("[warn] 统计周期同步失败：fish_prices_history.csv 无有效日期")
+        return None
+    period = f"{start} ~ {end}"
+    try:
+        with open(html_path, encoding="utf-8") as f:
+            text = f.read()
+    except Exception as e:
+        print(f"[warn] 读取看板失败：{e}")
+        return None
+
+    before = text
+    pat_chip = r"(📅\s*统计周期：)\d{4}-\d{2}-\d{2}\s*~\s*\d{4}-\d{2}-\d{2}"
+    pat_foot = r"(统计周期\s+)\d{4}-\d{2}-\d{2}\s*~\s*\d{4}-\d{2}-\d{2}"
+    n_chip = len(re.findall(pat_chip, text))
+    n_foot = len(re.findall(pat_foot, text))
+    text = re.sub(pat_chip, r"\g<1>" + period, text)
+    text = re.sub(pat_foot, r"\g<1>" + period, text)
+
+    if text != before:
+        with open(html_path, "w", encoding="utf-8") as f:
+            f.write(text)
+    if verbose:
+        print(f"[ok] 统计周期 -> {period}（{rows} 行 · chip {n_chip} 处 / 页脚 {n_foot} 处）")
+    return period
+
+
+def sync_douyin_note(html_path: str = HTML, verbose: bool = True):
+    """把 Hero 段「抖音社媒互动数据由 TikHub 抖音搜索接口 于 YYYY-MM-DD 实时抓取」
+    的日期同步为最新 TikHub 快照日期。"""
+    d, n = latest_douyin_snapshot()
+    if not d:
+        if verbose:
+            print("[warn] TikHub 说明同步失败：未找到 douyin_live_YYYYMMDD.json")
+        return None
+    try:
+        with open(html_path, encoding="utf-8") as f:
+            text = f.read()
+    except Exception as e:
+        print(f"[warn] 读取看板失败：{e}")
+        return None
+
+    pat = r"(TikHub 抖音搜索接口</b>\s*于\s*)\d{4}-\d{2}-\d{2}( 实时抓取)"
+    before = text
+    text = re.sub(pat, r"\g<1>" + d + r"\g<2>", text)
+    if text != before:
+        with open(html_path, "w", encoding="utf-8") as f:
+            f.write(text)
+    if verbose:
+        print(f"[ok] TikHub 抓取说明 -> {d}（{n} 条快照）")
+    return d
+
+
+def sync_meta(html_path: str = HTML, verbose: bool = True):
+    """统一入口：同步所有「可从数据文件推导」的派生元信息。
+    任何注入脚本 / bump 之后跑一次即可，避免手工维护再次失同步。"""
+    p = sync_period(html_path, verbose)
+    d = sync_douyin_note(html_path, verbose)
+    return {"period": p, "douyin_live": d}
 
 
 if __name__ == "__main__":

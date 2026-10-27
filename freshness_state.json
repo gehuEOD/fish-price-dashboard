@@ -24,17 +24,6 @@
       "status": "active"
     },
     {
-      "key": "douyin",
-      "name": "TikHub 抖音搜索",
-      "auto": false,
-      "date": "2026-10-19",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 8,
-      "note": "付费API, 手动抓取",
-      "status": "active"
-    },
-    {
       "key": "hot",
       "name": "行业热点综述",
       "auto": false,
@@ -164,6 +153,17 @@
       "label": "自动正常",
       "age": 0,
       "note": "双源校验 + 每日09:00 cron",
+      "status": "active"
+    },
+    {
+      "key": "douyin",
+      "name": "TikHub 抖音搜索",
+      "auto": false,
+      "date": "2026-10-27",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "付费API, 手动抓取",
       "status": "active"
     },
     {

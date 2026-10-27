@@ -57,17 +57,6 @@
       "status": "active"
     },
     {
-      "key": "danshui",
-      "name": "淡水渔业公众号批发价",
-      "auto": false,
-      "date": "2026-10-23",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 4,
-      "note": "微信文章 WebFetch 直接提取(全国多地市场分规格批发价,元/公斤)",
-      "status": "active"
-    },
-    {
       "key": "qianyan",
       "name": "水产前沿（特水鱼/鳜鲈/加州鲈周报）",
       "auto": false,
@@ -186,6 +175,17 @@
       "label": "正常",
       "age": 0,
       "note": "微信公众号截图人工录入(约2~3天一更)",
+      "status": "active"
+    },
+    {
+      "key": "danshui",
+      "name": "淡水渔业公众号批发价",
+      "auto": false,
+      "date": "2026-10-27",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信文章 WebFetch 直接提取(全国多地市场分规格批发价,元/公斤)",
       "status": "active"
     }
   ]

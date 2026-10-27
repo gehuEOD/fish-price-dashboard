@@ -245,46 +245,79 @@ def main():
     tengshi = eff.get("tengshi") or "2026-10-08"
     douyin = eff.get("douyin") or "2026-10-10"
 
+    # ⚠️ 空值守卫：依赖日期变量的替换项，变量为空时必须跳过。
+    # 历史上曾经因 public_d/moa_d 读取失败，把「公开价源爬虫（北京新发地 10-26）」
+    # 替换成「（北京新发地 ）」——页面上直接显示空日期。宁可不改，也不能擦成空。
     subs = [
-        # 顶部 chip 行（批发价汇总）
-        (r'(<span class="chip" data-page-node-id="4HGb9s5gzmgXv3QvdK82PP">)[^<]*(</span>)',
-         lambda m: m.group(1) + f"🤖 批发价：农业农村部接口爬虫（{moa_mm}）+ 公开价源爬虫（新发地 {pub_mm}）+ 科学养鱼OCR（{kexue_mm}）+ a渔业行情OCR（{ayu_mm}）" + m.group(2)),
-        # 顶部简介：TikHub 抖音抓取日期（从 douyin_live_*.json 反推，修复写死 08-31）
-        (re.compile(r'于 \d{4}-\d{2}-\d{2} 实时抓取'), f'于 {douyin} 实时抓取'),
-        # 来源行：新发地日期（idempotent）
-        (re.compile(r'公开价源爬虫（北京新发地 \d{2}-\d{2}）'), f'公开价源爬虫（北京新发地 {pub_mm}）'),
-        # a渔业行情区块「截至」行（修复 08-11 → 真实日期不一致）
-        (re.compile(r'按规格分组，截至 \d{4}-\d{2}-\d{2}'), f'按规格分组，截至 {ayu_full}'),
-        # 第五节 水产前沿
-        (re.compile(r'2026-06-22 ~ [\d-]+ · 分产区分规格塘头价（鳜鱼/加州鲈），核心数据来源；第\d+期（[\d-]+）为最新'),
-         f'2026-06-22 ~ {qy_mm} · 分产区分规格塘头价（鳜鱼/加州鲈），核心数据来源；第{qy_issue}期（{qy_mm}）为最新'),
-        # 第五节 MOA（含明细/交易日数）
-        (re.compile(r'逐日累积至 <b>\d{4}-\d{2}-\d{2}</b>（\d+ 条明细 / \d+ 个交易日）'),
-         f'逐日累积至 <b>{moa_d}</b>（{moa_n} 条明细 / {moa_days} 个交易日）'),
-        # 第五节 公开价源
-        (re.compile(r'（T-1，至 [\d-]+）'), f'（T-1，至 {pub_mm}）'),
-        # 第五节 腾氏（2026-10-19 起为「一周鱼价播报」新句式）
-        (re.compile(r'2026-07-17 ~ [\d-]+ · 最新一周鱼价播报（[\d-]+，'),
-         f'2026-07-17 ~ {tengshi} · 最新一周鱼价播报（{to_mmdd(tengshi)}，'),
-        # 旧句式兜底（历史稿回退时仍可命中）
-        (re.compile(r'2026-07-17 ~ [\d-]+ · 最新第㊵期（[\d-]+ 发布'),
-         f'2026-07-17 ~ {tengshi} · 最新第㊵期（{tengshi} 发布'),
-        # 第五节 科学养鱼（以「· 全国水产品批发价」为上下文区分 a渔业）
-        (r'(<b>)\d{4}-\d{2}-\d{2}(（最新一期）</b>· 全国水产品批发价)', lambda m: m.group(1) + (kexue_d or m.group(0)) + m.group(2)),
-        # 第五节 a渔业（以「全国水产塘口价」为上下文区分）
-        (r'(<b>)\d{4}-\d{2}-\d{2}(（最新一期）</b>全国水产塘口价)', lambda m: m.group(1) + ayu_full + m.group(2)),
-        # 局限说明里的 MOA 区间
-        (re.compile(r'2026-07-22~[\d-]+ 各市场真实报价'), f'2026-07-22~{moa_mm} 各市场真实报价'),
         # 修正误导性「已编排自动更新」文案（一次性，已应用则静默跳过）
         ('已纳入 RPA 截图 + OCR 流水线', '需用户截图后经 OCR 流水线'),
         # P0-2 兜底：任何残留的「GitHub Actions 已编排」自动纠正（防第1469行回归）
         ('GitHub Actions 已编排', '未接入定时任务'),
         ('（wechat_rpa.py 搜狗微信搜号→整页截图；wechat_ocr_pipeline.py 视觉 OCR→结构化→自动并入本看板），可定时自动更新；但纯文本爬虫仍无法直接抓文章正文（搜狗微信反爬）。',
          '（wechat_rpa.py 搜狗微信自动截图已就绪但<b>未接入定时任务</b>；wechat_ocr_pipeline.py 视觉 OCR→结构化→并入本看板）；纯文本爬虫仍无法直接抓文章正文（搜狗微信反爬），目前<b>仍为人工触发</b>，非全自动。'),
-        # 抖音快照文案（兼容旧写法，幂等）
-        (re.compile(r'当前下方帖子为 [\d-]+ 历史快照|抖音实时快照已于 [\d-]+ 刷新（\d+条）'),
-         f'抖音实时快照已于 {douyin} 刷新（{douyin_count}条）'),
     ]
+
+    # ── 依赖日期变量的替换：逐个守卫 ───────────────────────────────
+    if moa_mm and pub_mm and kexue_mm and ayu_mm:
+        subs.append(
+            (r'(<span class="chip" data-page-node-id="4HGb9s5gzmgXv3QvdK82PP">)[^<]*(</span>)',
+             lambda m: m.group(1) + f"🤖 批发价：农业农村部接口爬虫（{moa_mm}）+ 公开价源爬虫（新发地 {pub_mm}）+ 科学养鱼OCR（{kexue_mm}）+ a渔业行情OCR（{ayu_mm}）" + m.group(2)))
+    else:
+        print(f"  [guard] 跳过 chip258 替换（moa={moa_mm} pub={pub_mm} kexue={kexue_mm} ayu={ayu_mm}）")
+
+    if pub_mm:
+        # 来源行：新发地日期（idempotent）
+        subs.append((re.compile(r'公开价源爬虫（北京新发地 \d{2}-\d{2}）'),
+                     f'公开价源爬虫（北京新发地 {pub_mm}）'))
+        # 第五节 公开价源
+        subs.append((re.compile(r'（T-1，至 [\d-]+）'), f'（T-1，至 {pub_mm}）'))
+    else:
+        print("  [guard] 跳过新发地日期替换（public_d 为空，保留页面原值）")
+
+    if moa_d and moa_n:
+        # 第五节 MOA（含明细/交易日数）
+        subs.append((re.compile(r'逐日累积至 <b>\d{4}-\d{2}-\d{2}</b>（\d+ 条明细 / \d+ 个交易日）'),
+                     f'逐日累积至 <b>{moa_d}</b>（{moa_n} 条明细 / {moa_days} 个交易日）'))
+    else:
+        print(f"  [guard] 跳过 MOA 累积说明替换（moa_d={moa_d} moa_n={moa_n}）")
+
+    if moa_mm:
+        # 局限说明里的 MOA 区间
+        subs.append((re.compile(r'2026-07-22~[\d-]+ 各市场真实报价'), f'2026-07-22~{moa_mm} 各市场真实报价'))
+    else:
+        print("  [guard] 跳过 MOA 区间替换（moa_mm 为空）")
+
+    if qy_mm:
+        # 第五节 水产前沿
+        subs.append((re.compile(r'2026-06-22 ~ [\d-]+ · 分产区分规格塘头价（鳜鱼/加州鲈），核心数据来源；第\d+期（[\d-]+）为最新'),
+                     f'2026-06-22 ~ {qy_mm} · 分产区分规格塘头价（鳜鱼/加州鲈），核心数据来源；第{qy_issue}期（{qy_mm}）为最新'))
+    else:
+        print("  [guard] 跳过水产前沿替换（qy_mm 为空）")
+
+    if kexue_d:
+        # 第五节 科学养鱼（以「· 全国水产品批发价」为上下文区分 a渔业）
+        subs.append((r'(<b>)\d{4}-\d{2}-\d{2}(（最新一期）</b>· 全国水产品批发价)',
+                     lambda m: m.group(1) + kexue_d + m.group(2)))
+    else:
+        print("  [guard] 跳过科学养鱼日期替换（kexue_d 为空）")
+
+    # 以下三项均有常量兜底值，可无条件执行
+    # 顶部简介：TikHub 抖音抓取日期（从 douyin_live_*.json 反推，修复写死 08-31）
+    subs.append((re.compile(r'于 \d{4}-\d{2}-\d{2} 实时抓取'), f'于 {douyin} 实时抓取'))
+    # a渔业行情区块「截至」行（修复 08-11 → 真实日期不一致）
+    subs.append((re.compile(r'按规格分组，截至 \d{4}-\d{2}-\d{2}'), f'按规格分组，截至 {ayu_full}'))
+    # 第五节 腾氏（2026-10-19 起为「一周鱼价播报」新句式）
+    subs.append((re.compile(r'2026-07-17 ~ [\d-]+ · 最新一周鱼价播报（[\d-]+，'),
+                 f'2026-07-17 ~ {tengshi} · 最新一周鱼价播报（{to_mmdd(tengshi)}，'))
+    # 旧句式兜底（历史稿回退时仍可命中）
+    subs.append((re.compile(r'2026-07-17 ~ [\d-]+ · 最新第㊵期（[\d-]+ 发布'),
+                 f'2026-07-17 ~ {tengshi} · 最新第㊵期（{tengshi} 发布'))
+    # 第五节 a渔业（以「全国水产塘口价」为上下文区分）
+    subs.append((r'(<b>)\d{4}-\d{2}-\d{2}(（最新一期）</b>全国水产塘口价)',
+                 lambda m: m.group(1) + ayu_full + m.group(2)))
+    # 抖音快照文案（兼容旧写法，幂等）
+    subs.append((re.compile(r'当前下方帖子为 [\d-]+ 历史快照|抖音实时快照已于 [\d-]+ 刷新（\d+条）'),
+                 f'抖音实时快照已于 {douyin} 刷新（{douyin_count}条）'))
 
     for old, new in subs:
         if callable(new):

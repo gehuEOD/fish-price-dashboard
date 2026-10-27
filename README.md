@@ -3,7 +3,25 @@
 自动抓取**农业农村部「重点农产品市场信息平台」**（ncpscxx.moa.gov.cn）全国批发市场中
 **活鳜鱼 / 淡水鲈鱼 / 海水鲈鱼** 的当日批发价，并配套一份江浙沪皖价格数据看板。
 
-## 数据来源
+## ## 两版看板（并存发布，互不覆盖）
+
+| 版本 | 线上地址 | 定位 | 更新机制 |
+|------|---------|------|---------|
+| **v1 · 数据总览版** | `https://fishmarket.gehueod.cn/` | 全量行情明细、多源溯源、数据新鲜度 | 气象 09:00 + 价格 09:30 双工作流 |
+| **v2 · 决策版** | `https://fishmarket.gehueod.cn/v2/` | 三角色视图（老板/技术员/采购员），每角色独立「今日行动清单」 | 每日 **09:15** 单一工作流重算并重渲染 |
+
+两版共用同一套数据源；v2 由 `build_dashboard_v2.py` 从数据文件 + 模板生成，**不要手改生成物**：
+- 模板：`dashboard_v2_template.html`
+- 人工核校源（塘口价 / 病害 / 本地渠道）：`v2_manual_prices.json`
+- 版本：`dashboard_v2_version.json`
+- 产出：`dashboard-v2/index.html`
+
+```bash
+python3 build_dashboard_v2.py              # 重新生成 v2
+python3 build_dashboard_v2.py --bump patch # 生成并升版本号
+```
+
+数据来源
 
 | 维度 | 来源 | 说明 |
 |------|------|------|

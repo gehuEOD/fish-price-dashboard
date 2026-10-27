@@ -71,10 +71,10 @@
       "key": "danshui",
       "name": "淡水渔业公众号批发价",
       "auto": false,
-      "date": "2026-10-21",
+      "date": "2026-10-23",
       "badge": "🟡",
       "label": "偏旧·待补",
-      "age": 6,
+      "age": 4,
       "note": "微信文章 WebFetch 直接提取(全国多地市场分规格批发价,元/公斤)",
       "status": "active"
     },

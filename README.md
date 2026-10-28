@@ -33,6 +33,7 @@ python3 build_dashboard_v2.py --bump patch # 生成并升版本号
 
 ```
 moa_fish_crawler.py                 # 农业农村部批发价爬虫（AES 解密、三品种抓取、历史累积）
+inject_moa_block.py                 # 把当日 MOA 快照注入 v1 看板（KPI/明细表/口径说明，幂等）
 fish_prices.csv / fish_prices.json # 当日快照（覆盖写）
 fish_prices_history.csv/.json/.js  # 历史累积（追加写，.js 供看板读取）
 .github/workflows/daily-crawl.yml  # GitHub Actions 每日定时抓取并提交
@@ -52,6 +53,25 @@ python moa_fish_crawler.py --region
 ```
 
 依赖：`pycryptodome`（`urllib`/`ssl` 为标准库）。脚本会自动安装缺失依赖。
+
+### 注入 v1 看板的 MOA 区块（口径自动推导，勿手改）
+
+v1 的「鲈鱼批发 KPI + 活鳜明细表 + 数据说明」不再手工维护，由爬虫结果推导：
+
+```bash
+python inject_moa_block.py            # 注入并写回 鳜鱼鲈鱼价格看板.html（幂等）
+python inject_moa_block.py --check    # 只体检：打印数据日/中位数、HTML 是否需更新
+python inject_moa_block.py --dry-run  # 打印将生成的四段内容，不落盘
+```
+
+四个锚点（成对出现，缺一即报错）：`MOA_KPI_LU`（鲈鱼批发 KPI）、`MOA_GUI_FRAG`（鳜鱼 KPI 趋势内片段）、
+`MOA_ROWS`（明细表行）、`MOA_CALLOUT`（数据说明自动段）。手工叙述（历史对比、销地新闻）留在锚点外，不受影响。
+
+口径三条（与 v2 决策版一致）：**全国中枢取中位数**（算术平均会被远距离销区单侧拉高约 50%，仅在说明里作反面参照）；
+**远距离销区（乌鲁木齐/甘肃/宁夏/青海/拉萨等）只作销地参考，不构成跨区套利**；
+**批发价不可直接当收购上限，须倒扣流通成本**（鳜鱼 3 元/斤、鲈鱼 1 元/斤）。
+
+某品种当日 `data=null` 时脚本**跳过该品种替换**、保留看板原值，不会把 KPI 写成空。
 
 ## 产出文件
 

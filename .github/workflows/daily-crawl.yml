@@ -69,7 +69,13 @@ jobs:
       - name: 回写数据新鲜度与价源日期
         run: python refresh_freshness.py
 
-      # ⑦ 提交并推送（先 pull --rebase 避免与本地手动提交 non-fast-forward 冲突导致当日更新丢失）
+      # ⑦ MOA 区块注入：鲈鱼批发 KPI + 活鳜明细表 + 口径说明三处全部由
+      #    fish_prices.json 重新推导（此前纯手工维护，导致「数据已到 10-27、
+      #    卡片还写 10-18」的脱钩，以及算术平均被远距离销区拉高到 43 元/斤）
+      - name: 注入 MOA 批发价区块
+        run: python inject_moa_block.py
+
+      # ⑧ 提交并推送（先 pull --rebase 避免与本地手动提交 non-fast-forward 冲突导致当日更新丢失）
       - name: 提交变化
         run: |
           git config user.name "github-actions[bot]"

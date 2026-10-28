@@ -216,6 +216,8 @@ def main():
         "tongwei": manual.get("tongwei"),
         # 2026-10-28 新增：渔有福鳜鱼塘口（此前只在看板有卡片、未进新鲜度面板）
         "yuyoufu": manual.get("yuyoufu"),
+        # 2026-10-28 新增：水产养殖网（强渔）分产区塘口价 / 周报
+        "qiangyu": manual.get("qiangyu"),
     }
 
     # B. 新鲜度 + 面板行（红在前）

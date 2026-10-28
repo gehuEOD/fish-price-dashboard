@@ -13,7 +13,8 @@
     "hangqingzhushou": "2026-10-21",
     "danshui": "2026-10-27",
     "tongwei": "2026-10-27",
-    "yuyoufu": "2026-10-28"
+    "yuyoufu": "2026-10-28",
+    "qiangyu": "2026-10-28"
   },
   "sources": [
     {
@@ -100,6 +101,13 @@
       "auto": false,
       "cadence": 1,
       "note": "微信文章手动录入(分省分规格塘口价,元/斤;与MOA批发价不同口径)"
+    },
+    {
+      "key": "qiangyu",
+      "name": "水产养殖网（强渔）",
+      "auto": false,
+      "cadence": 1,
+      "note": "微信文章手动录入(分产区塘口价/周报,元/斤;10-26周报+10-28加州鲈专题)"
     },
     {
       "key": "yufeiyu",

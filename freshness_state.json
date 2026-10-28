@@ -35,17 +35,6 @@
       "status": "active"
     },
     {
-      "key": "kexue",
-      "name": "科学养鱼公众号 OCR",
-      "auto": false,
-      "date": "2026-10-20",
-      "badge": "🔴",
-      "label": "已过期·待补",
-      "age": 8,
-      "note": "需用户提供截图 + OCR",
-      "status": "active"
-    },
-    {
       "key": "hangqingzhushou",
       "name": "水产行情助手·行情资讯",
       "auto": false,
@@ -156,6 +145,17 @@
       "status": "active"
     },
     {
+      "key": "kexue",
+      "name": "科学养鱼公众号 OCR",
+      "auto": false,
+      "date": "2026-10-28",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "需用户提供截图 + OCR",
+      "status": "active"
+    },
+    {
       "key": "minjian",
       "name": "全国渔业价格日报",
       "auto": false,
@@ -175,6 +175,17 @@
       "label": "正常",
       "age": 0,
       "note": "微信文章手动录入(分省分规格塘口价,元/斤;与MOA批发价不同口径)",
+      "status": "active"
+    },
+    {
+      "key": "qiangyu",
+      "name": "水产养殖网（强渔）",
+      "auto": false,
+      "date": "2026-10-28",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信文章手动录入(分产区塘口价/周报,元/斤;10-26周报+10-28加州鲈专题)",
       "status": "active"
     },
     {

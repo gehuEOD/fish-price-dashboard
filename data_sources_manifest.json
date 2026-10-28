@@ -5,14 +5,15 @@
     "video": "2026-10-26",
     "douyin": "2026-10-19",
     "hot": "2026-10-19",
-    "minjian": "2026-10-26",
-    "yufeiyu": "2026-10-27",
+    "minjian": "2026-10-28",
+    "yufeiyu": "2026-10-28",
     "fengxiang": "2026-10-16",
     "nandabo": "2026-10-26",
     "shengyang": "2026-10-27",
     "hangqingzhushou": "2026-10-21",
     "danshui": "2026-10-27",
-    "tongwei": "2026-10-27"
+    "tongwei": "2026-10-27",
+    "yuyoufu": "2026-10-28"
   },
   "sources": [
     {
@@ -92,6 +93,13 @@
       "auto": false,
       "cadence": 1,
       "note": "微信文章手动录入"
+    },
+    {
+      "key": "yuyoufu",
+      "name": "渔有福水产·鳜鱼塘口",
+      "auto": false,
+      "cadence": 1,
+      "note": "微信文章手动录入(分省分规格塘口价,元/斤;与MOA批发价不同口径)"
     },
     {
       "key": "yufeiyu",

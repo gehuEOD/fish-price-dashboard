@@ -1,24 +1,65 @@
 {
   "_comment": "2.0 看板人工/链接源快照。用于在 MOA 批发价等自动源之外补充「塘口价」口径。更新时改本文件后重跑 build_dashboard_v2.py 即可，无需手改 HTML。",
-  "updated": "2026-10-27",
+  "updated": "2026-10-28",
   "unit": "元/斤",
-
   "pond": {
     "鳜鱼": {
-      "date": "2026-10-27",
+      "date": "2026-10-28",
       "source": "渔有福水产",
-      "source_url": "https://mp.weixin.qq.com/s/LTJMMHUViu0jAYKy5Kbj_Q",
+      "source_url": "https://mp.weixin.qq.com/s/1iFkF6nUCpzBRXh-YIUTug",
       "spec": "标鳜（0.8~1.5 斤）为主，另列小鳜/中鳜",
-      "headline": "全线持稳 · 无涨跌（较 10-26 持平），昨日普涨后进入观望消化期",
+      "headline": "广东中鳜再跌 0.5（24.5→24），外省标鳜全线持平；江苏/江西 26 继续领跑，全表价差 8 元/斤",
       "rows": [
-        { "region": "广东", "spec": "小鳜（0.8斤以下）", "price": 18.5, "trend": "flat" },
-        { "region": "广东", "spec": "标鳜（0.8~1.5斤）", "price": 24.5, "trend": "flat" },
-        { "region": "广东", "spec": "中鳜（1.5~2斤）", "price": 24.5, "trend": "flat" },
-        { "region": "湖北", "spec": "标鳜", "price": 24.5, "trend": "flat" },
-        { "region": "安徽", "spec": "标鳜", "price": 25.0, "trend": "flat" },
-        { "region": "江西", "spec": "标鳜", "price": 26.0, "trend": "flat" },
-        { "region": "湖南", "spec": "标鳜", "price": 25.0, "trend": "flat" },
-        { "region": "江苏", "spec": "标鳜", "price": 26.0, "trend": "flat", "local": true }
+        {
+          "region": "广东",
+          "spec": "小鳜（0.8斤以下）",
+          "price": 18.5,
+          "trend": "flat"
+        },
+        {
+          "region": "广东",
+          "spec": "标鳜（0.8~1.5斤）",
+          "price": 24.5,
+          "trend": "flat"
+        },
+        {
+          "region": "广东",
+          "spec": "中鳜（1.5~2斤）",
+          "price": 24.0,
+          "trend": "down",
+          "note": "-0.5"
+        },
+        {
+          "region": "湖北",
+          "spec": "标鳜",
+          "price": 24.5,
+          "trend": "flat"
+        },
+        {
+          "region": "安徽",
+          "spec": "标鳜",
+          "price": 25.0,
+          "trend": "flat"
+        },
+        {
+          "region": "江西",
+          "spec": "标鳜",
+          "price": 26.0,
+          "trend": "flat"
+        },
+        {
+          "region": "湖南",
+          "spec": "标鳜",
+          "price": 25.0,
+          "trend": "flat"
+        },
+        {
+          "region": "江苏",
+          "spec": "标鳜",
+          "price": 26.0,
+          "trend": "flat",
+          "local": true
+        }
       ],
       "weekly": {
         "date": "2026-10-26",
@@ -26,55 +67,149 @@
         "source_url": "https://mp.weixin.qq.com/s/Rxfg2vZqQmAfJTxeDpYh8A",
         "summary": "鳜鱼最高再跌 2 元：新鱼集中上市 + 外省同步放量 + 终端消费疲软；偏小规格难走会打死包卖",
         "rows": [
-          { "region": "广东佛山", "spec": "3成中鳜", "prev": "23~24", "curr": "22~23", "trend": "down" },
-          { "region": "广东佛山", "spec": "1成中鳜/1成小鳜", "prev": "24~25", "curr": "23~24", "trend": "down" },
-          { "region": "广东佛山", "spec": "3成小鳜", "prev": "19~20", "curr": "19~20", "trend": "flat" },
-          { "region": "江苏", "spec": "标鳜", "prev": "27~28", "curr": "27~28", "trend": "flat_note", "note": "原文标跌1元，数值未变" },
-          { "region": "湖南", "spec": "标鳜", "prev": "24", "curr": "24", "trend": "flat" }
+          {
+            "region": "广东佛山",
+            "spec": "3成中鳜",
+            "prev": "23~24",
+            "curr": "22~23",
+            "trend": "down"
+          },
+          {
+            "region": "广东佛山",
+            "spec": "1成中鳜/1成小鳜",
+            "prev": "24~25",
+            "curr": "23~24",
+            "trend": "down"
+          },
+          {
+            "region": "广东佛山",
+            "spec": "3成小鳜",
+            "prev": "19~20",
+            "curr": "19~20",
+            "trend": "flat"
+          },
+          {
+            "region": "江苏",
+            "spec": "标鳜",
+            "prev": "27~28",
+            "curr": "27~28",
+            "trend": "flat_note",
+            "note": "原文标跌1元，数值未变"
+          },
+          {
+            "region": "湖南",
+            "spec": "标鳜",
+            "prev": "24",
+            "curr": "24",
+            "trend": "flat"
+          }
         ]
       }
     },
-
     "加州鲈": {
-      "date": "2026-10-26",
-      "source": "腾氏水产商务网《上上报价》㊷ + 水产前沿周报第38期",
-      "source_url": "https://mp.weixin.qq.com/s/ROaFUtymDOwP7Uga4XOOSA",
+      "date": "2026-10-28",
+      "source": "渔飞鱼《全国最新水产行情日报》10-28（渔知识指导）+ 加州鲈周报第41期",
+      "source_url": "https://mp.weixin.qq.com/s/r2EQTGBk2Ep2Nn1WetN93A",
       "spec": "塘头价，按规格/成数论价",
-      "headline": "全线涨回 10 元大关，广东领涨 1 元（大鱼爽市）",
+      "headline": "全线涨回 10 元大关并站稳：佛山 1 斤上 10.5~11（周涨 1~1.3），吴江 9 两上 10.5~11.5、成都 11~12",
       "rows": [
-        { "region": "广东佛山", "spec": "1斤上", "price": 10.8, "trend": "up", "note": "8成大鱼，周涨1元" },
-        { "region": "广东佛山", "spec": "9两上", "price": 9.5, "trend": "up" },
-        { "region": "环太湖·江苏", "spec": "平9两", "price": 10.0, "trend": "flat", "local": true },
-        { "region": "环太湖·江苏", "spec": "平1.1斤", "price": 11.0, "trend": "flat", "local": true },
-        { "region": "湖南华容", "spec": "9两起", "price": 11.0, "trend": "up", "note": "+1.0" },
-        { "region": "湖北武汉", "spec": "2斤上起", "price": 10.0, "trend": "up", "note": "+0.5" },
-        { "region": "四川成都", "spec": "1斤上", "price": 11.25, "trend": "down", "note": "-0.5（11~11.5）" }
+        {
+          "region": "广东佛山",
+          "spec": "1斤上",
+          "price": 10.5,
+          "trend": "up",
+          "note": "10.5~11，周涨1~1.3"
+        },
+        {
+          "region": "江苏吴江",
+          "spec": "9两上",
+          "price": 10.5,
+          "trend": "up",
+          "note": "10.5~11.5",
+          "local": true
+        },
+        {
+          "region": "四川成都",
+          "spec": "1斤上",
+          "price": 11.5,
+          "trend": "flat",
+          "note": "11~12"
+        },
+        {
+          "region": "湖南华容",
+          "spec": "9两上",
+          "price": 10.5,
+          "trend": "flat"
+        }
       ],
-      "weekly_note": "流通商对「13 元传言」持谨慎态度；大规格鱼短缺是当前涨价主因，新鱼规格偏小"
+      "weekly_note": "广东大鱼稀缺、外省低存塘见底，部分养户惜售；川粤价差 1 元+（西南需求支撑）"
     }
   },
-
   "local_wholesale": {
     "date": "2026.10.27",
     "source": "无锡盛阳食品城（本地渠道一手批发价）",
     "rows": [
-      { "name": "鳜鱼（桂鱼）", "price": "25~28", "note": "上限较上一期回落" },
-      { "name": "鲈鱼", "price": "10~14", "note": "本地批发价" },
-      { "name": "鲫鱼", "price": "8~13", "note": "" },
-      { "name": "草鱼", "price": "7.5~9.5", "note": "" },
-      { "name": "河虾（100头）", "price": "120", "note": "低位反弹" }
+      {
+        "name": "鳜鱼（桂鱼）",
+        "price": "25~28",
+        "note": "上限较上一期回落"
+      },
+      {
+        "name": "鲈鱼",
+        "price": "10~14",
+        "note": "本地批发价"
+      },
+      {
+        "name": "鲫鱼",
+        "price": "8~13",
+        "note": ""
+      },
+      {
+        "name": "草鱼",
+        "price": "7.5~9.5",
+        "note": ""
+      },
+      {
+        "name": "河虾（100头）",
+        "price": "120",
+        "note": "低位反弹"
+      }
     ]
   },
-
   "disease": {
     "period": "2026-10 下旬 ~ 11 月",
     "level": "high",
     "items": [
-      { "species": "鳜鱼", "name": "传染性脾肾坏死病毒（ISKNV）", "level": "high", "note": "攻击脾肾免疫器官：吃食下滑、离群独游，解剖脾肾肿大充血、腹水，死亡率高；无特效药" },
-      { "species": "鳜鱼", "name": "蛙虹彩病毒", "level": "high", "note": "体色发黑、鳍基红肿、体表出血溃烂；大小规格均可中招，同塘快速扩散" },
-      { "species": "加州鲈", "name": "诺卡氏菌病", "level": "mid", "note": "10-11 月流行高峰，体表溃烂、内脏白点结节" },
-      { "species": "加州鲈", "name": "柱状黄杆菌病（烂鳃）", "level": "mid", "note": "腮丝腐烂、呼吸困难" },
-      { "species": "通用", "name": "水霉病 / 越冬综合征", "level": "upcoming", "note": "11 月低温期 + 拉网操作诱发，体表充血溃烂、棉絮状菌丝" }
+      {
+        "species": "鳜鱼",
+        "name": "传染性脾肾坏死病毒（ISKNV）",
+        "level": "high",
+        "note": "攻击脾肾免疫器官：吃食下滑、离群独游，解剖脾肾肿大充血、腹水；无特效药。广东病原检测阳性率高，10 天内死亡率可达 90%（10-28 渔飞鱼日报）"
+      },
+      {
+        "species": "鳜鱼",
+        "name": "蛙虹彩病毒",
+        "level": "high",
+        "note": "体色发黑、鳍基红肿、体表出血溃烂；大小规格均可中招，同塘快速扩散"
+      },
+      {
+        "species": "加州鲈",
+        "name": "诺卡氏菌病",
+        "level": "mid",
+        "note": "10-11 月流行高峰，体表溃烂、内脏白点结节"
+      },
+      {
+        "species": "加州鲈",
+        "name": "柱状黄杆菌病（烂鳃）",
+        "level": "mid",
+        "note": "腮丝腐烂、呼吸困难"
+      },
+      {
+        "species": "通用",
+        "name": "水霉病 / 越冬综合征",
+        "level": "upcoming",
+        "note": "11 月低温期 + 拉网操作诱发，体表充血溃烂、棉絮状菌丝"
+      }
     ],
     "actions": [
       "减少大量换水与温差刺激，稳水抗应激",
@@ -84,10 +219,10 @@
       "拉网后聚维酮碘消毒 + VC 抗应激"
     ]
   },
-
   "notes": [
+    "口径提示：加州鲈现有三种口径并存——佛山 9两上 9.2~9.5（特水鱼周报38期 10-26）、佛山 1斤上 10.5~11（加州鲈周报41期 10-21 / 渔飞鱼 10-28）、产地 12.4（渔飞鱼预报 10-27）；规格与时间双差异，勿直接互减。",
     "口径提示：渔有福「标鳜」与水产前沿「3成中鳜」口径不同，广东两源差约 2 元/斤，勿直接互减。",
-    "江苏本地（宜兴官林）无独立塘口报价点位，采购/出塘参考以「环太湖 / 江苏标鳜」为准。",
-    "盛阳食品城为本地一手批发渠道，与凌家塘（常州）价差可作为本地调货方向判定依据。"
+    "江苏本地（宜兴官林）无独立塘口报价点位，采购/出塘参考以「环太湖 / 江苏标鳜」为准；10-28 江苏标鳜 26 元/斤。",
+    "盛阳食品城为本地一手批发渠道，与凌家塘（常州）价差可作为本地调货方向判定依据；批发价倒推收购上限须扣流通成本（鳜 3 / 鲈 1 元/斤）。"
   ]
 }

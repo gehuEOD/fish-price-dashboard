@@ -79,17 +79,6 @@
       "status": "active"
     },
     {
-      "key": "video",
-      "name": "视频号塘口价(小洁等)",
-      "auto": false,
-      "date": "2026-10-26",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 2,
-      "note": "需截图核校录入(约2天一更)",
-      "status": "active"
-    },
-    {
       "key": "nandabo",
       "name": "南大堡全国农批市场交易数据日分析报告",
       "auto": false,
@@ -123,6 +112,17 @@
       "status": "active"
     },
     {
+      "key": "video",
+      "name": "视频号塘口价(小洁等)",
+      "auto": false,
+      "date": "2026-10-27",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 1,
+      "note": "需截图核校录入(约2天一更)",
+      "status": "active"
+    },
+    {
       "key": "douyin",
       "name": "TikHub 抖音搜索",
       "auto": false,
@@ -131,17 +131,6 @@
       "label": "正常",
       "age": 1,
       "note": "付费API, 手动抓取",
-      "status": "active"
-    },
-    {
-      "key": "shengyang",
-      "name": "盛阳食品城批发价",
-      "auto": false,
-      "date": "2026-10-27",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "微信公众号截图人工录入(约2~3天一更)",
       "status": "active"
     },
     {
@@ -208,6 +197,17 @@
       "label": "正常",
       "age": 0,
       "note": "微信文章手动录入",
+      "status": "active"
+    },
+    {
+      "key": "shengyang",
+      "name": "盛阳食品城批发价",
+      "auto": false,
+      "date": "2026-10-28",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信公众号截图人工录入(约2~3天一更)",
       "status": "active"
     }
   ]

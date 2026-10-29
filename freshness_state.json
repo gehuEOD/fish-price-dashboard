@@ -101,39 +101,6 @@
       "status": "active"
     },
     {
-      "key": "moa",
-      "name": "农业农村部接口爬虫",
-      "auto": true,
-      "date": "2026-10-28",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
-      "status": "active"
-    },
-    {
-      "key": "public",
-      "name": "公开价源爬虫(北京新发地)",
-      "auto": true,
-      "date": "2026-10-28",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "新发地每日行情API(T-1)",
-      "status": "active"
-    },
-    {
-      "key": "weather",
-      "name": "气象监控",
-      "auto": true,
-      "date": "2026-10-28",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "双源校验 + 每日09:00 cron",
-      "status": "active"
-    },
-    {
       "key": "kexue",
       "name": "科学养鱼公众号 OCR",
       "auto": false,
@@ -219,6 +186,39 @@
       "label": "正常",
       "age": 1,
       "note": "鳜鱼全国产区塘口/批发参考价（元/斤），含日/周涨跌，与渔有福互证",
+      "status": "active"
+    },
+    {
+      "key": "moa",
+      "name": "农业农村部接口爬虫",
+      "auto": true,
+      "date": "2026-10-29",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
+      "status": "active"
+    },
+    {
+      "key": "public",
+      "name": "公开价源爬虫(北京新发地)",
+      "auto": true,
+      "date": "2026-10-29",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "新发地每日行情API(T-1)",
+      "status": "active"
+    },
+    {
+      "key": "weather",
+      "name": "气象监控",
+      "auto": true,
+      "date": "2026-10-29",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "双源校验 + 每日09:00 cron",
       "status": "active"
     },
     {

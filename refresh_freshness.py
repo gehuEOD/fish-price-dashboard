@@ -218,6 +218,8 @@ def main():
         "yuyoufu": manual.get("yuyoufu"),
         # 2026-10-28 新增：水产养殖网（强渔）分产区塘口价 / 周报
         "qiangyu": manual.get("qiangyu"),
+        # 2026-10-29 新增：鳜康泰特约·全国鳜鱼报价（鳜鱼全国产区塘口/批发参考价）
+        "guikangtai": manual.get("guikangtai"),
     }
 
     # B. 新鲜度 + 面板行（红在前）

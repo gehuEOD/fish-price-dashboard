@@ -79,28 +79,6 @@
       "status": "active"
     },
     {
-      "key": "moa",
-      "name": "农业农村部接口爬虫",
-      "auto": true,
-      "date": "2026-10-29",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
-      "status": "active"
-    },
-    {
-      "key": "public",
-      "name": "公开价源爬虫(北京新发地)",
-      "auto": true,
-      "date": "2026-10-29",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "新发地每日行情API(T-1)",
-      "status": "active"
-    },
-    {
       "key": "kexue",
       "name": "科学养鱼公众号 OCR",
       "auto": false,
@@ -175,6 +153,28 @@
       "label": "正常",
       "age": 1,
       "note": "微信文章正文为图片表格，需用户截图人工录入(分规格均价,元/斤,可与淡水渔业元/公斤互证)",
+      "status": "active"
+    },
+    {
+      "key": "moa",
+      "name": "农业农村部接口爬虫",
+      "auto": true,
+      "date": "2026-10-30",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
+      "status": "active"
+    },
+    {
+      "key": "public",
+      "name": "公开价源爬虫(北京新发地)",
+      "auto": true,
+      "date": "2026-10-30",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "新发地每日行情API(T-1)",
       "status": "active"
     },
     {

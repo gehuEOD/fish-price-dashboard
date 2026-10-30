@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29",
+  "generated_at": "2026-10-30",
   "rows": [
     {
       "key": "ayu",
@@ -8,31 +8,9 @@
       "date": "2026-09-15",
       "badge": "🔴",
       "label": "疑似停更·待确认",
-      "age": 44,
+      "age": 45,
       "note": "需用户提供截图 + OCR",
       "status": "stale"
-    },
-    {
-      "key": "fengxiang",
-      "name": "水产市场风向标·批发指数",
-      "auto": false,
-      "date": "2026-10-16",
-      "badge": "🔴",
-      "label": "已过期·待补",
-      "age": 13,
-      "note": "微信文章手动录入(农业农村部指数)",
-      "status": "active"
-    },
-    {
-      "key": "hot",
-      "name": "行业热点综述",
-      "auto": false,
-      "date": "2026-10-19",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 10,
-      "note": "联网检索, 手动刷新",
-      "status": "active"
     },
     {
       "key": "hangqingzhushou",
@@ -41,7 +19,7 @@
       "date": "2026-10-21",
       "badge": "🔴",
       "label": "已过期·待补",
-      "age": 8,
+      "age": 9,
       "note": "微信文章手动录入(行情资讯/技术向，价格口径需核验)",
       "status": "active"
     },
@@ -52,7 +30,7 @@
       "date": "2026-10-26",
       "badge": "🟢",
       "label": "正常",
-      "age": 3,
+      "age": 4,
       "note": "期号监控 + 手动 --apply",
       "status": "active"
     },
@@ -63,7 +41,7 @@
       "date": "2026-10-27",
       "badge": "🟢",
       "label": "正常",
-      "age": 2,
+      "age": 3,
       "note": "付费API, 手动抓取",
       "status": "active"
     },
@@ -72,9 +50,9 @@
       "name": "全国渔业价格日报",
       "auto": false,
       "date": "2026-10-28",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
+      "badge": "🟡",
+      "label": "偏旧·待补",
+      "age": 2,
       "note": "微信文章手动录入",
       "status": "active"
     },
@@ -83,9 +61,9 @@
       "name": "水产养殖网（强渔）",
       "auto": false,
       "date": "2026-10-28",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
+      "badge": "🟡",
+      "label": "偏旧·待补",
+      "age": 2,
       "note": "微信文章手动录入(分产区塘口价/周报,元/斤;10-26周报+10-28加州鲈专题)",
       "status": "active"
     },
@@ -94,9 +72,9 @@
       "name": "南大堡全国农批市场交易数据日分析报告",
       "auto": false,
       "date": "2026-10-28",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
+      "badge": "🟡",
+      "label": "偏旧·待补",
+      "age": 2,
       "note": "微信文章手动录入(JS渲染图片表格，WebFetch不可提取，仅挂原文链接)",
       "status": "active"
     },
@@ -105,9 +83,9 @@
       "name": "鳜康泰特约·全国鳜鱼报价",
       "auto": false,
       "date": "2026-10-28",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
+      "badge": "🟡",
+      "label": "偏旧·待补",
+      "age": 2,
       "note": "鳜鱼全国产区塘口/批发参考价（元/斤），含日/周涨跌，与渔有福互证",
       "status": "active"
     },
@@ -118,7 +96,7 @@
       "date": "2026-10-29",
       "badge": "🟢",
       "label": "自动正常",
-      "age": 0,
+      "age": 1,
       "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
       "status": "active"
     },
@@ -129,19 +107,8 @@
       "date": "2026-10-29",
       "badge": "🟢",
       "label": "自动正常",
-      "age": 0,
+      "age": 1,
       "note": "新发地每日行情API(T-1)",
-      "status": "active"
-    },
-    {
-      "key": "weather",
-      "name": "气象监控",
-      "auto": true,
-      "date": "2026-10-29",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 0,
-      "note": "双源校验 + 每日09:00 cron",
       "status": "active"
     },
     {
@@ -151,7 +118,7 @@
       "date": "2026-10-29",
       "badge": "🟢",
       "label": "正常",
-      "age": 0,
+      "age": 1,
       "note": "需用户提供截图 + OCR",
       "status": "active"
     },
@@ -162,7 +129,7 @@
       "date": "2026-10-29",
       "badge": "🟢",
       "label": "正常",
-      "age": 0,
+      "age": 1,
       "note": "需手动录入",
       "status": "active"
     },
@@ -173,8 +140,19 @@
       "date": "2026-10-29",
       "badge": "🟢",
       "label": "正常",
-      "age": 0,
+      "age": 1,
       "note": "需截图核校录入(约2天一更)",
+      "status": "active"
+    },
+    {
+      "key": "hot",
+      "name": "行业热点综述",
+      "auto": false,
+      "date": "2026-10-29",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 1,
+      "note": "联网检索, 手动刷新",
       "status": "active"
     },
     {
@@ -184,7 +162,7 @@
       "date": "2026-10-29",
       "badge": "🟢",
       "label": "正常",
-      "age": 0,
+      "age": 1,
       "note": "微信文章手动录入(分省分规格塘口价,元/斤;与MOA批发价不同口径)",
       "status": "active"
     },
@@ -195,8 +173,19 @@
       "date": "2026-10-29",
       "badge": "🟢",
       "label": "正常",
-      "age": 0,
+      "age": 1,
       "note": "微信文章手动录入",
+      "status": "active"
+    },
+    {
+      "key": "fengxiang",
+      "name": "水产市场风向标·批发指数",
+      "auto": false,
+      "date": "2026-10-29",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 1,
+      "note": "微信文章手动录入(农业农村部指数)",
       "status": "active"
     },
     {
@@ -206,7 +195,7 @@
       "date": "2026-10-29",
       "badge": "🟢",
       "label": "正常",
-      "age": 0,
+      "age": 1,
       "note": "微信公众号截图人工录入(约2~3天一更)",
       "status": "active"
     },
@@ -217,7 +206,7 @@
       "date": "2026-10-29",
       "badge": "🟢",
       "label": "正常",
-      "age": 0,
+      "age": 1,
       "note": "微信文章 WebFetch 直接提取(全国多地市场分规格批发价,元/公斤)",
       "status": "active"
     },
@@ -228,8 +217,19 @@
       "date": "2026-10-29",
       "badge": "🟢",
       "label": "正常",
-      "age": 0,
+      "age": 1,
       "note": "微信文章正文为图片表格，需用户截图人工录入(分规格均价,元/斤,可与淡水渔业元/公斤互证)",
+      "status": "active"
+    },
+    {
+      "key": "weather",
+      "name": "气象监控",
+      "auto": true,
+      "date": "2026-10-30",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "双源校验 + 每日09:00 cron",
       "status": "active"
     }
   ]

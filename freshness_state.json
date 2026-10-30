@@ -13,17 +13,6 @@
       "status": "stale"
     },
     {
-      "key": "hangqingzhushou",
-      "name": "水产行情助手·行情资讯",
-      "auto": false,
-      "date": "2026-10-21",
-      "badge": "🔴",
-      "label": "已过期·待补",
-      "age": 9,
-      "note": "微信文章手动录入(行情资讯/技术向，价格口径需核验)",
-      "status": "active"
-    },
-    {
       "key": "qianyan",
       "name": "水产前沿（特水鱼/鳜鲈/加州鲈周报）",
       "auto": false,
@@ -134,17 +123,6 @@
       "status": "active"
     },
     {
-      "key": "video",
-      "name": "视频号塘口价(小洁等)",
-      "auto": false,
-      "date": "2026-10-29",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "需截图核校录入(约2天一更)",
-      "status": "active"
-    },
-    {
       "key": "hot",
       "name": "行业热点综述",
       "auto": false,
@@ -167,17 +145,6 @@
       "status": "active"
     },
     {
-      "key": "yufeiyu",
-      "name": "渔飞鱼水产行情日报",
-      "auto": false,
-      "date": "2026-10-29",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "微信文章手动录入",
-      "status": "active"
-    },
-    {
       "key": "fengxiang",
       "name": "水产市场风向标·批发指数",
       "auto": false,
@@ -186,17 +153,6 @@
       "label": "正常",
       "age": 1,
       "note": "微信文章手动录入(农业农村部指数)",
-      "status": "active"
-    },
-    {
-      "key": "shengyang",
-      "name": "盛阳食品城批发价",
-      "auto": false,
-      "date": "2026-10-29",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "微信公众号截图人工录入(约2~3天一更)",
       "status": "active"
     },
     {
@@ -230,6 +186,39 @@
       "label": "自动正常",
       "age": 0,
       "note": "双源校验 + 每日09:00 cron",
+      "status": "active"
+    },
+    {
+      "key": "video",
+      "name": "视频号塘口价(小洁等)",
+      "auto": false,
+      "date": "2026-10-30",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "需截图核校录入(约2天一更)",
+      "status": "active"
+    },
+    {
+      "key": "yufeiyu",
+      "name": "渔飞鱼水产行情日报",
+      "auto": false,
+      "date": "2026-10-30",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信文章手动录入",
+      "status": "active"
+    },
+    {
+      "key": "shengyang",
+      "name": "盛阳食品城批发价",
+      "auto": false,
+      "date": "2026-10-30",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信公众号截图人工录入(约2~3天一更)",
       "status": "active"
     }
   ]

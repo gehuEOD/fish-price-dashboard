@@ -212,7 +212,7 @@ def main():
         # v1.14.10 新增三个微信日报手动源（日期在 data_sources_manifest.json manual_dates 维护）
         "minjian": manual.get("minjian"), "yufeiyu": manual.get("yufeiyu"),
         "fengxiang": manual.get("fengxiang"), "nandabo": manual.get("nandabo"),
-        "shengyang": manual.get("shengyang"), "hangqingzhushou": manual.get("hangqingzhushou"), "danshui": manual.get("danshui"),
+        "shengyang": manual.get("shengyang"), "danshui": manual.get("danshui"),
         "tongwei": manual.get("tongwei"),
         # 2026-10-28 新增：渔有福鳜鱼塘口（此前只在看板有卡片、未进新鲜度面板）
         "yuyoufu": manual.get("yuyoufu"),

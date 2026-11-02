@@ -13,17 +13,6 @@
       "status": "stale"
     },
     {
-      "key": "qianyan",
-      "name": "水产前沿（特水鱼/鳜鲈/加州鲈周报）",
-      "auto": false,
-      "date": "2026-10-26",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 7,
-      "note": "期号监控 + 手动 --apply",
-      "status": "active"
-    },
-    {
       "key": "douyin",
       "name": "TikHub 抖音搜索",
       "auto": false,
@@ -35,28 +24,6 @@
       "status": "active"
     },
     {
-      "key": "minjian",
-      "name": "全国渔业价格日报",
-      "auto": false,
-      "date": "2026-10-28",
-      "badge": "🔴",
-      "label": "已过期·待补",
-      "age": 5,
-      "note": "微信文章手动录入",
-      "status": "active"
-    },
-    {
-      "key": "qiangyu",
-      "name": "水产养殖网（强渔）",
-      "auto": false,
-      "date": "2026-10-28",
-      "badge": "🔴",
-      "label": "已过期·待补",
-      "age": 5,
-      "note": "微信文章手动录入(分产区塘口价/周报,元/斤;10-26周报+10-28加州鲈专题)",
-      "status": "active"
-    },
-    {
       "key": "nandabo",
       "name": "南大堡全国农批市场交易数据日分析报告",
       "auto": false,
@@ -65,17 +32,6 @@
       "label": "已过期·待补",
       "age": 5,
       "note": "微信文章手动录入(JS渲染图片表格，WebFetch不可提取，仅挂原文链接)",
-      "status": "active"
-    },
-    {
-      "key": "tengshi",
-      "name": "腾氏水产商务网联合播报",
-      "auto": false,
-      "date": "2026-10-29",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 4,
-      "note": "需手动录入",
       "status": "active"
     },
     {
@@ -189,6 +145,17 @@
       "status": "active"
     },
     {
+      "key": "qianyan",
+      "name": "水产前沿（特水鱼/鳜鲈/加州鲈周报）",
+      "auto": false,
+      "date": "2026-11-02",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "期号监控 + 手动 --apply",
+      "status": "active"
+    },
+    {
       "key": "kexue",
       "name": "科学养鱼公众号 OCR",
       "auto": false,
@@ -200,6 +167,17 @@
       "status": "active"
     },
     {
+      "key": "tengshi",
+      "name": "腾氏水产商务网联合播报",
+      "auto": false,
+      "date": "2026-11-02",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "需手动录入",
+      "status": "active"
+    },
+    {
       "key": "video",
       "name": "视频号塘口价(小洁等)",
       "auto": false,
@@ -208,6 +186,28 @@
       "label": "正常",
       "age": 0,
       "note": "需截图核校录入(约2天一更)",
+      "status": "active"
+    },
+    {
+      "key": "minjian",
+      "name": "全国渔业价格日报",
+      "auto": false,
+      "date": "2026-11-02",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信文章手动录入",
+      "status": "active"
+    },
+    {
+      "key": "qiangyu",
+      "name": "水产养殖网（强渔）",
+      "auto": false,
+      "date": "2026-11-02",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信文章手动录入(分产区塘口价/周报,元/斤;10-26周报+10-28加州鲈专题)",
       "status": "active"
     },
     {

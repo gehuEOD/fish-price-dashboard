@@ -68,17 +68,6 @@
       "status": "active"
     },
     {
-      "key": "kexue",
-      "name": "科学养鱼公众号 OCR",
-      "auto": false,
-      "date": "2026-10-29",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 4,
-      "note": "需用户提供截图 + OCR",
-      "status": "active"
-    },
-    {
       "key": "tengshi",
       "name": "腾氏水产商务网联合播报",
       "auto": false,
@@ -145,17 +134,6 @@
       "status": "active"
     },
     {
-      "key": "guikangtai",
-      "name": "鳜康泰特约·全国鳜鱼报价",
-      "auto": false,
-      "date": "2026-10-31",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 2,
-      "note": "鳜鱼全国产区塘口/批发参考价（元/斤），含日/周涨跌，与渔有福互证",
-      "status": "active"
-    },
-    {
       "key": "lingjiatang",
       "name": "江苏凌家塘市场一周行情",
       "auto": false,
@@ -164,6 +142,17 @@
       "label": "正常",
       "age": 2,
       "note": "常州凌家塘官方公众号周报（约数口径，未分规格），离宜兴最近的批发市场之一，与MOA凌家塘活鳜57元/kg互证",
+      "status": "active"
+    },
+    {
+      "key": "guikangtai",
+      "name": "鳜康泰特约·全国鳜鱼报价",
+      "auto": false,
+      "date": "2026-11-01",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 1,
+      "note": "鳜鱼全国产区塘口/批发参考价（元/斤），含日/周涨跌，与渔有福互证",
       "status": "active"
     },
     {
@@ -197,6 +186,17 @@
       "label": "自动正常",
       "age": 0,
       "note": "双源校验 + 每日09:00 cron",
+      "status": "active"
+    },
+    {
+      "key": "kexue",
+      "name": "科学养鱼公众号 OCR",
+      "auto": false,
+      "date": "2026-11-02",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "需用户提供截图 + OCR",
       "status": "active"
     },
     {

@@ -214,7 +214,7 @@ def stamp_updated_at(dt: datetime | None = None, html_path: str = HTML) -> str:
     block = text[s:e]
 
     block = re.sub(
-        r"看板更新：\d{4}年\d{1,2}月\d{1,2}日 \d{2}:\d{2}",
+        r"看板更新：[^<]*",
         f"看板更新：{cn}",
         block,
     )

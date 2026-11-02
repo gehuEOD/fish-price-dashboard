@@ -2,19 +2,20 @@
   "_doc": "看板全部数据来源的单一真源。自动源(moa/public/weather)的日期由 refresh_freshness.py 从真实数据文件反推；手动源(tengshi/video/douyin/hot)的日期在此人工维护，每次用户提供截图/录入后更新对应键并运行 refresh_freshness.py。qianyan/kexue/ayu 的日期由脚本从 qianyan_state.json / wechat_ocr_current.json 读取。",
   "manual_dates": {
     "tengshi": "2026-10-29",
-    "video": "2026-10-30",
+    "video": "2026-11-02",
     "douyin": "2026-10-19",
     "hot": "2026-10-29",
     "minjian": "2026-10-28",
-    "yufeiyu": "2026-10-30",
+    "yufeiyu": "2026-11-02",
     "fengxiang": "2026-10-29",
     "nandabo": "2026-10-28",
-    "shengyang": "2026-10-30",
+    "shengyang": "2026-11-02",
     "danshui": "2026-10-29",
     "tongwei": "2026-10-29",
     "yuyoufu": "2026-10-29",
     "qiangyu": "2026-10-28",
-    "guikangtai": "2026-10-28"
+    "guikangtai": "2026-10-31",
+    "lingjiatang": "2026-10-31"
   },
   "sources": [
     {
@@ -157,6 +158,13 @@
       "auto": false,
       "cadence": 1,
       "note": "鳜鱼全国产区塘口/批发参考价（元/斤），含日/周涨跌，与渔有福互证"
+    },
+    {
+      "key": "lingjiatang",
+      "name": "江苏凌家塘市场一周行情",
+      "auto": false,
+      "cadence": 7,
+      "note": "常州凌家塘官方公众号周报（约数口径，未分规格），离宜兴最近的批发市场之一，与MOA凌家塘活鳜57元/kg互证"
     }
   ]
 }

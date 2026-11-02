@@ -220,6 +220,8 @@ def main():
         "qiangyu": manual.get("qiangyu"),
         # 2026-10-29 新增：鳜康泰特约·全国鳜鱼报价（鳜鱼全国产区塘口/批发参考价）
         "guikangtai": manual.get("guikangtai"),
+        # 2026-11-02 新增：江苏凌家塘市场一周行情（周报约数口径）
+        "lingjiatang": manual.get("lingjiatang"),
     }
 
     # B. 新鲜度 + 面板行（红在前）

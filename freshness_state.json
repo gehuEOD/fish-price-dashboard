@@ -145,17 +145,6 @@
       "status": "active"
     },
     {
-      "key": "public",
-      "name": "公开价源爬虫(北京新发地)",
-      "auto": true,
-      "date": "2026-10-30",
-      "badge": "🟡",
-      "label": "自动偏旧",
-      "age": 3,
-      "note": "新发地每日行情API(T-1)",
-      "status": "active"
-    },
-    {
       "key": "guikangtai",
       "name": "鳜康泰特约·全国鳜鱼报价",
       "auto": false,
@@ -181,11 +170,22 @@
       "key": "moa",
       "name": "农业农村部接口爬虫",
       "auto": true,
-      "date": "2026-11-01",
+      "date": "2026-11-02",
       "badge": "🟢",
       "label": "自动正常",
-      "age": 1,
+      "age": 0,
       "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
+      "status": "active"
+    },
+    {
+      "key": "public",
+      "name": "公开价源爬虫(北京新发地)",
+      "auto": true,
+      "date": "2026-11-02",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "新发地每日行情API(T-1)",
       "status": "active"
     },
     {

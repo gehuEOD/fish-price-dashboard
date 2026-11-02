@@ -222,6 +222,8 @@ def main():
         "guikangtai": manual.get("guikangtai"),
         # 2026-11-02 新增：江苏凌家塘市场一周行情（周报约数口径）
         "lingjiatang": manual.get("lingjiatang"),
+        # 2026-11-02 新增：海大农牧 水产一线 塘头聚焦（广东加州鲈塘头价）
+        "hainong": manual.get("hainong"),
     }
 
     # B. 新鲜度 + 面板行（红在前）

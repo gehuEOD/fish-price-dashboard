@@ -134,28 +134,6 @@
       "status": "active"
     },
     {
-      "key": "minjian",
-      "name": "全国渔业价格日报",
-      "auto": false,
-      "date": "2026-11-02",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "微信文章手动录入",
-      "status": "active"
-    },
-    {
-      "key": "qiangyu",
-      "name": "水产养殖网（强渔）",
-      "auto": false,
-      "date": "2026-11-02",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "微信文章手动录入(分产区塘口价/周报,元/斤;10-26周报+10-28加州鲈专题)",
-      "status": "active"
-    },
-    {
       "key": "danshui",
       "name": "淡水渔业公众号批发价",
       "auto": false,
@@ -219,6 +197,28 @@
       "label": "正常",
       "age": 0,
       "note": "需截图核校录入(约2天一更)",
+      "status": "active"
+    },
+    {
+      "key": "minjian",
+      "name": "全国渔业价格日报",
+      "auto": false,
+      "date": "2026-11-03",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信文章手动录入",
+      "status": "active"
+    },
+    {
+      "key": "qiangyu",
+      "name": "水产养殖网（强渔）",
+      "auto": false,
+      "date": "2026-11-03",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信文章手动录入(分产区塘口价/周报,元/斤;10-26周报+10-28加州鲈专题)",
       "status": "active"
     },
     {

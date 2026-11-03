@@ -68,28 +68,6 @@
       "status": "active"
     },
     {
-      "key": "danshui",
-      "name": "淡水渔业公众号批发价",
-      "auto": false,
-      "date": "2026-10-29",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 5,
-      "note": "微信文章 WebFetch 直接提取(全国多地市场分规格批发价,元/公斤)",
-      "status": "active"
-    },
-    {
-      "key": "tongwei",
-      "name": "通威农牧批发价",
-      "auto": false,
-      "date": "2026-10-29",
-      "badge": "🔴",
-      "label": "已过期·待补",
-      "age": 5,
-      "note": "微信文章正文为图片表格，需用户截图人工录入(分规格均价,元/斤,可与淡水渔业元/公斤互证)",
-      "status": "active"
-    },
-    {
       "key": "lingjiatang",
       "name": "江苏凌家塘市场一周行情",
       "auto": false,
@@ -178,14 +156,25 @@
       "status": "active"
     },
     {
-      "key": "yufeiyu",
-      "name": "渔飞鱼水产行情日报",
+      "key": "danshui",
+      "name": "淡水渔业公众号批发价",
       "auto": false,
       "date": "2026-11-02",
       "badge": "🟢",
       "label": "正常",
       "age": 1,
-      "note": "微信文章手动录入",
+      "note": "微信文章 WebFetch 直接提取(全国多地市场分规格批发价,元/公斤)",
+      "status": "active"
+    },
+    {
+      "key": "tongwei",
+      "name": "通威农牧批发价",
+      "auto": false,
+      "date": "2026-11-02",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 1,
+      "note": "微信文章正文为图片表格，需用户截图人工录入(分规格均价,元/斤,可与淡水渔业元/公斤互证)",
       "status": "active"
     },
     {
@@ -230,6 +219,17 @@
       "label": "正常",
       "age": 0,
       "note": "需截图核校录入(约2天一更)",
+      "status": "active"
+    },
+    {
+      "key": "yufeiyu",
+      "name": "渔飞鱼水产行情日报",
+      "auto": false,
+      "date": "2026-11-03",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信文章手动录入",
       "status": "active"
     },
     {

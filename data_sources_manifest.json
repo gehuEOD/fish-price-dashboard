@@ -2,21 +2,22 @@
   "_doc": "看板全部数据来源的单一真源。自动源(moa/public/weather)的日期由 refresh_freshness.py 从真实数据文件反推；手动源(tengshi/video/douyin/hot)的日期在此人工维护，每次用户提供截图/录入后更新对应键并运行 refresh_freshness.py。qianyan/kexue/ayu 的日期由脚本从 qianyan_state.json / wechat_ocr_current.json 读取。",
   "manual_dates": {
     "tengshi": "2026-11-02",
-    "video": "2026-11-03",
+    "video": "2026-11-04",
     "douyin": "2026-10-19",
     "hot": "2026-10-29",
     "minjian": "2026-11-03",
-    "yufeiyu": "2026-11-03",
+    "yufeiyu": "2026-11-04",
     "fengxiang": "2026-10-29",
     "nandabo": "2026-10-28",
-    "shengyang": "2026-11-03",
+    "shengyang": "2026-11-04",
     "danshui": "2026-11-02",
     "tongwei": "2026-11-02",
     "yuyoufu": "2026-10-29",
     "qiangyu": "2026-11-03",
     "guikangtai": "2026-11-02",
     "lingjiatang": "2026-10-31",
-    "hainong": "2026-11-02"
+    "hainong": "2026-11-02",
+    "yuwuyou": "2026-11-04"
   },
   "sources": [
     {
@@ -173,6 +174,13 @@
       "auto": false,
       "cadence": 1,
       "note": "微信文章手动录入（广东加州鲈塘头价为主，元/斤；与腾氏/强渔/水产前沿广东口径互证）"
+    },
+    {
+      "key": "yuwuyou",
+      "name": "渔无忧在线·最新水产行情预报",
+      "auto": false,
+      "cadence": 1,
+      "note": "河南公众号，次日行情预测口径（基准价为前一日参考价）。加州鲈仅1-1.5公斤规格一条，与塘口1斤上口径规格不同不可互减；预测性质，非实测报价"
     }
   ]
 }

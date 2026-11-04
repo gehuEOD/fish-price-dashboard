@@ -156,17 +156,6 @@
       "status": "active"
     },
     {
-      "key": "video",
-      "name": "视频号塘口价(小洁等)",
-      "auto": false,
-      "date": "2026-11-03",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "需截图核校录入(约2天一更)",
-      "status": "active"
-    },
-    {
       "key": "minjian",
       "name": "全国渔业价格日报",
       "auto": false,
@@ -186,28 +175,6 @@
       "label": "正常",
       "age": 1,
       "note": "微信文章手动录入(分产区塘口价/周报,元/斤;10-26周报+10-28加州鲈专题)",
-      "status": "active"
-    },
-    {
-      "key": "yufeiyu",
-      "name": "渔飞鱼水产行情日报",
-      "auto": false,
-      "date": "2026-11-03",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "微信文章手动录入",
-      "status": "active"
-    },
-    {
-      "key": "shengyang",
-      "name": "盛阳食品城批发价",
-      "auto": false,
-      "date": "2026-11-03",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "微信公众号截图人工录入(约2~3天一更)",
       "status": "active"
     },
     {
@@ -241,6 +208,50 @@
       "label": "自动正常",
       "age": 0,
       "note": "双源校验 + 每日09:00 cron",
+      "status": "active"
+    },
+    {
+      "key": "video",
+      "name": "视频号塘口价(小洁等)",
+      "auto": false,
+      "date": "2026-11-04",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "需截图核校录入(约2天一更)",
+      "status": "active"
+    },
+    {
+      "key": "yufeiyu",
+      "name": "渔飞鱼水产行情日报",
+      "auto": false,
+      "date": "2026-11-04",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信文章手动录入",
+      "status": "active"
+    },
+    {
+      "key": "shengyang",
+      "name": "盛阳食品城批发价",
+      "auto": false,
+      "date": "2026-11-04",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信公众号截图人工录入(约2~3天一更)",
+      "status": "active"
+    },
+    {
+      "key": "yuwuyou",
+      "name": "渔无忧在线·最新水产行情预报",
+      "auto": false,
+      "date": "2026-11-04",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "河南公众号，次日行情预测口径（基准价为前一日参考价）。加州鲈仅1-1.5公斤规格一条，与塘口1斤上口径规格不同不可互减；预测性质，非实测报价",
       "status": "active"
     }
   ]

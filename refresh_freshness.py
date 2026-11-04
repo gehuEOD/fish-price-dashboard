@@ -224,6 +224,8 @@ def main():
         "lingjiatang": manual.get("lingjiatang"),
         # 2026-11-02 新增：海大农牧 水产一线 塘头聚焦（广东加州鲈塘头价）
         "hainong": manual.get("hainong"),
+        # 2026-11-04 新增：渔无忧在线行情预报（次日预测口径）
+        "yuwuyou": manual.get("yuwuyou"),
     }
 
     # B. 新鲜度 + 面板行（红在前）

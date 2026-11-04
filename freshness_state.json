@@ -156,28 +156,6 @@
       "status": "active"
     },
     {
-      "key": "moa",
-      "name": "农业农村部接口爬虫",
-      "auto": true,
-      "date": "2026-11-03",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
-      "status": "active"
-    },
-    {
-      "key": "public",
-      "name": "公开价源爬虫(北京新发地)",
-      "auto": true,
-      "date": "2026-11-03",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "新发地每日行情API(T-1)",
-      "status": "active"
-    },
-    {
       "key": "video",
       "name": "视频号塘口价(小洁等)",
       "auto": false,
@@ -230,6 +208,28 @@
       "label": "正常",
       "age": 1,
       "note": "微信公众号截图人工录入(约2~3天一更)",
+      "status": "active"
+    },
+    {
+      "key": "moa",
+      "name": "农业农村部接口爬虫",
+      "auto": true,
+      "date": "2026-11-04",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
+      "status": "active"
+    },
+    {
+      "key": "public",
+      "name": "公开价源爬虫(北京新发地)",
+      "auto": true,
+      "date": "2026-11-04",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "新发地每日行情API(T-1)",
       "status": "active"
     },
     {

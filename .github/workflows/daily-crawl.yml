@@ -63,6 +63,13 @@ jobs:
       - name: 重新内联资产
         run: python inline_assets.py || true
 
+      # ⑤b 农产品批发价格200指数（农业农村部·市场与信息化司 每日发布）
+      #     数据源已溯源至 https://www.agri.cn/zx/zxfb/ 栏目首条（永久入口）
+      #     会回写 manifest.manual_dates.fengxiang，故须排在 ⑥ 新鲜度回写之前；
+      #     best-effort：站点不可达或文案变更时不覆盖看板原值
+      - name: 抓取并注入 200 指数卡
+        run: python moa_index_crawler.py || true
+
       # ⑥ 数据新鲜度回写：从真实数据文件反推各源最新日期，
       #    渲染「数据新鲜度总览」面板并幂等回写看板内所有散落日期标签
       #    （此前 cron 只更新数据文件、不回写看板，导致自动源日期也滞后）
@@ -74,12 +81,6 @@ jobs:
       #    卡片还写 10-18」的脱钩，以及算术平均被远距离销区拉高到 43 元/斤）
       - name: 注入 MOA 批发价区块
         run: python inject_moa_block.py
-
-      # ⑦b 农产品批发价格200指数（农业农村部·市场与信息化司 每日发布）
-      #     数据源已溯源至 https://www.agri.cn/zx/zxfb/ 栏目首条（永久入口）
-      #     best-effort：站点不可达或文案变更时不覆盖看板原值
-      - name: 抓取并注入 200 指数卡
-        run: python moa_index_crawler.py || true
 
       # ⑧ 提交并推送（先 pull --rebase 避免与本地手动提交 non-fast-forward 冲突导致当日更新丢失）
       - name: 提交变化

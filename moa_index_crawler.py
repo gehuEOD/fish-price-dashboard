@@ -297,9 +297,15 @@ def main():
         print("[dry-run] 卡片预览：\n" + block)
         return
 
-    with open(JSON_OUT, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"[3/4] 已写 {os.path.basename(JSON_OUT)}")
+    # 数据未变（当日文章尚未发布/内容相同）时不重写 JSON，避免每日空提交
+    sig = ("title", "url", "date", "index200", "cailanzi", "fish")
+    unchanged = all(prev.get(k) == data.get(k) for k in sig)
+    if unchanged:
+        print(f"[3/4] 数据与 {os.path.basename(JSON_OUT)} 一致，跳过写入")
+    else:
+        with open(JSON_OUT, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        print(f"[3/4] 已写 {os.path.basename(JSON_OUT)}")
 
     with open(HTML, encoding="utf-8") as f:
         html = f.read()

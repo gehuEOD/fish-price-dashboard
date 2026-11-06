@@ -24,28 +24,6 @@
       "status": "active"
     },
     {
-      "key": "nandabo",
-      "name": "南大堡全国农批市场交易数据日分析报告",
-      "auto": false,
-      "date": "2026-10-28",
-      "badge": "🔴",
-      "label": "已过期·待补",
-      "age": 9,
-      "note": "微信文章手动录入(JS渲染图片表格，WebFetch不可提取，仅挂原文链接)",
-      "status": "active"
-    },
-    {
-      "key": "hot",
-      "name": "行业热点综述",
-      "auto": false,
-      "date": "2026-10-29",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 8,
-      "note": "联网检索, 手动刷新",
-      "status": "active"
-    },
-    {
       "key": "lingjiatang",
       "name": "江苏凌家塘市场一周行情",
       "auto": false,
@@ -79,17 +57,6 @@
       "status": "active"
     },
     {
-      "key": "tongwei",
-      "name": "通威农牧批发价",
-      "auto": false,
-      "date": "2026-11-02",
-      "badge": "🔴",
-      "label": "已过期·待补",
-      "age": 4,
-      "note": "微信文章正文为图片表格，需用户截图人工录入(分规格均价,元/斤,可与淡水渔业元/公斤互证)",
-      "status": "active"
-    },
-    {
       "key": "hainong",
       "name": "海大农牧 水产一线（塘头聚焦）",
       "auto": false,
@@ -101,17 +68,6 @@
       "status": "active"
     },
     {
-      "key": "qiangyu",
-      "name": "水产养殖网（强渔）",
-      "auto": false,
-      "date": "2026-11-03",
-      "badge": "🔴",
-      "label": "已过期·待补",
-      "age": 3,
-      "note": "微信文章手动录入(分产区塘口价/周报,元/斤;10-26周报+10-28加州鲈专题)",
-      "status": "active"
-    },
-    {
       "key": "public",
       "name": "公开价源爬虫(北京新发地)",
       "auto": true,
@@ -120,6 +76,28 @@
       "label": "自动偏旧",
       "age": 2,
       "note": "新发地每日行情API(T-1)",
+      "status": "active"
+    },
+    {
+      "key": "qiangyu",
+      "name": "水产养殖网（强渔）",
+      "auto": false,
+      "date": "2026-11-04",
+      "badge": "🟡",
+      "label": "偏旧·待补",
+      "age": 2,
+      "note": "微信文章手动录入(分产区塘口价/周报,元/斤;10-26周报+10-28加州鲈专题)",
+      "status": "active"
+    },
+    {
+      "key": "tongwei",
+      "name": "通威农牧批发价",
+      "auto": false,
+      "date": "2026-11-04",
+      "badge": "🟡",
+      "label": "偏旧·待补",
+      "age": 2,
+      "note": "微信文章正文为图片表格，需用户截图人工录入(分规格均价,元/斤,可与淡水渔业元/公斤互证)",
       "status": "active"
     },
     {

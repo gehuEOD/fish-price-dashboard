@@ -4,16 +4,14 @@
     "tengshi": "2026-11-05",
     "video": "2026-11-06",
     "douyin": "2026-10-19",
-    "hot": "2026-10-29",
     "minjian": "2026-11-06",
     "yufeiyu": "2026-11-06",
     "fengxiang": "2026-11-05",
-    "nandabo": "2026-10-28",
     "shengyang": "2026-11-06",
     "danshui": "2026-11-02",
-    "tongwei": "2026-11-02",
+    "tongwei": "2026-11-04",
     "yuyoufu": "2026-11-06",
-    "qiangyu": "2026-11-03",
+    "qiangyu": "2026-11-04",
     "guikangtai": "2026-11-05",
     "lingjiatang": "2026-10-31",
     "hainong": "2026-11-02",
@@ -86,13 +84,6 @@
       "note": "付费API, 手动抓取"
     },
     {
-      "key": "hot",
-      "name": "行业热点综述",
-      "auto": false,
-      "cadence": 7,
-      "note": "联网检索, 手动刷新"
-    },
-    {
       "key": "minjian",
       "name": "全国渔业价格日报",
       "auto": false,
@@ -119,13 +110,6 @@
       "auto": false,
       "cadence": 1,
       "note": "微信文章手动录入"
-    },
-    {
-      "key": "nandabo",
-      "name": "南大堡全国农批市场交易数据日分析报告",
-      "auto": false,
-      "cadence": 1,
-      "note": "微信文章手动录入(JS渲染图片表格，WebFetch不可提取，仅挂原文链接)"
     },
     {
       "key": "fengxiang",

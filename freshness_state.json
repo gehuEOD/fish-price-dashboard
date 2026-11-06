@@ -68,17 +68,6 @@
       "status": "active"
     },
     {
-      "key": "public",
-      "name": "公开价源爬虫(北京新发地)",
-      "auto": true,
-      "date": "2026-11-04",
-      "badge": "🟡",
-      "label": "自动偏旧",
-      "age": 2,
-      "note": "新发地每日行情API(T-1)",
-      "status": "active"
-    },
-    {
       "key": "qiangyu",
       "name": "水产养殖网（强渔）",
       "auto": false,
@@ -112,17 +101,6 @@
       "status": "active"
     },
     {
-      "key": "moa",
-      "name": "农业农村部接口爬虫",
-      "auto": true,
-      "date": "2026-11-05",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
-      "status": "active"
-    },
-    {
       "key": "kexue",
       "name": "科学养鱼公众号 OCR",
       "auto": false,
@@ -145,17 +123,6 @@
       "status": "active"
     },
     {
-      "key": "fengxiang",
-      "name": "水产市场风向标·批发指数",
-      "auto": false,
-      "date": "2026-11-05",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "农业农村部「农产品批发价格200指数」每日发布（agri.cn/zx/zxfb/），由 moa_index_crawler.py 自动抓取指数与鲫/鲤/白鲢/大带鱼四品种价；水产品价格指数仅 pfsc.agri.cn 门户可见，需人工核对",
-      "status": "active"
-    },
-    {
       "key": "guikangtai",
       "name": "鳜康泰特约·全国鳜鱼报价",
       "auto": false,
@@ -164,6 +131,28 @@
       "label": "正常",
       "age": 1,
       "note": "鳜鱼全国产区塘口/批发参考价（元/斤），含日/周涨跌，与渔有福互证",
+      "status": "active"
+    },
+    {
+      "key": "moa",
+      "name": "农业农村部接口爬虫",
+      "auto": true,
+      "date": "2026-11-06",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
+      "status": "active"
+    },
+    {
+      "key": "public",
+      "name": "公开价源爬虫(北京新发地)",
+      "auto": true,
+      "date": "2026-11-06",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "新发地每日行情API(T-1)",
       "status": "active"
     },
     {
@@ -219,6 +208,17 @@
       "label": "正常",
       "age": 0,
       "note": "微信文章手动录入",
+      "status": "active"
+    },
+    {
+      "key": "fengxiang",
+      "name": "水产市场风向标·批发指数",
+      "auto": false,
+      "date": "2026-11-06",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "农业农村部「农产品批发价格200指数」每日发布（agri.cn/zx/zxfb/），由 moa_index_crawler.py 自动抓取指数与鲫/鲤/白鲢/大带鱼四品种价；水产品价格指数仅 pfsc.agri.cn 门户可见，需人工核对",
       "status": "active"
     },
     {

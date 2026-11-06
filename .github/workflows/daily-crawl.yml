@@ -75,6 +75,12 @@ jobs:
       - name: 注入 MOA 批发价区块
         run: python inject_moa_block.py
 
+      # ⑦b 农产品批发价格200指数（农业农村部·市场与信息化司 每日发布）
+      #     数据源已溯源至 https://www.agri.cn/zx/zxfb/ 栏目首条（永久入口）
+      #     best-effort：站点不可达或文案变更时不覆盖看板原值
+      - name: 抓取并注入 200 指数卡
+        run: python moa_index_crawler.py || true
+
       # ⑧ 提交并推送（先 pull --rebase 避免与本地手动提交 non-fast-forward 冲突导致当日更新丢失）
       - name: 提交变化
         run: |

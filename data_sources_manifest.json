@@ -7,7 +7,7 @@
     "hot": "2026-10-29",
     "minjian": "2026-11-03",
     "yufeiyu": "2026-11-05",
-    "fengxiang": "2026-10-29",
+    "fengxiang": "2026-11-05",
     "nandabo": "2026-10-28",
     "shengyang": "2026-11-05",
     "danshui": "2026-11-02",
@@ -131,7 +131,7 @@
       "name": "水产市场风向标·批发指数",
       "auto": false,
       "cadence": 3,
-      "note": "微信文章手动录入(农业农村部指数)"
+      "note": "农业农村部「农产品批发价格200指数」每日发布（agri.cn/zx/zxfb/），由 moa_index_crawler.py 自动抓取指数与鲫/鲤/白鲢/大带鱼四品种价；水产品价格指数仅 pfsc.agri.cn 门户可见，需人工核对"
     },
     {
       "key": "shengyang",

@@ -129,7 +129,7 @@ def main():
     before = balance(html)
 
     # 防止重跑重复插入
-    if "11月7日 · 通威农牧 / 腾氏 一周鱼价" in html:
+    if "11月7日 · 通威农牧 / 腾氏水产 一周鱼价" in html:
         print("[SKIP] 已插入过本批次卡片，退出以防重复")
         return 0
 

@@ -260,9 +260,9 @@ function wgs84togcj02(lng, lat){
     </div>
 
     <!-- UPDATED_AT_START -->
-    <div id="updatedAtBar" data-updated-at="2026-11-07T10:32:07+08:00" style="margin-top:12px;padding:9px 14px;border-radius:12px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.34);backdrop-filter:blur(4px);font-size:13px;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 2px 10px -4px rgba(0,0,0,.35)">
+    <div id="updatedAtBar" data-updated-at="2026-11-08T11:19:34+08:00" style="margin-top:12px;padding:9px 14px;border-radius:12px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.34);backdrop-filter:blur(4px);font-size:13px;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 2px 10px -4px rgba(0,0,0,.35)">
       <span style="font-size:15px">🕒</span>
-      <b id="updatedAtAbs" style="font-size:13.5px;letter-spacing:.3px">看板更新：2026年11月7日 10:32</b>
+      <b id="updatedAtAbs" style="font-size:13.5px;letter-spacing:.3px">看板更新：2026年11月8日 11:19</b>
       <span id="updatedAtRel" style="color:#e0f2fe">（刚刚更新）</span>
       <span style="opacity:.72;font-size:12px">· 气象每日 09:00 自动刷新；价格/社媒数据不定期更新，以本行时间为准</span>
     </div>
@@ -279,7 +279,7 @@ function wgs84togcj02(lng, lat){
       if(abs){
         try{
           var absTxt = new Date(iso).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false});
-          abs.textContent = '看板更新：2026年11月7日 10:32< 0.05){ txt = '（刚刚更新）'; }
+          abs.textContent = '看板更新：2026年11月8日 11:19< 0.05){ txt = '（刚刚更新）'; }
       else if(diffH < 1){ txt = '（' + Math.max(1, Math.round(diffH * 60)) + ' 分钟前）'; }
       else if(diffH < 24){ txt = '（' + Math.round(diffH) + ' 小时前）'; }
       else { txt = '（' + Math.floor(diffH / 24) + ' 天前）'; color = '#fde68a'; }
@@ -3345,6 +3345,9 @@ function wgs84togcj02(lng, lat){
   
 
 
+  
+
+
   <!-- WEATHER_LIVE_START -->
   <!-- 八、江苏环荟·宜兴官林镇数字低碳生态养殖项目 · 位置 + 实时气象 -->
   <section data-page-node-id="farm-loc-weather">
@@ -3456,52 +3459,52 @@ function wgs84togcj02(lng, lat){
 
     <!-- B. 实时气象 -->
     <div class="card weather-card">
-      <h3>🌡️ 实时气象（2026-11-07T10:30 · Asia/Shanghai）</h3>
-      <div class="csub">天气：<b>🌤️ 局部多云</b>　|　数据源：Open-Meteo（WMO 标准 · 15min 更新 · 免费公开）</div>
+      <h3>🌡️ 实时气象（2026-11-08T11:15 · Asia/Shanghai）</h3>
+      <div class="csub">天气：<b>🌦️ 毛毛雨(中)</b>　|　数据源：Open-Meteo（WMO 标准 · 15min 更新 · 免费公开）</div>
       <div class="mets-grid">
 <div class="met">
           <div class="met-icon">🌡️</div>
           <div class="met-label">气温</div>
-          <div class="met-val">18.4 °C</div>
+          <div class="met-val">16.0 °C</div>
         </div>
 <div class="met">
           <div class="met-icon">💨</div>
           <div class="met-label">风速</div>
-          <div class="met-val">27.7 km/h</div>
+          <div class="met-val">14.9 km/h</div>
         </div>
 <div class="met">
           <div class="met-icon">🧭</div>
           <div class="met-label">风向</div>
-          <div class="met-val">东南东 <span class='deg'>(105°)</span></div>
+          <div class="met-val">南东南 <span class='deg'>(149°)</span></div>
         </div>
 <div class="met">
           <div class="met-icon">☀️</div>
           <div class="met-label">太阳辐射</div>
-          <div class="met-val">481.0 W/m²</div>
+          <div class="met-val">87.0 W/m²</div>
         </div>
 <div class="met">
           <div class="met-icon">🌧️</div>
           <div class="met-label">降水量</div>
-          <div class="met-val">0.0 mm</div>
+          <div class="met-val">0.2 mm</div>
         </div>
 <div class="met">
           <div class="met-icon">💧</div>
           <div class="met-label">相对湿度</div>
-          <div class="met-val">62 %</div>
+          <div class="met-val">91 %</div>
         </div>
 <div class="met">
           <div class="met-icon">🔵</div>
           <div class="met-label">气压</div>
-          <div class="met-val">1,029.9 hPa</div>
+          <div class="met-val">1,025.4 hPa</div>
         </div>
 <div class="met">
           <div class="met-icon">☁️</div>
           <div class="met-label">天气</div>
-          <div class="met-val">局部多云</div>
+          <div class="met-val">毛毛雨(中)</div>
         </div>
       </div>
       <div class="alerts-row">
-        <div class="alert alert-warn">🌬️ <b>[WARN]</b> 风速偏高 27.7 km/h</div>
+        <div class="alert alert-ok">✅ 当前所有指标均在正常范围内，安心作业</div>
       </div>
     </div>
 
@@ -3515,87 +3518,87 @@ function wgs84togcj02(lng, lat){
         </tr></thead>
         <tbody>
 <tr>
-          <td>2026-11-07</td>
-          <td>🌧️ 小雨</td>
-          <td><b>19.4</b>°C</td>
-          <td>14.0°C</td>
-          <td>3.7</td>
-          <td>100%</td>
-          <td>28.6</td>
-          <td>东南东 <span class="deg">(103°)</span></td>
-          <td>11.0</td>
-          <td>—</td>
-        </tr>
-<tr>
           <td>2026-11-08</td>
           <td>🌧️ 小雨</td>
-          <td><b>18.1</b>°C</td>
-          <td>14.8°C</td>
-          <td>14.0</td>
+          <td><b>17.2</b>°C</td>
+          <td>14.9°C</td>
+          <td>10.4</td>
           <td>100%</td>
-          <td>24.3</td>
-          <td>东南 <span class="deg">(127°)</span></td>
-          <td>3.2</td>
+          <td>26.3</td>
+          <td>南东南 <span class="deg">(152°)</span></td>
+          <td>2.8</td>
           <td>—</td>
         </tr>
 <tr>
           <td>2026-11-09</td>
-          <td>🌦️ 毛毛雨(弱)</td>
-          <td><b>15.0</b>°C</td>
-          <td>7.4°C</td>
-          <td>0.2</td>
-          <td>68%</td>
-          <td>29.9</td>
-          <td>西北 <span class="deg">(325°)</span></td>
-          <td>11.0</td>
+          <td>☁️ 阴</td>
+          <td><b>14.9</b>°C</td>
+          <td>7.1°C</td>
+          <td>0.0</td>
+          <td>39%</td>
+          <td>30.3</td>
+          <td>西北 <span class="deg">(326°)</span></td>
+          <td>10.8</td>
           <td>❄️</td>
         </tr>
 <tr>
           <td>2026-11-10</td>
           <td>☁️ 阴</td>
-          <td><b>14.0</b>°C</td>
-          <td>5.7°C</td>
+          <td><b>13.8</b>°C</td>
+          <td>5.4°C</td>
           <td>0.0</td>
           <td>0%</td>
-          <td>14.8</td>
-          <td>西北 <span class="deg">(325°)</span></td>
-          <td>15.1</td>
+          <td>14.4</td>
+          <td>北西北 <span class="deg">(327°)</span></td>
+          <td>15.3</td>
           <td>❄️</td>
         </tr>
 <tr>
           <td>2026-11-11</td>
           <td>☁️ 阴</td>
-          <td><b>16.8</b>°C</td>
-          <td>7.6°C</td>
+          <td><b>16.4</b>°C</td>
+          <td>7.9°C</td>
           <td>0.0</td>
           <td>0%</td>
-          <td>14.0</td>
-          <td>东南东 <span class="deg">(110°)</span></td>
-          <td>14.5</td>
+          <td>14.4</td>
+          <td>东南东 <span class="deg">(112°)</span></td>
+          <td>13.6</td>
           <td>❄️</td>
         </tr>
 <tr>
           <td>2026-11-12</td>
           <td>☁️ 阴</td>
-          <td><b>19.3</b>°C</td>
-          <td>11.9°C</td>
+          <td><b>19.5</b>°C</td>
+          <td>11.5°C</td>
           <td>0.0</td>
-          <td>30%</td>
-          <td>11.7</td>
-          <td>东南 <span class="deg">(130°)</span></td>
-          <td>7.6</td>
+          <td>10%</td>
+          <td>10.6</td>
+          <td>东南东 <span class="deg">(123°)</span></td>
+          <td>8.9</td>
           <td>—</td>
         </tr>
 <tr>
           <td>2026-11-13</td>
-          <td>🌦️ 毛毛雨(中)</td>
-          <td><b>16.5</b>°C</td>
+          <td>🌦️ 毛毛雨(弱)</td>
+          <td><b>20.0</b>°C</td>
           <td>14.0°C</td>
-          <td>5.7</td>
-          <td>64%</td>
-          <td>8.3</td>
-          <td>北 <span class="deg">(5°)</span></td>
-          <td>2.8</td>
+          <td>1.8</td>
+          <td>57%</td>
+          <td>17.2</td>
+          <td>东南东 <span class="deg">(102°)</span></td>
+          <td>4.7</td>
+          <td>—</td>
+        </tr>
+<tr>
+          <td>2026-11-14</td>
+          <td>🌦️ 毛毛雨(强)</td>
+          <td><b>22.3</b>°C</td>
+          <td>14.0°C</td>
+          <td>11.4</td>
+          <td>82%</td>
+          <td>18.6</td>
+          <td>南 <span class="deg">(191°)</span></td>
+          <td>6.5</td>
           <td>—</td>
         </tr>
         </tbody>
@@ -3613,36 +3616,36 @@ function wgs84togcj02(lng, lat){
         </tr></thead>
         <tbody>
 <tr>
-          <td>2026-11-07</td>
-          <td>小雨 / 中雨</td>
-          <td>14.0 ~ <b>19.0</b>°C</td>
-          <td>东风 1-3 级</td>
-          <td>14.0 ~ <b>19.4</b>°C</td>
-          <td>✅ 一致 (Δ-0.4°C)</td>
-        </tr>
-<tr>
           <td>2026-11-08</td>
           <td>小雨 / 小雨</td>
-          <td>9.0 ~ <b>17.0</b>°C</td>
-          <td>西北风 1-3 级</td>
-          <td>14.8 ~ <b>18.1</b>°C</td>
-          <td>✅ 一致 (Δ-1.1°C)</td>
+          <td>9.0 ~ <b>18.0</b>°C</td>
+          <td>东南风 1-3 级</td>
+          <td>14.9 ~ <b>17.2</b>°C</td>
+          <td>✅ 一致 (Δ+0.8°C)</td>
         </tr>
-<tr class="row-warn">
+<tr>
           <td>2026-11-09</td>
-          <td>阴 / 多云</td>
-          <td>4.0 ~ <b>17.0</b>°C</td>
+          <td>阴 / 阴</td>
+          <td>4.0 ~ <b>13.0</b>°C</td>
           <td>西北风 1-3 级</td>
-          <td>7.4 ~ <b>15.0</b>°C</td>
-          <td>⚠️ 偏差 +2.0°C</td>
+          <td>7.1 ~ <b>14.9</b>°C</td>
+          <td>✅ 一致 (Δ-1.9°C)</td>
         </tr>
 <tr>
           <td>2026-11-10</td>
-          <td>多云 / 多云</td>
-          <td>7.0 ~ <b>14.0</b>°C</td>
+          <td>阴 / 多云</td>
+          <td>7.0 ~ <b>13.0</b>°C</td>
           <td>西北风 1-3 级</td>
-          <td>5.7 ~ <b>14.0</b>°C</td>
-          <td>✅ 一致 (Δ+0.0°C)</td>
+          <td>5.4 ~ <b>13.8</b>°C</td>
+          <td>✅ 一致 (Δ-0.8°C)</td>
+        </tr>
+<tr class="row-warn">
+          <td>2026-11-11</td>
+          <td>多云 / 阴</td>
+          <td>10.0 ~ <b>14.0</b>°C</td>
+          <td>东风 1-3 级</td>
+          <td>7.9 ~ <b>16.4</b>°C</td>
+          <td>⚠️ 偏差 -2.4°C</td>
         </tr>
         </tbody>
       </table>
@@ -3651,7 +3654,7 @@ function wgs84togcj02(lng, lat){
 
     <div class="callout">
       <b>⚙️ 养殖关注阈值（鳜鱼/鲈鱼 · 江苏环荟数字低碳生态养殖项目）：</b><br>
-      • 🌧️ <b>今日有降水（预报 3.7mm，概率 100%）</b>：阴雨期水温波动+溶氧下降，控制投喂量（减 1–2 成）避免残饵，雨停后及时巡塘<br>
+      • 🌫️ <b>今日高湿（湿度 91%，近饱和）</b>：清晨大概率有雾/低能见度——雾天光照弱、藻类产氧下降，<b>鱼塘溶氧可能偏低</b>：延迟上午投喂、开启增氧机、加强巡塘观察浮头      <br>• 🌧️ <b>今日有降水（预报 10.4mm，概率 100%）</b>：阴雨期水温波动+溶氧下降，控制投喂量（减 1–2 成）避免残饵，雨停后及时巡塘<br>
       • <b>气温</b>：28–30°C 最适 · <b style="color:#dc2626">≥33°C 警戒</b>（增氧/加深水位）· ≥35°C 危险 · ≤8°C 冬季警戒<br>
       • <b>风速</b>：≤25 km/h 正常 · 25–38 km/h 关注 · <b style="color:#dc2626">≥38 km/h（6 级）警戒</b>（薄膜/光伏板/围网检查）· ≥50 km/h 危险<br>
       • <b>24h 降水</b>：≤10mm 正常 · 10–25mm 关注 · <b style="color:#dc2626">≥25mm 警戒</b> · ≥50mm 危险<br>
@@ -3663,7 +3666,7 @@ function wgs84togcj02(lng, lat){
     </div>
 
     <div class="csub" style="margin-top:10px">
-      ⏱️ 本次抓取时间：<code>2026-11-07 10:31:59</code>　|　数据许可：Open-Meteo CC BY 4.0; data from national weather services
+      ⏱️ 本次抓取时间：<code>2026-11-08 11:19:29</code>　|　数据许可：Open-Meteo CC BY 4.0; data from national weather services
     </div>
   </section>
   <!-- WEATHER_LIVE_END -->

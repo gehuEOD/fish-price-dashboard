@@ -11,6 +11,15 @@ on:
       - "鳜鱼鲈鱼价格看板.html"
       - "dashboard-v2/index.html"
       - "CNAME"
+      # v1→v2 桥接链路：这些文件变更时也要重建决策版，避免两版脱节
+      - "sync_v2_from_v1.py"
+      - "build_dashboard_v2.py"
+      - "dashboard_v2_template.html"
+      - "v2_manual_prices.json"
+      - "v2_clues.json"
+      - "data_sources_manifest.json"
+      - "fish_prices.json"
+      - "farm_weather_latest.json"
   schedule:
     - cron: "0 2 * * *"
   workflow_dispatch: {}
@@ -36,6 +45,23 @@ jobs:
     steps:
       - name: 检出仓库
         uses: actions/checkout@v4
+
+      - name: 配置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # v1 一有更新就同步重建 v2：从 v1 看板 HTML 抽最新塘口价与行情线索，
+      # 再跑生成器。此前 v2 只读人工快照，曾长期停在 2026-10-28。
+      - name: 同步 v1 最新数据并重建 v2 决策版
+        run: |
+          python sync_v2_from_v1.py || echo "[WARN] v1→v2 同步失败，沿用仓库快照"
+          if python build_dashboard_v2.py; then
+            echo "[OK] v2 已按 v1 最新数据重建"
+          else
+            echo "[WARN] v2 重建失败，恢复仓库内已提交的产物"
+            git checkout -- dashboard-v2/index.html
+          fi
 
       - name: 准备发布目录
         run: |

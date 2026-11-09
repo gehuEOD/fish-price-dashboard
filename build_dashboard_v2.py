@@ -35,6 +35,7 @@ TPL = os.path.join(WS, "dashboard_v2_template.html")
 OUT_DIR = os.path.join(WS, "dashboard-v2")
 OUT = os.path.join(OUT_DIR, "index.html")
 MANUAL = os.path.join(WS, "v2_manual_prices.json")
+CLUES = os.path.join(WS, "v2_clues.json")
 WEATHER = os.path.join(WS, "farm_weather_latest.json")
 VERFILE = os.path.join(WS, "dashboard_v2_version.json")
 CST = timezone(timedelta(hours=8))
@@ -680,8 +681,11 @@ def main():
     wk = gp.get("weekly", {})
     if wk.get("rows"):
         r0 = wk["rows"][0]
+        # 同步脚本生成的周报行用 note 记录原文变动；旧格式才用「较上周 prev」
+        gap = r0.get("note") or (f"较上周 {r0['prev']}" if r0.get("prev") and r0["prev"] != "—"
+                                 else "原文未给涨跌基准")
         prows.append(_prow("🐟 鳜鱼", f"{r0['region']} {esc(r0['spec'])}（周报）", r0["curr"], "—",
-                           f"较上周 {r0['prev']}", wk.get("date", "—"), esc(wk.get("source", ""))))
+                           esc(gap), wk.get("date", "—"), esc(wk.get("source", ""))))
     lurows = lp.get("rows", [])
     if lurows:
         local_rows = [r for r in lurows if r.get("local")]
@@ -715,24 +719,36 @@ def main():
                       "低优先级"))
     recv_cards = "".join(recv)
 
-    # 行情线索表
+    # 行情线索表：优先由 sync_v2_from_v1.py 从 v1 看板自动抽取的最新卡驱动。
+    # 只要 v1 更新，本表就会同步刷新；缺文件时才回退到旧的人工快照逻辑。
+    clue_data = load_json(CLUES, {})
+    clue_rows = clue_data.get("rows", [])
     posts = []
-    if wk.get("summary"):
-        posts.append(_post(esc(wk.get("source", "")), wk.get("date", "—"), esc(wk["summary"]),
-                           f'<a class="plink" href="{esc(wk.get("source_url",""))}" target="_blank" rel="noopener">水产前沿周报38期</a>'))
-    if gp.get("headline"):
-        posts.append(_post(esc(gp.get("source", "")), gp.get("date", "—"), esc(gp["headline"]),
-                           f'<a class="plink" href="{esc(gp.get("source_url",""))}" target="_blank" rel="noopener">渔有福10-27</a>'))
-    if lp.get("headline"):
-        posts.append(_post(esc(lp.get("source", ""))[:28], lp.get("date", "—"), esc(lp["headline"]),
-                           f'<a class="plink" href="{esc(lp.get("source_url",""))}" target="_blank" rel="noopener">腾氏㊷</a>'))
-    if dis.get("items"):
-        posts.append(_post("病害动态", dis.get("period", "—"),
-                           esc("、".join(d["name"] for d in high[:2]) + " 高发"), "公众号行情源核校"))
-    if dy_items:
-        for it in dy_items:
-            posts.append(_post(f'抖音 · {esc((it.get("author") or "")[:10])}', dy_date,
-                               esc((it.get("title") or "")[:40]), f'点赞 {it.get("digg", 0)}'))
+    if clue_rows:
+        for c in clue_rows[:8]:
+            url = esc(c.get("url", ""))
+            label = esc(c.get("src", "") or c.get("title", ""))
+            src = (f'<a class="plink" href="{url}" target="_blank" rel="noopener">{label}</a>'
+                   if url else label)
+            posts.append(_post(esc(c.get("title", "")), esc(c.get("date", "")),
+                               esc(c.get("core", "")), src))
+    else:
+        if wk.get("summary"):
+            posts.append(_post(esc(wk.get("source", "")), wk.get("date", "—"), esc(wk["summary"]),
+                               f'<a class="plink" href="{esc(wk.get("source_url",""))}" target="_blank" rel="noopener">周报</a>'))
+        if gp.get("headline"):
+            posts.append(_post(esc(gp.get("source", "")), gp.get("date", "—"), esc(gp["headline"]),
+                               f'<a class="plink" href="{esc(gp.get("source_url",""))}" target="_blank" rel="noopener">塘口报价</a>'))
+        if lp.get("headline"):
+            posts.append(_post(esc(lp.get("source", ""))[:28], lp.get("date", "—"), esc(lp["headline"]),
+                               f'<a class="plink" href="{esc(lp.get("source_url",""))}" target="_blank" rel="noopener">周报</a>'))
+        if dis.get("items"):
+            posts.append(_post("病害动态", dis.get("period", "—"),
+                               esc("、".join(d["name"] for d in high[:2]) + " 高发"), "公众号行情源核校"))
+        if dy_items:
+            for it in dy_items:
+                posts.append(_post(f'抖音 · {esc((it.get("author") or "")[:10])}', dy_date,
+                                   esc((it.get("title") or "")[:40]), f'点赞 {it.get("digg", 0)}'))
     post_rows = "\n".join(posts[:8])
 
     # 老板今日关注卡

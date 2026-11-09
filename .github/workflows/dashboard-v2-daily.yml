@@ -40,11 +40,15 @@ jobs:
       - name: 刷新当日批发价
         run: python moa_fish_crawler.py || echo "[warn] MOA 爬虫失败，沿用上一份 fish_prices.json"
 
-      # ② 生成 v2 决策版（内置 Open-Meteo 15 日抓取，失败自动降级到本地气象 JSON）
+      # ② 先从 v1 看板抽取最新塘口价与行情线索（否则 v2 会停在旧的人工快照）
+      - name: 同步 v1 最新行情数据
+        run: python sync_v2_from_v1.py || echo "[warn] v1→v2 同步失败，沿用上一份快照"
+
+      # ③ 生成 v2 决策版（内置 Open-Meteo 15 日抓取，失败自动降级到本地气象 JSON）
       - name: 生成决策看板 v2
         run: python build_dashboard_v2.py
 
-      # ③ 校验产物：占位符必须全部替换、行动清单必须存在
+      # ④ 校验产物：占位符必须全部替换、行动清单必须存在
       - name: 校验产物
         run: |
           set -e
@@ -54,7 +58,7 @@ jobs:
           grep -q "BOS_ACTIONS_START" "$F" || { echo "[ERROR] 行动清单缺失"; exit 1; }
           echo "[OK] 产物校验通过 $(wc -c < "$F") bytes"
 
-      # ④ 提交并推送（push 会触发 pages-deploy 发布到 /v2/）
+      # ⑤ 提交并推送（push 会触发 pages-deploy 发布到 /v2/）
       - name: 提交并推送
         run: |
           git config user.name "github-actions[bot]"

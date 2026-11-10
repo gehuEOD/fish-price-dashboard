@@ -14,6 +14,7 @@ on:
       # v1→v2 桥接链路：这些文件变更时也要重建决策版，避免两版脱节
       - "sync_v2_from_v1.py"
       - "build_dashboard_v2.py"
+      - "dashboard_v2_version.json"
       - "dashboard_v2_template.html"
       - "v2_manual_prices.json"
       - "v2_clues.json"

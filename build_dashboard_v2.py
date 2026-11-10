@@ -477,8 +477,16 @@ def block_replace(html, start, end, body):
 
 
 def main():
-    # 版本
-    ver = load_json(VERFILE, {"version": "v2.0.14", "date": "2026-10-27", "history": []})
+    # 版本与更新日志：--bump patch|minor|major [--note "本次变更说明"]
+    # bump 时把「旧版本 + 旧说明」追加进 history；不带 bump 的每日 CI 重建
+    # 不改写 date / history / note，避免版本里程碑被每日重建污染。
+    default_note = "数据刷新与行动清单重算"
+    ver = load_json(VERFILE, {"version": "v2.0.14", "date": "2026-10-27",
+                              "history": [], "note": default_note})
+    note_arg = None
+    if "--note" in sys.argv:
+        j = sys.argv.index("--note")
+        note_arg = sys.argv[j + 1] if len(sys.argv) > j + 1 else ""
     if "--bump" in sys.argv:
         i = sys.argv.index("--bump")
         level = sys.argv[i + 1] if len(sys.argv) > i + 1 else "patch"
@@ -489,7 +497,22 @@ def main():
             nums = [nums[0] + 1, 0, 0]
         else:
             nums = [nums[0], nums[1], nums[2] + 1]
+        old_ver = ver["version"]
+        old_date = ver.get("date") or datetime.now(CST).strftime("%Y-%m-%d")
+        old_note = ver.get("note") or default_note
+        ver.setdefault("history", [])
+        # 同版本去重后再插队首，保证重复 bump 不产生重复条目
+        key = old_ver.lstrip("v")
+        ver["history"] = [h for h in ver["history"]
+                          if str(h.get("version", "")).lstrip("v") != key]
+        ver["history"].insert(0, {"version": old_ver, "date": old_date, "note": old_note})
         ver["version"] = ".".join(str(x) for x in nums)
+        ver["prev"] = old_ver
+        ver["date"] = datetime.now(CST).strftime("%Y-%m-%d")
+        ver["note"] = note_arg or default_note
+    elif note_arg is not None:
+        ver["note"] = note_arg
+    ver.setdefault("note", default_note)
 
     manual = load_json(MANUAL, {})
     base = load_json(WEATHER, {})
@@ -795,9 +818,10 @@ def main():
                         "保成活率优先于赌价格"))
     focus_cards = "".join(focus)
 
-    # 变更日志
-    hist_rows = [f'<div class="changelog-item"><span class="ver">{esc(ver["version"])} · {esc(now.strftime("%Y-%m-%d"))}</span> · 决策版看板：三角色视图 + 每日行动清单规则引擎 + {FORECAST_DAYS} 日预报重算</div>']
-    for h in ver.get("history", [])[:6]:
+    # 变更日志：首条为当前版本（用版本发布日期，不随每日重建漂移），其后为历史里程碑
+    cur_date = ver.get("date") or now.strftime("%Y-%m-%d")
+    hist_rows = [f'<div class="changelog-item"><span class="ver">{esc(ver["version"])} · {esc(cur_date)}</span> · {esc(ver.get("note") or default_note)}</div>']
+    for h in ver.get("history", [])[:12]:
         hist_rows.append(f'<div class="changelog-item"><span class="ver">{esc(h.get("version",""))} · {esc(h.get("date",""))}</span> · {esc(h.get("note",""))}</div>')
     changelog = "\n".join(hist_rows)
 
@@ -853,7 +877,9 @@ def main():
         "{{MK_GUI}}": json.dumps([round(markets[m].get("鳜", 0), 1) for m in _pick_markets(markets)], ensure_ascii=False),
         "{{MK_LU}}": json.dumps([round(markets[m].get("鲈", 0), 1) for m in _pick_markets(markets)], ensure_ascii=False),
         "{{CHANGELOG_ITEMS}}": changelog,
-        "{{VERSION_HISTORY_NOTE}}": esc(f"前序版本 {ver.get('prev', 'v2.0.13')}（设计参考稿）"),
+        "{{VERSION_HISTORY_NOTE}}": esc(
+            f"前序版本 {ver.get('prev') or '—'} · 已记录 {len(ver.get('history', [])) + 1} 个版本里程碑"
+            f"（含 v2.0.13 设计参考稿）"),
     }
     for k, v in repl.items():
         html = html.replace(k, v)
@@ -872,10 +898,9 @@ def main():
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(html)
 
-    # 版本落盘
+    # 版本落盘：date / prev / history / note 只在 --bump 时变更；
+    # 每日 CI 无 bump 重建时写回同一内容，不产生无意义提交、不污染里程碑。
     ver.setdefault("history", [])
-    ver["date"] = now.strftime("%Y-%m-%d")
-    ver["prev"] = ver.get("prev", "v2.0.13")
     with open(VERFILE, "w", encoding="utf-8") as f:
         json.dump(ver, f, ensure_ascii=False, indent=2)
 

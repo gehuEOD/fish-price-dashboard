@@ -531,19 +531,27 @@ def main():
         if hi - lo >= 5:
             arb = (_short_m(hi_m), hi, lo, hi - lo)
 
-    # 塘口价
+    # 塘口价（本地锚点决定 KPI；区间行同时保留上下限，勿压成单点）
+    gp = manual.get("pond", {}).get("鳜鱼", {})
+    lp = manual.get("pond", {}).get("加州鲈", {})
     js_gui = pick_pond(manual, "鳜鱼", region_kw="江苏")
     gui_pond_val = js_gui[0]["price"] if js_gui else None
-    gui_pond_date = manual.get("pond", {}).get("鳜鱼", {}).get("date", "—")
+    gui_pond_date = gp.get("date", "—")
     lu_local = pick_pond(manual, "加州鲈", local=True)
     if lu_local:
-        vals = [r["price"] for r in lu_local]
+        vals = []
+        for r in lu_local:
+            if "price_lo" in r and "price_hi" in r:
+                vals += [float(r["price_lo"]), float(r["price_hi"])]
+            elif "price" in r:
+                vals.append(float(r["price"]))
         lu_lo, lu_hi = min(vals), max(vals)
         lu_pond_val = (lu_lo + lu_hi) / 2
-        lu_pond_txt = f"{lu_lo:g}~{lu_hi:g}"
+        lu_pond_txt = f"{lu_lo:g}~{lu_hi:g}" if lu_hi > lu_lo else f"{lu_lo:g}"
     else:
         lu_pond_val, lu_pond_txt = None, "—"
-    lu_pond_date = manual.get("pond", {}).get("加州鲈", {}).get("date", "—")
+    # KPI 日期跟随本地锚点这一期，而不是整张分产区表的周报期
+    lu_pond_date = lp.get("local_date") or lp.get("date", "—")
 
     def tag_cls(pct):
         if pct is None:
@@ -556,8 +564,19 @@ def main():
 
     gui_ws_cls, gui_ws_txt = tag_cls(gui_chg[0] if gui_chg else None)
     lu_ws_cls, lu_ws_txt = tag_cls(lu_chg[0] if lu_chg else None)
-    gp = manual.get("pond", {}).get("鳜鱼", {})
-    lp = manual.get("pond", {}).get("加州鲈", {})
+
+    # 塘口价 KPI 标签：取本地行的原文涨跌/口径备注，不再把 headline 截断当标签
+    def pond_tag(row):
+        if not row:
+            return "tag-flat", "口径待补"
+        if row.get("trend") == "down":
+            return "tag-down", "原文标注下跌"
+        if row.get("trend") == "up":
+            return "tag-up", "原文标注上涨"
+        return "tag-flat", (row.get("note") or "产区周报口径")[:22]
+
+    gui_pond_tag_cls, gui_pond_tag_txt = pond_tag(js_gui[0] if js_gui else None)
+    lu_pond_tag_cls, lu_pond_tag_txt = pond_tag(lu_local[0] if lu_local else None)
 
     ctx = dict(daily=daily, current=current, manual=manual,
                gui_chg=gui_chg, lu_chg=lu_chg,
@@ -689,14 +708,16 @@ def main():
     lurows = lp.get("rows", [])
     if lurows:
         local_rows = [r for r in lurows if r.get("local")]
-        for r in (local_rows or lurows)[:2]:
+        shown = (local_rows + [r for r in lurows if not r.get("local")])[:3]
+        for r in shown:
             ws_lu = lu_ws_js or lu_ws_nat or 0
             try:
-                pv = float(r["price"])
+                pv = float(r.get("price_mid") or r["price"])  # 区间取中值算溢价
                 gap = f"{ws_lu - pv:+.1f}（{(ws_lu / pv - 1) * 100:.0f}%）" if pv else ""
             except Exception:
                 gap = ""
-            prows.append(_prow("🐟 加州鲈", f"{esc(r['region'])} · {esc(r['spec'])}", f"{r['price']:g}",
+            ptxt = esc(r.get("price_txt") or f"{r['price']:g}")
+            prows.append(_prow("🐟 加州鲈", f"{esc(r['region'])} · {esc(r['spec'])}", ptxt,
                                f"{ws_lu:.1f}" if ws_lu else "—", gap, lp.get("date", "—"), esc(lp.get("source", ""))))
     lw = manual.get("local_wholesale", {})
     for r in lw.get("rows", [])[:2]:
@@ -712,7 +733,9 @@ def main():
                           f"{gui_pond_val:g} 元/斤"))
     if lu_pond_val and lu_ws_js:
         recv.append(_recv("🐟 加州鲈（环太湖）",
-                          f"9 两以上规格优先，参考 {lu_pond_txt} 元/斤；批发端 {lu_ws_js:.1f} 元/斤，收购上限约 {lu_ws_js - LU_MARGIN:.1f} 元/斤。大鱼紧缺，可在上限内适度让价抢货。",
+                          f"本地锚点 {esc(lp.get('local_region') or '江苏')} {esc(lp.get('local_spec') or '')} 塘口参考 {lu_pond_txt} 元/斤；"
+                          f"江苏及周边批发 {lu_ws_js:.1f} 元/斤，扣除流通成本后收购上限约 {lu_ws_js - LU_MARGIN:.1f} 元/斤。"
+                          f"不同产区规格口径不可互减，收鱼前按当日实际询价核校。",
                           f"{lu_pond_txt} 元/斤"))
     recv.append(_recv("🚫 谨慎收货规格",
                       "小鳜（0.8 斤以下）与产区偏小规格当前走货慢、易打死包贱卖；新鱼集中上市期也不宜大量压货。收鱼前务必体检：体色发黑、鳍基红肿、离群独游个体拒收。",
@@ -802,16 +825,18 @@ def main():
         "{{POST_ROWS}}": post_rows,
         "{{GUI_POND_PRICE}}": f"{gui_pond_val:g}" if gui_pond_val else "—",
         "{{GUI_POND_SUB}}": esc(f"江苏标鳜 · {gui_pond_date} · {gp.get('source','')}").replace("amp;", ""),
-        "{{GUI_POND_TAG_CLASS}}": "tag-flat",
-        "{{GUI_POND_TAG_TEXT}}": esc((gp.get("headline") or "")[:26]),
+        "{{GUI_POND_TAG_CLASS}}": gui_pond_tag_cls,
+        "{{GUI_POND_TAG_TEXT}}": esc(gui_pond_tag_txt),
         "{{GUI_WS_PRICE}}": f"{gui_ws_nat:.1f}" if gui_ws_nat else "—",
         "{{GUI_WS_SUB}}": f"江苏及周边 {gui_ws_js:.1f} 元/斤 · 数据日 {today_date}" if gui_ws_js else f"数据日 {today_date}",
         "{{GUI_WS_TAG_CLASS}}": gui_ws_cls,
         "{{GUI_WS_TAG_TEXT}}": gui_ws_txt,
         "{{LU_POND_PRICE}}": lu_pond_txt,
-        "{{LU_POND_SUB}}": esc(f"环太湖 9两/1.1斤 · {lu_pond_date}").replace("amp;", ""),
-        "{{LU_POND_TAG_CLASS}}": "tag-up",
-        "{{LU_POND_TAG_TEXT}}": esc((lp.get("headline") or "")[:26]),
+        "{{LU_POND_SUB}}": esc(
+            f"{lp.get('local_region') or '环太湖'} {lp.get('local_spec') or ''} · {lu_pond_date}"
+            f" · {lp.get('local_source') or ''}").replace("amp;", ""),
+        "{{LU_POND_TAG_CLASS}}": lu_pond_tag_cls,
+        "{{LU_POND_TAG_TEXT}}": esc(lu_pond_tag_txt),
         "{{LU_WS_PRICE}}": f"{lu_ws_nat:.1f}" if lu_ws_nat else "—",
         "{{LU_WS_SUB}}": f"江苏及周边 {lu_ws_js:.1f} 元/斤 · 数据日 {today_date}" if lu_ws_js else f"数据日 {today_date}",
         "{{LU_WS_TAG_CLASS}}": lu_ws_cls,

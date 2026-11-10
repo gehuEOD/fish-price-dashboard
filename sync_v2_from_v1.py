@@ -85,6 +85,25 @@ def first_num(s):
     return float(m.group()) if m else None
 
 
+def num_range(s):
+    """解析价格文本 → (lo, hi, 原文显示串)；支持 10.5~11 / 10-11 / 9 左右 / 11.0。
+
+    区间同时保留上下限与中值，供 v2 KPI 显示「10.5~11」并按中值做盈亏测算，
+    避免只取首个数字把区间压成单点、或把「原文未标绝对价」误当成价格。
+    """
+    t = txt(s).replace("元/斤", "").strip()
+    m = re.search(r"(\d+(?:\.\d+)?)\s*[~～\-—–]\s*(\d+(?:\.\d+)?)", t)
+    if m:
+        lo, hi = float(m.group(1)), float(m.group(2))
+        if lo <= hi:
+            return lo, hi, t
+    m = re.search(r"\d+(?:\.\d+)?", t)
+    if m:
+        v = float(m.group())
+        return v, v, t
+    return None
+
+
 def legend_link(seg):
     m = re.search(r'<div class="legend">(.*?)</div>', seg, re.S)
     if not m:
@@ -197,38 +216,87 @@ def build_pond_gui(cards_list, old):
     }
 
 
-def build_pond_lu(cards_list, old):
-    hit = latest(cards_list, "通威农牧 / 腾氏水产 一周鱼价")
-    if not hit:
-        print("[warn] 未找到通威/腾氏周报卡，加州鲈塘口价保留原值")
-        return old
-    d, title, seg = hit
+# 加州鲈分产区塘口价候选卡：(标题关键词..., tbody 索引, 解析模式, 来源显示名)
+# 按卡片日期自动选最新的一期；某源停更时不会把整张表锁死在旧日期。
+# region_first = 第 1 列产区 / 第 2 列规格 / 第 3 列价格（强渔特水鱼周报）
+# species_first = 第 1 列品种 / 第 2 列「产区 · 规格」/ 第 3 列价格（通威/腾氏周报）
+LU_POND_SPECS = [
+    (("水产养殖网", "强渔", "特水鱼周报"), 1, "region_first", "水产养殖网（强渔）特水鱼周报"),
+    (("通威农牧 / 腾氏水产 一周鱼价",), 1, "species_first", "通威农牧 / 腾氏水产 一周鱼价（同源周报合并）"),
+]
+LOCAL_KW = ("江苏", "吴江", "苏州", "环太湖", "江浙")
+
+
+def _lu_rows(seg, tidx, mode):
+    """把一张产区周报卡解析成行；跳过无绝对价 / 非元每斤口径的行，不推算。"""
     rows = []
-    for tds in tbody_rows(seg, 1):
-        if len(tds) < 4 or "加州鲈" not in tds[0]:
+    for tds in tbody_rows(seg, tidx):
+        if len(tds) < 3:
             continue
-        loc = tds[1].split("·")
-        region = loc[0].strip()
-        spec = loc[1].strip() if len(loc) > 1 else tds[1]
-        p = first_num(tds[2])
-        if p is None:  # 「原文未标绝对价」如实留空，不推算
+        if mode == "species_first":
+            if "加州鲈" not in tds[0]:
+                continue
+            loc = tds[1].split("·")
+            region = loc[0].strip()
+            spec = loc[1].strip() if len(loc) > 1 else tds[1]
+        else:
+            region, spec = tds[0].strip(), tds[1].strip()
+        price_s, note = tds[2], (tds[3] if len(tds) > 3 else "")
+        if "元/两" in price_s:  # 元/两是另一口径，禁止当元/斤录入
             continue
-        note = tds[3]
-        trend = "up" if ("+" in note or "涨" in note) else ("down" if ("-" in note or "跌" in note) else "flat")
-        rows.append({"region": region, "spec": spec, "price": p,
-                     "trend": trend, "note": note})
-    if not rows:
-        print("[warn] 周报分产区表解析为空，保留原值")
+        rng = num_range(price_s)
+        if not rng:  # 「原文未标绝对价」如实留空
+            continue
+        lo, hi, ptxt = rng
+        trend = "up" if ("涨" in note or "+" in note) else ("down" if ("跌" in note or "-" in note) else "flat")
+        rows.append({"region": region, "spec": spec, "price": lo,
+                     "price_lo": lo, "price_hi": hi, "price_mid": (lo + hi) / 2,
+                     "price_txt": ptxt, "trend": trend, "note": note,
+                     **({"local": True} if any(k in region for k in LOCAL_KW) else {})})
+    return rows
+
+
+def build_pond_lu(cards_list, old):
+    """加州鲈塘口价：选「日期最新且含江苏/环太湖绝对价」的产区周报。
+
+    v2 的「加州鲈 · 出塘价」KPI 只认 rows 里带 local:true 的行；早期此函数
+    只抽通威/腾氏周报，而该期江苏行「原文未标绝对价」被跳过，导致 KPI 长期
+    渲染为「—」（2026-11-10 用户指出）。现改为多源候选 + 强制本地行断言。
+    """
+    hits = []
+    for kws, tidx, mode, src in LU_POND_SPECS:
+        hit = latest(cards_list, *kws)
+        if not hit:
+            continue
+        d, _title, seg = hit
+        rows = _lu_rows(seg, tidx, mode)
+        if rows:
+            hits.append((d, src, seg, rows))
+    if not hits:
+        print("[warn] 未找到任何加州鲈产区周报卡，塘口价保留原值")
         return old
+    hits.sort(key=lambda x: x[0], reverse=True)
+    usable = [x for x in hits if any(r.get("local") for r in x[3])]
+    if not usable:
+        print("[error] 所有候选周报都无江苏/环太湖绝对价行，保留原值（v2 KPI 会显示 —，需人工补源）")
+        return old
+    d, src, seg, rows = usable[0]
     url, _ = legend_link(seg)
+    lrow = next(r for r in rows if r.get("local"))
     return {
         "date": d,
-        "source": "通威农牧 / 腾氏水产 一周鱼价（同源周报合并）",
+        "source": src,
         "source_url": url or old.get("source_url", ""),
-        "spec": "全国塘口均价 + 分产区塘口价，元/斤",
+        "spec": "分产区塘口价（元/斤）· 多口径并存，禁止互减",
         "headline": core_of(seg, 110),
         "rows": rows,
-        "weekly_note": "江苏栏原文只给涨幅未给绝对价，已按原文留空；不同产区规格口径不可互减。",
+        # 本地锚点单独留痕：KPI 的日期/来源跟随这一行，不跟随整张表的周报期
+        "local_date": d,
+        "local_source": src,
+        "local_region": lrow["region"],
+        "local_spec": lrow["spec"],
+        "local_note": lrow["note"],
+        "weekly_note": "不同产区规格口径不可互减；原文只给涨幅未给绝对价的行如实留空。",
     }
 
 
@@ -324,6 +392,8 @@ def main():
     # 一致性断言，防止写入半截数据
     assert pond["鳜鱼"]["rows"] and pond["加州鲈"]["rows"], "塘口价解析为空"
     assert any(r.get("local") for r in pond["鳜鱼"]["rows"]), "鳜鱼缺江苏本地行"
+    # 关键防复发：没有本地行 → v2 的「加州鲈 · 出塘价」KPI 会渲染成「—」
+    assert any(r.get("local") for r in pond["加州鲈"]["rows"]), "加州鲈缺江苏/环太湖本地行"
     assert len(manual["local_wholesale"]["rows"]) >= 2, "本地批发价行数不足"
     assert all(r.get("date") for r in clue_rows), "线索缺日期"
 

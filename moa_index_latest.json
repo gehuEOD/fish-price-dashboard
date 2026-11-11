@@ -1,45 +1,39 @@
 {
-  "title": "11月10日：“农产品批发价格200指数”比昨天上升0.06个点",
-  "url": "https://www.agri.cn/zx/zxfb/202611/t20261110_8882685.htm",
-  "date": "2026-11-10",
+  "title": "11月11日：“农产品批发价格200指数”比昨天上升0.02个点",
+  "url": "https://www.agri.cn/zx/zxfb/202611/t20261111_8883068.htm",
+  "date": "2026-11-11",
   "year": 2026,
-  "fetched_at": "2026-11-10T08:46:09+00:00",
+  "fetched_at": "2026-11-11T08:12:46+00:00",
   "index200": {
-    "value": 111.05,
+    "value": 111.07,
     "base": "昨天",
     "dir": "上升",
-    "delta": 0.06
+    "delta": 0.02
   },
   "cailanzi": {
-    "value": 110.48,
+    "value": 110.51,
     "base": "昨天",
     "dir": "上升",
-    "delta": 0.07
+    "delta": 0.03
   },
   "fish": {
     "鲫鱼": {
-      "value": 19.05,
+      "value": 18.78,
       "base": "昨天",
       "dir": "下降",
-      "delta": 0.3
+      "delta": 1.4
     },
     "鲤鱼": {
-      "value": 13.93,
+      "value": 13.61,
       "base": "昨天",
       "dir": "下降",
-      "delta": 0.9
+      "delta": 2.3
     },
     "白鲢鱼": {
-      "value": 10.29,
-      "base": "昨天",
-      "dir": "上升",
-      "delta": 1.1
-    },
-    "大带鱼": {
-      "value": 42.12,
+      "value": 10.22,
       "base": "昨天",
       "dir": "下降",
-      "delta": 0.4
+      "delta": 0.7
     }
   },
   "water_index": {

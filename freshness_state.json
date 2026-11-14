@@ -167,17 +167,6 @@
       "status": "active"
     },
     {
-      "key": "moa",
-      "name": "农业农村部接口爬虫",
-      "auto": true,
-      "date": "2026-11-13",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
-      "status": "active"
-    },
-    {
       "key": "public",
       "name": "公开价源爬虫(北京新发地)",
       "auto": true,
@@ -186,17 +175,6 @@
       "label": "自动正常",
       "age": 1,
       "note": "新发地每日行情API(T-1)",
-      "status": "active"
-    },
-    {
-      "key": "weather",
-      "name": "气象监控",
-      "auto": true,
-      "date": "2026-11-13",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "双源校验 + 每日09:00 cron",
       "status": "active"
     },
     {
@@ -241,6 +219,28 @@
       "label": "正常",
       "age": 1,
       "note": "微信公众号正文文字表格提取的农业农村部分市场分规格批发价（元/公斤），与 kexue（OCR 截图快照，日期由 wechat_ocr_current.json 反推）为两个不同采集通道，互不覆盖、不重复计数",
+      "status": "active"
+    },
+    {
+      "key": "moa",
+      "name": "农业农村部接口爬虫",
+      "auto": true,
+      "date": "2026-11-14",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
+      "status": "active"
+    },
+    {
+      "key": "weather",
+      "name": "气象监控",
+      "auto": true,
+      "date": "2026-11-14",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "双源校验 + 每日09:00 cron",
       "status": "active"
     },
     {

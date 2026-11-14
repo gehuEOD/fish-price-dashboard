@@ -226,6 +226,10 @@ def main():
         "hainong": manual.get("hainong"),
         # 2026-11-04 新增：渔无忧在线行情预报（次日预测口径）
         "yuwuyou": manual.get("yuwuyou"),
+        # 2026-11-14 新增：渔知识指导日报、科学养鱼正文表格批发价
+        # （与 kexue 的 OCR 快照通道分开登记，kexue 由 wechat_ocr_current.json 反推，勿覆盖）
+        "yuzhishi": manual.get("yuzhishi"),
+        "kexue_web": manual.get("kexue_web"),
     }
 
     # B. 新鲜度 + 面板行（红在前）

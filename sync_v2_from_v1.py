@@ -151,6 +151,10 @@ CLUE_SPECS = [
     (("🐟 通威农牧 · 一周鱼价行情",), "通威农牧 一周鱼价行情（全国塘口均价）"),
     (("渔飞鱼·董小月",), "渔知识指导·渔飞鱼日报"),
     (("海大农牧 水产一线",), "海大农牧 塘头价"),
+    # 11-15 批次：渔有福 11-13 独立新期（8 产区鳜鱼塘口）、渔无忧在线 11-13
+    # 独立预报期（11-04 / 11-10 为旧期，按日期自动取最新）。
+    (("渔有福水产",), "渔有福水产 鳜鱼塘口报价"),
+    (("渔无忧在线",), "渔无忧在线 最新水产行情预报（次日预测）"),
     (("水产养殖网", "强渔"), "水产养殖网（强渔）特水鱼周报"),
     (("渔飞鱼", "明日水产行情预报"), "渔飞鱼 明日水产行情预报（次日预测）"),
 ]
@@ -174,22 +178,44 @@ def build_clues(cards_list):
             "url": url,
         })
     rows.sort(key=lambda r: r["date"], reverse=True)
-    return rows[:8]
+    # 11-15 批次：CLUE_SPECS 扩到 17 条后，8 条容量会把本批新增的
+    # 「渔有福 11-13」「渔无忧 11-13」挤掉；扩到 10 条可完整容纳
+    # 11-15 三条 + 11-13 七条，且不会引入 11-11 及更早的旧期次。
+    return rows[:10]
+
+
+# 鳜鱼分产区塘口价候选卡：(标题关键词..., 来源显示名)
+# 按卡片日期自动选最新的一期；某源停更时不会把整张表锁死在旧日期。
+# 11-15 批次新增「渔有福水产」独立新期（8 产区、含江苏标鳜）；与 11-09
+# 「鳜康泰+渔有福同源合并」卡为不同期次，不合并、不混计、按日期取最新。
+GUI_POND_SPECS = [
+    (("🐟 鳜康泰特约",), "兴渔派-鳜鱼通·鳜康泰特约"),
+    (("渔有福水产",), "渔有福水产 鳜鱼塘口报价"),
+]
 
 
 def build_pond_gui(cards_list, old):
-    hit = latest(cards_list, "🐟 鳜康泰特约")
-    if not hit:
-        print("[warn] 未找到鳜康泰卡，鳜鱼塘口价保留原值")
+    hits = []
+    for kws, src in GUI_POND_SPECS:
+        hit = latest(cards_list, *kws)
+        if hit:
+            d, _title, seg = hit
+            hits.append((d, src, seg))
+    if not hits:
+        print("[warn] 未找到任何鳜鱼分产区塘口卡，鳜鱼塘口价保留原值")
         return old
-    d, title, seg = hit
-    # 涨跌标注随当期卡片变化，不能写死（11-07 期自述稳定，11-09 期为下跌）
+    hits.sort(key=lambda x: x[0], reverse=True)
+    d, src, seg = hits[0]
+    # 涨跌标注随当期卡片变化，不能写死（11-07 期自述稳定、11-09 期为下跌、
+    # 11-13 渔有福期原文未给逐项涨跌）
     cm = re.search(r'<div class="csub">(.*?)</div>', seg, re.S)
     ctxt = txt(cm.group(1)) if cm else ""
     if "下跌" in ctxt:
         trend, note = "down", "原文标注下跌，按原文照录"
     elif "上涨" in ctxt:
         trend, note = "up", "原文标注上涨，按原文照录"
+    elif "未给涨跌" in ctxt or "未逐项给涨跌" in ctxt:
+        trend, note = "flat", "本期原文未给逐项涨跌说明，按原文照录"
     else:
         trend, note = "flat", "原文自述价格保持稳定"
     rows = []
@@ -209,12 +235,12 @@ def build_pond_gui(cards_list, old):
                      "trend": trend, "note": note,
                      **({"local": True} if region == "江苏" else {})})
     if not rows:
-        print("[warn] 鳜康泰表格解析为空，保留原值")
+        print("[warn] 鳜鱼分产区表格解析为空，保留原值")
         return old
     url, _ = legend_link(seg)
     return {
         "date": d,
-        "source": "兴渔派-鳜鱼通·鳜康泰特约",
+        "source": src,
         "source_url": url or old.get("source_url", ""),
         "spec": "标鳜（0.8~1.5 斤）为主，另列小鳜/中鳜",
         "headline": core_of(seg, 110),
@@ -357,7 +383,8 @@ def build_notes(cs):
     specs = [
         (("🎬", "互联惠农小洁"), "决策提示·小洁 全国塘口参考价"),
         (("🎬", "水产养殖服务于老师"), "决策提示·于老师 全国参考塘口价"),
-        (("🐟 鳜康泰特约",), "塘口基准·鳜康泰标鳜报价"),
+        # 11-15 批次：鳜鱼分产区基准改按最新期（渔有福 11-13），不写死鳜康泰 11-09
+        (("渔有福水产",), "塘口基准·分产区鳜鱼报价（最新期）"),
         (("🛒", "无锡盛阳食品城"), "本地批发·盛阳食品城"),
         (("水产养殖网", "强渔"), "产区周报·水产养殖网（强渔）"),
     ]

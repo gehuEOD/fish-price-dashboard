@@ -341,27 +341,53 @@ def build_pond_lu(cards_list, old):
     }
 
 
+# 周报补充行候选：同一「通威 / 腾氏 一周鱼价」系列的不同标题写法。
+# 2026-11-15 补批发现桥接只认 11-07 旧写法，v1 已有 11-13 新期却把 weekly 锁在旧日期；
+# 按日期取最新，与 GUI_POND_SPECS / LU_POND_SPECS 保持一致。海南卓越联合播报㊺
+# 属另一内容系列（tengshi_gui），不并入本表，避免口径混算。
+WEEKLY_SPECS = [
+    (("通威农牧 / 腾氏水产", "一周鱼价"), "通威农牧 / 腾氏水产 一周鱼价"),
+    (("通威农牧", "一周鱼价行情"), "通威农牧 一周鱼价行情"),
+]
+
+
 def build_weekly(cards_list, old):
-    hit = latest(cards_list, "通威农牧 / 腾氏水产 一周鱼价")
-    if not hit:
+    hits = []
+    for kws, src in WEEKLY_SPECS:
+        hit = latest(cards_list, *kws)
+        if hit:
+            hits.append((hit[0], src, hit[1], hit[2]))
+    if not hits:
         print("[warn] 未找到周报卡，weekly 保留原值")
         return old
-    d, title, seg = hit
+    d, src, title, seg = max(hits, key=lambda x: x[0])
     rows = []
-    for tds in tbody_rows(seg, 1):
-        if len(tds) < 4 or "鳜鱼" not in tds[0]:
-            continue
-        loc = tds[1].split("·")
-        rows.append({"region": loc[0].strip(), "spec": loc[1].strip() if len(loc) > 1 else tds[1],
-                     "prev": "—", "curr": tds[2], "note": tds[3], "trend": "flat"})
+    # 不同期次的表格位置不一致：11-07 卡在第 2 个 tbody，11-13 卡在第 1 个。
+    for idx in range(4):
+        for tds in tbody_rows(seg, idx):
+            if len(tds) < 4 or "鳜鱼" not in tds[0]:
+                continue
+            # 「全国 · 塘口均价」不是「按产区 × 规格」的收鱼建议，跳过
+            if "全国" in tds[1] or "均价" in tds[1]:
+                continue
+            loc = tds[1].split("·")
+            note = tds[3]
+            trend = ("down" if any(x in note for x in ("跌", "降", "-"))
+                     else "up" if any(x in note for x in ("涨", "升", "+"))
+                     else "flat")
+            rows.append({"region": loc[0].strip(),
+                         "spec": loc[1].strip() if len(loc) > 1 else tds[1],
+                         "prev": "—", "curr": tds[2], "note": note, "trend": trend})
     if not rows:
+        print("[warn] 周报鳜鱼分产区行解析为空，保留原值")
         return old
     url, _ = legend_link(seg)
     return {
         "date": d,
-        "source": "通威农牧 / 腾氏水产 一周鱼价",
+        "source": src,
         "source_url": url or old.get("source_url", ""),
-        "summary": "本周特水鱼普涨、普水鱼普跌；鳜鱼分产区塘口价见下表（原文未给上周基准，不做互减）",
+        # 摘要随当期卡片变化，禁止写死旧期文案
+        "summary": core_of(seg, 100) or f"{d} 周报鳜鱼分产区塘口价（按原文照录，不与其它口径互减）",
         "rows": rows,
     }
 

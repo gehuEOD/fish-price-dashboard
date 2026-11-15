@@ -4,67 +4,67 @@
   "unit": "元/斤",
   "pond": {
     "鳜鱼": {
-      "date": "2026-11-13",
-      "source": "渔有福水产 鳜鱼塘口报价",
-      "source_url": "https://mp.weixin.qq.com/s/gSCu9t_GSE6ktSNGaNT8Sw",
+      "date": "2026-11-14",
+      "source": "兴渔派-鳜鱼通·鳜康泰特约",
+      "source_url": "https://mp.weixin.qq.com/s/QK9XFYegU5ruzx-QNmQiuA",
       "spec": "标鳜（0.8~1.5 斤）为主，另列小鳜/中鳜",
-      "headline": "「最近鳜鱼市场没有大起大落，行情保持平稳运行」 未逐项给涨跌、未标注「沿用」 本卡只列鳜鱼 8 行 不据此计算跨区价差",
+      "headline": "「11月14日，鳜价保持稳定」 11月8日 / 11月13日 / 11月14日 11/13→11/14 日涨跌 8 项全为「—」（持平） 非价格信息，不录入",
       "rows": [
         {
           "region": "广东",
           "spec": "小鳜（0.8 斤以下）",
           "price": 19.0,
           "trend": "flat",
-          "note": "本期原文未给逐项涨跌说明，按原文照录"
+          "note": "原文自述价格保持稳定"
         },
         {
           "region": "广东",
           "spec": "标鳜（0.8~1.5 斤）",
           "price": 23.5,
           "trend": "flat",
-          "note": "本期原文未给逐项涨跌说明，按原文照录"
+          "note": "原文自述价格保持稳定"
         },
         {
           "region": "广东",
-          "spec": "中鳜（1.5~2 斤）",
+          "spec": "中鳜（1.5 斤以上（正文写 1.5-2 斤））",
           "price": 20.5,
           "trend": "flat",
-          "note": "本期原文未给逐项涨跌说明，按原文照录"
+          "note": "原文自述价格保持稳定"
         },
         {
           "region": "湖北",
           "spec": "标鳜",
           "price": 24.0,
           "trend": "flat",
-          "note": "本期原文未给逐项涨跌说明，按原文照录"
+          "note": "原文自述价格保持稳定"
         },
         {
           "region": "安徽",
           "spec": "标鳜",
           "price": 24.0,
           "trend": "flat",
-          "note": "本期原文未给逐项涨跌说明，按原文照录"
+          "note": "原文自述价格保持稳定"
         },
         {
           "region": "江西",
           "spec": "标鳜",
           "price": 25.5,
           "trend": "flat",
-          "note": "本期原文未给逐项涨跌说明，按原文照录"
+          "note": "原文自述价格保持稳定"
         },
         {
           "region": "湖南",
           "spec": "标鳜",
           "price": 25.0,
           "trend": "flat",
-          "note": "本期原文未给逐项涨跌说明，按原文照录"
+          "note": "原文自述价格保持稳定"
         },
         {
           "region": "江苏",
           "spec": "标鳜",
           "price": 24.5,
           "trend": "flat",
-          "note": "本期原文未给逐项涨跌说明，按原文照录",
+          "note": "原文自述价格保持稳定",
           "local": true
         }
       ],

@@ -230,6 +230,9 @@ def main():
         # （与 kexue 的 OCR 快照通道分开登记，kexue 由 wechat_ocr_current.json 反推，勿覆盖）
         "yuzhishi": manual.get("yuzhishi"),
         "kexue_web": manual.get("kexue_web"),
+        # 2026-11-15 新增：腾氏「海南卓越联合播报」鳜鱼塘头价周报，
+        # 与 tengshi（一周鱼价播报 / 通威同源）为不同内容系列，分开登记。
+        "tengshi_gui": manual.get("tengshi_gui"),
     }
 
     # B. 新鲜度 + 面板行（红在前）

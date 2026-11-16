@@ -233,6 +233,9 @@ def main():
         # 2026-11-15 新增：腾氏「海南卓越联合播报」鳜鱼塘头价周报，
         # 与 tengshi（一周鱼价播报 / 通威同源）为不同内容系列，分开登记。
         "tengshi_gui": manual.get("tengshi_gui"),
+        # 2026-11-16 新增：绿色水产技术「渔飞鱼水产 鱼虾蟹每日行情报价」通道
+        # （与 yuzhishi / minjian 为不同公众号/通道，分开登记）
+        "lvse_baojia": manual.get("lvse_baojia"),
     }
 
     # B. 新鲜度 + 面板行（红在前）

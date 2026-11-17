@@ -771,8 +771,8 @@ def main():
     clue_rows = clue_data.get("rows", [])
     posts = []
     if clue_rows:
-        # 与 sync_v2_from_v1.py 的 build_clues 保持同一容量（11-15 批次由 8 扩到 10）
-        for c in clue_rows[:12]:
+        # 与 sync_v2_from_v1.py 的 build_clues 保持同一容量（11-17 晚批由 12 扩到 16）
+        for c in clue_rows[:16]:
             url = esc(c.get("url", ""))
             label = esc(c.get("src", "") or c.get("title", ""))
             src = (f'<a class="plink" href="{url}" target="_blank" rel="noopener">{label}</a>'
@@ -796,8 +796,8 @@ def main():
             for it in dy_items:
                 posts.append(_post(f'抖音 · {esc((it.get("author") or "")[:10])}', dy_date,
                                    esc((it.get("title") or "")[:40]), f'点赞 {it.get("digg", 0)}'))
-    # 与 sync_v2_from_v1.py / clue_rows 保持同一容量（11-15 批次由 8 扩到 10）
-    post_rows = "\n".join(posts[:12])
+    # 与 sync_v2_from_v1.py / clue_rows 保持同一容量（11-17 晚批由 12 扩到 16）
+    post_rows = "\n".join(posts[:16])
 
     # 老板今日关注卡
     focus = []

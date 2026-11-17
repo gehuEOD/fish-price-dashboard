@@ -236,6 +236,8 @@ def main():
         # 2026-11-16 新增：绿色水产技术「渔飞鱼水产 鱼虾蟹每日行情报价」通道
         # （与 yuzhishi / minjian 为不同公众号/通道，分开登记）
         "lvse_baojia": manual.get("lvse_baojia"),
+        # 2026-11-17 晚批新增：腾氏「看上上报价」加州鲈塘口周报（独立于一周鱼价播报/海南卓越）
+        "tengshi_kanss": manual.get("tengshi_kanss"),
     }
 
     # B. 新鲜度 + 面板行（红在前）

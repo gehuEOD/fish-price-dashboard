@@ -238,6 +238,8 @@ def main():
         "lvse_baojia": manual.get("lvse_baojia"),
         # 2026-11-17 晚批新增：腾氏「看上上报价」加州鲈塘口周报（独立于一周鱼价播报/海南卓越）
         "tengshi_kanss": manual.get("tengshi_kanss"),
+        # 2026-11-19 新增：水产前沿「加州鲈周报」（杰大饲料特约，与特水鱼周报分源）
+        "qianyan_lu": manual.get("qianyan_lu"),
     }
 
     # B. 新鲜度 + 面板行（红在前）

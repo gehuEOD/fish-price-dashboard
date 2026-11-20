@@ -229,7 +229,11 @@ def build_pond_gui(cards_list, old):
     elif "未给涨跌" in ctxt or "未逐项给涨跌" in ctxt:
         trend, note = "flat", "本期原文未给逐项涨跌说明，按原文照录"
     else:
-        trend, note = "flat", "原文自述价格保持稳定"
+        # csub 未出现「下跌/上涨/未给涨跌」字面触发词，并不等于价格稳定：
+        # 例如 11-19 鳜康泰为「广东标鳜/中鳜日跌 0.5、其余 6 产区持平」的混合口径。
+        # 统一标「保持稳定」属于推断统一涨跌，违反按原文照录红线；改中性文案，
+        # 逐项涨跌以 v1 卡片 callout 为准（本标签在 v2 会截断 22 字显示）。
+        trend, note = "flat", "逐项涨跌见 v1 卡片，按原文照录"
     rows = []
     for tds in tbody_rows(seg, 0):
         if len(tds) < 3:
@@ -409,7 +413,15 @@ def build_local_ws(cards_list, old):
     for tds in tbody_rows(seg, 0):
         if len(tds) < 3:
             continue
-        rows.append({"name": tds[0], "price": tds[1], "note": tds[2]})
+        # ⚠️ 盛阳卡有两种历史列结构：11-15/16 为 3 列（品种/价格/备注），
+        # 11-17 起为 4 列（品种/口径/价格/备注）。旧版硬取 tds[1] 当价格，
+        # 4 列卡会把「无锡盛阳 · 批发」写进价格列（v2 自 11-17 起一直显示错误值）。
+        # 改为按内容定位价格列（含「元/斤」或数字区间），口径列自动跳过。
+        pidx = next((i for i, t in enumerate(tds[1:], 1)
+                     if "元/斤" in t or re.search(r"\d+\s*[~～-]\s*\d+", t)), 1)
+        price = tds[pidx]
+        note = " ".join(t for i, t in enumerate(tds) if i > pidx and t.strip())
+        rows.append({"name": tds[0], "price": price, "note": note[:120]})
     if not rows:
         return old
     return {"date": d, "source": "无锡盛阳食品城（本地渠道一手批发价）", "rows": rows}

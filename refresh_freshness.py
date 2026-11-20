@@ -285,12 +285,16 @@ def main():
     ]
 
     # ── 依赖日期变量的替换：逐个守卫 ───────────────────────────────
-    if moa_mm and pub_mm and kexue_mm and ayu_mm:
+    # ⚠️ a渔业行情 OCR 长期无数据（wechat_ocr_current.json 仅「科学养鱼」段，ayu_mm 恒为空）。
+    # 旧版 guard 把 ayu_mm 也列为必要条件，导致整段 chip258 永不刷新：科学养鱼 OCR 已到
+    # 11-20，行内却仍停在 11-17；MOA/新发地也停在 11-18。改用 ayu_full 常量兜底
+    # （无数据时保留历史真值 09-15），其余三项仍要求非空才写，避免擦成空日期。
+    if moa_mm and pub_mm and kexue_mm:
         subs.append(
             (r'(<span class="chip" data-page-node-id="4HGb9s5gzmgXv3QvdK82PP">)[^<]*(</span>)',
-             lambda m: m.group(1) + f"🤖 批发价：农业农村部接口爬虫（{moa_mm}）+ 公开价源爬虫（新发地 {pub_mm}）+ 科学养鱼OCR（{kexue_mm}）+ a渔业行情OCR（{ayu_mm}）" + m.group(2)))
+             lambda m: m.group(1) + f"🤖 批发价：农业农村部接口爬虫（{moa_mm}）+ 公开价源爬虫（新发地 {pub_mm}）+ 科学养鱼OCR（{kexue_mm}）+ a渔业行情OCR（{to_mmdd(ayu_full)}）" + m.group(2)))
     else:
-        print(f"  [guard] 跳过 chip258 替换（moa={moa_mm} pub={pub_mm} kexue={kexue_mm} ayu={ayu_mm}）")
+        print(f"  [guard] 跳过 chip258 替换（moa={moa_mm} pub={pub_mm} kexue={kexue_mm}）")
 
     if pub_mm:
         # 来源行：新发地日期（idempotent）

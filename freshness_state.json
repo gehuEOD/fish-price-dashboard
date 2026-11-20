@@ -35,17 +35,6 @@
       "status": "active"
     },
     {
-      "key": "tengshi_gui",
-      "name": "腾氏水产 · 海南卓越联合播报（鳜鱼塘头价周报）",
-      "auto": false,
-      "date": "2026-11-12",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 8,
-      "note": "腾氏水产商务网「海南卓越联合播报」㊸㊹㊺系列，分产区鳜鱼塘头价（元/斤）并逐项给「较上周」涨跌；与 tengshi（一周鱼价播报 / 通威同源全国塘口均价）为同一公众号的不同内容系列，分开登记，互不覆盖。本期 2026-11-12 为播报㊺",
-      "status": "active"
-    },
-    {
       "key": "tongwei",
       "name": "通威农牧批发价",
       "auto": false,
@@ -54,17 +43,6 @@
       "label": "正常",
       "age": 7,
       "note": "微信文章正文为图片表格，需用户截图人工录入(分规格均价,元/斤,可与淡水渔业元/公斤互证)",
-      "status": "active"
-    },
-    {
-      "key": "hainong",
-      "name": "海大农牧 水产一线（塘头聚焦）",
-      "auto": false,
-      "date": "2026-11-13",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 7,
-      "note": "微信文章手动录入（广东加州鲈塘头价为主，元/斤；与腾氏/强渔/水产前沿广东口径互证）",
       "status": "active"
     },
     {
@@ -98,17 +76,6 @@
       "label": "已过期·待补",
       "age": 4,
       "note": "微信文章手动录入(分省分规格塘口价,元/斤;与MOA批发价不同口径)",
-      "status": "active"
-    },
-    {
-      "key": "danshui",
-      "name": "淡水渔业公众号批发价",
-      "auto": false,
-      "date": "2026-11-16",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 4,
-      "note": "微信文章 WebFetch 直接提取(全国多地市场分规格批发价,元/公斤)",
       "status": "active"
     },
     {
@@ -178,17 +145,6 @@
       "status": "active"
     },
     {
-      "key": "kexue",
-      "name": "科学养鱼公众号 OCR",
-      "auto": false,
-      "date": "2026-11-18",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 2,
-      "note": "需用户提供截图 + OCR",
-      "status": "active"
-    },
-    {
       "key": "minjian",
       "name": "全国渔业价格日报",
       "auto": false,
@@ -211,17 +167,6 @@
       "status": "active"
     },
     {
-      "key": "guikangtai",
-      "name": "鳜康泰特约·全国鳜鱼报价",
-      "auto": false,
-      "date": "2026-11-18",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 2,
-      "note": "鳜鱼全国产区塘口/批发参考价（元/斤），含日/周涨跌，与渔有福互证",
-      "status": "active"
-    },
-    {
       "key": "qianyan_lu",
       "name": "水产前沿·加州鲈周报（杰大饲料特约）",
       "auto": false,
@@ -233,25 +178,25 @@
       "status": "active"
     },
     {
-      "key": "video",
-      "name": "视频号塘口价(小洁等)",
+      "key": "guikangtai",
+      "name": "鳜康泰特约·全国鳜鱼报价",
       "auto": false,
       "date": "2026-11-19",
       "badge": "🟢",
       "label": "正常",
       "age": 1,
-      "note": "需截图核校录入(约2天一更)",
+      "note": "鳜鱼全国产区塘口/批发参考价（元/斤），含日/周涨跌，与渔有福互证",
       "status": "active"
     },
     {
-      "key": "shengyang",
-      "name": "盛阳食品城批发价",
+      "key": "tengshi_gui",
+      "name": "腾氏水产 · 海南卓越联合播报（鳜鱼塘头价周报）",
       "auto": false,
       "date": "2026-11-19",
       "badge": "🟢",
       "label": "正常",
       "age": 1,
-      "note": "微信公众号截图人工录入(约2~3天一更)",
+      "note": "腾氏水产商务网「海南卓越联合播报」㊸㊹㊺系列，分产区鳜鱼塘头价（元/斤）并逐项给「较上周」涨跌；与 tengshi（一周鱼价播报 / 通威同源全国塘口均价）为同一公众号的不同内容系列，分开登记，互不覆盖。本期 2026-11-12 为播报㊺",
       "status": "active"
     },
     {
@@ -288,6 +233,28 @@
       "status": "active"
     },
     {
+      "key": "kexue",
+      "name": "科学养鱼公众号 OCR",
+      "auto": false,
+      "date": "2026-11-20",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "需用户提供截图 + OCR",
+      "status": "active"
+    },
+    {
+      "key": "video",
+      "name": "视频号塘口价(小洁等)",
+      "auto": false,
+      "date": "2026-11-20",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "需截图核校录入(约2天一更)",
+      "status": "active"
+    },
+    {
       "key": "fengxiang",
       "name": "水产市场风向标·批发指数",
       "auto": false,
@@ -296,6 +263,39 @@
       "label": "正常",
       "age": 0,
       "note": "农业农村部「农产品批发价格200指数」每日发布（agri.cn/zx/zxfb/），由 moa_index_crawler.py 自动抓取指数与鲫/鲤/白鲢/大带鱼四品种价；水产品价格指数仅 pfsc.agri.cn 门户可见，需人工核对",
+      "status": "active"
+    },
+    {
+      "key": "shengyang",
+      "name": "盛阳食品城批发价",
+      "auto": false,
+      "date": "2026-11-20",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信公众号截图人工录入(约2~3天一更)",
+      "status": "active"
+    },
+    {
+      "key": "danshui",
+      "name": "淡水渔业公众号批发价",
+      "auto": false,
+      "date": "2026-11-20",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信文章 WebFetch 直接提取(全国多地市场分规格批发价,元/公斤)",
+      "status": "active"
+    },
+    {
+      "key": "hainong",
+      "name": "海大农牧 水产一线（塘头聚焦）",
+      "auto": false,
+      "date": "2026-11-20",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信文章手动录入（广东加州鲈塘头价为主，元/斤；与腾氏/强渔/水产前沿广东口径互证）",
       "status": "active"
     }
   ]

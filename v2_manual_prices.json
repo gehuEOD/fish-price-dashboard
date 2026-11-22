@@ -1,6 +1,6 @@
 {
   "_comment": "2.0 看板人工/链接源快照。pond / local_wholesale / notes / updated 由 sync_v2_from_v1.py 从 v1 看板 HTML 自动生成（请勿手改）；disease 等静态配置仍可人工维护。重建：sync_v2_from_v1.py && build_dashboard_v2.py。",
-  "updated": "2026-11-22",
+  "updated": "2026-11-23",
   "unit": "元/斤",
   "pond": {
     "鳜鱼": {

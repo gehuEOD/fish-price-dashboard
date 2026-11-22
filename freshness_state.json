@@ -35,17 +35,6 @@
       "status": "active"
     },
     {
-      "key": "tongwei",
-      "name": "通威农牧批发价",
-      "auto": false,
-      "date": "2026-11-13",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 9,
-      "note": "微信文章正文为图片表格，需用户截图人工录入(分规格均价,元/斤,可与淡水渔业元/公斤互证)",
-      "status": "active"
-    },
-    {
       "key": "kexue_web",
       "name": "科学养鱼·分市场批发价（正文表格）",
       "auto": false,
@@ -76,28 +65,6 @@
       "label": "已过期·待补",
       "age": 6,
       "note": "微信文章手动录入(分省分规格塘口价,元/斤;与MOA批发价不同口径)",
-      "status": "active"
-    },
-    {
-      "key": "yuwuyou",
-      "name": "渔无忧在线·最新水产行情预报",
-      "auto": false,
-      "date": "2026-11-16",
-      "badge": "🔴",
-      "label": "已过期·待补",
-      "age": 6,
-      "note": "河南公众号，次日行情预测口径（基准价为前一日参考价）。加州鲈仅1-1.5公斤规格一条，与塘口1斤上口径规格不同不可互减；预测性质，非实测报价",
-      "status": "active"
-    },
-    {
-      "key": "lvse_baojia",
-      "name": "绿色水产技术·渔飞鱼鱼虾蟹每日行情报价",
-      "auto": false,
-      "date": "2026-11-16",
-      "badge": "🔴",
-      "label": "已过期·待补",
-      "age": 6,
-      "note": "「渔飞鱼水产」系列每日报价（绿色水产技术公众号通道，与渔知识指导/全国渔业价格日报通道分源登记）。常仅给加州鲈三产区塘口价（元/斤）与「周跌 X」周报口径，上周绝对价原文未直给时不倒推；无鳜鱼段时如实留空",
       "status": "active"
     },
     {
@@ -178,17 +145,6 @@
       "status": "active"
     },
     {
-      "key": "guikangtai",
-      "name": "鳜康泰特约·全国鳜鱼报价",
-      "auto": false,
-      "date": "2026-11-19",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 3,
-      "note": "鳜鱼全国产区塘口/批发参考价（元/斤），含日/周涨跌，与渔有福互证",
-      "status": "active"
-    },
-    {
       "key": "tengshi_gui",
       "name": "腾氏水产 · 海南卓越联合播报（鳜鱼塘头价周报）",
       "auto": false,
@@ -222,17 +178,6 @@
       "status": "active"
     },
     {
-      "key": "video",
-      "name": "视频号塘口价(小洁等)",
-      "auto": false,
-      "date": "2026-11-20",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 2,
-      "note": "需截图核校录入(约2天一更)",
-      "status": "active"
-    },
-    {
       "key": "fengxiang",
       "name": "水产市场风向标·批发指数",
       "auto": false,
@@ -241,17 +186,6 @@
       "label": "正常",
       "age": 2,
       "note": "农业农村部「农产品批发价格200指数」每日发布（agri.cn/zx/zxfb/），由 moa_index_crawler.py 自动抓取指数与鲫/鲤/白鲢/大带鱼四品种价；水产品价格指数仅 pfsc.agri.cn 门户可见，需人工核对",
-      "status": "active"
-    },
-    {
-      "key": "shengyang",
-      "name": "盛阳食品城批发价",
-      "auto": false,
-      "date": "2026-11-20",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 2,
-      "note": "微信公众号截图人工录入(约2~3天一更)",
       "status": "active"
     },
     {
@@ -266,6 +200,17 @@
       "status": "active"
     },
     {
+      "key": "tongwei",
+      "name": "通威农牧批发价",
+      "auto": false,
+      "date": "2026-11-20",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 2,
+      "note": "微信文章正文为图片表格，需用户截图人工录入(分规格均价,元/斤,可与淡水渔业元/公斤互证)",
+      "status": "active"
+    },
+    {
       "key": "hainong",
       "name": "海大农牧 水产一线（塘头聚焦）",
       "auto": false,
@@ -274,6 +219,28 @@
       "label": "正常",
       "age": 2,
       "note": "微信文章手动录入（广东加州鲈塘头价为主，元/斤；与腾氏/强渔/水产前沿广东口径互证）",
+      "status": "active"
+    },
+    {
+      "key": "yuwuyou",
+      "name": "渔无忧在线·最新水产行情预报",
+      "auto": false,
+      "date": "2026-11-20",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 2,
+      "note": "河南公众号，次日行情预测口径（基准价为前一日参考价）。加州鲈仅1-1.5公斤规格一条，与塘口1斤上口径规格不同不可互减；预测性质，非实测报价",
+      "status": "active"
+    },
+    {
+      "key": "video",
+      "name": "视频号塘口价(小洁等)",
+      "auto": false,
+      "date": "2026-11-21",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 1,
+      "note": "需截图核校录入(约2天一更)",
       "status": "active"
     },
     {
@@ -296,6 +263,39 @@
       "label": "自动正常",
       "age": 0,
       "note": "双源校验 + 每日09:00 cron",
+      "status": "active"
+    },
+    {
+      "key": "shengyang",
+      "name": "盛阳食品城批发价",
+      "auto": false,
+      "date": "2026-11-22",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信公众号截图人工录入(约2~3天一更)",
+      "status": "active"
+    },
+    {
+      "key": "guikangtai",
+      "name": "鳜康泰特约·全国鳜鱼报价",
+      "auto": false,
+      "date": "2026-11-22",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "鳜鱼全国产区塘口/批发参考价（元/斤），含日/周涨跌，与渔有福互证",
+      "status": "active"
+    },
+    {
+      "key": "lvse_baojia",
+      "name": "绿色水产技术·渔飞鱼鱼虾蟹每日行情报价",
+      "auto": false,
+      "date": "2026-11-22",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "「渔飞鱼水产」系列每日报价（绿色水产技术公众号通道，与渔知识指导/全国渔业价格日报通道分源登记）。常仅给加州鲈三产区塘口价（元/斤）与「周跌 X」周报口径，上周绝对价原文未直给时不倒推；无鳜鱼段时如实留空",
       "status": "active"
     }
   ]

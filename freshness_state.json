@@ -35,28 +35,6 @@
       "status": "active"
     },
     {
-      "key": "tengshi_kanss",
-      "name": "腾氏水产商务网·看上上报价（加州鲈塘口周报）",
-      "auto": false,
-      "date": "2026-11-16",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 7,
-      "note": "「高端水产·看上上报价」系列（㊷/…/㊺ 期号与腾氏「一周鱼价播报」「海南卓越联合播报」为三个不同内容系列，分源登记）。以加州鲈塘口价为主，无鳜鱼段如实留空；广东/环太湖/湖南/湖北/成都分区报价，广东行常给成数规格。中间期次未采集时隔期照录、不作两期比较",
-      "status": "active"
-    },
-    {
-      "key": "qianyan",
-      "name": "水产前沿（特水鱼/鳜鲈/加州鲈周报）",
-      "auto": false,
-      "date": "2026-11-17",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 6,
-      "note": "期号监控 + 手动 --apply",
-      "status": "active"
-    },
-    {
       "key": "yufeiyu",
       "name": "渔飞鱼水产行情日报",
       "auto": false,
@@ -145,28 +123,6 @@
       "status": "active"
     },
     {
-      "key": "shengyang",
-      "name": "盛阳食品城批发价",
-      "auto": false,
-      "date": "2026-11-22",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "微信公众号截图人工录入(约2~3天一更)",
-      "status": "active"
-    },
-    {
-      "key": "guikangtai",
-      "name": "鳜康泰特约·全国鳜鱼报价",
-      "auto": false,
-      "date": "2026-11-22",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "鳜鱼全国产区塘口/批发参考价（元/斤），含日/周涨跌，与渔有福互证",
-      "status": "active"
-    },
-    {
       "key": "yuzhishi",
       "name": "渔知识指导·全国最新水产行情日报",
       "auto": false,
@@ -222,6 +178,17 @@
       "status": "active"
     },
     {
+      "key": "qianyan",
+      "name": "水产前沿（特水鱼/鳜鲈/加州鲈周报）",
+      "auto": false,
+      "date": "2026-11-23",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "期号监控 + 手动 --apply",
+      "status": "active"
+    },
+    {
       "key": "video",
       "name": "视频号塘口价(小洁等)",
       "auto": false,
@@ -266,6 +233,28 @@
       "status": "active"
     },
     {
+      "key": "shengyang",
+      "name": "盛阳食品城批发价",
+      "auto": false,
+      "date": "2026-11-23",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信公众号截图人工录入(约2~3天一更)",
+      "status": "active"
+    },
+    {
+      "key": "guikangtai",
+      "name": "鳜康泰特约·全国鳜鱼报价",
+      "auto": false,
+      "date": "2026-11-23",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "鳜鱼全国产区塘口/批发参考价（元/斤），含日/周涨跌，与渔有福互证",
+      "status": "active"
+    },
+    {
       "key": "yuwuyou",
       "name": "渔无忧在线·最新水产行情预报",
       "auto": false,
@@ -285,6 +274,17 @@
       "label": "正常",
       "age": 0,
       "note": "微信公众号正文文字表格提取的农业农村部分市场分规格批发价（元/公斤），与 kexue（OCR 截图快照，日期由 wechat_ocr_current.json 反推）为两个不同采集通道，互不覆盖、不重复计数",
+      "status": "active"
+    },
+    {
+      "key": "tengshi_kanss",
+      "name": "腾氏水产商务网·看上上报价（加州鲈塘口周报）",
+      "auto": false,
+      "date": "2026-11-23",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "「高端水产·看上上报价」系列（㊷/…/㊺ 期号与腾氏「一周鱼价播报」「海南卓越联合播报」为三个不同内容系列，分源登记）。以加州鲈塘口价为主，无鳜鱼段如实留空；广东/环太湖/湖南/湖北/成都分区报价，广东行常给成数规格。中间期次未采集时隔期照录、不作两期比较",
       "status": "active"
     },
     {

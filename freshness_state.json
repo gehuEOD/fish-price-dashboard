@@ -35,28 +35,6 @@
       "status": "active"
     },
     {
-      "key": "kexue_web",
-      "name": "科学养鱼·分市场批发价（正文表格）",
-      "auto": false,
-      "date": "2026-11-13",
-      "badge": "🔴",
-      "label": "已过期·待补",
-      "age": 10,
-      "note": "微信公众号正文文字表格提取的农业农村部分市场分规格批发价（元/公斤），与 kexue（OCR 截图快照，日期由 wechat_ocr_current.json 反推）为两个不同采集通道，互不覆盖、不重复计数",
-      "status": "active"
-    },
-    {
-      "key": "lingjiatang",
-      "name": "江苏凌家塘市场一周行情",
-      "auto": false,
-      "date": "2026-11-14",
-      "badge": "🟡",
-      "label": "偏旧·待补",
-      "age": 9,
-      "note": "常州凌家塘官方公众号周报（约数口径，未分规格），离宜兴最近的批发市场之一，与MOA凌家塘活鳜57元/kg互证",
-      "status": "active"
-    },
-    {
       "key": "tengshi_kanss",
       "name": "腾氏水产商务网·看上上报价（加州鲈塘口周报）",
       "auto": false,
@@ -87,17 +65,6 @@
       "label": "已过期·待补",
       "age": 6,
       "note": "微信文章手动录入",
-      "status": "active"
-    },
-    {
-      "key": "qiangyu",
-      "name": "水产养殖网（强渔）",
-      "auto": false,
-      "date": "2026-11-18",
-      "badge": "🔴",
-      "label": "已过期·待补",
-      "age": 5,
-      "note": "微信文章手动录入(分产区塘口价/周报,元/斤;10-26周报+10-28加州鲈专题)",
       "status": "active"
     },
     {
@@ -167,14 +134,14 @@
       "status": "active"
     },
     {
-      "key": "yuwuyou",
-      "name": "渔无忧在线·最新水产行情预报",
+      "key": "lingjiatang",
+      "name": "江苏凌家塘市场一周行情",
       "auto": false,
-      "date": "2026-11-20",
-      "badge": "🔴",
-      "label": "已过期·待补",
-      "age": 3,
-      "note": "河南公众号，次日行情预测口径（基准价为前一日参考价）。加州鲈仅1-1.5公斤规格一条，与塘口1斤上口径规格不同不可互减；预测性质，非实测报价",
+      "date": "2026-11-21",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 2,
+      "note": "常州凌家塘官方公众号周报（约数口径，未分规格），离宜兴最近的批发市场之一，与MOA凌家塘活鳜57元/kg互证",
       "status": "active"
     },
     {
@@ -266,17 +233,6 @@
       "status": "active"
     },
     {
-      "key": "minjian",
-      "name": "全国渔业价格日报",
-      "auto": false,
-      "date": "2026-11-23",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 0,
-      "note": "微信文章手动录入",
-      "status": "active"
-    },
-    {
       "key": "yuyoufu",
       "name": "渔有福水产·鳜鱼塘口",
       "auto": false,
@@ -288,6 +244,17 @@
       "status": "active"
     },
     {
+      "key": "qiangyu",
+      "name": "水产养殖网（强渔）",
+      "auto": false,
+      "date": "2026-11-23",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信文章手动录入(分产区塘口价/周报,元/斤;10-26周报+10-28加州鲈专题)",
+      "status": "active"
+    },
+    {
       "key": "fengxiang",
       "name": "水产市场风向标·批发指数",
       "auto": false,
@@ -296,6 +263,39 @@
       "label": "正常",
       "age": 0,
       "note": "农业农村部「农产品批发价格200指数」每日发布（agri.cn/zx/zxfb/），由 moa_index_crawler.py 自动抓取指数与鲫/鲤/白鲢/大带鱼四品种价；水产品价格指数仅 pfsc.agri.cn 门户可见，需人工核对",
+      "status": "active"
+    },
+    {
+      "key": "yuwuyou",
+      "name": "渔无忧在线·最新水产行情预报",
+      "auto": false,
+      "date": "2026-11-23",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "河南公众号，次日行情预测口径（基准价为前一日参考价）。加州鲈仅1-1.5公斤规格一条，与塘口1斤上口径规格不同不可互减；预测性质，非实测报价",
+      "status": "active"
+    },
+    {
+      "key": "kexue_web",
+      "name": "科学养鱼·分市场批发价（正文表格）",
+      "auto": false,
+      "date": "2026-11-23",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "微信公众号正文文字表格提取的农业农村部分市场分规格批发价（元/公斤），与 kexue（OCR 截图快照，日期由 wechat_ocr_current.json 反推）为两个不同采集通道，互不覆盖、不重复计数",
+      "status": "active"
+    },
+    {
+      "key": "minjian",
+      "name": "全国渔业价格日报",
+      "auto": false,
+      "date": "2026-11-24",
+      "badge": "🟢",
+      "label": "正常",
+      "age": -1,
+      "note": "微信文章手动录入",
       "status": "active"
     }
   ]

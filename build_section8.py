@@ -13,7 +13,7 @@
 产出：一段完整 <section> + 内联 window.SEC8_DATA + Chart.js 初始化，
       注入到 鳜鱼鲈鱼价格看板.html 的 </body> 之前。
 """
-import json, os
+import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 HTML = os.path.join(HERE, "鳜鱼鲈鱼价格看板.html")
@@ -237,6 +237,17 @@ section = f"""
 
 # ---------- 注入 ----------
 html = open(HTML, encoding="utf-8").read()
+
+# ⚠️ 防回归护栏（2026-11-23）：本脚本是旧「第八部分」生成器，按月重新计算 9-12 月预测。
+# 现网第九部分已由人工维护并回填 9-10 月 MOA 实测（10 月不再是预测价）。
+# 由于 marker 用的是「八、」，在这里既匹配不到锚点、又会走 else 分支在 </body> 前
+# 追加一份重复的旧版 section，把实测覆盖回预测。故检测到现网第九部分时直接拒绝执行。
+if "<!-- 九、月度价格对比" in html:
+    print("[ABORT] 现网第九部分为人工维护（含 9-10 月 MOA 实测回填），"
+          "本旧「第八部分」生成器会覆盖实测为预测，已拒绝执行。"
+          "如需改动请直接编辑 鳜鱼鲈鱼价格看板.html 的第九部分。")
+    sys.exit(1)
+
 marker = "<!-- 八、月度价格对比 · 2026预测 · 养殖排产反推 start -->"
 if marker in html:
     # 已存在则整体替换（按锚点）

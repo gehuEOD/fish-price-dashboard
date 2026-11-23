@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>宜兴官林数字生态养殖 · 鳜鱼鲈鱼决策看板 v2 | 2.0.35</title>
-<meta name="dashboard-version" content="2.0.35">
+<title>宜兴官林数字生态养殖 · 鳜鱼鲈鱼决策看板 v2 | 2.0.36</title>
+<meta name="dashboard-version" content="2.0.36">
 <meta name="dashboard-version-date" content="2026-11-23">
-<meta name="data-updated-at" content="2026-11-23T10:01:19.967746+08:00">
+<meta name="data-updated-at" content="2026-11-23T10:25:38.034253+08:00">
 <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.min.css">
@@ -164,9 +164,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 <div class="container">
 
 <div class="header">
-<h1>🐟 宜兴官林数字生态养殖 · 鳜鱼鲈鱼决策看板 <span class="ver-chip">2.0.35</span></h1>
+<h1>🐟 宜兴官林数字生态养殖 · 鳜鱼鲈鱼决策看板 <span class="ver-chip">2.0.36</span></h1>
 <div class="subtitle">官林镇核心养殖区（丰义村 500 亩 + 白茫村 700 亩）| 老板决策 · 技术员管理 · 采购员收鱼 三视图</div>
-<div class="update-time">数据更新：2026-11-23 10:01 | 每日 09:15 自动更新（气象 + 价格 + 行动清单重算）</div>
+<div class="update-time">数据更新：2026-11-23 10:25 | 每日 09:15 自动更新（气象 + 价格 + 行动清单重算）</div>
 <div class="dual-note">
 📌 <b>本页为 v2 决策版</b>（三角色分视图，每视图独立生成「今日行动清单」）。<b><a href="/" style="color:#fff;text-decoration:underline">v1 数据总览版</a></b>仍在根路径保留，两版互不覆盖：v1 侧重全量行情数据与溯源，v2 侧重当日可执行动作。
 </div>
@@ -498,7 +498,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 <li><strong>规格划分：</strong>鳜鱼标鳜约 0.8~1.5 斤，另有小鳜/中鳜按成数论价；鲈鱼按两/斤计（9 两 = 450g，1 斤 = 500g）。<strong>不同来源规格口径不同，勿跨源相减。</strong></li>
 <li><strong>行动清单来源：</strong>「今日行动清单」由规则引擎基于当日气象、批发价环比、病害周期与塘口价快照自动生成，属决策辅助，<strong>不构成养殖与交易决策依据</strong>。</li>
 <li><strong>数据边界：</strong>水质风险为「由气象推导」的风险提示，<strong>非实测传感器数据</strong>；接入实测探头前请勿作为调水的唯一依据。</li>
-<li><strong>版本：</strong>2.0.35 · 2026-11-23。前序版本 2.0.34 · 已记录 22 个版本里程碑（含 v2.0.13 设计参考稿）</li>
+<li><strong>版本：</strong>2.0.36 · 2026-11-23。前序版本 2.0.35 · 已记录 23 个版本里程碑（含 v2.0.13 设计参考稿）</li>
 </ol>
 </div>
 </details>
@@ -506,6 +506,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 <details class="fold-block changelog-fold">
 <summary>📜 更新日志</summary>
 <div class="fold-content">
+<div class="changelog-item"><span class="ver">2.0.36 · 2026-11-23</span> · 同步 v1.39.1：修复第九部分月度价格对比 10 月仍标预测价（按 9 月同一 MOA 口径回填全月实测 鳜 66.0 / 鲈 33.7，11-12 月保留预测）；v2 决策版不含该板块，内容无变化，仅版本同步</div>
 <div class="changelog-item"><span class="ver">2.0.35 · 2026-11-23</span> · 11-23 早批同步：渔有福水产11-23鳜鱼塘口8项（与11-22鳜康泰同值但独立新期，鳜鱼塘口KPI按日期取最新切至11-23、江苏24不变）+ 视频号服务于老师11-23（鳜21~25/加州鲈8.5~10.5基本持平）；源yuyoufu→11-23、video→11-23；线索22条含两条11-23</div>
 <div class="changelog-item"><span class="ver">2.0.34 · 2026-11-22</span> · 11-22 深夜批同步：全国渔业价格11-23日报（鳜鱼大鱼30.75+1.7%、加州鲈产地11.80平、鲈鱼9.83）+ 渔知识指导明日预报11-22（加州鲈11.80企稳、本期无鳜鱼）；源日期 minjian→11-23、yuzhishi→11-22；新增线索抽取规则（渔知识指导·明日预报）</div>
 <div class="changelog-item"><span class="ver">2.0.33 · 2026-11-22</span> · 同步 v1.37.0：11-22 批次 7 张新卡（通威一周鱼价11-20、鳜康泰11-22、绿色水产技术加州鲈播报11-22、渔无忧预报11-20、视频号小洁/服务于老师11-21、盛阳11.22）；鳜鱼塘口 KPI→11-22、本地批发→11.22（鳜25~30/鲈10~14）、加州鲈出塘价保持强渔11-16江苏10.5~11；与11-20同值卡并列照录、不推断涨跌、不作两期比较；线索22条</div>
@@ -518,12 +519,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 <div class="changelog-item"><span class="ver">2.0.26 · 2026-11-15</span> · 2.0 手动同步复核：修复桥接 weekly 候选只认 11-07 旧周报标题的缺陷，按日期取最新并兼容 11-13 新标题写法，收鱼建议鳜鱼周报行由 11-07 广东肇庆 23 更新为通威 11-13 广东肇庆 23~24（原文稳定）；鳜鱼出塘价 11-14 江苏标鳜 24.5、加州鲈 11-13 江苏 10、本地批发 11.15、12 条行情线索均保持最新，未改动 v1 数据</div>
 <div class="changelog-item"><span class="ver">2.0.25 · 2026-11-15</span> · 11-15 补批同步：鳜鱼出塘价 KPI 更新至鳜康泰特约 11-14 全国鳜鱼报价（江苏标鳜 24.5，原文自述保持稳定、11/13→11/14 日涨跌全为持平）；行情线索容量 10→12，纳入 11-14 鳜康泰与 11-12 腾氏海南卓越联合播报㊺；加州鲈出塘价保持通威 11-13 江苏 1斤 10 元/斤，本地批发保持盛阳 11.15</div>
 <div class="changelog-item"><span class="ver">2.0.24 · 2026-11-15</span> · 11-15 批次同步：鳜鱼塘口 KPI 更新至渔有福 11-13 分产区 8 行（江苏标鳜 24.5，原文未给逐项涨跌按原文照录）；本地批发刷新至盛阳 11.15（鳜鱼25~30 / 鲈鱼10~14，与11.10同值未标沿用）；加州鲈出塘价保持通威 11-13 江苏 1斤 10 元/斤；行情线索容量 8→10，纳入视频号小洁 11-15、于老师 11-13、全国渔业价格 11-15 日报、海大 11-13、渔有福 11-13、渔无忧 11-13 预报</div>
-<div class="changelog-item"><span class="ver">2.0.23 · 2026-11-14</span> · 11-14 批次同步：加州鲈出塘价本地锚点更新至通威 11-13 周报江苏 1 斤 10 元/斤（较上周跌 0.5）；行情线索纳入科学养鱼 11-13 分市场批发价、通威 11-13 一周鱼价行情、全国渔业价格 11-14 日报、渔知识指导 11-13 同值并列共 4 条；本地批发沿用盛阳 11.10</div>
 </div>
 </details>
 
 <div class="footer">
-宜兴官林数字生态养殖 · 鳜鱼鲈鱼决策看板 2.0.35 | 数据更新：2026-11-23 10:01 | 每日 09:15 自动更新 | 仅供参考，不构成养殖和交易决策依据<br>
+宜兴官林数字生态养殖 · 鳜鱼鲈鱼决策看板 2.0.36 | 数据更新：2026-11-23 10:25 | 每日 09:15 自动更新 | 仅供参考，不构成养殖和交易决策依据<br>
 <a href="/" style="color:#2d6a4f">← 返回 v1 数据总览版</a>
 </div>
 

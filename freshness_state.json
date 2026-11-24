@@ -145,28 +145,6 @@
       "status": "active"
     },
     {
-      "key": "moa",
-      "name": "农业农村部接口爬虫",
-      "auto": true,
-      "date": "2026-11-23",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
-      "status": "active"
-    },
-    {
-      "key": "public",
-      "name": "公开价源爬虫(北京新发地)",
-      "auto": true,
-      "date": "2026-11-23",
-      "badge": "🟢",
-      "label": "自动正常",
-      "age": 1,
-      "note": "新发地每日行情API(T-1)",
-      "status": "active"
-    },
-    {
       "key": "qianyan",
       "name": "水产前沿（特水鱼/鳜鲈/加州鲈周报）",
       "auto": false,
@@ -197,17 +175,6 @@
       "label": "正常",
       "age": 1,
       "note": "微信文章手动录入(分产区塘口价/周报,元/斤;10-26周报+10-28加州鲈专题)",
-      "status": "active"
-    },
-    {
-      "key": "fengxiang",
-      "name": "水产市场风向标·批发指数",
-      "auto": false,
-      "date": "2026-11-23",
-      "badge": "🟢",
-      "label": "正常",
-      "age": 1,
-      "note": "农业农村部「农产品批发价格200指数」每日发布（agri.cn/zx/zxfb/），由 moa_index_crawler.py 自动抓取指数与鲫/鲤/白鲢/大带鱼四品种价；水产品价格指数仅 pfsc.agri.cn 门户可见，需人工核对",
       "status": "active"
     },
     {
@@ -266,6 +233,28 @@
       "status": "active"
     },
     {
+      "key": "moa",
+      "name": "农业农村部接口爬虫",
+      "auto": true,
+      "date": "2026-11-24",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "ncpscxx.moa.gov.cn 批发价接口(AES解密)",
+      "status": "active"
+    },
+    {
+      "key": "public",
+      "name": "公开价源爬虫(北京新发地)",
+      "auto": true,
+      "date": "2026-11-24",
+      "badge": "🟢",
+      "label": "自动正常",
+      "age": 0,
+      "note": "新发地每日行情API(T-1)",
+      "status": "active"
+    },
+    {
       "key": "weather",
       "name": "气象监控",
       "auto": true,
@@ -296,6 +285,17 @@
       "label": "正常",
       "age": 0,
       "note": "微信文章手动录入(分省分规格塘口价,元/斤;与MOA批发价不同口径)",
+      "status": "active"
+    },
+    {
+      "key": "fengxiang",
+      "name": "水产市场风向标·批发指数",
+      "auto": false,
+      "date": "2026-11-24",
+      "badge": "🟢",
+      "label": "正常",
+      "age": 0,
+      "note": "农业农村部「农产品批发价格200指数」每日发布（agri.cn/zx/zxfb/），由 moa_index_crawler.py 自动抓取指数与鲫/鲤/白鲢/大带鱼四品种价；水产品价格指数仅 pfsc.agri.cn 门户可见，需人工核对",
       "status": "active"
     }
   ]

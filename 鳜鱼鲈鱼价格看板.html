@@ -260,9 +260,9 @@ function wgs84togcj02(lng, lat){
     </div>
 
     <!-- UPDATED_AT_START -->
-    <div id="updatedAtBar" data-updated-at="2026-11-24T13:12:30+08:00" style="margin-top:12px;padding:9px 14px;border-radius:12px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.34);backdrop-filter:blur(4px);font-size:13px;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 2px 10px -4px rgba(0,0,0,.35)">
+    <div id="updatedAtBar" data-updated-at="2026-11-25T12:20:25+08:00" style="margin-top:12px;padding:9px 14px;border-radius:12px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.34);backdrop-filter:blur(4px);font-size:13px;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 2px 10px -4px rgba(0,0,0,.35)">
       <span style="font-size:15px">🕒</span>
-      <b id="updatedAtAbs" style="font-size:13.5px;letter-spacing:.3px">看板更新：2026年11月24日 13:12</b>
+      <b id="updatedAtAbs" style="font-size:13.5px;letter-spacing:.3px">看板更新：2026年11月25日 12:20</b>
       <span id="updatedAtRel" style="color:#e0f2fe">（刚刚更新）</span>
       <span style="opacity:.72;font-size:12px">· 气象每日 09:00 自动刷新；价格/社媒数据不定期更新，以本行时间为准</span>
     </div>
@@ -279,7 +279,7 @@ function wgs84togcj02(lng, lat){
       if(abs){
         try{
           var absTxt = new Date(iso).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false});
-          abs.textContent = '看板更新：2026年11月24日 13:12< 0.05){ txt = '（刚刚更新）'; }
+          abs.textContent = '看板更新：2026年11月25日 12:20< 0.05){ txt = '（刚刚更新）'; }
       else if(diffH < 1){ txt = '（' + Math.max(1, Math.round(diffH * 60)) + ' 分钟前）'; }
       else if(diffH < 24){ txt = '（' + Math.round(diffH) + ' 小时前）'; }
       else { txt = '（' + Math.floor(diffH / 24) + ' 天前）'; color = '#fde68a'; }
@@ -4744,6 +4744,9 @@ function wgs84togcj02(lng, lat){
   
 
 
+  
+
+
   <!-- WEATHER_LIVE_START -->
   <!-- 八、江苏环荟·宜兴官林镇数字低碳生态养殖项目 · 位置 + 实时气象 -->
   <section data-page-node-id="farm-loc-weather">
@@ -4855,28 +4858,28 @@ function wgs84togcj02(lng, lat){
 
     <!-- B. 实时气象 -->
     <div class="card weather-card">
-      <h3>🌡️ 实时气象（2026-11-24T09:00 · Asia/Shanghai）</h3>
+      <h3>🌡️ 实时气象（2026-11-25T11:45 · Asia/Shanghai）</h3>
       <div class="csub">天气：<b>🌤️ 局部多云</b>　|　数据源：Open-Meteo（WMO 标准 · 15min 更新 · 免费公开）</div>
       <div class="mets-grid">
 <div class="met">
           <div class="met-icon">🌡️</div>
           <div class="met-label">气温</div>
-          <div class="met-val">9.0 °C</div>
+          <div class="met-val">13.4 °C</div>
         </div>
 <div class="met">
           <div class="met-icon">💨</div>
           <div class="met-label">风速</div>
-          <div class="met-val">12.8 km/h</div>
+          <div class="met-val">8.5 km/h</div>
         </div>
 <div class="met">
           <div class="met-icon">🧭</div>
           <div class="met-label">风向</div>
-          <div class="met-val">北 <span class='deg'>(351°)</span></div>
+          <div class="met-val">南 <span class='deg'>(179°)</span></div>
         </div>
 <div class="met">
           <div class="met-icon">☀️</div>
           <div class="met-label">太阳辐射</div>
-          <div class="met-val">287.0 W/m²</div>
+          <div class="met-val">603.0 W/m²</div>
         </div>
 <div class="met">
           <div class="met-icon">🌧️</div>
@@ -4886,12 +4889,12 @@ function wgs84togcj02(lng, lat){
 <div class="met">
           <div class="met-icon">💧</div>
           <div class="met-label">相对湿度</div>
-          <div class="met-val">52 %</div>
+          <div class="met-val">35 %</div>
         </div>
 <div class="met">
           <div class="met-icon">🔵</div>
           <div class="met-label">气压</div>
-          <div class="met-val">1,032.5 hPa</div>
+          <div class="met-val">1,024.5 hPa</div>
         </div>
 <div class="met">
           <div class="met-icon">☁️</div>
@@ -4914,88 +4917,88 @@ function wgs84togcj02(lng, lat){
         </tr></thead>
         <tbody>
 <tr>
-          <td>2026-11-24</td>
-          <td>☁️ 阴</td>
-          <td><b>12.2</b>°C</td>
-          <td>5.1°C</td>
-          <td>0.0</td>
-          <td>0%</td>
-          <td>18.5</td>
-          <td>北 <span class="deg">(358°)</span></td>
-          <td>12.8</td>
-          <td>❄️</td>
-        </tr>
-<tr>
           <td>2026-11-25</td>
           <td>☁️ 阴</td>
-          <td><b>13.1</b>°C</td>
-          <td>3.7°C</td>
+          <td><b>14.8</b>°C</td>
+          <td>4.8°C</td>
           <td>0.0</td>
           <td>0%</td>
-          <td>15.5</td>
-          <td>东南 <span class="deg">(141°)</span></td>
+          <td>16.2</td>
+          <td>南东南 <span class="deg">(154°)</span></td>
           <td>13.4</td>
           <td>❄️</td>
         </tr>
 <tr>
           <td>2026-11-26</td>
-          <td>🌦️ 毛毛雨(弱)</td>
-          <td><b>19.4</b>°C</td>
-          <td>7.4°C</td>
-          <td>0.2</td>
+          <td>☁️ 阴</td>
+          <td><b>19.6</b>°C</td>
+          <td>6.8°C</td>
+          <td>0.0</td>
           <td>0%</td>
-          <td>12.2</td>
-          <td>南 <span class="deg">(181°)</span></td>
-          <td>12.8</td>
+          <td>13.6</td>
+          <td>南西南 <span class="deg">(192°)</span></td>
+          <td>13.3</td>
           <td>❄️</td>
         </tr>
 <tr>
           <td>2026-11-27</td>
           <td>☁️ 阴</td>
-          <td><b>19.0</b>°C</td>
-          <td>8.0°C</td>
+          <td><b>18.8</b>°C</td>
+          <td>8.4°C</td>
           <td>0.0</td>
           <td>0%</td>
-          <td>16.2</td>
-          <td>西 <span class="deg">(271°)</span></td>
+          <td>17.4</td>
+          <td>西 <span class="deg">(277°)</span></td>
           <td>13.3</td>
-          <td>❄️</td>
+          <td>—</td>
         </tr>
 <tr>
           <td>2026-11-28</td>
           <td>☀️ 晴</td>
-          <td><b>16.2</b>°C</td>
-          <td>5.3°C</td>
+          <td><b>15.0</b>°C</td>
+          <td>5.1°C</td>
           <td>0.0</td>
-          <td>0%</td>
-          <td>28.1</td>
-          <td>西北西 <span class="deg">(295°)</span></td>
-          <td>13.2</td>
+          <td>2%</td>
+          <td>26.1</td>
+          <td>西北西 <span class="deg">(289°)</span></td>
+          <td>13.6</td>
           <td>❄️</td>
         </tr>
 <tr>
           <td>2026-11-29</td>
           <td>☀️ 晴</td>
-          <td><b>14.8</b>°C</td>
-          <td>3.9°C</td>
+          <td><b>15.5</b>°C</td>
+          <td>5.1°C</td>
           <td>0.0</td>
           <td>0%</td>
-          <td>17.0</td>
-          <td>东南 <span class="deg">(143°)</span></td>
-          <td>13.6</td>
+          <td>19.8</td>
+          <td>东南 <span class="deg">(138°)</span></td>
+          <td>13.5</td>
           <td>❄️</td>
         </tr>
 <tr>
           <td>2026-11-30</td>
           <td>☀️ 晴</td>
-          <td><b>19.4</b>°C</td>
-          <td>4.6°C</td>
+          <td><b>20.5</b>°C</td>
+          <td>6.4°C</td>
           <td>0.0</td>
           <td>0%</td>
-          <td>11.3</td>
-          <td>南东南 <span class="deg">(147°)</span></td>
+          <td>16.0</td>
+          <td>南东南 <span class="deg">(148°)</span></td>
           <td>13.4</td>
           <td>❄️</td>
+        </tr>
+<tr>
+          <td>2026-12-01</td>
+          <td>☀️ 晴</td>
+          <td><b>23.0</b>°C</td>
+          <td>9.0°C</td>
+          <td>0.0</td>
+          <td>2%</td>
+          <td>11.8</td>
+          <td>东南 <span class="deg">(127°)</span></td>
+          <td>12.9</td>
+          <td>—</td>
         </tr>
         </tbody>
       </table>
@@ -5012,36 +5015,36 @@ function wgs84togcj02(lng, lat){
         </tr></thead>
         <tbody>
 <tr>
-          <td>2026-11-24</td>
-          <td>阴 / 晴</td>
-          <td>0.0 ~ <b>13.0</b>°C</td>
-          <td>北风 1-3 级</td>
-          <td>5.1 ~ <b>12.2</b>°C</td>
-          <td>✅ 一致 (Δ+0.8°C)</td>
-        </tr>
-<tr class="row-warn">
           <td>2026-11-25</td>
           <td>阴 / 阴</td>
-          <td>6.0 ~ <b>11.0</b>°C</td>
+          <td>6.0 ~ <b>13.0</b>°C</td>
           <td>东南风 1-3 级</td>
-          <td>3.7 ~ <b>13.1</b>°C</td>
-          <td>⚠️ 偏差 -2.1°C</td>
+          <td>4.8 ~ <b>14.8</b>°C</td>
+          <td>✅ 一致 (Δ-1.8°C)</td>
         </tr>
 <tr>
           <td>2026-11-26</td>
           <td>晴 / 晴</td>
-          <td>8.0 ~ <b>18.0</b>°C</td>
+          <td>7.0 ~ <b>18.0</b>°C</td>
           <td>东南风 1-3 级</td>
-          <td>7.4 ~ <b>19.4</b>°C</td>
-          <td>✅ 一致 (Δ-1.4°C)</td>
+          <td>6.8 ~ <b>19.6</b>°C</td>
+          <td>✅ 一致 (Δ-1.6°C)</td>
         </tr>
 <tr>
           <td>2026-11-27</td>
-          <td>阴 / 晴</td>
-          <td>7.0 ~ <b>19.0</b>°C</td>
+          <td>阴 / 多云</td>
+          <td>5.0 ~ <b>19.0</b>°C</td>
           <td>西风 1-3 级</td>
-          <td>8.0 ~ <b>19.0</b>°C</td>
-          <td>✅ 一致 (Δ+0.0°C)</td>
+          <td>8.4 ~ <b>18.8</b>°C</td>
+          <td>✅ 一致 (Δ+0.2°C)</td>
+        </tr>
+<tr>
+          <td>2026-11-28</td>
+          <td>晴 / 晴</td>
+          <td>5.0 ~ <b>16.0</b>°C</td>
+          <td>西北风 1-3 级</td>
+          <td>5.1 ~ <b>15.0</b>°C</td>
+          <td>✅ 一致 (Δ+1.0°C)</td>
         </tr>
         </tbody>
       </table>
@@ -5061,7 +5064,7 @@ function wgs84togcj02(lng, lat){
     </div>
 
     <div class="csub" style="margin-top:10px">
-      ⏱️ 本次抓取时间：<code>2026-11-24 09:05:39</code>　|　数据许可：Open-Meteo CC BY 4.0; data from national weather services
+      ⏱️ 本次抓取时间：<code>2026-11-25 12:19:53</code>　|　数据许可：Open-Meteo CC BY 4.0; data from national weather services
     </div>
   </section>
   <!-- WEATHER_LIVE_END -->

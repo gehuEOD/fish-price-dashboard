@@ -15,18 +15,18 @@
     "product": "鳜鱼 / 鲈鱼（蜂窝池养殖）"
   },
   "current": {
-    "time": "2026-11-28T10:30",
+    "time": "2026-11-28T10:45",
     "temperature_c": 13.6,
-    "wind_speed_kmh": 17.1,
-    "wind_dir_deg": 295,
+    "wind_speed_kmh": 17.5,
+    "wind_dir_deg": 298,
     "wind_dir_text": "西北西",
     "humidity_pct": 41,
     "precipitation_mm": 0.0,
     "pressure_hpa": 1026.0,
-    "weather_code": 3,
-    "weather_icon": "☁️",
-    "weather_text": "阴",
-    "solar_radiation_wm2": 330.0,
+    "weather_code": 2,
+    "weather_icon": "⛅",
+    "weather_text": "多云",
+    "solar_radiation_wm2": 258.0,
     "elevation_m": 5.0,
     "timezone": "Asia/Shanghai"
   },
@@ -134,7 +134,7 @@
     "city": "宜兴市",
     "adcode": "320282",
     "source": "高德天气 API（中国气象局数据，经 MCP amap-maps maps_weather 获取）",
-    "fetched_at_cst": "2026-11-28 10:42:20",
+    "fetched_at_cst": "2026-11-28 10:47:56",
     "forecasts": [
       {
         "date": "2026-11-28",
@@ -250,7 +250,7 @@
   ],
   "alerts": [],
   "meta": {
-    "fetched_at_cst": "2026-11-28 10:42:28",
+    "fetched_at_cst": "2026-11-28 10:48:06",
     "source": "Open-Meteo API (https://api.open-meteo.com)",
     "license": "Open-Meteo CC BY 4.0; data from national weather services",
     "secondary_source": "高德天气 API（中国气象局）"

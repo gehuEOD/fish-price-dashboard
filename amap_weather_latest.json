@@ -2,7 +2,7 @@
   "city": "宜兴市",
   "adcode": "320282",
   "source": "高德天气 API（中国气象局数据，经 MCP amap-maps maps_weather 获取）",
-  "fetched_at_cst": "2026-11-28 10:42:20",
+  "fetched_at_cst": "2026-11-28 10:47:56",
   "forecasts": [
     {
       "date": "2026-11-28",
